@@ -1,0 +1,131 @@
+@media (max-width:1800px) {
+    .userMainPAge {
+        width: 99%;
+    }
+
+    .PersonUser {
+        width: 100%;
+        height: 812px;
+    }
+
+    .personData {
+        position: unset;
+    }
+
+}
+
+@media (max-width:1550px) {
+    
+    .after {
+        font-size: 18px;
+        right: 195px;
+    }
+
+    .afterBalanc {
+        font-size: 16px;
+        right: 210px;
+        top: 69px;
+    }
+
+    .afterName {
+        width: 49px;
+        height: 90px;
+        right: 90px;
+
+    }
+}
+
+
+@media (max-width:600px) {
+    .labelForFileReader {
+        width: 246px;
+        height: 55px;
+        margin-top: unset;
+    }
+
+    .personName {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .UserPersonImg {
+        width: 345px;
+        height: 81px;
+        margin: 45px auto 0 ;
+    }
+
+    .UserPersonImg p {
+        width: 55px;
+        height: 55px;
+    }
+
+    .personName {
+        width: 345px;
+        height: 45px;
+    }
+
+    .ButtonUserData {
+        margin-top: 0;
+        width: 345px;
+        height: 51px;
+    }
+
+    .personData {
+        margin-top: 13px;
+        gap: 13px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .PersonUser {
+        height: 732px !important;
+    }
+
+    .userMainPAge {
+        justify-content: space-between;
+    }
+
+    .headerContainer {
+        padding-top: 24px;
+    }
+
+    .inputInner {
+        font-size: 14px;
+    }
+
+    .personName a {
+        width: 145px;
+    }
+
+    .personName img {
+        width: 15px;
+        height: 13px;
+    }
+
+    .messigeButton {
+        display: none;
+    }
+
+    .input {
+        width: 345px;
+        height: 45px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width:350px) {
+    .UserPersonImg {
+        width: 100%;
+    }
+
+    .personName {
+        width: 100%;
+    }
+
+    .ButtonUserData {
+        width: 100%;
+    }
+}
+

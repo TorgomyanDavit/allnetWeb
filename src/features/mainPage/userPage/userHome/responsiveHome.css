@@ -1,0 +1,650 @@
+@media (max-width:1700px) {
+    .userHome {
+        width: 95%;
+    }
+
+    .user-channels-div {
+        width: 37%; 
+        align-items: center;
+    }
+
+    .user {
+        width: 100%;
+    }
+
+    .Channels {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .titleChannel {
+        width: 80%;
+        position: unset;
+        margin: 18px 0 36px;
+
+    }
+
+    .TvChannels {
+        width: 100%;
+        margin: 0;
+    }
+
+    .reg-active-channelGroup-contacts-div {
+        width: 60%;
+    }
+
+    .homeImgDiv {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    /* verjum jnjel */
+    .labelForHome {
+        display: none !important;
+    }
+
+    .channel-Active-Groupe {
+        width: 100%;
+    }
+
+    .active-contacts-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 49%;
+        height: unset;
+        justify-content: space-between;
+    }
+
+    .mainChannelGroup {
+        width: 49%;
+    }
+
+    .channelTittel {
+        width: 80%;
+    }
+
+    .channelGroupChecked {
+        width: 80%;
+    }
+
+    .active-contacts-div .timer-Div {
+        width: 100%;
+    }
+
+    .contacts {
+        width: 100%;
+        margin: unset;
+    }
+
+    .userName {
+        width: 60%;
+    }
+
+    .TvChannels p span IMG {
+        width: 100%;
+    }
+
+    .TvChannels p {
+        text-align: center;
+    }
+
+    /* home img div */
+    .slick-slider {
+        width: 100%;
+    }
+
+    .homeImgDiv {
+        width: 100%;
+    }
+
+    .homeImg {
+        width: 100%;
+        padding: unset;
+    }
+
+    .homeImg img{
+        width: 500px;
+        margin: 0 auto;
+        height: inherit;
+    }
+
+    .registerDescriptionDiv {
+        width: 100%;
+        height: FIT-CONTENT;
+        margin: unset;
+        z-index: 1;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .description {
+        font-size: 23px;
+    }
+
+    .description2 {
+        display: none;
+    }
+}
+
+@media (max-width:1550px) {
+
+    #timerDiv1 .timering{
+        width: 197px;
+        height: 101px;
+        top: -4px;
+        left: 5px;
+    }
+
+    #timerDiv1 {
+        justify-content: end !important;
+    }
+
+    .userHome {
+        width: 90%;
+    }
+
+    .groupinput:nth-child(1) {
+        width: 50%;
+    }
+
+    .groupinput label {
+        font-size: 12px;
+    }
+
+    .userName {
+        align-items: center;
+        gap: 5px;
+    }
+
+    .userName > img {
+        width: 71px;
+        height: 71px;
+    }
+
+    .userName p span:nth-child(1) {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    .user button {
+        width: 49px;
+        height: 90px;
+    }
+
+    .channelTittel {
+        font-size: 15px;
+    }
+
+    .titleUnderLine {
+        width: 80%;
+    }
+
+    .active-contacts-div .timer-Div .timer {
+        min-width: unset !important;
+        width: 79px;
+        height: 79px;
+        margin: 20px;
+        position: absolute;
+        left: 41px;
+    }
+
+    
+    .active-contacts-div .timer-Div {
+       padding-top: unset;
+       align-items: center;
+       justify-content: space-evenly;
+    } 
+
+    .active-contacts-div .timer-Div .ActiveUntil {
+        font-size: 16px;
+    }
+
+    .active-contacts-div .timer-Div .date {
+        font-size: 14px;
+    }
+
+    .active-contacts-div .timer-Div .timerButton {
+        width: inherit;
+        height: 37px;
+        font-size: 12px;
+    }
+
+    .active-contacts-div .timer-Div .timerButtonDiv {
+        width: 154px;
+        margin-right: 5px;
+    }
+
+    .description2 {
+        display: none;
+    }
+    .description {
+        width: 50%;
+    }
+
+    .TvChannels p :Link img {
+        width:unset;
+        height: 21px;
+    }
+    
+}
+
+@media (max-width:1200px) and (min-width:1024px) {
+    #timerDiv1 .timering{
+        left: -37px;
+    }
+
+    .active-contacts-div .timer-Div .timer {
+        left: 0px;
+    }
+}
+
+@media (max-width:1024px) {
+
+    .TvChannels p :Link img {
+        width:unset;
+    }
+
+    .Channels {
+        height: fit-content;
+    }
+
+    .active-contacts-div .timer-Div {
+        justify-content: space-evenly;
+    } 
+
+    .MainPage {
+        height: fit-content;
+    }
+
+    .userHome {
+        width: 90%;
+        flex-direction: column;
+        height: fit-content;
+        align-items: center;
+    }
+
+    .reg-active-channelGroup-contacts-div {
+        width: 100%;
+    }
+
+    .user-channels-div {
+        margin-top: 20px;
+        width: 100%;
+        height: fit-content;
+        gap: 12px;
+    }
+
+    .userName {
+        width: 36%;
+    }
+
+    .TvChannels {
+        height: 322px;
+        overflow: hidden;
+    }
+}
+
+@media (max-width:800px) {
+    .userHome {
+        width: 85%;
+    }
+
+    .socialImageDiv {
+        margin-left: 20px;
+    }
+
+    .channel-Active-Groupe {
+        height: fit-content;
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .active-contacts-div {
+        width: 100%;
+        margin-top: unset;
+        gap: 20px;
+    }
+
+    .socialImageDiv {
+        margin-left: 42px;
+    }
+
+    .mainChannelGroup {
+        width: 100%;
+    }
+
+    .active-contacts-div .timer-Div {
+        justify-content: space-evenly;
+    } 
+
+    .userName {
+        width: 40%;
+    }
+}
+
+@media (max-width:600px) {
+
+    .homeImg img{
+        width: 345px;
+        margin: 0 auto;
+        height: inherit;
+    }
+
+    .userName {
+        width: 60%;
+    }
+
+    .userHome {
+        width: 100%;
+    }
+
+    .user-channels-div {
+        margin-bottom: 100px;
+    }
+
+    .homeImgDiv {
+        height: 478px;
+        align-items: center;
+    }
+
+    .description {
+        text-align: center;
+        width: 233px;
+    }
+
+    .registerDescriptionDiv {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .slick-dots {
+        width: 100%;
+        bottom: -49px;
+    }
+
+    .homeImg {
+        height: 206px;
+        margin-top: 76px;
+    }
+
+    .homeUnderline {
+        display: none;
+    }
+
+    .active-contacts-div {
+        margin-top: 64px;
+    }
+
+    .active-contacts-div .timer-Div .timerButton {
+        width: 154px;
+    }
+
+    .titel-Contacts {
+        margin: 26px 0 17px 42px;
+    }
+
+}
+
+@media (max-width:375px) and (min-width:375px) {
+
+    .active-contacts-div .timer-Div .timerButtonDiv {
+        margin-right: 45px;
+    }
+
+    .active-contacts-div .timer-Div .timer {
+        left: 19px;
+    }
+
+    #timerDiv1 .timering {
+        left: -17px;
+    }
+
+    #timerDiv1 .timering{
+        top: -28px;
+    }
+
+    .TvChannels p :Link img {
+        width: 100%;
+    }
+    .homeImg {
+        width: 331px;
+    }
+
+    .active-contacts-div .timer-Div {
+        width: 345px;
+        height: 125px;
+        border-radius: 10px;
+    }
+
+    .homeImgDiv {
+        width: 345px;
+        height: 478px;
+        margin: 0 auto;
+    }
+
+    .contactsMessigeImg {
+        justify-content: start;
+        gap: 20px;
+    }
+
+    .contactsCallImg {
+        justify-content: start;
+        gap: 20px;
+    }
+
+    .socialImageDiv :link:nth-child(1) img {
+        width: 8px;
+        height: 15px;
+    }
+
+    .socialImageDiv :link:nth-child(2) img {
+        width: 15px;
+        height: 15px;
+    }
+
+    .socialImageDiv :link:nth-child(3) img {
+        width: 18px;
+        height: 15px;
+    }
+
+    .socialImageDiv :link:nth-child(4) img {
+        width: 19px;
+        height: 15px;
+    }
+
+    .contactsCallImg {
+        margin: 0 0 17px 42px;
+    }
+
+    .contacts {
+        width: 345px;
+        height: 236px;
+        position: absolute;
+        bottom: -596px;
+        border-radius: 10px;
+    }
+
+    .userName p span:nth-child(2) {
+        font-size: 12px;
+    }
+
+    .userName p span:nth-child(2) b {
+        font-size: 14px;
+    }
+
+    .userName {
+        width: fit-content;
+        gap: 17px;
+    }
+
+    .user {
+        border-radius: 10px;
+        position: absolute;
+        top: 493px;
+        width: 345px;
+        height: 93px;
+    }
+
+    .user button {
+        width: 55px;
+        height: 79px;
+    }
+
+    .user button img {
+        width: 7px;
+        height: 30px;
+    }
+
+    .user-channels-div {
+        justify-content: initial;
+        margin-top: unset;
+        margin-bottom: unset;
+        height: 683px;
+    }
+
+    .Channels {
+        border-radius: 10px;
+        margin-top: 15px;
+        width: 345px;
+        height: 330px;
+    }
+
+    .mainChannelGroup {
+        width: 345px;
+        height: 304px;
+        border-radius: 10px;
+    }
+
+    .channel-Active-Groupe {
+        align-items: center;
+        margin-top: 191px;
+        gap: 15px;
+    }
+
+    .channelTittel {
+        width: 322px;
+        height: 43px;
+        font-size: 16px;
+        margin: 18px auto 0;
+    }
+
+    .channelGroupChecked {
+        height: 190px;
+        margin: 20px auto 0;
+        justify-content: unset;
+    }
+
+    .groupinput label input {
+        width: 15px;
+        height: 12px;
+    }
+
+    .groupinput label {
+        margin-bottom: 14px;
+    }
+
+    .channelGroupChecked .groupinput:nth-child(2) {
+        padding-left: 24px;
+    }
+
+    .titleChannel {
+        width: 322px;
+        height: 43px;
+        font-size: 16px;
+        margin: 26px 0 21px;
+    }
+
+    .TvChannels p Link {
+        width: 133px;
+        height: 21px;
+    }
+
+    .TvChannels p :Link {
+        margin-bottom: 26px;
+        height: 21px;
+    }
+
+    .TvChannels {
+        padding: 0 30px;
+        width: 100%;
+        display: flex;
+        gap: 18px;
+        justify-content: center;
+        align-items: unset;
+        height: 210px;
+        overflow: hidden;
+        
+    }
+
+    .channel1 {
+        height: fit-content !important;
+        width: fit-content !important;
+        max-width: unset !important;
+    }
+
+    .channel2 {
+        text-align: end;
+        width: fit-content !important;
+        height: fit-content !important;
+        max-width: unset !important;
+    }
+
+    .reg-active-channelGroup-contacts-div {
+        position: relative;
+    }
+
+    .active-contacts-div  {
+        margin-top: unset;
+        height: fit-content;
+    }
+}
+
+@media (max-width:335px)  {
+    .active-contacts-div .timer-Div .timer {
+        left: -14px;
+    }
+
+    .socialImageDiv {
+        margin-left: 0;
+        margin: 0 auto;
+    }
+
+    
+    #timerDiv1 .timering{
+        left: -51px;
+    }
+
+    .userName p span:nth-child(2) {
+        font-size: 10px;
+    }
+
+    .userName p span:nth-child(1) {
+        font-size: 14px;
+    }
+}
+
+@media (max-width:374px) {
+
+    .homeImg img {
+        width: 100%;
+    }
+    .groupinput label {
+        font-size: 10px;
+    }
+}
+
+@media (max-width:320px)  {
+
+    .TvChannels p :Link img {
+        width: 100%;
+    }
+
+    .groupinput label input {
+        margin-right: 2px;
+    }
+}

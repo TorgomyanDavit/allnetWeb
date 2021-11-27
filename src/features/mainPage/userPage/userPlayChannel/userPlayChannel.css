@@ -1,0 +1,477 @@
+.userPlayChannel {
+    width: 1424px;
+    height: 897px;
+    display: flex;
+    column-gap: 25px;
+    font: Montserrat;
+}
+
+.firstThreepageDiv {
+    width: 900px;
+    height: 897px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 34px;
+}
+
+.secondThreepageDiv {
+    width: 499px;
+    height: 771px;
+}
+
+.firstThreepageDivheader {
+    width: 900px;
+    height: 91px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #FFFFFF;
+    padding: 0 19px 0 40px;
+    border-radius: 20px;
+    animation-name: firstThreepageDivheader;
+    animation-duration: 1s;
+}
+
+@keyframes firstThreepageDivheader {
+    0% {
+        width: 1421px;
+        height: 88px;
+        transform: translate(0,122px);
+    }
+}
+
+.firstThreepageDivheader > p, .firstThreepageDivheader > div {
+    animation-name: contentDiv;
+    animation-duration: 1s;
+}
+
+@keyframes contentDiv {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.firstThreepageDivheader > p {
+    font-size: 24px;
+    font-weight: 700;
+    color: #282828;
+    cursor: context-menu;
+}
+
+.firstChild {
+    width: 596px;
+    height: 54px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.firstChild > p {
+    width: 314px;
+    height: 54px;
+    background: rgba(0, 0, 0, 0.25);
+    font-size: 24px;
+    font-weight: 500;
+    opacity: 0.7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    cursor: context-menu;
+}
+
+.firstChild button {
+    width: 214px;
+    height: 54px;
+    background: #EEBA06;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.firstChild button:hover {
+    background: #2A29B4;
+    color: white;
+}
+
+.channelInputDivTitle {
+    width: 900px;
+    height: 298px;
+    border-radius: 20px;
+    background: #FFFFFF;
+}
+
+.channelInputDivTitle h2 {
+    margin: 19px auto 20px;
+    width: 862px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 700;
+    border-radius: 10px;
+    background: #CCE1E4;
+}
+
+#h2Title {
+    animation-name:channelInputDivTitleH2 ;
+    animation-duration: 1s;
+}
+
+@keyframes channelInputDivTitleH2 {
+    0% {
+        width: 460px;
+        transform: translate(317px,314px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+
+
+.channelInputDiv {
+    width: 807px;
+    height: 171px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.checkboxDiv {
+    width: 138px;
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    opacity: 0.7;
+    gap: 25px;
+    border-right: 2px solid#282828;
+}
+
+.channelInputDiv > :nth-child(2) {
+    width: 220px;
+    margin-left: 52px;
+}
+
+.channelInputDiv  > :nth-child(3) {
+    width: 262px;
+    margin-left: 52px;
+}
+
+.channelInputDiv  > :nth-child(4) {
+    width: 187px;
+    border: none;
+    margin-left: 52px;
+}
+
+.checkboxDiv input {
+    width: 17px;
+    height: 17px;
+    margin-right: 20px;
+    display: inline-block;
+    appearance:none;
+    border: 2px solid black ;
+    border-radius: 2px;
+    background-position: center;
+    background-size:contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.checkboxDiv > p {
+    display: flex;
+    font-size: 16px;
+    display: flex;
+    width: 158px;
+}
+
+.checkboxDiv > p:nth-child(1) {
+    margin-top: 2px;
+}
+
+.channelS {
+    overflow: hidden;
+    width: 900px;
+    height: 440px;
+    border-radius: 20px;
+    background: white;
+    padding-top: 19px;
+    animation-duration: 1s;
+}
+
+@keyframes channesAnimation {
+    0% {
+        opacity: 0.7;
+        transform: translate(1030px,-274px);
+        width: 513px;
+        height: 709px;
+    }
+
+    100% {
+        transform: translateX(0);
+        width: 900px;
+        height: 440px;
+    }
+}
+
+.channelS h2 {
+    width: 862px;
+    height: 60px;
+    border-radius: 10px;
+    margin:0 auto 34px;
+    animation-duration: 1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #CCE1E4;
+}
+
+@keyframes channesH2 {
+    0% {
+        width: 471px;
+    }
+
+    100% {
+        width: 862px;
+    }
+}
+
+ .channelsChildDiv {
+    width: 769px;
+    height: 276px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    animation-duration: 1s;
+}
+
+@keyframes childDiv {
+    0% {
+        width: 373px;
+        flex-wrap: wrap;
+    }
+    20% {
+        flex-wrap: wrap;
+    }
+    100% {
+        width: 769px;
+    }
+} 
+
+
+.channe2 {
+    width: 175px;
+    height: 276px;
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+    animation-duration: 1s;
+}
+
+@keyframes chennels2DivAnim {
+    0% {
+        width: 0px;
+        gap: 0px;
+        height: 0px;
+    }
+
+    50%{
+        width: 100px;
+        
+    }
+}
+
+.channe2 :link {
+    height: 28px;
+    text-decoration: none;
+}
+
+#Ablank {
+    width: 175px;
+    height: 27px;
+    animation-name: Ablank;
+    animation-duration: 1s;
+}
+
+@keyframes Ablank {
+    0% {
+        width: 0px;
+        height: 0px;
+    }
+
+    50% {
+        width: 50px;
+    }
+    100% {
+        width: 175px;
+    }
+}
+
+.ChDivImg {
+    width: 100%;
+    height: 100%;
+}
+
+.oneDIvCopy {
+    width: 499px;
+    height: 240px;
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding-top: 16px;
+}
+
+.oneDIvCopy h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #282828;
+    border-radius: 10px;
+    width: 467px;
+    height: 60px;
+    margin: 0px auto 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #CCE1E4;
+}
+.oneDIvCopy > p {
+    width: 446px;
+    height: 40px;
+    color: rgba(40, 40, 40, 0.7);
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 20px 30px;
+    line-height: 20px;
+    text-align: left;
+    letter-spacing: 1px;
+}
+
+.formInputCopy {
+    position: relative;
+    margin: 0 auto;
+    width: 467px;
+    height: 65px;
+}
+
+.formInputCopy input {
+    width: 467px;
+    height: 65px;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    display: inline-block;
+    padding-left: 22px;
+    font-size: 12px;
+    opacity: 0.5;
+    color: #282828;
+    border: none;
+    padding-right: 90px;
+}
+
+.formInputCopy p {
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    outline: none;
+    border: none;
+    right: 44px;
+    top: 24px;
+    right: 44px;
+    top: 24px;
+    background: transparent;
+    cursor:copy;
+    z-index: 2;
+}
+
+.formInputCopy input::placeholder {
+    width: 350px;
+    height:50px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+.fileFormat {
+    width: 499px;
+    height: 497px;
+    background: #FFFFFF;
+    border-radius: 20px;
+    margin-top: 34px;
+    padding-top: 16px;
+}
+
+.fileFormat h2:nth-child(1) {
+    width: 467px;
+    height: 60px;
+    margin: 0 auto;
+    border-radius: 10px;
+    background: #CCE1E4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.fileFormat p {
+    width: 446px;
+    height: 84px;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 0 35px;
+    letter-spacing: 1px;
+    color: rgba(40, 40, 40, 0.7);
+}
+
+.formatInputDiv {
+    height: 212px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.formatinput {
+    margin: 0px 0 15px 30px;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(40, 40, 40, 0.7);
+}
+
+.formatinput input {
+    margin-right: 23px;
+    width: 16px;
+    height: 16px;
+    appearance: none;
+    border: 2px solid #006879;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size:contain;
+}
+
+.formatInputDivh2 {
+    width: 170px;
+    height: 27px;
+    font-size: 18px;
+    font-weight: 700;
+    margin-left: 30px;
+    margin-bottom: 23px;
+}
+
+
+
+
+
+
+
+
+
+
+
+

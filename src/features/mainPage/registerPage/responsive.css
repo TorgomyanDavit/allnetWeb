@@ -1,0 +1,179 @@
+@media screen and (max-width:1710px) {
+    .registerImgDiv {
+        display: none;
+    }
+
+    .registerMAin {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loginDiv {
+        margin: 0;
+    }
+}
+
+@media (max-width:1550px) and (min-width:500px) {
+    .registerMAin {
+        z-index: 1 !important;
+    }
+}
+
+@media screen and (max-width:900px) {
+    .backgroundBottomDiv {
+        display: none;
+    }
+}
+
+@media screen and (max-width:650px) {
+    .registerMAin {
+        padding: 0 15px;
+    }
+
+    .backgroundBottomDiv {
+        display: none;
+    }
+
+    .inputDiv {
+        width: 80%;
+        height: fit-content;
+    }
+
+    .registerHr {
+        width: 230px;
+        margin: 22px auto 0;
+    }
+}
+
+@media screen and (max-width:500px) {
+
+    .formRegistration {
+        height: fit-content;
+    }
+
+    .checkboxForAggrement {
+        margin-top: 12px;
+        width: 235px;
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .checkboxForAggrement input {
+        width: 19px;
+        height: 19px;
+    }
+
+    .inputDiv {
+        width: 296px;
+    }
+
+    .socialMediaIcon {
+        width: 215px;
+        height: 43px;
+        margin-bottom: 33px;
+    }
+
+    .registerButton {
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .formRegistration input {
+        width: 100%;
+        height: 54px;
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 12px;
+    }
+    
+    .labelForPassvord button {
+        width: 19px;
+        height: 15px;
+        top: 18px;
+    }
+
+    .RegisterSubmit {
+        width: 100%;
+        height: 51px;
+        font-size: 18px;
+        font-weight: 600;
+    }
+    
+    .SocialNetworkTitle {
+        width: 193px;
+        height: 15px;
+        margin: 15px auto;
+        font-size: 12px;
+        font-weight: 500;
+        text-align: center;
+    }
+
+    .socialMediaIcon p {
+        width: 43px;
+        height: 43px;
+    }
+
+    .socialMediaIcon a:nth-child(1) img {
+        width: 8px;
+        height: 16px;
+    }
+
+    .socialMediaIcon a:nth-child(2) img{
+        width: 16px;
+        height: 16px;
+    }   
+
+    .socialMediaIcon a:nth-child(3) img {
+        width: 19px;
+        height: 16px;
+    }
+
+    .socialMediaIcon a:nth-child(4) img {
+        width: 19px;
+        height: 16px;
+    }
+
+    .loginDiv {
+        width: 100%;
+        height: 572px;
+        margin: 50px 0;
+    }
+
+    .backgroundBottomDiv {
+        display: none;
+    }
+
+    .registerButtonUnderLine {
+        bottom: -4px;
+        left: 0;
+    }   
+
+    .registerMAin {
+        align-items: initial;
+        height: fit-content;
+    }
+
+    .headerNavigator {
+        height: 41px;
+    }
+
+    .RegisterButtonDiv {
+        margin: 28px 0 34px;
+    }
+}
+
+@media screen and (max-width:375px) and (min-width:375px) {
+    .loginDiv {
+        width: 345px;
+    }
+}
+
+@media screen and (max-width:300px) {
+    .registerButtonUnderLine {
+        width: 40px;
+    }   
+    .inputDiv {
+        width: 100%;
+    }
+}

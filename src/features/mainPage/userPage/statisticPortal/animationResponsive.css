@@ -1,0 +1,31 @@
+@media (max-width:1650px) {
+    @keyframes timerDivTwo {
+        0% {
+            width: 25vw;
+            transform: translate(0,448px);
+        }
+    
+        100% {
+            transform: translate(0);
+        }
+    }
+}
+
+@media (max-width:1150px) {
+    @keyframes timerButton {
+        from{
+            position: relative;
+            left: -77%;
+            bottom: -498px;
+        }
+    }
+}
+
+@media (max-width:1024px) {
+    #timerButton {
+        animation: unset;
+    }
+    #timerDivTwo {
+        animation: unset;
+    }
+}

@@ -1,0 +1,306 @@
+.PersonUser {
+    width: 1562px;
+    height: 889px;
+    position: relative;
+}
+
+.UserPersonImg {
+    width: 212px;
+    height: 273px;
+    border-radius: 20px;
+    padding: 19px;
+    animation-duration: 0.5s;
+}
+
+.after {
+    position: absolute;
+    right: 135px;
+    top: 38px;
+    font-size: 30px;
+    font-weight: 600;
+    animation-name: after;
+    animation-duration: 0.5s;
+    z-index: 1;
+    opacity: 0;
+}
+
+.afterBalanc {
+    position: absolute;
+    right: 224px;
+    top: 89px;
+    font-size: 16px;
+    color: #282828;
+    font-weight: 600;
+    opacity: 0.7;
+    animation-name: afterBalanc;
+    animation-duration: 0.5s;
+    z-index: 1;
+    opacity: 0;
+}
+
+.afterName {
+    position: absolute;
+    right: 35px;
+    top: 22px;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    color: white;
+    width: 70px;
+    height: 100px;
+    background: #CCE1E4;
+    animation-duration: 1s;
+    z-index: 1;
+    opacity: 0;
+}
+
+
+
+@keyframes after { 0% {opacity: 1;} }
+@keyframes afterName { 0% {opacity: 1;} } 
+@keyframes afterBalanc { 0% {opacity: 1;} } 
+
+@keyframes personImg {
+    0% {
+        transform: translateX(1050px);
+        width: 512px;
+        height: 146px;
+    }
+
+    15% {
+        width: 512px;
+        height: 146px;
+    }
+
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+.UserPersonImg p {
+    width: 172px;
+    height: 172px;
+    animation-duration: 1s;
+}
+
+@keyframes person {
+    0%{
+        width: 100px;
+        height: 100px;
+    }
+
+    15% {
+        width: 100px;
+        height: 100px;
+    }
+
+    100% {
+        width: 172px;
+        height: 172px;
+    }
+}
+
+.UserPersonImg p img {
+    width: 100%;
+    height: 100%;
+}
+
+.labelForFileReader {
+    width: 172px;
+    height: 51px;
+    background: #CCE1E4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    animation-duration: 1s;
+}
+
+@keyframes label {
+    0% {
+        opacity: 0;
+    }
+    90% {
+        opacity: 0.1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.personData {
+    margin-top: 29px;
+    position: absolute;
+    top: 273px;
+}
+
+.personName {
+    width: 438px;
+    height: 77px;
+    background:#FFFFFF;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgba(40, 40, 40, 0.7);
+    align-items: center;
+    border-radius: 20px;
+    position: relative;
+    margin-bottom: 17px;
+    cursor: context-menu;
+    animation-duration: 1s;
+}
+
+@keyframes personName {
+    0% {
+        opacity: 0;
+    }
+    90% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.inputInner {
+    color: #282828;
+    width: 141px;
+    font-size: 18px;
+    font-weight: 600;
+    outline: none;
+    border: none;
+}
+
+.ButtonUserData {
+    width: 220px;
+    height: 47px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #EEBA06;
+    border-radius: 10px;
+    margin-top: 26px;
+    border: 1px solid #EEBA06;
+    outline: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 600;
+    animation-duration: 1s;
+}
+
+.ButtonUserData:hover {
+    background: #2A29B4;
+    color: white;
+    border: 1px solid #2A29B4;
+}
+
+@keyframes buttonPosition {
+    0% {
+        position: relative;
+        right: -200px;
+        bottom: 80px;
+        color:black ;
+    }
+    
+    30% {
+        color:rgba(0, 0, 0, 0.267) ;
+    }
+
+    100% {
+        position: relative;
+        right: 0px;
+        bottom: 0px;
+        color:black ;
+    }
+}
+
+@keyframes buttonPositionforPortal {
+    0% {
+        position: relative;
+        right: -217px;
+        bottom: 491px;
+        color:black ;
+    }
+    
+    30% {
+        color:rgba(0, 0, 0, 0.267) ;
+    }
+
+    100% {
+        position: relative;
+        right: 0px;
+        bottom: 0px;
+        color:black ;
+    }
+}
+
+.input {
+    width: 438px;
+    height: 77px;
+    border-radius: 20px;
+    background: #FFFFFF;
+    position: absolute;
+    left: 0px;
+    top: 0;
+    padding-left: 38px;
+    font-size: 20px;
+}
+
+.personName img {
+    z-index: 1;
+    cursor: pointer;
+}
+
+.messigeIcon {
+    position: absolute;
+    cursor: pointer;
+    right: -30px;
+    bottom: 0px;
+}
+
+.animationTimer {
+    width: fit-content;
+    display: flex;
+    gap: 34px;
+    animation-name:animation-time;
+    animation-duration: 0.5s;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    z-index: 0;
+}
+
+.animation-timer {
+    width: 488px;
+    height: 171px;
+    border-radius: 20px;
+    background: #FFFFFF;
+    padding-top: 29px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+@keyframes animation-time {
+    from{
+        
+        opacity: 1;
+    }
+}
+
+.personName a {
+    text-decoration: none;
+    color: #282828;
+    width: 141px;
+}
+
+
+

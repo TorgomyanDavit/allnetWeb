@@ -1,0 +1,27 @@
+@media (max-width:1200px) {
+    .historyMovement {
+        animation: unset;
+    }
+
+    .historyMovement :nth-child(1) {
+        animation: unset;
+    }
+
+    .historyMovement :nth-child(2) {
+        animation: unset;
+    }
+}
+
+@keyframes historyMovement {
+    0% {
+        transform: translate(0,-123px);
+        width: 900px;
+        height: 91px;
+    }
+
+    100% {
+        /* width: 1421px; */
+        height: 88px;
+        transform: translate(0);
+    }
+}

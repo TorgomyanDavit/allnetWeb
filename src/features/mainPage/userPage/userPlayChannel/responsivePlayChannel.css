@@ -1,0 +1,448 @@
+@media (max-width:1550px) {
+    .userPlayChannel  {
+        width: 100%;
+    }
+
+    .secondThreepageDiv {
+        width: 40%;
+    }
+
+    .firstThreepageDiv {
+        width: 70%;
+    }
+
+    .oneDIvCopy  {
+        width: 100%;
+    }
+
+    .oneDIvCopy h2 {
+        width: 90%;
+    }
+
+    .oneDIvCopy > p {
+        width: 90%;
+    }
+
+    .formInputCopy input {
+        width: 100%;
+    }
+
+    .formInputCopy {
+        width: 90%;
+    }
+
+    .fileFormat {
+        width: 100%;
+    }
+
+    .fileFormat h2:nth-child(1) {
+        width: 90%;
+    }
+
+    .fileFormat p {
+        width: 90%;
+    }
+
+    .firstThreepageDivheader {
+        width: 100%;
+    }
+
+    .channelInputDivTitle {
+        width: 100%;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+    }
+
+    .channelS {
+        width: 100%;
+    }
+
+    .channelS h2 {
+        width: 90%;
+    }
+
+    .channelsChildDiv {
+        width: 90%;
+    }
+
+    .channelInputDivTitle h2 {
+        width: 90%;
+    }
+
+    .channelInputDiv {
+        width: 90%;
+        margin: unset;
+    }
+}
+
+@media (max-width:1300px) {    
+    .fileFormat {
+        margin-top: 12px;
+    }
+
+    .userPlayChannel {
+        width: 90%;
+        flex-direction: column;
+        gap: 12px;
+        height: fit-content;
+    }
+    .MainPage {
+        height: fit-content;
+    }
+
+    .firstThreepageDiv {
+        width: 100%;
+        gap: 12px;
+        height: fit-content;
+    }
+
+    .secondThreepageDiv {
+        width: 100%;
+        height: fit-content;
+        margin-bottom: 100px;
+    }
+
+    .checkboxDiv {
+        width: 25%;
+    }
+
+    .checkboxDiv > p {
+        width: fit-content;
+    }
+
+    .channe2 {
+        width: 25%;
+    }
+
+    #Ablank {
+        width: 100%;
+    }    
+
+    .firstChild {
+        width: 75%;
+    }
+}
+
+@media (max-width:800px) {
+    .userPlayChannel {
+        width: 87%;
+    }
+
+    .channelInputDiv .checkboxDiv:nth-child(n) {
+        margin-left: unset;
+    }
+}
+
+@media (max-width:800px) and (min-width:800px) {
+    
+}
+@media (max-width:600px) {
+
+    .secondThreepageDiv {
+        align-items: center;
+        flex-direction: column;
+        display: flex;
+    }
+
+    .channelInputDiv {
+        flex-wrap: wrap;
+        height: fit-content;
+    }
+    .userPlayChannel {
+        width: 100%;
+    }
+
+    .firstThreepageDivheader {
+        border-radius: 5px;
+        width: 345px;
+        height: 175px;
+        flex-direction: column;
+        padding: unset;
+        justify-content: unset;
+        padding-top: 15px;
+        gap: 12px;
+        align-items: unset;
+        padding-left: 18px;
+    }
+
+    .firstChild {
+        flex-direction: column;
+        width: 309px;
+        gap: 12px;
+        height: fit-content;
+    }
+
+    .firstChild > p {
+        width: 309px;
+        height: 44px;
+        font-size: 16px;
+    }
+
+    .firstChild button {
+        width: 100%;
+        height: 39px;
+        font-size: 14px;
+    }
+
+    .firstThreepageDivheader > p {
+        font-size: 16px;
+    }
+
+    .channelInputDivTitle {
+        width: 345px;
+        height: 304px;
+        border-radius: 10px;
+    }
+
+    .channelInputDivTitle h2 {
+        width: 322px;
+        height: 43px;
+        font-size: 16px;
+    }
+
+    .checkboxDiv input {
+        width: 12.5px;
+        height: 12.5px;
+    }
+
+    .checkboxDiv > p {
+        font-size: 12px;
+        width: 100%;
+        padding-left: 24px;
+    }
+    .channelInputDiv .checkboxDiv:nth-child(n) {
+        margin-left:unset;
+        width: 49%;
+        gap: 12px;
+    }
+
+    .channelInputDiv > :nth-child(2) {
+        border: none
+    }
+
+    .firstThreepageDiv {
+        height: fit-content;align-items: center;
+    }
+
+    .channelInputDiv > :nth-child(3) {
+        padding-top: 12px;
+    }
+
+    .channelInputDiv > :nth-child(4) {
+        padding-top: 12px;
+    }
+
+    .channelsChildDiv {
+        flex-wrap: wrap;
+        overflow: hidden;
+        height: 217px;
+        gap: 18px;
+        justify-content: center;
+    }
+
+    .channe2 {
+        width: 131px;
+        gap: 26px;
+        height: 217px;
+    }
+
+    .channelS {
+        border-radius: 10px;
+        height: 330px;
+        padding-top: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 21px;
+    }
+
+    #Ablank {
+        height: 21px;
+    }
+
+    .channelS h2 {
+        width: 322px;
+        height: 43px;
+        margin: 0 auto;
+        font-size: 16px;
+    }
+
+    .oneDIvCopy {
+        border-radius: 10px;
+        height: 194px;
+        padding-top: 18px;
+        width: 345px;
+    }
+
+    .oneDIvCopy h2 {
+        width: 322px;
+        height: 43px;
+        font-size: 16px;
+        margin: 0 auto 14px;
+    }
+
+    .oneDIvCopy > p {
+        font-size: 10px;
+        width: 281px;
+        text-align: center;
+        margin: 0 auto;
+        height: fit-content;
+        line-height: 15px;
+    }
+
+    .formInputCopy input {
+        width: 100%;
+        height: 42px;
+        font-size: 12px;
+    }
+
+    .formInputCopy input::placeholder {
+        font-size: 12px;
+    }
+
+    .formInputCopy {
+        height: fit-content;
+        margin-top: 12px;
+        width: 322px;
+    }
+
+    .formInputCopy p {
+        width: 12px;
+        height: 12px;
+        right: 14px;
+        top: 14px;
+    }
+
+    
+    .formInputCopy p img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .fileFormat {
+        border-radius: 10px;
+        width: 345px;
+        height: 404px;
+    }
+
+    .fileFormat h2:nth-child(1) {
+        width: 322px;
+        height: 43px;
+        font-size: 16px;
+    }
+
+    .fileFormat p {
+        width: 281px;
+        height: 75px;
+        font-size: 12px;
+        text-align: center;
+        margin-bottom: 14px;
+    }
+
+    .formatInputDivh2 {
+        font-size: 16px;
+        margin-bottom: 14px;
+    }
+
+    .formatinput {
+        display: flex;
+        align-items: center;
+        /* gap: 23px; */
+        font-size: 14px;
+        margin-left: 25px;
+    }
+
+    /* .formatinput input {
+        margin-right: unset;
+    } */
+
+    .channelS {
+        width: 345px;
+    }
+
+}
+
+
+
+
+@media (max-width:374px) {
+
+    .formatinput {
+        font-size: 12px;
+    }
+    
+    .formatInputDivh2 {
+        padding-top: 5px;
+    }
+
+    .checkboxDiv > p {
+        font-size: 9px;
+    }
+
+    .firstThreepageDivheader {
+        width: 100%;
+        padding-left: unset;
+    }
+
+    .channelInputDivTitle {
+        width: 100%;
+    }
+
+    .channelS {
+        width: 100%;
+    }
+
+    .channelInputDivTitle {
+        width: 100%;
+    }
+
+    .oneDIvCopy {
+        width: 100%;
+    }
+
+    .fileFormat {
+        width: 100%;
+    }
+
+    .firstChild {
+        width: 100%;
+    }
+
+    .firstChild > p {
+        width: 100%;
+    }
+
+    .channelInputDivTitle h2 {
+        width: 100%;
+    }
+
+    .channelS h2{
+        width: 100%;
+    }
+
+    .oneDIvCopy h2 {
+        width: 100%;
+    }
+
+    .oneDIvCopy > p {
+        width: 100%;
+    }
+
+    .formInputCopy {
+        width: 100%;
+    }
+
+    .fileFormat h2:nth-child(1) {
+        width: 100%;
+    }
+
+    .fileFormat p {
+        width: 100%;
+        margin-left: unset;
+    }
+
+    .checkboxDiv input {
+        margin-right: 5PX;
+    }
+}
+

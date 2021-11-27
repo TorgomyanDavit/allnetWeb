@@ -1,0 +1,218 @@
+.registerMAin {
+    justify-content: center;
+    width: 100%;
+    height: 984px;
+    overflow: hidden;
+    display: flex;
+    font-family: Montserrat;
+    position: relative;
+}
+
+.registerImgDiv {
+    width: fit-content;
+    height: fit-content;
+    z-index: 1;
+}
+
+.loginDiv {
+    width: 645px;
+    height: 866px;
+    background: #FFFFFF;
+    z-index: 5;
+    border-radius: 20px;
+    margin: 38px 0 0 38px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.RegisterButtonDiv {
+    width: 100%;
+    height: 145px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 60px;
+    position: relative;
+}
+
+.registerButton {
+    font-weight: 700px;
+    background: none;
+    border: none;
+    font-size: 30px;
+    color: rgba(17, 16, 87, 0.2);
+    font-style: Bold;
+    cursor: pointer;
+    text-decoration: none;
+
+}
+
+.activeRegisterButton {
+    position: relative;
+    color: #010023;
+}
+
+.activeRegisterButton .registerButtonUnderLine {
+    display: block;
+}
+
+.registerButtonUnderLine {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 69px;
+    height: 3px;
+    background: #EEBA06;
+    display: none;
+}
+
+.inputDiv {
+    width: 533px;
+    height: 517px;
+}
+
+.formRegistration {
+    width: 100%;
+    height: 433px;
+    display: flex;
+    flex-direction: column;
+}
+
+.formRegistration input {
+    width: 100%;
+    height: 70px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 20px;
+    font-size: 24px;
+    padding-left: 40px;
+    outline: none;
+}
+
+.formRegistration input:focus {
+    border: 3px solid #EEBA06;
+}
+
+.formRegistration input::placeholder {
+    color: rgba(40, 40, 40, 0.226);
+    font-weight: 600;
+}
+
+.labelForPassvord {
+    position: relative;
+}
+
+.labelForPassvord button {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 23px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.labelForPassvord button img  {
+    width: 100%;
+    height: 100%;
+}
+
+.RegisterSubmit {
+    width: 100%;
+    height: 73px;
+    border-radius: 10px;
+    background: #EEBA06;
+    color: #282828;
+    font-size: 24px;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.RegisterSubmit:hover {
+    background: #2A29B4;
+    color: white;
+}
+
+.checkboxForAggrement {
+    width: 349px;
+    display: flex;
+    column-gap: 20px;
+    margin-top: 20px;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+    color:#282828;
+    cursor: pointer;
+    Opacity: 71%
+}
+
+.checkboxForAggrement input {
+    width: 30px;
+    height: 30px;
+    outline: none;
+    border: 3px solid #282828;
+    Opacity: 71%;
+    -webkit-appearance: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.checkboxForAggrement input:checked {
+    background-repeat: no-repeat;    
+    background-size:cover;
+    background-origin: content-box;
+    background-image:url("/src/images/checktImg.svg");
+}
+
+.registerHr {
+    width: 460px;
+    text-align: center;
+    margin: 28px auto 24px;
+}
+
+.SocialNetworkTitle {
+    margin: 24px auto 20px;
+    color: #282828;
+    Opacity: 20%;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.socialMediaIcon {
+    display: flex;
+    justify-content: space-between;
+    width: 387px;
+    height: 78px;
+}
+
+.socialMediaIcon p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 78px;
+    height: 78px;
+}
+
+.socialMediaIcon p:hover {
+    background: #EEBA06 !important;
+}
+
+.backgroundBottomDiv {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 126px;
+    background: radial-gradient( #CBCBFF 100%, #AAAAFF  100%);
+    z-index: 0;
+}

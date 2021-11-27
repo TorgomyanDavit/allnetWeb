@@ -1,0 +1,82 @@
+@media (max-width:1150px) {
+    .messigePerson {
+        width: 100%;
+    }
+
+    .personDiv {
+        width: 100%;
+    }
+
+    .personDescription > p {
+        width: 100%;
+    }
+}
+
+@media (max-width:600px) {
+
+    .personDescription a {
+        font-size: 12px;
+    }
+
+    .personDiv {
+        gap: 13px;
+        width: 345px;
+        height: 124px;
+        align-items: unset;
+        padding-top: 13px;
+        border-radius: 5px;
+    }
+
+    .personDiv > p {
+        width: 73px;
+        height: 73px;
+        margin-left: 14px !important;
+    }
+
+    .personDescription h2 {
+        font-size: 14px;
+    }
+
+    .personDescription > p {
+        font-size: 12px;
+        font-weight: 500;
+        width: 186px;
+        line-height: 15px;
+    }
+
+    .personDiv > p img {
+        width: inherit;
+        height: inherit;
+    }
+
+    .personDescription > span {
+        font-size: 10px;
+        position: relative;
+        left:-86px;
+        top: 1px;
+    }
+
+    .personTiem {
+        font-size: 10px;
+        right: 14px;
+        top: 16px;
+    }
+
+    .personDescription {
+        gap: 8px;
+    }
+
+    .messigePerson {
+        align-items: center;
+    }
+}
+
+@media (max-width:350px) {
+    .personDiv {
+        width: 100%;
+    }
+
+    .personDescription > p {
+        width: 100%;
+    }
+}

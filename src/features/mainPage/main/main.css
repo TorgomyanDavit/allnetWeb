@@ -1,0 +1,137 @@
+.main {
+    font: Montserrat;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.mainImgDiv {
+    width: 872px;
+    height: 543px;
+    margin: 333px  0 0 153px;
+    z-index: 1;
+    transition: 0.3s;
+}
+
+.registerDiv {
+    width: 653px;
+    height: 573px;
+    margin: 130px 209px 0 47px;
+    z-index: 2;
+}
+
+.registerDiv h2 {
+    font-size: 59px;
+    font-weight: 600;
+    text-align: left;
+    color: #383838 ;
+    line-height: 72px;
+}
+
+.descriptionTitle {
+    width: 653px;
+    height: 108px;
+    font-size: 18px;
+    color: #383838;
+    margin: 35px 0 35px;
+    font-weight: 400;
+    Opacity: 70%;
+    text-align:left;
+    letter-spacing: 2px;
+}
+
+.registerButtonDiv {
+    width: 560px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Navlink {
+    width: 266px;
+    height: 73px;
+    border-radius: 10px;
+    color: #282828;
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+}
+
+.Navlink:nth-child(1) {
+    background: #EEBA06;
+}
+
+.Navlink:nth-child(2) {
+    border: 3px solid #282828;
+    /* margin-bottom: 50px; */
+}
+
+.Navlink:nth-child(2):hover {
+    background: #5C58FF;
+    color: white;
+}
+
+
+.Navlink:nth-child(1):hover {
+    transform: translateY(-10px);
+    color: #282828;
+    box-shadow: 0 31px 100px 0px rgb(0 0 0 / 10%);
+}
+
+.groupImg {
+    width: 470px;
+    height: 53px;
+    margin-top: 51px;
+    display: flex;
+    align-items: center;
+    display: none;
+}
+
+.underLine {
+    position: absolute;
+    bottom: -109px;
+    width: 100%;
+    height: 222px;
+    background: radial-gradient(#aaaaffa1 70%, #cbcbff26 100%);
+    display: block;
+}
+
+.TvchannelDiv {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: -63px;
+    width: 898px;
+    height: 53px;
+    z-index: 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.animation {
+    animation-name: name;
+    animation-duration: 0.3s;
+}
+
+@keyframes name {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+

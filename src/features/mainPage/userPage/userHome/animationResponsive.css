@@ -1,0 +1,331 @@
+@media (max-width:1750px) {
+    @keyframes timerButton2 {
+        0% {
+            transform: translate(-75%, 80px );
+        }
+    
+        100% {
+            transform: translate(0, 0 );
+        }
+    }
+}
+
+@media (max-width:1700px) {
+    @keyframes channels2 {
+        0%{
+            width: 900px;
+            height: 440px;
+            transform: translate(-800px, 0);
+        }
+        100% {
+            transform: translate(0);
+        }
+    }
+
+    @keyframes timerDiv1 {
+        0% {
+            width: 488px;
+            height: 171px;
+            transform: translate(10%,-448px);
+        }
+    
+        100% {
+            transform: translate(0);
+        }
+    }
+}
+
+@media (max-width:1650px) {
+    @keyframes user {
+        0% {
+            position: relative;
+            left: -900px;
+            width: 212px;
+            height: 273px;
+        }
+
+            
+        100% {
+            position: relative;
+            left: 0px;
+        }
+    }
+
+    @keyframes channels2 {
+        0%{
+            width: 900px;
+            height: 440px;
+            transform: translate(-730px, 0);
+        }
+        100% {
+            transform: translate(0);
+        }
+    }
+}
+
+@media (max-width:1550px) {
+    @keyframes user {
+        0% {
+            position: relative;
+            left: -800px;
+            width: 212px;
+            height: 273px;
+        }
+
+            
+        100% {
+            position: relative;
+            left: 0px;
+        }
+    }
+
+    @keyframes timerButton2 {
+        0% {
+            transform: translate(-75%, 80px );
+            width: 220px;
+            height: 47px;
+        }
+    
+        100% {
+            transform: translate(0, 0 );
+        }
+    }
+
+    @keyframes channels2 {
+        0%{
+            width: 900px;
+            height: 440px;
+            transform: translate(-600px, 0);
+        }
+        100% {
+            transform: translate(0);
+        }
+    }
+}
+
+@media (max-width:1450px) {
+    @keyframes user {
+        0% {
+            position: relative;
+            left: -700px;
+            width: 212px;
+            height: 273px;
+        }
+
+            
+        100% {
+            position: relative;
+            left: 0px;
+        }
+    }
+
+    @keyframes channels2 {
+        0%{
+            width: 900px;
+            height: 440px;
+            transform: translate(-536px, 0);
+        }
+        100% {
+            transform: translate(0);
+        }
+    }
+    @keyframes tvChennelsSpan {
+        0% {
+            margin-bottom: 0px;
+            width: 50%;
+            height: 10%;
+        }
+    
+        100% {
+            margin-bottom: 34px;
+            width: 100%;
+        }
+    }
+}
+
+@media (max-width:1350px) {
+    @keyframes channels2 {
+        0%{
+            width: 900px;
+            height: 440px;
+            transform: translate(-460px, 0);
+        }
+        100% {
+            transform: translate(0);
+        }
+    }
+    
+    @keyframes timerDiv1 {
+        0% {
+            width: 488px;
+            height: 171px;
+            transform: translate(15%,-448px);
+        }
+    
+        100% {
+            transform: translate(0);
+        }
+    }
+}
+
+@media (max-width:1250px) {
+    @keyframes user {
+        0% {
+            position: relative;
+            left: -650px;
+            width: 212px;
+            height: 273px;
+        }
+
+            
+        100% {
+            position: relative;
+            left: 0px;
+        }
+    }
+
+    @keyframes timerButton2 {
+        0% {
+            transform: translate(-55%, 80px );
+            width: 220px;
+            height: 47px;
+        }
+    
+        100% {
+            transform: translate(0, 0 );
+        }
+    }
+
+    @keyframes channels2 {
+        0%{
+            width: 900px;
+            height: 440px;
+            transform: translate(-400px, 0);
+        }
+        100% {
+            transform: translate(0);
+        }
+    }
+}
+
+@media (max-width:1150px) {
+    @keyframes user {
+        0% {
+            position: relative;
+            left: -585px;
+            width: 212px;
+            height: 273px;
+        }
+  
+        100% {
+            position: relative;
+            left: 0px;
+        }
+    }
+
+    @keyframes tvChennels {
+        0% {
+            margin-top: 0;
+            height: 440px;
+            width: 900px;
+            margin-left: 0px;
+        }
+
+        80% {
+            width: 55%;
+        }
+    }
+
+    @keyframes tvChennelsSpan {
+        0% {
+            margin-bottom: 0px;
+            width: 50%;
+            height: 10%;
+        }
+    
+        100% {
+            margin-bottom: 34px;
+            width: 100%;
+        }
+    }
+
+    @keyframes channels2 {
+        0%{
+            width: 900px;
+            height: 440px;
+            transform: translate(-310px, 0);
+        }
+        100% {
+            transform: translate(0);
+        }
+    }
+
+    @keyframes timerDiv1 {
+        0% {
+            width: 488px;
+            height: 171px;
+            transform: translate(20%,-448px);
+        }
+    
+        100% {
+            transform: translate(0);
+        }
+    }
+}
+
+@media (max-width:1024px) and (min-width:1024px)  {
+    .channels2 {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width:1024px) {
+
+    #timerDiv1 {
+        animation: unset;
+    }
+
+    .channels2 {
+        animation: unset;
+    }
+
+    .titleChannel {
+        animation: unset;
+    }
+
+    .TvChannels {
+        animation: unset;
+    }
+
+    .channelTittel {
+        animation: unset;
+    }
+
+    .user {
+        animation: unset;
+    }
+
+    #timerButton2 {
+        animation: unset;
+    }
+
+    .userName {
+        animation: unset;
+    }
+
+    .userName > img {
+        animation: unset;
+    }
+
+    .Channels {
+        animation: unset;
+    }
+
+    .TvChannels p :link {
+        animation: unset;
+    }
+
+    .TvChannels p {
+        animation: unset;
+    }
+}

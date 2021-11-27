@@ -1,0 +1,72 @@
+@media (max-width:800px) {
+    .FurtherForm {
+        width: 95%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .statisticFurther {
+        width: 100%;
+        margin-bottom: 332px;
+    }
+
+    .FurtherForm select {
+        font-size: 14px;
+        width: 90%;
+        background-size: 10px 5px;
+    }
+
+    .FurtherForm input {
+        font-size: 14px;
+        width: 90%;
+    }
+
+    .FurtherForm button {
+        font-size: 12px;
+        width: 90%;
+    }
+
+    .FurtherForm input::placeholder {
+        font-size: 14px;
+    }
+
+
+}
+
+@media (max-width:375px) and (min-width:375px) {
+    .FurtherForm select {
+        width: 313px;
+        height: 48px;
+    }
+
+    .FurtherForm input {
+        width: 313px;
+        height: 48px;
+    }
+
+    .FurtherForm button {
+        width: 313px;
+        height: 37px;
+    }
+
+    .statisticFurther {
+        height: 244px;
+    }
+
+    .statisticFurther p {
+        font-size: 16px;
+        margin: 20px 0 14px 40px;
+    }
+
+    .statisticFurther p img {
+        width: 14px;
+        height: 14px;
+    }
+
+    .statisticFurther {
+        margin-bottom: 478px;
+    }
+
+}

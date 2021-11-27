@@ -1,0 +1,96 @@
+.statisticPortal {
+    height: 672px;
+    width: 1010px;
+    display: flex;
+    flex-direction: column;
+}
+
+.globalTmerDiv {
+    display: flex;
+    justify-content: space-between;
+}
+
+#timerButton {
+    cursor: pointer;
+    animation-name: timerButton;
+    animation-duration: 1s;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+@keyframes timerButton {
+    from{
+        position: relative;
+        left: -217px;
+        bottom: -498px;
+    }
+}
+
+#timerDivTwo {
+    animation-duration: 1s;
+    z-index: 1;
+}
+
+@keyframes timerDivTwo {
+    0% {
+        transform: translate(0,448px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+.formPortal {
+    width: 1010px;
+    height: 467px;
+}
+
+.formPortal > p {
+    width: 1010px;
+    height: 133px;
+    margin-top: 34px;
+    background: #FFFFFF;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 27px 35px;
+}
+
+.formPortal > p span {
+    color: #282828;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.formPortal > p input {
+    width: 940px;
+    height: 44px;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    color: #282828;
+    opacity: 0.5;
+    padding-left: 24px;
+    border: none;
+}
+
+.inputPTag {
+    position: relative;
+}
+
+.copy {
+    position: absolute;
+    right: 50px;
+    top: 78px;
+    cursor: copy;
+}
+
+.messigeIconPortal {
+    position: fixed;
+    right: 84px;
+    bottom: 90px;
+    cursor: pointer;
+} 

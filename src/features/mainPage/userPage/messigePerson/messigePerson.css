@@ -1,0 +1,67 @@
+.messigePerson {
+    width: 1010px;
+    height: 720px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.personDiv {
+    width: 1010px;
+    height: 165px;
+    border-radius: 20px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    column-gap: 29px;
+    position: relative;
+}
+
+.personDiv > p {
+    width: 131px;
+    height: 131px;
+    margin-left: 18px;
+}
+
+.personDescription {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    cursor: context-menu;
+}
+
+.personDescription a{
+    font-size: 30px;
+    font-weight: 600;
+    color:#282828;
+    text-decoration: none;
+}
+
+.personDescription a:hover {
+    color: #2A29B4;
+    text-decoration: underline !important;
+}
+
+.personDescription > p {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(40, 40, 40, 0.7);
+    width: 431px;
+    line-height: 21px;
+}
+
+.personDescription > span {
+    color: #282828;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.personTiem {
+    position: absolute;
+    right: 32px;
+    top: 33px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+

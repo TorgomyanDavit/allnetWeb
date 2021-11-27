@@ -1,0 +1,67 @@
+.userMainPAge {
+    width: 1660px;
+    height: 958px;
+    margin: 0 auto;
+    margin-top: 25px;
+    display: flex;
+    column-gap: 25px;
+    position: relative;
+}
+
+.userPageMenu {
+    width: 71px;
+    height: 958px;
+    background: #F1F7FF;
+    border-top-left-radius: 21px;
+    border-top-right-radius: 21px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #FFFFFF;
+    align-items: center;
+}
+
+.iconDiv {
+    margin-top: 11px;
+    height: 448px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;   
+}
+
+.iconDiv p {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    box-shadow: 0px 7px 8px 2px rgb(0 0 0 / 10%);
+    border-radius: 4px;
+    z-index: 1;
+}
+
+.exitIcon {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    box-shadow: 0px 7px 8px 2px rgb(0 0 0 / 10%);
+    border-radius: 4px;
+    margin-bottom: 120px;
+    cursor: pointer;
+}
+
+.activeClass p {
+    background-color: #2A29B4;
+}
+
+.activeClass p svg {
+    fill: #FFFFFF!important;
+}
+
+
+

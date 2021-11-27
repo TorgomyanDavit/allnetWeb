@@ -1,0 +1,57 @@
+
+@media (max-width:1550px) and (min-width:500px) {
+    .about p {
+        z-index: 1 !important;
+    }
+
+    .about div {
+        z-index: 1 !important;
+    }
+}
+
+@media screen and (max-width:1540px) {
+    .about {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 25px;
+        padding: 0 15px 52px;
+        height: fit-content;
+    }
+
+    .about div {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .about p {
+        height: fit-content;
+    }
+}
+
+@media screen and (max-width:375px) {
+    .about div {
+        max-width: 345px;
+        height: 64px;
+        margin-bottom: 15px;
+        padding: 10px 12px ;
+    }
+
+    .about h2 {
+        max-width: 325px;
+        height: 41px;
+        font-size: 18px;
+        font-weight: 700;
+        margin: 0;
+        font-style: bold;
+    }
+
+    .about p {
+        font: Montserrat;
+        font-size: 16px;
+        font-weight: 500;
+        color: #000000;
+        line-height: 20px;
+    }
+}

@@ -1,0 +1,71 @@
+@media (max-width:800px) {
+    .confirmedForm {
+        width: 95%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .statisticConfirmed {
+        width: 100%;
+        margin-bottom: 332px;
+    }
+
+    .statisticConfirmed select {
+        font-size: 14px;
+        width: 90%;
+        background-size: 10px 5px;
+        outline: none;
+    }
+
+    .confirmedForm input {
+        font-size: 14px;
+        width: 90%;
+    }
+
+    .statisticConfirmed button {
+        font-size: 12px;
+        width: 90%;
+    }
+
+    .confirmedForm input::placeholder {
+        font-size: 14px;
+    } 
+}
+
+@media (max-width:375px) and (min-width:375px) {
+    .statisticConfirmed select {
+        width: 313px;
+        height: 48px;
+    }
+
+    .confirmedForm input {
+        width: 313px;
+        height: 48px;
+    }
+
+    .statisticConfirmed button {
+        width: 313px;
+        height: 37px;
+    }
+
+    .statisticConfirmed {
+        height: 290px;
+    }
+
+    .statisticConfirmed p {
+        font-size: 16PX;
+        margin: 19px 0 12px 40px;
+    }
+
+    .statisticConfirmed p img {
+        width: 14px;
+        height: 14px;
+    }
+
+    .statisticConfirmed {
+        margin-bottom: 432px;
+    } 
+
+}

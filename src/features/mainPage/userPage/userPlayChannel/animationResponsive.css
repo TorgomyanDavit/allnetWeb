@@ -1,0 +1,206 @@
+@media (max-width:1650px) {
+    @keyframes channesAnimation {
+        0% {
+            opacity: 0.7;
+            transform: translate(920px,-274px);
+            width: 513px;
+            height: 709px;
+        }
+    
+        100% {
+            transform: translateX(0);
+            width: 900px;
+            height: 440px;
+        }
+    }
+
+    @keyframes channelInputDivTitleH2 {
+        0% {
+            width: 360px;
+            transform: translate(237px,314px);
+        }
+    
+        100% {
+            transform: translate(0);
+        }
+    }
+}
+
+@media (max-width:1550px) {
+    @keyframes channesAnimation {
+        0% {
+            opacity: 0.7;
+            transform: translate(900px,-274px);
+            width: 513px;
+            height: 709px;
+        }
+    
+        100% {
+            transform: translateX(0);
+            width: 900px;
+            height: 440px;
+        }
+    }
+
+    @keyframes firstThreepageDivheader {
+        0% {
+            position: absolute;
+            width: 90vw;
+            height: 88px;
+            transform: translate(0,122px);
+        }
+
+        80% {
+            width: 64vw;
+        }
+
+        100% {
+            position: relative;
+            height: 91px;
+            width: 64vw;
+            transform: translate(0);
+        }
+    }
+}
+
+@media (max-width:1300px) {
+    @keyframes firstThreepageDivheader {
+        0% {
+            position: absolute;
+            width: 90vw;
+            height: 88px;
+            transform: translate(0,122px);
+        }
+
+        100% {
+            position: relative;
+            height: 91px;
+            width: 90vw;
+            transform: translate(0);
+        }
+    }
+}
+
+@media (max-width:1450px) {
+    @keyframes channesAnimation {
+        0% {
+            opacity: 0.7;
+            transform: translate(704px,-274px);
+            width: 513px;
+            height: 709px;
+        }
+    
+        100% {
+            transform: translateX(0);
+            width: 900px;
+            height: 440px;
+        }
+    }
+}
+
+@media (max-width:1350px) {
+    @keyframes channesAnimation {
+        0% {
+            opacity: 0.7;
+            transform: translate(685px,-274px);
+            width: 431px;
+            height: 709px;
+        }
+    
+        100% {
+            transform: translateX(0);
+            width: 100%;
+            height: 440px;
+        }
+    }
+
+    @keyframes channelInputDivTitleH2 {
+        0% {
+            width: 300px;
+            transform: translate(180px,314px);
+        }
+    
+        100% {
+            transform: translate(0);
+        }
+    }
+}
+
+@media (max-width:1250px) {
+    @keyframes channesAnimation {
+        0% {
+            opacity: 0.7;
+            transform: translate(600px,-274px);
+            width: 431px;
+            height: 709px;
+        }
+    
+        100% {
+            transform: translateX(0);
+            width: 100%;
+            height: 440px;
+        }
+    }
+
+    @keyframes channelInputDivTitleH2 {
+        0% {
+            width: 240px;
+            transform: translate(80px,314px)
+        }
+    
+        100% {
+            transform: translate(0);
+        }
+    }
+}
+
+@media (max-width:1200px) {
+    .firstThreepageDivheader {
+        animation: unset;
+    }
+
+    .firstThreepageDivheader > p, .firstThreepageDivheader > div {
+        animation: unset;
+    }
+}
+
+
+@media (max-width:1150px) {
+    @keyframes channesAnimation {
+        0% {
+            opacity: 0.7;
+            transform: translate(580px,-274px);
+            width: 330px;
+            height: 709px;
+        }
+    
+        100% {
+            transform: translateX(0);
+            width: 100%;
+            height: 440px;
+        }
+    }
+}
+
+@media (max-width:1024px) {
+
+    .channelS {
+        animation: unset;
+    }
+
+    .channelS h2 {
+        animation: unset;
+    }
+
+    .channelsChildDiv {
+        animation: unset;
+    }
+
+    .channe2 {
+        animation: unset;
+    }
+
+    #h2Title {
+        animation: unset;
+    }
+}

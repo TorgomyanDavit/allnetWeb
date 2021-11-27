@@ -1,0 +1,40 @@
+.about {
+    width: 1524px;
+    height: 755px;
+    margin: 66px auto 0;
+}
+
+.about div {
+    width: 1524px;
+    height: 111px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 30px;
+}
+
+.about h2 {
+    height: 81px;
+    background: #CCE1E4;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.about p {
+    font: Montserrat;
+    font-style: Medium;
+    height: 614px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 36px 40px 48px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 1%;
+    color: #000000;
+    text-align: left;
+}

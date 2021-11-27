@@ -1,0 +1,218 @@
+.mainSignIn {
+    width: 100%;
+    height: 983px;
+    display: flex;
+    position: relative;
+}
+
+.signInImgDiv {
+    width: fit-content;
+    height: fit-content;
+    margin: 33px 87px 0 0;
+    position: relative;
+}
+
+.signInElipsImg {
+    position: absolute;
+    bottom: -132px;
+    left: 0;
+    z-index: 1;
+}
+
+.loginSignInDiv {
+    width: 645px;
+    height: 683px;
+    background: #FFFFFF;
+    z-index: 5;
+    border-radius: 20px;
+    margin: 30px 0 0 38px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 57px;
+    /* margin-right: 240px; */
+
+}
+
+.signInButtonDiv a {
+    position: relative;
+}
+
+.signInButtonUnderLine {
+    left: 0 I !important;
+}
+
+.inputSignDiv {
+    width: 533px;
+    height: 329px;
+}
+
+.signInButtonDiv {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 60px;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.signInButtonUnderLine {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 69px;
+    height: 3px;
+    background: #EEBA06;
+    display: none;
+}
+
+.SignInButton {
+    font-weight: 700px;
+    background: none;
+    border: none;
+    font-size: 30px;
+    color: rgba(17, 16, 87, 0.2);
+    font-style: Bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.activeSignInButton {
+    color: #010023;
+}
+
+.activeSignInButton .signInButtonUnderLine{
+    display:block;
+}
+
+.formSignIn {
+    width: 100%;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+}
+
+.formSignIn input {
+    width: 100%;
+    height: 70px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 24px;
+    padding-left: 40px;
+}
+
+.formSignIn input:focus {
+    border: 3px solid #EEBA06;
+}
+
+.formSignIn input::placeholder {
+    color: rgba(40, 40, 40, 0.226);
+    font-weight: 600;
+}
+
+.labelForSignInPassvord {
+    position: relative;
+    margin-top: 20px;
+}
+
+.labelForSignInPassvord button {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 23px;
+    height: 18px;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.labelForSignInPassvord button img  {
+    width: 100%;
+    height: 100%;
+}
+
+.rememberPassword {
+    display: flex;
+    width: 100%;
+    height: 62px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.rememberPasswordLink {
+    color: #282828;
+    opacity: 71%;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.signInSubmit {
+    width: 536px;
+    height: 73px;
+    border-radius: 10px;
+    background: #EEBA06;
+    color: #282828;
+    font-size: 24px;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signInSubmit:hover {
+    background: #2A29B4;
+    color: white;
+}
+
+.signInunderLine {
+    width: 460px;
+    text-align: center;
+    margin: 28px auto 24px;
+}
+
+.signInSocialMediaIcon {
+    display: flex;
+    justify-content: space-between;
+    width: 387px;
+    height: 78px;
+}
+
+.signInSocialMediaIcon p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 78px;
+    height: 78px;
+}
+
+.signInSocialMediaIcon p:hover {
+    background: #EEBA06 !important;
+}
+
+.SignInSocialNetworkTitle {
+    margin: 24px auto 20px;
+    color: #282828;
+    Opacity: 20%;
+    font-size: 18px;
+    font-weight: 500;
+} 
+
+.backgroundSignInBottomDiv {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 222px;
+    background: radial-gradient( #CBCBFF 100%, #AAAAFF  100%);
+    z-index: 0;
+}
+
