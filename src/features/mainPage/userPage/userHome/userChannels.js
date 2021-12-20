@@ -17,10 +17,11 @@ export function UserChannels() {
                         <span>Balance:<b>100 $</b></span>
                     </p>
                 </div>
-                <button
-                    style={{animationName:state.animationPath === "/userPerson" ? "userButton" : "null"}}>   
-                    <img src="/mainPageImages/buttonSlack.png" alt=""/>
-                </button>
+                <Link to={"/userPerson"}>
+                   <button style={{animationName:state.animationPath === "/userPerson" ? "userButton" : "null"}}>
+                        <img src="/mainPageImages/buttonSlack.png" alt=""/>
+                   </button>
+                </Link>
             </div>
             <label style={{animationName:state.animationPath === "/userPerson" ? "labelFor" : "null"}}
                 className="labelForHome">

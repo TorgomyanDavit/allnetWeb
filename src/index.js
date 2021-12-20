@@ -1,14 +1,14 @@
-import React from 'react';
+import React, {lazy,Suspense} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import AuntContainer from './app/AuntContainer';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
+import AuntContainer from './app/AuntContainer';
 
 ReactDOM.render(
     <Provider store={store}>
-      <AuntContainer />
+        <AuntContainer />
     </Provider>,
   document.getElementById('root')
 );

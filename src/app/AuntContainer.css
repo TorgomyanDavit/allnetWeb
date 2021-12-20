@@ -3,3 +3,13 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.AuntContainer {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.loading {
+  margin-top: 300px;
+}

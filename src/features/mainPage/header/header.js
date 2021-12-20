@@ -44,9 +44,9 @@ function Headers({type,Width,setToggle,toggle}) {
                     <div className="languig-Div" onClick={() => setSelect(!select)}>{inner} 
                         <ul className="option" style={{display:select  ? "block" : "none"}}>
                             {state.innerSelect.map((val) => {
-                               return <li key={Math.random()} onClick={(e) => {
-                                        setSelect(!select)
-                                        setInner(val)
+                            return <li key={Math.random()} onClick={(e) => {
+                                    setSelect(!select)
+                                    setInner(val)
                                     }}>{val}</li>
                             })}
                         </ul>
