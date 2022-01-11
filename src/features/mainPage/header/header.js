@@ -20,7 +20,7 @@ function Headers({type,Width,setToggle,toggle}) {
                         : state.animationPath === "/userPage/userHome" ? "menuLogo" : "menuLogo"} 
                         activeClassName="activeMAinPage"
                     >
-                        <img src="/mainPageImages/Logo.png" alt="Logo" id="menuLogoimg"/>
+                        <img src="/mainPageImages/Logo.svg" alt="Logo" id="menuLogoimg"/>
                     </NavLink>
                 <div className="toggleMain" style={{display:toggle ? "block" : "none"}}>
                     <div className="toggle">

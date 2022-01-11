@@ -11,10 +11,10 @@ export function Table() {
         <thead>
             <tr className="titleTable">
                 <th><select><option hidden>Date</option></select></th>
-                <th>purpose</th>
+                <th>Tarif</th>
                 <th>balance</th>
                 <th>the amount</th>
-                <th id="th5">remains</th>
+                <th id="th5">the amount</th>
             </tr>
         </thead>
         <tbody className="tbody">

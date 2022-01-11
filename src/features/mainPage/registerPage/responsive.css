@@ -44,6 +44,10 @@
         width: 230px;
         margin: 22px auto 0;
     }
+
+    .checkboxForAggrement {
+        font-size: 13px;
+    }
 }
 
 @media screen and (max-width:500px) {
@@ -54,8 +58,7 @@
 
     .checkboxForAggrement {
         margin-top: 12px;
-        width: 235px;
-        font-size: 12px;
+        font-size: 10px;
         font-weight: 500;
     }
 

@@ -488,6 +488,8 @@
         top: 493px;
         width: 345px;
         height: 93px;
+        justify-content: space-between;
+        padding: 0 8px 0 11px;
     }
 
     .user button {
@@ -629,7 +631,6 @@
 }
 
 @media (max-width:374px) {
-
     .homeImg img {
         width: 100%;
     }

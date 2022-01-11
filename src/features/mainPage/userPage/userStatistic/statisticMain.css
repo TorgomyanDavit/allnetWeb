@@ -9,6 +9,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 34px;
+    display: none !important;
 }
 
 .balance {
@@ -193,9 +194,15 @@ select {
     cursor: context-menu;
 }
 
+.titleTable th:nth-child(3),
+.titleTable th:nth-child(4) {
+    display: none !important;
+}
+
+/* 
 #th5 {
     padding-right: 31px;
-}
+} */
 
 .titleTable th {
     font-size: 18px;
@@ -208,6 +215,16 @@ select {
     padding: 2px;
     height: 49px;
     position: relative;
+    cursor: pointer;
+}
+
+.stateTable:hover {
+    background: #DCE0F2;
+}
+
+.stateTable td:nth-child(3),
+.stateTable td:nth-child(4) {
+    display: none !important;
 }
 
 .stateTable::after{
@@ -252,7 +269,7 @@ select {
     width: 4.5px;
     height: 9px;
     margin: 0 21px;
-
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -288,7 +305,8 @@ select {
 }
 
 .activeBalance {
-    background: #006879;
+    background: #2A29B4;
+    color: white !important;
 }
 
 .pTag {
@@ -299,10 +317,12 @@ select {
     z-index: 1;
     position: absolute;
     cursor: pointer;
+    display: none !important;
 }
 
 .span {
     padding-left: 30px;
+    padding-left: 0 !important;
 }
 
 .tbody {

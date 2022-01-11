@@ -128,12 +128,13 @@ const initialState = {
         },
     ],
     faq:[
-        {id:1,name:"Lorem ipsum dolor sit amet?",simbol:"+"},
-        {id:2,name:"Lorem ipsum dolor sit amet?",simbol:"+"},
-        {id:3,name:"Lorem ipsum dolor sit amet?",simbol:"+"},
-        {id:4,name:"Lorem ipsum dolor sit amet?",simbol:"+"},
-        {id:5,name:"Lorem ipsum dolor sit amet?",simbol:"+"},
-        {id:6,name:"Lorem ipsum dolor sit amet?",simbol:"+"}
+        {id:1,name:"Lorem ipsum dolor sit amet?",simbol:"+",open:false},
+        {id:2,name:"Lorem ipsum dolor sit amet?",simbol:"+",open:false},
+        {id:3,name:"Lorem ipsum dolor sit amet?",simbol:"+",open:false},
+        {id:4,name:"Lorem ipsum dolor sit amet?",simbol:"+",open:false},
+        {id:5,name:"Lorem ipsum dolor sit amet?",simbol:"+",open:false},
+        {id:5,name:"Lorem ipsum dolor sit amet?",simbol:"+",open:false},
+        {id:6,name:"Lorem ipsum dolor sit amet?",simbol:"+",open:false}
     ],
     contactDivSocialLink:[
         {id:1,img:contactsFb,background:"#6561FF",Link:"https://ru-ru.facebook.com/"},
@@ -213,12 +214,19 @@ const mainPageSlices = createSlice({
             state.imgType = action.payload.type
         },
         changeRegAndSignImgdisplay:(state,action) => {
-            console.log(state.regAndsignNone)
             state.regAndsignNone = !state.regAndsignNone
+        },
+        changeFaq:(state,action) => {
+            state.faq = state.faq.map((val) => {
+                if(val.id === action.payload.id) {
+                    return {...val,open:!val.open,simbol:val.open ? "+" : "-"}  
+                }
+                return {...val,open:false,simbol:"+"}
+            })
         }
     }
 })
 
-export const {changeRegAndSignImgdisplay,changeImgType,changeAnimationPathDone,changeAnimation,changeDisplay,changeDate,setValue,setId,changeUserImg,checkLink,checkPlaceholder} = mainPageSlices.actions
+export const {changeFaq,changeRegAndSignImgdisplay,changeImgType,changeAnimationPathDone,changeAnimation,changeDisplay,changeDate,setValue,setId,changeUserImg,checkLink,checkPlaceholder} = mainPageSlices.actions
 
 export default mainPageSlices.reducer

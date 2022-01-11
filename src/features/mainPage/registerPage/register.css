@@ -143,7 +143,6 @@
 }
 
 .checkboxForAggrement {
-    width: 349px;
     display: flex;
     column-gap: 20px;
     margin-top: 20px;
@@ -172,6 +171,7 @@
     background-origin: content-box;
     background-image:url("/src/images/checktImg.svg");
 }
+
 
 .registerHr {
     width: 460px;

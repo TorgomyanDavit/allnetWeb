@@ -99,6 +99,11 @@
         text-align: center;
     }
 
+    .stateTable :nth-child(1n+3) {
+        text-align: center;
+        padding: 0;
+    }
+
     .statisticMain {
         width: 100%;
     }

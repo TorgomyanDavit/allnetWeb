@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
-import { NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import { changeRegAndSignImgdisplay } from "../mainPageSlice"
 import "./register.css"
 import "./responsive.css"
@@ -69,10 +69,13 @@ function Register({toggle}) {
                         </label>
                         <NavLink to="/userPage/userHome" className="RegisterSubmit">Registration</NavLink>
                     </form>
-                    <label className="checkboxForAggrement">
+                    <div className="checkboxForAggrement">
                         <input type="checkbox"/>
-                        <span>I agree to the terms {"&"} conditions</span>
-                    </label>
+                        <span> I agree to the {" "} 
+                            <Link to={{pathname:"/about",params:"Terms & Conditions"}}>terms {"&"} conditions</Link> or 
+                            <Link to={{pathname:"/about",params:"Privacy Police"}}> Privacy police </Link>
+                        </span>
+                    </div>
                     <hr className="registerHr"/>
                 </div>
                 <p className="SocialNetworkTitle">

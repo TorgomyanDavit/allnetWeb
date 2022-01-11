@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400&display=swap');
-body {
+* {
     font-family: 'Montserrat';
 }
 
 .MainPage {
     width: 100%;
-    height: 1080px;
+    min-height: 1080px;
     background: radial-gradient(#B1B1FF 0%,#E3E2FF 100%);
 }
 
