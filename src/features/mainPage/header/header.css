@@ -95,12 +95,14 @@
     font-size: 18px;
     border-radius: 10px;
     background: white;
+    padding-bottom: 3px;
 }
 
 .option li {
     list-style: none;
     text-decoration: underline;
     margin-top: 3px;
+    border-radius: 10px;
 }
 
 .option li:hover {

@@ -117,7 +117,7 @@
     }
 }
 
-.historyMovement :nth-child(1) {
+.historyMovement > p  {
     display: flex;
     align-items: center;
     font-size: 24px;
@@ -131,22 +131,16 @@
    height: 25px;
 }
 
-.historyMovement :nth-child(2) {
-    margin-right: 80px;
+.slectShow {
     display: flex;
     justify-content: space-between;
-    width: 222px;
     height: 35px;
+    margin-right: 92px;
 }
 
-.historyMovement :nth-child(2) span {
-    display: flex;
-    align-items: center;
-    font-size: 18px;
-    font-weight: 600;
-}
 
-.historyMovement :nth-child(2) select {
+
+.slectInput {
     width: 65px;
     height: 35px;
     background: #DCE0F2;
@@ -155,6 +149,58 @@
     margin-right: 0;
     outline: none;
     cursor: pointer;
+    margin: 0 20px;
+    font-weight: 600;
+    font-size: 18px;
+    padding-left: 14px;
+}
+
+.optionSelect {
+    position: absolute;
+    top: 35px;
+    left: 20px;
+    width: 65px;
+    background: #DCE0F2;
+    flex-direction: column;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.clickToShow {
+    position: absolute;
+    width: 65px;
+    height: 35px;
+    background-color: transparent;
+    top: 0;
+    left: 20px;
+    border-radius: 10px;
+    background-image: url("/src/images/slackForShow.svg");
+    background-repeat: no-repeat;
+    background-position: right;
+    background-position-x: 41px;
+    cursor: pointer;
+}
+
+.optionSelect > button {
+    border: none;
+    outline: none;
+    border-top: 1px solid #282828;
+    width: 51px;
+    height: 33px;
+    margin: 0 auto;
+    background: transparent;
+    cursor: pointer;
+}
+
+.optionSelect > button:hover {
+    background: rgb(0 0 255 / 10%);
+}
+
+.historyMovement :nth-child(2) span {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .historyMain {
@@ -165,10 +211,7 @@
     margin-top: 34px;
 }
 
-select {
-    text-align: left;
-    cursor: pointer;
-}
+
 .table {
     width: 1337px;
     margin: 0 auto;

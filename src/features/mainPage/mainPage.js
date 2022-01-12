@@ -9,11 +9,15 @@ import Register from "./registerPage/register.js"
 import SignIn from "./signInPage/signIn.js"
 import UserHeader from "./userPage/header/userHeader.js"
 import { ContactUs } from "./contactUs/contactUs.js"
+import Thanks from "./userPage/Tarif/thankyouPopUp.js"
+import { useSelector } from "react-redux"
 
 function MainPage() {
     let [type,setType] = useState("block")
     let [Width,setWidth] = useState("block")
     const [toggle,setToggle] = useState(false)
+
+
 
 
     return (

@@ -12,6 +12,7 @@ import { StatisticFurther } from "../userStatistic/statisticFurther"
 import { StatisticConfirmed } from "../userStatistic/statisticConfirmed"
 import { useState } from "react"
 import "./responsive.css"
+import Tarif from "../Tarif/tarif"
 
 
 
@@ -24,20 +25,20 @@ function UserHeader({toggle}) {
     return (
         <div className="userMainPAge" style={{zIndex:toggle ? "-1" : "inherit"}}>
             <Router>
-            <div className="userPageMenu">
-                <div className="iconDiv">
-                    {state.svgImages.map((val,index) => {
-                        return (
-                            <NavLink to={val.path} key={Math.random()} activeClassName={val.activeClass}>
-                                <p>{headerUserPageImages[index]}</p>
-                            </NavLink>
-                        )
-                    })}
+                <div className="userPageMenu">
+                    <div className="iconDiv">
+                        {state.svgImages.map((val,index) => {
+                            return (
+                                <NavLink to={val.path} key={Math.random()} activeClassName={val.activeClass}>
+                                    <p>{headerUserPageImages[index]}</p>
+                                </NavLink>
+                            )
+                        })}
+                    </div>
+                    <NavLink  to="./" className="exitIcon" activeClassName="activeClass">
+                        <img src="/mainPageImages/signOut.png" alt="signOut"/>
+                    </NavLink>
                 </div>
-                <NavLink  to="./" className="exitIcon" activeClassName="activeClass">
-                    <img src="/mainPageImages/signOut.png" alt="signOut"/>
-                </NavLink>
-            </div>
                 <Route path="/userPage/userHome">
                     <UserHome changePlay={(value) => setPlay(value)} changeAnimationPath={(value) => {
                         setAnimationPAth(value)
@@ -58,7 +59,7 @@ function UserHeader({toggle}) {
                     <StatisticConfirmed/>
                 </Route>
                 <Route path="/userChannel">
-                    <UserPlayChannel/>
+                    <Tarif/>
                 </Route>
                 <Route path="/statisticPortal">
                     <StatisticPortal/>

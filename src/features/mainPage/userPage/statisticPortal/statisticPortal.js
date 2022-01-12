@@ -54,7 +54,7 @@ export function StatisticPortal() {
                         }}>Activate</button>
                     </div>
                 </div>  
-                <StatisticTwoTimer/>
+                {/* <StatisticTwoTimer/> */}
             </div>
             <form className="formPortal" onSubmit={(e) => {
                 e.preventDefault()

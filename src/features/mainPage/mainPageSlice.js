@@ -56,7 +56,7 @@ const initialState = {
     animationPathDone:"null",
     personImg:personImg,
     imgType:false,
-    innerSelect:["EN","RU","AM"],
+    innerSelect:["AM","EN"],
     Id:"",
     regAndsignNone:true,
     personData:[
@@ -92,22 +92,22 @@ const initialState = {
     formPortal:[
         {
             id:1,
-            name:"VPortal :",
+            name:"m3u8",
             link:"",
             placeholder:"https://www.youtube.com/"
         },
-        {
-            id:2,
-            name:"Media library :",
-            link:"",
-            placeholder:"http://cf686e62d9e1.akciatv.org/playlists/uplist/3777b55dc19a39ebaf5b6d55f53dcc9d/playlist.m3u8"
-        },        
-        {
-            id:3,
-            name:"Stalker Portal :",
-            link:"",
-            placeholder:"http://cf686e62d9e1.akciatv.org/playlists/uplist/3777b55dc19a39ebaf5b6d55f53dcc9d/playlist.m3u8"
-        },
+        // {
+        //     id:2,
+        //     name:"Media library :",
+        //     link:"",
+        //     placeholder:"http://cf686e62d9e1.akciatv.org/playlists/uplist/3777b55dc19a39ebaf5b6d55f53dcc9d/playlist.m3u8"
+        // },        
+        // {
+        //     id:3,
+        //     name:"Stalker Portal :",
+        //     link:"",
+        //     placeholder:"http://cf686e62d9e1.akciatv.org/playlists/uplist/3777b55dc19a39ebaf5b6d55f53dcc9d/playlist.m3u8"
+        // },
     ],
     messigePerson:[
         {
@@ -142,7 +142,13 @@ const initialState = {
         {id:3,img:contactsTelegram,background:"#0085FF",Link:"https://web.telegram.org/k/"},
         {id:4,img:contactsTwitter,background:"#282828",Link:"https://web.telegram.org/k/"}
     ],
-    MainPageTvChanne:[smartIcon,androidIcon,iosIcon,LgSmart,samsungImg]
+    MainPageTvChanne:[smartIcon,androidIcon,iosIcon,LgSmart,samsungImg],
+    Tarif:[
+        {id:1,country:"Armenian",month:"Month - 10$",year:"year - 100%"},
+        {id:2,country:"Russian",month:"Month - 10$",year:"year - 100%"},
+        {id:3,country:"Armenian+Russian",month:"Month - 10$",year:"year - 100%"}
+    ],
+    TarifThanksShow:false
 }
 
 const mainPageSlices = createSlice({
@@ -223,10 +229,15 @@ const mainPageSlices = createSlice({
                 }
                 return {...val,open:false,simbol:"+"}
             })
+        },
+        showThanks:(state,action) => {
+            state.TarifThanksShow = !state.TarifThanksShow
+            console.log(state.TarifThanksShow)
+
         }
     }
 })
 
-export const {changeFaq,changeRegAndSignImgdisplay,changeImgType,changeAnimationPathDone,changeAnimation,changeDisplay,changeDate,setValue,setId,changeUserImg,checkLink,checkPlaceholder} = mainPageSlices.actions
+export const {showThanks,changeFaq,changeRegAndSignImgdisplay,changeImgType,changeAnimationPathDone,changeAnimation,changeDisplay,changeDate,setValue,setId,changeUserImg,checkLink,checkPlaceholder} = mainPageSlices.actions
 
 export default mainPageSlices.reducer
