@@ -8,8 +8,6 @@ export default function Tarif() {
     const dispatch = useDispatch()
     return (
         <section className="tarifMain">
-            {state.TarifThanksShow ? <Thanks/> : null}
-
             <div className="tarifHeader">
                 <p className="trifInnerHeader">Rate</p>
             </div>

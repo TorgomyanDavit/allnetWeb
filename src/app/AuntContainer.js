@@ -3,8 +3,13 @@ import React ,{ lazy , Suspense } from 'react';
 import './AuntContainer.css';
 import { BrowserRouter as Router} from "react-router-dom";
 import ReactLoading from 'react-loading';
+// const MainPage = lazy(() => import('../features/mainPage/mainPage'))
 
-const MainPage = lazy(() => import('../features/mainPage/mainPage'))
+const MainPage = lazy(() => {
+    return new Promise(resolve => {
+      setTimeout(() => resolve(import('../features/mainPage/mainPage')), 200);
+    });
+});
 
 
 function AuntContainer() {

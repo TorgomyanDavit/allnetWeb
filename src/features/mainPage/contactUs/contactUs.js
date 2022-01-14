@@ -1,5 +1,7 @@
-import { useSelector } from "react-redux"
+import { isValidElement, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
+import { closeLetter } from "../mainPageSlice"
 import "./contactUs.css"
 import "./responsive.css"
 
@@ -7,13 +9,21 @@ import "./responsive.css"
 
 export function ContactUs({toggle}) {
     const state = useSelector((state) => state.mainPage)
+    const dispatch = useDispatch()
+
+    const [Valid,setValid] = useState({
+        firstInput:"oneMount",
+        secondInput:"oneMount",
+        textAria:"oneMount",
+    })
+
     return (
         <div className="contactUs">
             <div className="contactUsDiv" style={{zIndex:toggle ? "-1" : "inherit"}} ><h2>Contact Us</h2></div>
             <div className="contactDiv" style={{zIndex:toggle ? "-1" : "inherit"}} >
                 <p className="registerNewTitle">Contscts :</p>
-                <a href="mailTo:AllNet@mail.ru"><img src="/mainPageImages/messigeimg.png" alt=""/>AllNet@mail.ru</a>
-                <a id="afterLine" href="tel:+374 (00) 00-00-00"><img src="/mainPageImages/phone.png" alt=""/>+374 (00) 00-00-00</a>
+                <a href="mailTo:AllNet@mail.ru"><img src="/mainPageImages/messigeimg.svg" alt=""/>AllNet@mail.ru</a>
+                <a id="afterLine" href="tel:+374 (00) 00-00-00"><img src="/mainPageImages/phone.svg" alt=""/>+374 (00) 00-00-00</a>
                 <div className="socialSiteIcon">
                     {state.contactDivSocialLink.map((val) => {
                         return (
@@ -22,14 +32,43 @@ export function ContactUs({toggle}) {
                     })}
                 </div>
             </div>
-            <div className="contactData" style={{zIndex:toggle ? "-1" : "inherit"}} >
-                    <form className="contactFormTetx" onSubmit={(e) => e.preventDefault()}>
+            <div className="contactData" style={{zIndex:toggle ? "-1" : "inherit"}} onClick={(e) => {
+                        if(e.target.className === "contactData" ||
+                        e.target.className === "contactFormTetx") {
+                            setValid({
+                                firstInput:"oneMount",
+                                secondInput:"oneMount",
+                                textAria:"oneMount",
+                            })
+                        }
+            }}>
+                    <form className="contactFormTetx" onSubmit={(e) => {
+                        e.preventDefault()
+                        dispatch(closeLetter())
+                    }}>
                         <div>
-                            <input type="text" placeholder="Name"/>
-                            <input type="text" placeholder="E-mail"/>
+                            <input  type="text" placeholder="Name" 
+                                style={{outlineColor:Valid.firstInput === "oneMount" ? "transparent" : Valid.firstInput ? "green" : "red"}} 
+                                required
+                            />
+                            <input type="email" placeholder="E-mail" 
+                                style={{outlineColor:Valid.secondInput === "oneMount" ? "transparent" : Valid.secondInput ? "green" : "red"}} 
+                                required
+                            />
                         </div>
-                        <textarea type="text" placeholder="Message"></textarea>
-                        <button>Send</button>
+                        <textarea type="text" placeholder="Message" 
+                            style={{outlineColor:Valid.textAria === "oneMount" ? "transparent" : Valid.textAria ? "green" : "red"}} 
+                            required
+                        >
+                        </textarea>
+                        <button onClick={(e) => {
+                            setValid({
+                                ...Valid,
+                                firstInput:e.target.parentNode[0].validity.valid,
+                                secondInput:e.target.parentNode[1].validity.valid,
+                                textAria:e.target.parentNode[2].validity.valid
+                            })
+                        }}>Send</button>
                     </form>
             </div>
         </div>

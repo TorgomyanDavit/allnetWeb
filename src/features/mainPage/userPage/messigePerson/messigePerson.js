@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import "./messigePerson.css"
-import { changeAnimation } from "../../mainPageSlice"
+import { changeAnimation, delsetMessige } from "../../mainPageSlice"
 import { useEffect } from "react"
 import "./responsiveMessige.css"
 
@@ -23,6 +23,9 @@ export function MessigePerson() {
                             <span>{val.date}</span>
                         </div>
                         <span className="personTiem">9.00</span>
+                        <button className="deleteIconMessige" onClick={() => {
+                            dispatch(delsetMessige({id:val.id}))
+                        }}></button>
                     </div>
                 )
             })}

@@ -111,20 +111,20 @@ const initialState = {
     ],
     messigePerson:[
         {
-        description:"The playlist in the preset format - M3U8 is available via the link provided above.",
-        date:"20.01.2021",name:"Raya Galstyan",img:messigePersonImg
+            description:"The playlist in the preset format - M3U8 is available via the link provided above.",
+            date:"20.01.2021",name:"Raya Galstyan",img:messigePersonImg,id:1
         },
         {
-        description:"The playlist in the preset format - M3U8 is available via the link provided above.",
-        date:"20.01.2021",name:"Raya Galstyan",img:messigePersonImg
+            description:"The playlist in the preset format - M3U8 is available via the link provided above.",
+            date:"20.01.2021",name:"Raya Galstyan",img:messigePersonImg,id:2
         },        
         {
-        description:"The playlist in the preset format - M3U8 is available via the link provided above.",
-        date:"20.01.2021",name:"Raya Galstyan",img:messigePersonImg
+            description:"The playlist in the preset format - M3U8 is available via the link provided above.",
+            date:"20.01.2021",name:"Raya Galstyan",img:messigePersonImg,id:3
         },        
         {
-        description:"The playlist in the preset format - M3U8 is available via the link provided above.",
-        date:"20.01.2021",name:"Raya Galstyan",img:messigePersonImg
+            description:"The playlist in the preset format - M3U8 is available via the link provided above.",
+            date:"20.01.2021",name:"Raya Galstyan",img:messigePersonImg,id:4
         },
     ],
     faq:[
@@ -148,7 +148,8 @@ const initialState = {
         {id:2,country:"Russian",month:"Month - 10$",year:"year - 100%"},
         {id:3,country:"Armenian+Russian",month:"Month - 10$",year:"year - 100%"}
     ],
-    TarifThanksShow:false
+    TarifThanksShow:false,
+    receiveLetterShow:false
 }
 
 const mainPageSlices = createSlice({
@@ -234,10 +235,18 @@ const mainPageSlices = createSlice({
             state.TarifThanksShow = !state.TarifThanksShow
             console.log(state.TarifThanksShow)
 
+        },
+        delsetMessige:(state,action) => {
+            state.messigePerson = state.messigePerson.filter((val) => {
+                return val.id !== action.payload.id
+            })
+        },
+        closeLetter:(state,action) => {
+            state.receiveLetterShow = !state.receiveLetterShow
         }
     }
 })
 
-export const {showThanks,changeFaq,changeRegAndSignImgdisplay,changeImgType,changeAnimationPathDone,changeAnimation,changeDisplay,changeDate,setValue,setId,changeUserImg,checkLink,checkPlaceholder} = mainPageSlices.actions
+export const {closeLetter,delsetMessige,showThanks,changeFaq,changeRegAndSignImgdisplay,changeImgType,changeAnimationPathDone,changeAnimation,changeDisplay,changeDate,setValue,setId,changeUserImg,checkLink,checkPlaceholder} = mainPageSlices.actions
 
 export default mainPageSlices.reducer

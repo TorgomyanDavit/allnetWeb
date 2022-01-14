@@ -46,7 +46,7 @@
 }
 
 .contactDiv a img {
-    width:40px;
+    width:30px;
     height: 30px;
     margin-right: 15px;
 }
@@ -60,7 +60,7 @@
 }
 
 .contactDiv a:nth-child(2) img {
-    width:30px;
+    width:40px;
     height: 30px;
     margin-right: 15px;
 }
@@ -79,7 +79,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+}
+
+.contactLink:hover {
+    background: #EEBA06 !important;
 }
 
 .contactLink:nth-child(1) img {
@@ -118,6 +121,8 @@
     text-decoration: none;
     font-size: 30px;
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .contactData {
@@ -148,6 +153,8 @@
     opacity: 0.6;
     color: #28282880;
     border: none;
+    outline: 3px solid transparent;
+
 }
 
 .contactFormTetx > textarea {
@@ -163,6 +170,23 @@
     border-radius: 10px;
     margin-top: 30px;
     resize: none;
+    outline: 3px solid transparent;
+}
+
+.contactFormTetx > textarea:focus {
+    outline: 3px solid rgb(1, 8, 104) !important;
+}
+
+.contactFormTetx div input:focus {
+    outline: 3px solid rgb(27, 3, 134) !important;
+}
+
+.contactFormTetx div input:valid {
+    outline: 3px solid rgb(3, 134, 25) !important;
+}
+
+.contactFormTetx > textarea:valid {
+    outline: 3px solid rgb(13, 104, 1) !important;
 }
 
 .contactFormTetx button {
@@ -185,3 +209,60 @@
     background: #2A29B4;
     color: white;
 }
+
+.LetterMain {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    position: absolute;
+    background: rgba(204, 225, 228, 0.64);;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.LetterChild{
+    width: 792px;
+    height: 403px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    align-items: center;
+    position: relative;
+}
+
+.Letter {
+    width: 179px;
+    height: 172px;
+    margin-top: 64px;
+    background-image: url("/src/images/Letter.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    /* background: transparent; */
+
+}
+
+.textGood {
+    font-weight: 600;
+    font-size: 40px;
+    color: #282828;
+}
+
+.closeReceiveLetter {
+    position: absolute;
+    background-image: url("/src/images/closeLetter.svg");
+    width: 29.5px;
+    height: 29.5px;
+    background-size: 29.5px, 29.5px;
+    border: none;
+    outline: none;
+    background-color: white;
+    right: 34px;
+    top: 30px;
+    cursor: pointer;
+}
+

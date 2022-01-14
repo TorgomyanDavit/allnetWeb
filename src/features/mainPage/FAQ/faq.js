@@ -4,12 +4,14 @@ import "./responsive.css"
 import { changeFaq } from "../mainPageSlice"
 
 
+
 export function Faq({toggle}) {
     const state = useSelector((state) => state.mainPage)
     const dispatch = useDispatch()
     console.log(state.faq)
     return (
         <div className="faq">
+
             <div style={{zIndex:toggle ? "-1" : "inherit"}}><h2>FAQ</h2></div>
             {state.faq.map((val) => {
                 return (

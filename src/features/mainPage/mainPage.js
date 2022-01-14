@@ -11,19 +11,22 @@ import UserHeader from "./userPage/header/userHeader.js"
 import { ContactUs } from "./contactUs/contactUs.js"
 import Thanks from "./userPage/Tarif/thankyouPopUp.js"
 import { useSelector } from "react-redux"
+import { Router } from "react-router-dom"
+import Letter from "./contactUs/rexeiveLetter.js"
 
 function MainPage() {
+    const state = useSelector((state) => state.mainPage)
+
     let [type,setType] = useState("block")
     let [Width,setWidth] = useState("block")
     const [toggle,setToggle] = useState(false)
 
-
-
-
     return (
         <div className="MainPage">
            <Headers type={type} Width={Width} toggle={toggle} setToggle={setToggle}/>
+           { state.receiveLetterShow ? <Letter/> : null }
            <Switch>
+                {state.TarifThanksShow ? <Thanks/> : null}
                 <Route path="/about">
                     <About toggle={toggle}/>
                 </Route>
