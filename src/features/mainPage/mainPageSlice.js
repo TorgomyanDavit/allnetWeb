@@ -246,7 +246,7 @@ const mainPageSlices = createSlice({
             state.receiveLetterShow = !state.receiveLetterShow
         },
         paginationCount:(state,action) => {
-           state.table.countPage = [...new Array(action.payload)]
+        //    state.table.countPage = [...new Array(action.payload)]
         }
     }
 })
