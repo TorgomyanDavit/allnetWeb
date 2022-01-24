@@ -3,7 +3,6 @@ import { Link, NavLink } from "react-router-dom"
 
 export function UserChannels() {
     const state = useSelector((state) => state.mainPage)
-    console.log(state.animationPath)
     return (
         <div className="user-channels-div">
             <div className="user" 

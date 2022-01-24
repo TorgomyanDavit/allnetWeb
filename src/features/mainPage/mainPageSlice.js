@@ -64,19 +64,23 @@ const initialState = {
         {id:2,dataName:"E-mail",inner:"AllNet@mail.ru",type:"text",display:"none",placeholder:"changeMail",value:""},
         {id:3,dataName:"Password",inner:"******",type:"password",display:"none",placeholder:"changePassword",value:""}
     ],
-    table:[
-        {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-        {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-        {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-        {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-        {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-        {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-        {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-        {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-        {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-        {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-        {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"}
-    ],
+    table:{
+        countPage:[...new Array(10)],
+        showPage:[...new Array(3)],
+        data:[
+            {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
+            {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
+            {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
+            {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
+            {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
+            {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
+            {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
+            {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
+            {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
+            {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
+            {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"}
+        ],
+    },
     channelInputDiv:[
         ["Movie","Music","News","FHD"],
         ["HD","4K","Ukrainian","Belarus"],
@@ -184,7 +188,6 @@ const mainPageSlices = createSlice({
             })
         },
         setId:(state,action) => {
-            console.log(action.payload.id)
             state.Id = action.payload.id
         },
         changeUserImg:(state,action) => {
@@ -199,7 +202,6 @@ const mainPageSlices = createSlice({
             })
         },
         checkPlaceholder:(state,action) => {
-            console.log(action.payload)
             state.formPortal.forEach((val) => {
                 if(val.id === action.payload.id) {
                     val.placeholder = val.link
@@ -233,7 +235,6 @@ const mainPageSlices = createSlice({
         },
         showThanks:(state,action) => {
             state.TarifThanksShow = !state.TarifThanksShow
-            console.log(state.TarifThanksShow)
 
         },
         delsetMessige:(state,action) => {
@@ -243,10 +244,13 @@ const mainPageSlices = createSlice({
         },
         closeLetter:(state,action) => {
             state.receiveLetterShow = !state.receiveLetterShow
+        },
+        paginationCount:(state,action) => {
+           state.table.countPage = [...new Array(action.payload)]
         }
     }
 })
 
-export const {closeLetter,delsetMessige,showThanks,changeFaq,changeRegAndSignImgdisplay,changeImgType,changeAnimationPathDone,changeAnimation,changeDisplay,changeDate,setValue,setId,changeUserImg,checkLink,checkPlaceholder} = mainPageSlices.actions
+export const {paginationCount,closeLetter,delsetMessige,showThanks,changeFaq,changeRegAndSignImgdisplay,changeImgType,changeAnimationPathDone,changeAnimation,changeDisplay,changeDate,setValue,setId,changeUserImg,checkLink,checkPlaceholder} = mainPageSlices.actions
 
 export default mainPageSlices.reducer

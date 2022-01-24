@@ -18,7 +18,7 @@ export function Table() {
             </tr>
         </thead>
         <tbody className="tbody">
-        {state.table.map((val) => {
+        {state.table.data.map((val) => {
             return (
             <tr key={Math.random()} className="stateTable">
                 <td>{val.date}</td>

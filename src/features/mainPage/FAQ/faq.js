@@ -8,7 +8,6 @@ import { changeFaq } from "../mainPageSlice"
 export function Faq({toggle}) {
     const state = useSelector((state) => state.mainPage)
     const dispatch = useDispatch()
-    console.log(state.faq)
     return (
         <div className="faq">
 
