@@ -45,6 +45,8 @@ export function ContactUs({toggle}) {
                     <form className="contactFormTetx" onSubmit={(e) => {
                         e.preventDefault()
                         dispatch(closeLetter())
+                        window.scrollTo(0, 0)
+                        document.body.style.overflow = 'hidden';
                     }}>
                         <div>
                             <input  type="text" placeholder="Name" 

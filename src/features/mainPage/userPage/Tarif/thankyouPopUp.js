@@ -13,6 +13,7 @@ export default function Thanks() {
                 <p className="textOk">Thank you</p>
                 <Link to="/userPage/userHome" className="LinkforThanks" onClick={() => {
                     dispatch(showThanks())
+                    document.body.style.overflow = 'unset';
                 }}>Back to the main page</Link>
             </div>
         </section>

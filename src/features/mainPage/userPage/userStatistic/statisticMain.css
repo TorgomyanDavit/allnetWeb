@@ -160,10 +160,12 @@
     top: 35px;
     left: 20px;
     width: 65px;
+    height: 140px;
     background: #DCE0F2;
     flex-direction: column;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
+    overflow-x: scroll;
 }
 
 .clickToShow {
@@ -181,15 +183,18 @@
     cursor: pointer;
 }
 
+
+
 .optionSelect > button {
     border: none;
     outline: none;
     border-top: 1px solid #282828;
     width: 51px;
-    height: 33px;
+    min-height: 33px;
     margin: 0 auto;
     background: transparent;
     cursor: pointer;
+    z-index: 1;
 }
 
 .optionSelect > button:hover {
@@ -321,6 +326,10 @@
     outline: none;
     border: none;
 }   
+
+.buttonSlack:hover {
+    background: #00115e !important;
+}
 
 .footerTable > button img{
     width: 4.5px;

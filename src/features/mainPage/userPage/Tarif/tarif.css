@@ -183,5 +183,38 @@ input[type="radio"]:checked + .check {
 }
 
 
+@media screen and (max-width:900px){
+    .thankYou {
+        width: 95%;
+    }
+}
 
 
+
+@media screen and (max-width:900px){
+    .thankYou {
+        width: 345px;
+        height: 201px;
+        border-radius: 4.35606px;
+    }
+
+    .thumb {
+        width: 68.39px;
+        height: 68.39px;
+        background-size: 32.23px 32.23px;
+        margin-top: 27px;
+    }
+
+    .textOk {
+        font-weight: 600;
+        font-size: 17.4242px;
+    }
+
+    .LinkforThanks {
+        width: 292.11px;
+        height: 34.37px;
+        border-radius: 3.43657px;
+        font-weight: 600;
+        font-size: 10.997px;
+    }
+}

@@ -65,7 +65,7 @@ const initialState = {
         {id:3,dataName:"Password",inner:"******",type:"password",display:"none",placeholder:"changePassword",value:""}
     ],
     table:{
-        countPage:[...new Array(10)],
+        countPage:[...new Array(20)],
         showPage:[...new Array(3)],
         data:[
             {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},

@@ -12,6 +12,14 @@
         gap: 12px;
     }
 
+    
+    #afterLine {
+        font-size: 20px;
+    }
+
+    .contactDiv a:nth-child(2) {
+        font-size: 25px;
+    }
     .contactUsDiv {
         width: 100%;
     }
@@ -52,6 +60,10 @@
         order: 4;
         margin-bottom: 57px;
         flex-wrap: wrap;
+    }
+
+    .LetterChild {
+        width: 95%;
     }
 
     
@@ -205,6 +217,29 @@
     .contactUs {
         width: 345px;
         gap: 15px;
+    }
+
+    .LetterChild {
+        width: 345px;
+        height: 175.55px;
+    }
+
+    .closeReceiveLetter {
+        width: 12.85px;
+        height: 12.85px;
+        background-size: 12.85px 12.85px;
+    }
+
+    .Letter {
+        width: 77.97px;
+        height: 74.92px;
+        background-size: contain;
+        margin-top: 37px;
+    }
+
+    .textGood {
+        font-weight: 600;
+        font-size: 17.4242px;
     }
 }
 

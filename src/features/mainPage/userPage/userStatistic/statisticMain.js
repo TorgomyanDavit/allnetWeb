@@ -15,6 +15,12 @@ export function StatisticMain() {
     const [showSelect,setShowSelect] = useState(true)
     const [showValue,setShowValue] = useState(1)
 
+    function child(childIndex) {
+        setShowValue(++childIndex)
+    }
+
+
+
     return (
         <main className="statisticMain">
             <section className="balanAndInternalTransition">
@@ -56,16 +62,15 @@ export function StatisticMain() {
                                 }}
                             />
                             <div className="optionSelect" style={{display:showSelect ? "none" : "flex"}}>
-                                <button onClick={() => setShowValue(1)}>1</button>
-                                <button onClick={() => setShowValue(2)}>2</button>
-                                <button onClick={() => setShowValue(3)}>3</button>
-                                <button onClick={() => setShowValue(4)}>4</button>
+                                {state.table.countPage.map((val,index) => {
+                                    return <button key={index} onClick={() => setShowValue(index)}>{++index}</button>
+                                })}
                             </div>
                         </form>
                     <span>entries</span>
                 </div>
             </section>
-            <HistoryPage/>
+            <HistoryPage showValue={showValue} child={child}/>
         </main>
     )
 }

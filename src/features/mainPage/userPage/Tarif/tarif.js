@@ -13,6 +13,9 @@ export default function Tarif() {
             </div>
             <form className="secondTarifDiv" onSubmit={(e) => {
                 e.preventDefault()
+                dispatch(showThanks())
+                window.scrollTo(0, 0)
+                document.body.style.overflow = 'hidden';
             }}>
                 {state.Tarif.map((val) => {
                     return (
@@ -24,8 +27,8 @@ export default function Tarif() {
                                 industry's standard dummy text ever since the 1500.
                             </p>
                             <label className="chexbox">
-                                <label className="chexboxinput">
-                                    <input type="radio" name="gen" style={{display:"none"}}/>   
+                                <label className="chexboxinput" required>
+                                    <input type="radio" name="gen" style={{display:"none"}} />   
                                     <div className="check"></div>
                                 </label>
                                 <p className="month">{val.month}</p>
@@ -40,7 +43,7 @@ export default function Tarif() {
                             </label>
 
                             <button className="sendTArif" onClick={() => {
-                                dispatch(showThanks())
+                                // dispatch(showThanks())
                             }}>Activate</button>
                         </div>
                     )
