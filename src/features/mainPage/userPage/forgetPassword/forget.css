@@ -1,0 +1,171 @@
+
+.forget {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formForget {
+    width: 645px;
+    height: 379px;
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 59px 56px;
+    margin-top: 254px;
+}
+
+.titleForget {
+    color: #010023;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.inputForget {
+    box-shadow: inset 2px 4px 10px rgba(0, 0, 0, 0.109);
+    border-radius: 10px;
+    width: 100%;
+    height: 70px;
+    background: #28282810;
+    opacity: 0.9;
+    padding-left: 40px;
+    margin-top: 37px;
+    color: #282828;
+    font-weight: 600;
+    font-size: 24px;
+    outline: none;
+    border: none;
+}
+
+.forgetPassword {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 73px;
+    background: #EEBA06;
+    border-radius: 10px;
+    margin-top: 35px;
+    font-weight: 600;
+    font-size: 24px;
+    color: #282828;
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+
+.receiveLet {
+    width: 645px;
+    height: 379px;
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 32px 27px;
+    margin-top: 254px;
+    position: relative;
+}
+
+.backtoRegister {
+    background-color: rgba(196, 196, 196, 0.2);
+    border-radius: 5px;
+    width: 50px;
+    height: 50px;
+    display: block;
+    background-image: url("../images/letSlack.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.Letter {
+    width: 179px;
+    height: 172px;
+    background-image: url("/src/images/Letter.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 auto;
+}
+
+.textGood {
+    font-weight: bold;
+    font-size: 30px;
+    color: #282828;
+    margin-top: 34px !important;
+    text-align: center;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.newPass {
+    height: 465px !important;
+    position: relative;
+}
+
+.inputForgetnew {
+    /* background-image: url("../images/eye-slash.svg"); */
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 30px;
+    height: 24px;
+    border: none;
+    outline: none;
+    position: absolute;
+    top: 158px;
+    right: 80px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.inputForgetnew2 {
+    /* background-image: url("../images/eye-slash.svg"); */
+    top: 266px !important;
+    right: 80px !important;
+}
+
+@media screen and (max-width:450px) { 
+    .forget {
+        padding: 0 15px;
+    }
+    .formForget {
+        padding: 35px 24px;
+        height: 238px;
+    }
+
+    .newPass {
+        height: 311px !important;
+    }
+
+    .titleForget {
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .inputForget {
+        margin-top: 18px;
+        height: 54px;
+        font-weight: 600;
+        font-size: 15px;
+    }
+
+    .forgetPassword {
+        height: 51px;
+        margin-top: 16px;
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    .inputForgetnew {
+        width: 24px;
+        height: 19px;
+        top: 95px;
+        right: 43px;
+        background-size: contain;
+    }
+
+    .inputForgetnew2 {
+        top: 167px !important;
+        right: 43px !important;
+    }
+
+    .textGood {
+        font-weight: bold;
+        font-size: 22px;
+    }
+}

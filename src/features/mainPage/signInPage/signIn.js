@@ -49,7 +49,7 @@ function SignIn({toggle}) {
                         </label>
                     </form>
                     <p className="rememberPassword">
-                        <NavLink to="#" className="rememberPasswordLink">
+                        <NavLink to="/forgetPassword" className="rememberPasswordLink">
                             Forgot your password ?
                         </NavLink>
                     </p>

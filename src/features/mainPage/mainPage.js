@@ -12,7 +12,10 @@ import { ContactUs } from "./contactUs/contactUs.js"
 import Thanks from "./userPage/Tarif/thankyouPopUp.js"
 import { useSelector } from "react-redux"
 import { Router } from "react-router-dom"
-import Letter from "./contactUs/rexeiveLetter.js"
+import Letter from "./contactUs/reCeiveLetter.js"
+import { ForgetPassword } from "./userPage/forgetPassword/forgetPassword.js"
+import { ReceiveLetter } from "./userPage/forgetPassword/receiveLet.js"
+import { NewPassword } from "./userPage/forgetPassword/newPassword.js"
 
 function MainPage() {
     const state = useSelector((state) => state.mainPage)
@@ -35,6 +38,15 @@ function MainPage() {
                 </Route>
                 <Route path="/contactUs">
                     <ContactUs toggle={toggle}/>
+                </Route>
+                <Route path="/forgetPassword">
+                    <ForgetPassword/>
+                </Route>
+                <Route path="/recLetter">
+                    <ReceiveLetter/>
+                </Route>
+                <Route path="/newPassword">
+                    <NewPassword/>
                 </Route>
                 <Route path="/register">
                     <Register toggle={toggle}/>
