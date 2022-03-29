@@ -59,9 +59,6 @@ function MainPage() {
                 </Route>
                 <Route path="/">
                     <Main changeType = {(display,size) => {
-                        if(window.location === "http://localhost:3000") {
-                            alert("hi")
-                        }
                         setType(display)
                         setWidth(size)
                     }} toggle={toggle}/>

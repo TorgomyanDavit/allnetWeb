@@ -1,7 +1,7 @@
 
 .headerContainer {
     width: 100%;
-    padding-top: 40px;
+    padding-top: 44px;
 }
 
 .headerNavigator {
@@ -38,7 +38,6 @@
 }
 
 .name {
-    font-style: Medium;
     font-size: 18px;
     text-decoration: none;
     color: #383838;

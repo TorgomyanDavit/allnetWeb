@@ -49,6 +49,7 @@
 }
 
 .activeRegisterButton {
+    font-family: "Montserrat-Bold" !important; 
     position: relative;
     color: #010023;
 }

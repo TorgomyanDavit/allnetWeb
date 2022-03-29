@@ -7,13 +7,11 @@ import "./responsiveMain.css"
 
 
 function Main({changeType,toggle}) {
-    const [play,setPlay] = useState(false)
     const [playImg,setPlayImg] = useState(false)
     const [width,setWidth] = useState(false)
     const dispatch = useDispatch()
     const state = useSelector((state) => state.mainPage)
     useEffect(() => {
-        
         dispatch(changeImgType({type:true}))
         if(window.screen.width=== 375) {
             setWidth(!width)
@@ -23,7 +21,9 @@ function Main({changeType,toggle}) {
             dispatch(changeImgType({type:false}))
             changeType("none","386px")
         }
-    },[])
+    },[]);
+
+
     return (
         <main className="main" style={{zIndex:toggle ? "-1" : "inherit"}}>
             <div className="mainImgDiv" style={{transform: playImg === true ? "translateY(-10px)" : "translateY(0px)"  }}>
@@ -43,18 +43,14 @@ function Main({changeType,toggle}) {
                     it to make a type specimen book.
                 </p>
                 <div className="registerButtonDiv">
-                <NavLink to="/signIn" className="Navlink" activeClassName="activeNavlink"
-                    onMouseOver={() =>  setPlay(true)}  onMouseLeave={() =>  setPlay("change")}
-                >
+                <NavLink to="/signIn" className="Navlink" activeClassName="activeNavlink">
                     Sign In
                 </NavLink>
                 <NavLink to="/register" className="Navlink" activeClassName="activeNavlink" 
                 onMouseOver={() => {
                     setPlayImg(!playImg)
-                    setPlay(true)
                 }} onMouseLeave={() =>  {
                     setPlayImg(!playImg)
-                    setPlay("change")
                 }}>
                     Registration
                 </NavLink>
@@ -68,7 +64,7 @@ function Main({changeType,toggle}) {
             <div className="underLine"></div>
             <div className="TvchannelDiv">
                 {state.MainPageTvChanne.map((val,index) => {
-                    return <img src={val} alt="" key={Math.random()} className={index === 3  && play === true || index === 3  && play === "change" ? "animation" : null}/>
+                    return <img src={val} alt="" key={Math.random()}/>
                 })}
             </div>
         </main>

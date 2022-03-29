@@ -15,6 +15,7 @@ import iosIcon from "../../images/iosIcon.png"
 import LgSmart from "../../images/LgSmart.png"
 import samsungImg from "../../images/samsungImg.png"
 import smartIcon from "../../images/SmartIcon.png"
+import { getMainContent } from "./main/asyncMain";
 
 
 
@@ -248,9 +249,27 @@ const mainPageSlices = createSlice({
         paginationCount:(state,action) => {
         //    state.table.countPage = [...new Array(action.payload)]
         }
+    },
+
+    extraReducers:(builder) => {
+        builder
+        .addCase(getMainContent.pending,(state) => {
+            console.log("pending")
+        })
+        .addCase(getMainContent.fulfilled,(state,action) => {
+            console.log("fulfiled")
+        })
+        .addCase(getMainContent.rejected,(state,action) => {
+            console.log("rejected")
+        })
+       
     }
 })
 
-export const {paginationCount,closeLetter,delsetMessige,showThanks,changeFaq,changeRegAndSignImgdisplay,changeImgType,changeAnimationPathDone,changeAnimation,changeDisplay,changeDate,setValue,setId,changeUserImg,checkLink,checkPlaceholder} = mainPageSlices.actions
+export const {
+    aginationCount,closeLetter,delsetMessige,showThanks,changeFaq,changeRegAndSignImgdisplay,
+    changeImgType,changeAnimationPathDone,changeAnimation,changeDisplay,changeDate,setValue,
+    setId,changeUserImg,checkLink,checkPlaceholder
+} = mainPageSlices.actions
 
 export default mainPageSlices.reducer

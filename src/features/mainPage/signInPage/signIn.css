@@ -80,6 +80,7 @@
 }
 
 .activeSignInButton {
+    font-family: "Montserrat-Bold" !important; 
     color: #010023;
 }
 
