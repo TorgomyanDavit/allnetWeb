@@ -16,6 +16,7 @@ import LgSmart from "../../images/LgSmart.png"
 import samsungImg from "../../images/samsungImg.png"
 import smartIcon from "../../images/SmartIcon.png"
 import { getMainContent } from "./main/asyncMain";
+import { getAboutContent } from "./about/asyncAbout";
 
 
 
@@ -154,7 +155,11 @@ const initialState = {
         {id:3,country:"Armenian+Russian",month:"Month - 10$",year:"year - 100%"}
     ],
     TarifThanksShow:false,
-    receiveLetterShow:false
+    receiveLetterShow:false,
+    loading:{mainLoading:false},
+    mainPagePagination:{title:"",description:""},
+    mainPAboutPagination:{description:"<p>afsfsfdsfds</p>"},
+
 }
 
 const mainPageSlices = createSlice({
@@ -254,13 +259,19 @@ const mainPageSlices = createSlice({
     extraReducers:(builder) => {
         builder
         .addCase(getMainContent.pending,(state) => {
-            console.log("pending")
+            // console.log("pending")
         })
         .addCase(getMainContent.fulfilled,(state,action) => {
-            console.log(action)
+            state.mainPagePagination.description = action.payload.home.description
+            state.mainPagePagination.title = action.payload.home.title
+            state.loading.mainLoading = true
         })
         .addCase(getMainContent.rejected,(state,action) => {
             console.log("rejected")
+        })
+        .addCase(getAboutContent.fulfilled,(state,action) => {
+            console.log(action.payload.page.content);
+            state.mainPAboutPagination.description = action.payload.page.content
         })
        
     }

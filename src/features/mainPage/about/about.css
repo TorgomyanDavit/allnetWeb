@@ -25,6 +25,7 @@
 }
 
 .about p {
+    width: 100%;
     font: Montserrat;
     font-style: Medium;
     height: 614px;
@@ -37,4 +38,5 @@
     letter-spacing: 1%;
     color: #000000;
     text-align: left;
+    overflow-y: scroll;
 }
