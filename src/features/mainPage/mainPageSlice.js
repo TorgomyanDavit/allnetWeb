@@ -257,7 +257,7 @@ const mainPageSlices = createSlice({
             console.log("pending")
         })
         .addCase(getMainContent.fulfilled,(state,action) => {
-            console.log("fulfiled")
+            console.log(action)
         })
         .addCase(getMainContent.rejected,(state,action) => {
             console.log("rejected")

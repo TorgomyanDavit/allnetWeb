@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom"
 import { changeImgType } from "../mainPageSlice"
 import "./main.css"
 import "./responsiveMain.css"
+import {getMainContent} from "./asyncMain"
 
 
 function Main({changeType,toggle}) {
@@ -12,6 +13,7 @@ function Main({changeType,toggle}) {
     const dispatch = useDispatch()
     const state = useSelector((state) => state.mainPage)
     useEffect(() => {
+        dispatch(getMainContent())
         dispatch(changeImgType({type:true}))
         if(window.screen.width=== 375) {
             setWidth(!width)
