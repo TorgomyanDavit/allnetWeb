@@ -1,27 +1,27 @@
-import React ,{ lazy , Suspense } from 'react';
-import MainPage from '../features/mainPage/mainPage';
-import './AuntContainer.css';
-import { BrowserRouter as Router} from "react-router-dom";
-import { useSelector } from 'react-redux';
-// import ReactLoading from 'react-loading';
-// const MainPage = lazy(() => import('../features/mainPage/mainPage'))
 
-// const MainPage = lazy(() => {
-//     return new Promise(resolve => {
-//       setTimeout(() => resolve(import('../features/mainPage/mainPage')), 3000);
-//     });
-// });
+import React ,{ useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { BrowserRouter as Router} from "react-router-dom";
+import MainPage from '../features/mainPage/mainPage';
+import { getAllContent } from '../features/mainPage/getRequest';
+import './AuntContainer.css';
+
+
 
 
 function AuntContainer() {
-
-
+    const state = useSelector((state) => state.mainPage)
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getAllContent(state.server))
+    },[])
 
     return (
         <div className="AuntContainer">
-                <Router path="/">
-                    <MainPage/>
-                </Router>
+            {state.loading.mainLoading ? "" : <div className="loading"><img src="/mainPageImages/homeLoading.gif" alt="loading"/></div>}
+            <Router path="/">
+                <MainPage/>
+            </Router>
         </div>
     )
 }

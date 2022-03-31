@@ -9,14 +9,12 @@ import contactsFb from "../../images/contactsFb.png"
 import contactsGoogle from "../../images/contactsGoogle.png"
 import contactsTelegram from "../../images/contactsTelegram.png"
 import contactsTwitter from "../../images/contactsTwitter.png"
-
 import androidIcon from "../../images/androidIcon.png"
 import iosIcon from "../../images/iosIcon.png"
 import LgSmart from "../../images/LgSmart.png"
 import samsungImg from "../../images/samsungImg.png"
 import smartIcon from "../../images/SmartIcon.png"
-import { getMainContent } from "./main/asyncMain";
-import { getAboutContent } from "./about/asyncAbout";
+import { getAllContent } from "./getRequest";
 
 
 
@@ -25,6 +23,29 @@ import { getAboutContent } from "./about/asyncAbout";
 
 
 const initialState = {
+    // async
+    server:"http://127.0.0.1:8000/api",
+    mainPagePagination:{title:"",description:""},
+    mainPAboutPagination:{description:""},
+    mainContactPagination:{
+        messagePhone:"",
+        messageEmail:"",
+        contactDivSocialLink:[
+            {id:1,img:contactsFb,background:"#6561FF",Link:""},
+            {id:2,img:contactsGoogle,background:"#FF1F00",Link:""},
+            {id:3,img:contactsTelegram,background:"#0085FF",Link:""},
+            {id:4,img:contactsTwitter,background:"#282828",Link:""}
+        ],
+    },
+    mainFaqPagination:[],
+
+
+    loading:{mainLoading:false},
+
+
+
+
+    // notAsync 
     homeSliderSettings:{        
         dots: true,
         infinite: true,
@@ -133,21 +154,6 @@ const initialState = {
             date:"20.01.2021",name:"Raya Galstyan",img:messigePersonImg,id:4
         },
     ],
-    faq:[
-        {id:1,name:"Lorem ipsum dolor sit amet?",simbol:"+",open:false},
-        {id:2,name:"Lorem ipsum dolor sit amet?",simbol:"+",open:false},
-        {id:3,name:"Lorem ipsum dolor sit amet?",simbol:"+",open:false},
-        {id:4,name:"Lorem ipsum dolor sit amet?",simbol:"+",open:false},
-        {id:5,name:"Lorem ipsum dolor sit amet?",simbol:"+",open:false},
-        {id:5,name:"Lorem ipsum dolor sit amet?",simbol:"+",open:false},
-        {id:6,name:"Lorem ipsum dolor sit amet?",simbol:"+",open:false}
-    ],
-    contactDivSocialLink:[
-        {id:1,img:contactsFb,background:"#6561FF",Link:"https://ru-ru.facebook.com/"},
-        {id:2,img:contactsGoogle,background:"#FF1F00",Link:"https://web.telegram.org/k/"},
-        {id:3,img:contactsTelegram,background:"#0085FF",Link:"https://web.telegram.org/k/"},
-        {id:4,img:contactsTwitter,background:"#282828",Link:"https://web.telegram.org/k/"}
-    ],
     MainPageTvChanne:[smartIcon,androidIcon,iosIcon,LgSmart,samsungImg],
     Tarif:[
         {id:1,country:"Armenian",month:"Month - 10$",year:"year - 100%"},
@@ -156,9 +162,8 @@ const initialState = {
     ],
     TarifThanksShow:false,
     receiveLetterShow:false,
-    loading:{mainLoading:false},
-    mainPagePagination:{title:"",description:""},
-    mainPAboutPagination:{description:"<p>afsfsfdsfds</p>"},
+
+
 
 }
 
@@ -232,7 +237,7 @@ const mainPageSlices = createSlice({
             state.regAndsignNone = !state.regAndsignNone
         },
         changeFaq:(state,action) => {
-            state.faq = state.faq.map((val) => {
+            state.mainFaqPagination = state.mainFaqPagination.map((val) => {
                 if(val.id === action.payload.id) {
                     return {...val,open:!val.open,simbol:val.open ? "+" : "-"}  
                 }
@@ -253,34 +258,63 @@ const mainPageSlices = createSlice({
         },
         paginationCount:(state,action) => {
         //    state.table.countPage = [...new Array(action.payload)]
+        },
+        loading:(state) => {
+            state.loading.mainLoading = false
         }
     },
 
     extraReducers:(builder) => {
         builder
-        .addCase(getMainContent.pending,(state) => {
-            // console.log("pending")
-        })
-        .addCase(getMainContent.fulfilled,(state,action) => {
-            state.mainPagePagination.description = action.payload.home.description
-            state.mainPagePagination.title = action.payload.home.title
-            state.loading.mainLoading = true
-        })
-        .addCase(getMainContent.rejected,(state,action) => {
-            console.log("rejected")
-        })
-        .addCase(getAboutContent.fulfilled,(state,action) => {
-            console.log(action.payload.page.content);
-            state.mainPAboutPagination.description = action.payload.page.content
-        })
-       
+            .addCase(getAllContent.fulfilled,(state,action) => {
+                action.payload.forEach((data) => {
+                    let key = Object.keys(data)
+                    switch(key[0]) {
+                        case "home" : 
+                        state.mainPagePagination.description = data.home.description
+                        state.mainPagePagination.title = data.home.title
+                        break;
+
+                        case "about" : 
+                        state.mainPAboutPagination.description = data.about.content;
+                        break;
+
+                        case "contact" : 
+                        let {phone,email,facebook_link,google_link,twitter_link,telegram_link} = data.contact
+                        state.mainContactPagination.messagePhone = phone
+                        state.mainContactPagination.messageEmail = email
+                        state.mainContactPagination.contactDivSocialLink = state.mainContactPagination.contactDivSocialLink.map((val) => {
+                            switch(val.id) {
+                                case 1 : val.Link = facebook_link;return val;
+                                case 2 : val.Link = google_link;return val;
+                                case 3 : val.Link = telegram_link;return val;
+                                case 4 : val.Link = twitter_link;return val;
+                            }
+                        });
+                        break;
+
+                        case "faq" : 
+                            state.mainFaqPagination = data.faq.map((val) => {
+                                return {id:val.id,title:val.title,description:val.description,simbol:"+",open:false}
+                            })
+                        break;
+
+                        
+                    }
+                })
+                state.loading.mainLoading = true
+                console.log(action.payload);
+            })
+            .addCase(getAllContent.rejected,(state,action) => {
+                console.log("rejected promissAll");
+            })
     }
 })
 
 export const {
     aginationCount,closeLetter,delsetMessige,showThanks,changeFaq,changeRegAndSignImgdisplay,
     changeImgType,changeAnimationPathDone,changeAnimation,changeDisplay,changeDate,setValue,
-    setId,changeUserImg,checkLink,checkPlaceholder
+    setId,changeUserImg,checkLink,checkPlaceholder,loading
 } = mainPageSlices.actions
 
 export default mainPageSlices.reducer

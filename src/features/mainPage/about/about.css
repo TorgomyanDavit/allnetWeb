@@ -4,7 +4,7 @@
     margin: 66px auto 0;
 }
 
-.about div {
+.aboutDiv {
     width: 1524px;
     height: 111px;
     background: #FFFFFF;
@@ -24,19 +24,36 @@
     margin-bottom: 30px;
 }
 
-.about p {
+.aboutP {
     width: 100%;
-    font: Montserrat;
     font-style: Medium;
     height: 614px;
     background: #FFFFFF;
     border-radius: 10px;
     padding: 36px 40px 48px;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 20px;
-    letter-spacing: 1%;
-    color: #000000;
-    text-align: left;
     overflow-y: scroll;
+    letter-spacing: 1px !important;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* 
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(4, 238, 129); 
+    border-radius: 10px;
+} */
+
+::-webkit-scrollbar-thumb {
+    background: rgb(153, 147, 147);
+    border-radius: 10px;
+}
+
+.aboutP p {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: left;
+    color: #000000;
 }

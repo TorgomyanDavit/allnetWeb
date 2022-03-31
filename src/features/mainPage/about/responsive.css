@@ -1,10 +1,10 @@
 
 @media (max-width:1550px) and (min-width:500px) {
-    .about p {
+    .aboutP {
         z-index: 1 !important;
     }
 
-    .about div {
+    .aboutDiv{
         z-index: 1 !important;
     }
 }
@@ -20,18 +20,18 @@
         height: fit-content;
     }
 
-    .about div {
+    .aboutDiv{
         width: 100%;
         margin-bottom: 15px;
     }
 
-    /* .about p {
+    /* .aboutP {
         height: fit-content;
     } */
 }
 
 @media screen and (max-width:375px) {
-    .about div {
+    .aboutDiv {
         max-width: 345px;
         height: 64px;
         margin-bottom: 15px;
@@ -47,7 +47,7 @@
         font-style: bold;
     }
 
-    .about p {
+    .aboutP {
         font: Montserrat;
         font-size: 16px;
         font-weight: 500;

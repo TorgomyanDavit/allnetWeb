@@ -27,6 +27,7 @@ function MainPage() {
     return (
         <div className="MainPage">
            <Headers type={type} Width={Width} toggle={toggle} setToggle={setToggle}/>
+           
            { state.receiveLetterShow ? <Letter/> : null }
            <Switch>
                 {state.TarifThanksShow ? <Thanks/> : null}
@@ -67,4 +68,5 @@ function MainPage() {
         </div>
     )
 }
+
 export default MainPage

@@ -11,3 +11,22 @@
   align-content: center;
 }
 
+.loading {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 8;
+  background: radial-gradient(#b1b1ff81 0%,#E3E2FF 100%);
+}
+
+.loading > img {
+  height: fit-content;
+}
+

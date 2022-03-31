@@ -6,24 +6,9 @@
     position: relative;
 }
 
-.loading {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.loading > img {
-    width: 100%;
-    height: 100%;
-}
-
 .mainImgDiv {
     width: 872px;
-    height: 543px;
+    height: 536px;
     margin: 333px  0 0 153px;
     z-index: 1;
     transition: 0.3s;
