@@ -15,6 +15,7 @@ import LgSmart from "../../images/LgSmart.png"
 import samsungImg from "../../images/samsungImg.png"
 import smartIcon from "../../images/SmartIcon.png"
 import { getAllContent } from "./getRequest";
+import { postRegister } from "./postRequest";
 
 
 
@@ -38,7 +39,7 @@ const initialState = {
         ],
     },
     mainFaqPagination:[],
-
+    paginationTarif:[],
 
     loading:{mainLoading:false},
 
@@ -155,11 +156,7 @@ const initialState = {
         },
     ],
     MainPageTvChanne:[smartIcon,androidIcon,iosIcon,LgSmart,samsungImg],
-    Tarif:[
-        {id:1,country:"Armenian",month:"Month - 10$",year:"year - 100%"},
-        {id:2,country:"Russian",month:"Month - 10$",year:"year - 100%"},
-        {id:3,country:"Armenian+Russian",month:"Month - 10$",year:"year - 100%"}
-    ],
+
     TarifThanksShow:false,
     receiveLetterShow:false,
 
@@ -299,6 +296,9 @@ const mainPageSlices = createSlice({
                             })
                         break;
 
+                        case "tariffs" : 
+                            state.paginationTarif = data.tariffs
+                        break;
                         
                     }
                 })
@@ -308,6 +308,14 @@ const mainPageSlices = createSlice({
             .addCase(getAllContent.rejected,(state,action) => {
                 console.log("rejected promissAll");
             })
+            // postRegister
+            .addCase(postRegister.fulfilled,(state,action) => {
+                console.log("fulfiled",action);
+            })
+            .addCase(postRegister.rejected,(state,action) => {
+                console.log("rejected",action);
+            })
+
     }
 })
 

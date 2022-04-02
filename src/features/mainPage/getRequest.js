@@ -15,7 +15,7 @@ export const getAllContent = createAsyncThunk(
 
             
         ])
-        .then((streams) => {return Promise.all( streams.map((stream) => stream.json()) )})
+        .then((streams) => {return Promise.all(streams.map((stream) => stream.json()))})
         return response
     }
 )

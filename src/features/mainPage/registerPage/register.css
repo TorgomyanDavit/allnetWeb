@@ -217,3 +217,15 @@
     background: radial-gradient( #CBCBFF 100%, #AAAAFF  100%);
     z-index: 0;
 }
+
+.borderError {
+    border: 3px solid red !important;
+}
+
+.outLIneError {
+    outline: 3px solid red !important;
+}
+
+.colorErrorError {
+    color: red;
+}
