@@ -53,6 +53,8 @@
     border-radius: 4px;
     margin-bottom: 120px;
     cursor: pointer;
+    border: none;
+    transform: rotate(180deg);
 }
 
 .activeClass p {

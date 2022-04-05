@@ -34,14 +34,11 @@ export default function User() {
             dispatch(changeAnimation({value:"/userPerson"}))
         }
     },[])
-    
-
-
-    
-
     reader.addEventListener("load", (e) => {
         dispatch(changeUserImg({userImg:e.target.result}))
     })
+
+
     return (
         <section className="PersonUser">
             {displayAfter ? <span className="afterBalanc" 

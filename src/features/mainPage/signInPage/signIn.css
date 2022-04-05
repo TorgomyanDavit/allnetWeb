@@ -95,6 +95,21 @@
     flex-direction: column;
 }
 
+.formSignIn label {
+    position: relative;
+}
+
+.refusedMessage {
+    position: absolute;
+    font-weight: 400;
+    font-size: 15px;
+    color: red;
+    z-index: 10;
+    left: 0;
+    top: 72px;
+    font-weight: 900;
+}
+
 .formSignIn input {
     width: 100%;
     height: 70px;
@@ -166,6 +181,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    outline: none;
 }
 
 .signInSubmit:hover {
@@ -215,5 +231,9 @@
     height: 222px;
     background: radial-gradient( #CBCBFF 100%, #AAAAFF  100%);
     z-index: 0;
+}
+
+.outLIneError {
+    outline: 3px solid red !important;
 }
 

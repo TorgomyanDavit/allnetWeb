@@ -16,6 +16,8 @@ export function NewPassword() {
         <div className="forget " action="/forgetPassword" method="post" >
             <form className="formForget newPass" onSubmit={(e) => {
                 e.preventDefault()
+                // const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
             }}>
             <p className="titleForget">New pasowrd</p>
             <input type={inputType.oneinput} className="inputForget" placeholder="Password" name="newPassword" />

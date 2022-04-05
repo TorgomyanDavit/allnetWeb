@@ -15,7 +15,7 @@ import LgSmart from "../../images/LgSmart.png"
 import samsungImg from "../../images/samsungImg.png"
 import smartIcon from "../../images/SmartIcon.png"
 import { getAllContent } from "./getRequest";
-import { postRegister } from "./postRequest";
+import { postLogAuth, postRegister, postSendEmail, postSignIn } from "./postRequest";
 
 
 
@@ -39,8 +39,14 @@ const initialState = {
         ],
     },
     mainFaqPagination:[],
-    paginationTarif:[],
+    regEmailErrorAuthenticated:false,
+    loginemailValidation:false,
+    forgetemailError:false,
+    access_token:false,
+    logAuthRefresh:false,
 
+
+    paginationTarif:[],
     loading:{mainLoading:false},
 
 
@@ -258,6 +264,18 @@ const mainPageSlices = createSlice({
         },
         loading:(state) => {
             state.loading.mainLoading = false
+        },
+        registerAuth:(state) => {
+            state.regEmailErrorAuthenticated = false
+        },
+        loginAuth:(state) => {
+            state.loginemailValidation = false
+        },
+        forgetemailError:(state) => {
+            state.forgetemailError = false
+        },
+        logAuthRefresh:(state) => {
+            state.logAuthRefresh = !state.logAuthRefresh
         }
     },
 
@@ -308,21 +326,49 @@ const mainPageSlices = createSlice({
             .addCase(getAllContent.rejected,(state,action) => {
                 console.log("rejected promissAll");
             })
+
             // postRegister
-            .addCase(postRegister.fulfilled,(state,action) => {
-                console.log("fulfiled",action);
+            .addCase(postRegister.pending,(state,action) => {
+                state.loading.mainLoading = false
+                console.log("pending");
             })
-            .addCase(postRegister.rejected,(state,action) => {
-                console.log("rejected",action);
+            .addCase(postRegister.fulfilled,(state,action) => {
+                if(!!action.payload.errors) {state.regEmailErrorAuthenticated = true} 
+                else if(!!action.payload.access_token) {
+                    sessionStorage.setItem("authenticated", action.payload.access_token);
+                    state.loading.mainLoading = true
+                } else {state.access_token = null}
             })
 
+            // postLogin
+            .addCase(postSignIn.pending,(state,action) => {
+                state.loading.mainLoading = false
+            })
+            .addCase(postSignIn.fulfilled,(state,action) => {
+                if(!!action.payload.error) {state.loginemailValidation = true} 
+                else if(!!action.payload.access_token) {
+                    sessionStorage.setItem("authenticated", action.payload.access_token);
+                    state.loading.mainLoading = true
+                } 
+                state.loading.mainLoading = true
+                console.log("fulfiled",action);
+            })
+            // sendEmail
+            .addCase(postSendEmail.fulfilled,(state,action) => {
+                console.log(action.payload);
+            })
+            // LogAuth
+            .addCase(postLogAuth.fulfilled,(state,action) => {
+                console.log(action.payload.message);
+            })
     }
 })
 
 export const {
     aginationCount,closeLetter,delsetMessige,showThanks,changeFaq,changeRegAndSignImgdisplay,
     changeImgType,changeAnimationPathDone,changeAnimation,changeDisplay,changeDate,setValue,
-    setId,changeUserImg,checkLink,checkPlaceholder,loading
+    setId,changeUserImg,checkLink,checkPlaceholder,loading,registerAuth,logAuthRefresh,loginAuth,
+    forgetemailError
 } = mainPageSlices.actions
 
 export default mainPageSlices.reducer

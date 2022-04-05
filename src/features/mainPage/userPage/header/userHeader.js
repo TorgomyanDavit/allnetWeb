@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { BrowserRouter as Router, NavLink,Route, } from "react-router-dom"
 import User from "../user/user"
 import UserHome from "../userHome/userHome"
@@ -13,6 +13,9 @@ import { StatisticConfirmed } from "../userStatistic/statisticConfirmed"
 import { useState } from "react"
 import "./responsive.css"
 import Tarif from "../Tarif/tarif"
+import { logAuthRefresh } from "../../mainPageSlice"
+import { Redirect } from "react-router-dom"
+import { postLogAuth } from "../../postRequest"
 
 
 
@@ -20,6 +23,9 @@ function UserHeader({toggle}) {
     const state = useSelector((state) => state.mainPage)
     const [play,setPlay] = useState(false)
     const [animationPath,setAnimationPAth] = useState("")
+    const dispatch = useDispatch()
+    if(state.logAuthRefresh){setTimeout( () => { dispatch(logAuthRefresh({}))  },1000);return <Redirect to="/"/> };
+
 
 
     return (
@@ -35,9 +41,13 @@ function UserHeader({toggle}) {
                             )
                         })}
                     </div>
-                    <NavLink  to="./" className="exitIcon" activeClassName="activeClass">
+                    <button className="exitIcon" onClick={() => {
+                        dispatch(postLogAuth({path:state.server,token:sessionStorage.getItem("authenticated")}))
+                        sessionStorage.removeItem("authenticated");
+                        dispatch(logAuthRefresh())
+                    }}>
                         <img src="/mainPageImages/signOut.png" alt="signOut"/>
-                    </NavLink>
+                    </button>
                 </div>
                 <Route path="/userPage/userHome">
                     <UserHome changePlay={(value) => setPlay(value)} changeAnimationPath={(value) => {

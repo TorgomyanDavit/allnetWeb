@@ -2,22 +2,26 @@ import { NavLink } from "react-router-dom"
 import "./signIn.css"
 import { useEffect, useState } from "react";
 import "./responsive.css"
-import { changeRegAndSignImgdisplay } from "../mainPageSlice";
-import { useDispatch } from "react-redux";
+import { changeRegAndSignImgdisplay, loginAuth } from "../mainPageSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { postSignIn } from "../postRequest";
+import { Redirect } from "react-router-dom";
 
 
 
 function SignIn({toggle}) {
     let [type,setType] = useState("password")
     const dispatch = useDispatch()
+    const [passwordMatch,setMatch] = useState(false)
+    const state = useSelector( (state) => state.mainPage )
+    if(state.loginemailValidation) { setTimeout(() => { dispatch( loginAuth() ) },3000) }
+    let Authenticated = sessionStorage.getItem("authenticated");
+    if(Authenticated) {return <Redirect to="/userPage/userHome"/>}
 
-    // useEffect(() => {
-    //     dispatch(changeRegAndSignImgdisplay())
 
-    //     return () => {
-    //         dispatch(changeRegAndSignImgdisplay())
-    //     }
-    // },[])
+
+
+
     return (
         <div className="mainSignIn" style={{zIndex:toggle ? "-1" : "inherit"}}>
             <div className="signInImgDiv">
@@ -27,38 +31,64 @@ function SignIn({toggle}) {
             <div className="loginSignInDiv">
                 <div className="signInButtonDiv">
                     <NavLink to="/register" className="registerButton" activeClassName="activeRegisterButton">
-                        Registration
-                        <p className="registerButtonUnderLine"></p>
+                        Registration <p className="registerButtonUnderLine"></p>
                     </NavLink>
                     <NavLink to="/signIn" className="SignInButton" activeClassName="activeSignInButton">
-                        Sign in
-                        <p className="signInButtonUnderLine"></p>
+                        Sign in<p className="signInButtonUnderLine"></p>
                     </NavLink>
                 </div>
-                <div className="inputSignDiv">
-                    <form className="formSignIn">
-                        <input type="text" placeholder="Login"/>
+                <form className="inputSignDiv" onSubmit={(e) => {
+                        e.preventDefault()
+                        const input = e.target
+                        const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                        if(!!(input[0].value.match(mailformat)) && input[1].value.length > 5)  {
+                            dispatch(postSignIn({path:state.server, body:{email:input[0].value,password:input[1].value}}));
+                        } else if( !input[0].value.match(mailformat) ) {
+                            setMatch("emailnotDefined")
+                            setTimeout(() => {setMatch(false)},3000)
+                        } else if( input[1].value.length < 6 && input[1].value !== "" ) {
+                            setMatch("passwordError")
+                            setTimeout(() => {setMatch(false)},3000)
+                        } else if( input[1].value === "" ) {
+                            setMatch("emptyPassword")
+                            setTimeout(() => {setMatch(false)},3000)
+                        } 
+                    }}>
+                    <div className="formSignIn">
+                        <label>
+                            <input type="text" placeholder="Login" onFocus={() => { setMatch(false);dispatch(loginAuth())}} className={
+                                passwordMatch === "emailnotDefined" ?  "outLIneError" :
+                                passwordMatch === "passwordError" ?  "outLIneError" :
+                                state.loginemailValidation ? "outLIneError" : ""
+                            }/>
+                            {passwordMatch === "emailnotDefined" ? <p className="refusedMessage">email is not defined</p> : ""}
+                        </label>
                         <label className="labelForSignInPassvord">
-                            <input type={type} placeholder="Password"/>
-                            <button onClick={(e) => {
-                                e.preventDefault()
-                                setType(type === "password" ? "text" : "password")
-                            }}>
+                            <input type={type} placeholder="Password" onFocus={() => { setMatch(false);dispatch(loginAuth())}} className={
+                                passwordMatch === "emptyPassword" ?  "outLIneError" :
+                                passwordMatch === "passwordError" ?  "outLIneError" :
+                                state.loginemailValidation ? "outLIneError" : ""
+                            }/>
+                            <button onClick={(e) => {e.preventDefault(); setType(type === "password" ? "text" : "password")}}>
                                 <img src="/mainPageImages/showValue.png" alt="showValueImg"/>
                             </button>
+                            { 
+                                passwordMatch === "emptyPassword" ? <p className="refusedMessage">Fill Password</p> : 
+                                passwordMatch === "passwordError" ? <p className="refusedMessage">User does not exist</p> : 
+                                state.loginemailValidation ? <p className="refusedMessage">User does not exist</p> : ""
+                            }
                         </label>
-                    </form>
+                       
+                    </div>
                     <p className="rememberPassword">
                         <NavLink to="/forgetPassword" className="rememberPasswordLink">
                             Forgot your password ?
                         </NavLink>
                     </p>
-                    <NavLink to="/userPage/userHome" className="signInSubmit">Sign In</NavLink>
+                    <button className="signInSubmit">Sign In</button>
                     <hr className="signInunderLine"/>
-                </div>
-                <p className="SignInSocialNetworkTitle">
-                    Registration via social networks
-                </p>
+                </form>
+                <p className="SignInSocialNetworkTitle">Registration via social networks</p>
                 <div className="signInSocialMediaIcon">
                     <NavLink to={{pathname:"https://www.facebook.com/webschoolkz/"}} target="_blank">
                         <p style={{background:"#282828"}}>

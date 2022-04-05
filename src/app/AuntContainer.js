@@ -9,12 +9,11 @@ import './AuntContainer.css';
 
 
 
+
+
 function AuntContainer() {
     const state = useSelector((state) => state.mainPage)
-    const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(getAllContent(state.server))
-    },[])
+
 
     return (
         <div className="AuntContainer">

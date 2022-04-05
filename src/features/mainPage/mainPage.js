@@ -1,5 +1,5 @@
-import { useState } from "react"
-import { Route, Switch } from "react-router"
+import { useEffect, useState } from "react"
+import { Route, Switch} from "react-router"
 import { About } from "./about/about.js"
 import { Faq } from "../mainPage/FAQ/faq"
 import { Headers } from "./header/header.js"
@@ -10,27 +10,45 @@ import SignIn from "./signInPage/signIn.js"
 import UserHeader from "./userPage/header/userHeader.js"
 import { ContactUs } from "./contactUs/contactUs.js"
 import Thanks from "./userPage/Tarif/thankyouPopUp.js"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Router } from "react-router-dom"
 import Letter from "./contactUs/reCeiveLetter.js"
 import { ForgetPassword } from "./userPage/forgetPassword/forgetPassword.js"
 import { ReceiveLetter } from "./userPage/forgetPassword/receiveLet.js"
 import { NewPassword } from "./userPage/forgetPassword/newPassword.js"
+import { Redirect } from "react-router-dom"
+import { useHistory } from "react-router-dom"
+import { useLocation } from "react-router-dom"
+import { getAllContent } from "./getRequest.js"
+import { logAuthRefresh } from "./mainPageSlice"
 
 function MainPage() {
+    const dispatch = useDispatch()
     const state = useSelector((state) => state.mainPage)
+    const Authenticated = sessionStorage.getItem("authenticated");
+    const history = useLocation()
+
 
     let [type,setType] = useState("block")
     let [Width,setWidth] = useState("block")
     const [toggle,setToggle] = useState(false)
+    const pathNmae = history.pathname === "/" || history.pathname === "/register" || history.pathname === "/signIn"  
+    || history.pathname === "/about" || history.pathname === "/FAQ" || history.pathname === "/contactUs" 
+    || history.pathname === "/recLetter" || history.pathname === "/forgetPassword" || history.pathname === "/newPassword"
+     
+    useEffect(() => { dispatch(getAllContent(state.server))},[])
+    if(pathNmae === true && !!Authenticated === true ) {return <Redirect to="/userPage/userHome" />};
+    if(pathNmae === false && !!Authenticated === false ) {return <Redirect to="/signIn"/>};
 
     return (
         <div className="MainPage">
            <Headers type={type} Width={Width} toggle={toggle} setToggle={setToggle}/>
-           
            { state.receiveLetterShow ? <Letter/> : null }
+
+
            <Switch>
                 {state.TarifThanksShow ? <Thanks/> : null}
+
                 <Route path="/about">
                     <About toggle={toggle}/>
                 </Route>
@@ -65,6 +83,8 @@ function MainPage() {
                     }} toggle={toggle}/>
                 </Route>
            </Switch>
+
+
         </div>
     )
 }

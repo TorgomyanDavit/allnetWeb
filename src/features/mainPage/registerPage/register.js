@@ -1,33 +1,29 @@
 import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, NavLink } from "react-router-dom"
-import { changeRegAndSignImgdisplay } from "../mainPageSlice"
+import { changeRegAndSignImgdisplay, registerAuth } from "../mainPageSlice"
 import { postRegister } from "../postRequest"
 import "./register.css"
 import "./responsive.css"
 import axios from "axios"
+import { Redirect } from "react-router-dom"
 
 
 function Register({toggle}) {
-    const state = useSelector((state) => state.mainPage)
+    const state = useSelector( (state) => state.mainPage )
+    let Authenticated = sessionStorage.getItem("authenticated");
+
     const dispatch = useDispatch()
-    let [type,setType] = useState({
-        password:"password",
-        repeatPassword:"password"
-    })
+    let [type,setType] = useState( {password:"password",repeatPassword:"password"} )
     const [checkedAggre,setCheched] = useState(false)
     const [borderChecked,setborderChecked] = useState(false)
     const [nameField,setNameField] = useState(false)
     const [emailField,setemailField] = useState(false)
     const [passwordField,setpasswordField] = useState(false)
     const [repeatPasswordField,setrepeatPasswordField] = useState(false)
+    if(state.regEmailErrorAuthenticated) { setTimeout(() => { dispatch( registerAuth() ) },3000) }
+    if(Authenticated) {return <Redirect to="/userPage/userHome"/>}
 
-
-
-
-
-    // to="/userPage/userHome"
-    
     return (
         <div className="registerMAin" style={{zIndex:toggle ? "-1" : "inherit"}}>
             <div className="registerImgDiv">
@@ -48,36 +44,27 @@ function Register({toggle}) {
                     <form className="formRegistration" onSubmit={(e) => {
                         e.preventDefault()
                         let input = e.target
-                        
-                        console.log( );
-                        fetch(`http://127.0.0.1:8000/api/register`,{
-                            method : "post",
-                            headers : { 
-                                "Content-Type" : "application/json",
-                                'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content
-                            },
-                            body : JSON.stringify({ username:'Sergdge',email:'tesfdggft@mail.ru',password:'123dgd123123'})
-                        }).then((resp) => {
-                            return resp.json();
-                        }).then((resp) => {
-                            console.log("exav",resp)
-                        }).catch((err) => {
-                            console.log("chexav",err)
-                        })
-
-                        // dispatch(postRegister({path:state.server,body:{ username:input[0].value,email:input[1].value,password:input[2].value}}))
-                        // if((input[2].value === input[4].value) && input[2].value !== "" && checkedAggre === true) {
-                        //    console.log("dispatchTrue");
-                        //     dispatch(postRegister({path:state.server,body:{ username:input[0].value,email:input[1].value,password:input[2].value}}))
-                        // }
-                        // else if(!input[0].value) {setNameField(true);setTimeout(() => {setNameField(false)},2000)}
-                        // else if(!input[1].value) {setemailField(true);setTimeout(() => {setemailField(false)},2000)}
-                        // else if(!input[2].value) {setpasswordField(true);setTimeout(() => {setpasswordField(false)},2000)}
-                        // else if(!input[4].value) {setrepeatPasswordField(true);setTimeout(() => {setrepeatPasswordField(false)},2000)}
-                        // else if(!checkedAggre) {setborderChecked(true);setTimeout(() => {setborderChecked(false)},2000)}
+                        const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                        if((input[2].value === input[4].value) && input[2].value.length > 5 && checkedAggre === true && !!input[1].value.match(mailformat) === true) {
+                            console.log("send from routher true");dispatch(postRegister({path:state.server,body:{ username:input[0].value,email:input[1].value,password:input[2].value}}));
+                        }
+                        else if(!input[0].value) {setNameField(true);setTimeout(() => {setNameField(false)},3000)}
+                        else if(!(input[1].value.match(mailformat))) {setemailField(true);setTimeout(() => {setemailField(false)},3000)}
+                        else if(!(input[2].value.length > 5)) {setpasswordField(true);setTimeout(() => {setpasswordField(false)},3000)}
+                        else if(!(input[2].value === input[4].value)) {setrepeatPasswordField(true);setTimeout(() => {setrepeatPasswordField(false)},3000)}
+                        else if(!checkedAggre) {setborderChecked(true);setTimeout(() => {setborderChecked(false)},3000)}
                     }}>
-                        <input type="text" placeholder="Name" className={`${nameField ? "outLIneError" : ""}`} onFocus={() => setNameField(false)}/>
-                        <input placeholder="E-mail" className={`${emailField ? "outLIneError" : ""}`} onFocus={() => setemailField(false)}/>
+                        <label>
+                            <input type="text" placeholder="Name" className={`${nameField ? "outLIneError" : ""}`} onFocus={() => setNameField(false)}/>
+                            {nameField ? <p className="refusedMessage">This Name is not defined</p> : ""}
+                        </label>
+                        <label>
+                            <input placeholder="E-mail" className={`${emailField ? "outLIneError" : state.regEmailErrorAuthenticated ? "outLIneError"  : ""}`} onFocus={() => setemailField(false)}/>
+                            {
+                                emailField ? <p className="refusedMessage">"The email must be a valid email address."</p> : 
+                                state.regEmailErrorAuthenticated ? <p className="refusedMessage">the email has already been taken.</p> : ""
+                            }
+                        </label>
                         <label className="labelForPassvord">
                             <input type={type.password} placeholder="Password" className={`${passwordField ? "outLIneError" : ""}`} onFocus={() => setpasswordField(false)}/>
                             <button onClick={(e) => { 
@@ -89,6 +76,7 @@ function Register({toggle}) {
                             }}>
                                 <img src="/mainPageImages/showValue.png" alt="showValueImg"/>
                             </button>
+                            {passwordField ? <p className="refusedMessage">Pasword length must be 6 charachter</p> : ""}
                         </label>
 
                         <label className="labelForPassvord">
@@ -102,6 +90,7 @@ function Register({toggle}) {
                             }}>
                                 <img src="/mainPageImages/showValue.png" alt="showValueImg"/>
                             </button>
+                            {repeatPasswordField ? <p className="refusedMessage">Repeate password is not match </p> : ""}
                         </label>
                         <button className="RegisterSubmit">Registration</button>
                     </form>

@@ -8,7 +8,7 @@ export const getAllContent = createAsyncThunk(
             fetch(`${path}/about`),
             fetch(`${path}/contact`),
             fetch(`${path}/faq`),
-            fetch(`${path}/payment`)
+            // fetch(`${path}/payment`)
             // fetch(`${path}/user`)
 
 

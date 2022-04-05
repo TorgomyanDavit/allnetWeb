@@ -1,30 +1,57 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { axios } from "axios";
 export const postRegister = createAsyncThunk(
-    "mainPage/postAllContent",
-    async ({path,body}) => {
+    "mainPage/postRegister",
+        async ({path,body}) => {
+        const response = await fetch(`${path}/register`,{
+            mode: 'cors',
+            method : "POST",
+            headers :{'Content-Type' : 'application/json','Accept': 'application/json'},
+            body : JSON.stringify(body)
+        })
+        return response.json()
+    }
+)
 
-        // fetch(`http://127.0.0.1:8000/api/register`,{
-        //     method : "post",
-        //     headers : { "Content-Type" : "application/json"},
-        //     body : JSON.stringify({ username:'Serge',email:'test@mail.ru',password:'123123123'})
-        // }).then((resp) => {
-        //     return resp.json();
-        // }).then((resp) => {
-        //     console.log("exav",resp)
-        // }).catch((err) => {
-        //     console.log("chexav",err)
-        // })
+export const postSignIn = createAsyncThunk(
+    "mainPage/postSignIn",
+        async ({path,body}) => {
+            console.log("post request",body);
+        const response = await fetch(`${path}/login`,{
+            mode: 'cors',
+            method : "POST",
+            headers :{'Content-Type' : 'application/json','Accept': 'application/json'},
+            body : JSON.stringify(body)
+        })
+        return response.json()
+    }
+)
 
-        // const response = await axios({
-        //     method: 'post',
-        //     url: `${path}/register`,
-        //     data: body
-        // });
+export const postLogAuth = createAsyncThunk(
+    "mainPage/postLogauth",
+        async ({path,token}) => {
+        console.log("logauth token",token);
+        const response = await fetch(`${path}/logout`,{
+            mode: 'cors',
+            method : "POST",
+            headers :{'Content-Type' : 'application/json','Accept' : 'application/json','Authorization': `Bearer ${token}`}
+        })
 
-        // return response
+        return response.json()
+    }
+)
 
-        // const response = await axios.POST(`${path}/register1`,body)
-        // return response
+
+export const postSendEmail = createAsyncThunk(
+    "mainPage/postSendEmail",
+        async ({path,body}) => {
+        console.log("logauth token",body);
+        const response = await fetch(`${path}/logout`,{
+            mode: 'cors',
+            method : "POST",
+            headers :{'Content-Type' : 'application/json','Accept' : 'application/json'},
+            body : JSON.stringify(body)
+        })
+
+        return response.json()
     }
 )
