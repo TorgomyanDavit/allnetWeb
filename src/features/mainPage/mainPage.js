@@ -32,13 +32,18 @@ function MainPage() {
     let [type,setType] = useState("block")
     let [Width,setWidth] = useState("block")
     const [toggle,setToggle] = useState(false)
-    const pathNmae = history.pathname === "/" || history.pathname === "/register" || history.pathname === "/signIn"  
+    const pathName = history.pathname === "/" || history.pathname === "/register" || history.pathname === "/signIn"  
     || history.pathname === "/about" || history.pathname === "/FAQ" || history.pathname === "/contactUs" 
     || history.pathname === "/recLetter" || history.pathname === "/forgetPassword" || history.pathname === "/newPassword"
      
-    useEffect(() => { dispatch(getAllContent(state.server))},[])
-    if(pathNmae === true && !!Authenticated === true ) {return <Redirect to="/userPage/userHome" />};
-    if(pathNmae === false && !!Authenticated === false ) {return <Redirect to="/signIn"/>};
+    useEffect(() => { 
+        console.log(state.userPage,history.pathname);
+        if(pathName) {
+            dispatch(getAllContent(state.server))
+        }
+    },[])
+    if(pathName === true && !!Authenticated === true ) {return <Redirect to="/userPage/userHome" />};
+    if(pathName === false && !!Authenticated === false ) {return <Redirect to="/signIn"/>};
 
     return (
         <div className="MainPage">

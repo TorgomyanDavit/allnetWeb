@@ -14,6 +14,19 @@
     margin-top: 254px;
 }
 
+.forLabel {
+    position: relative;
+    margin-top: 37px;
+}
+
+.forLabel > .refusedMessage {
+    top: 80px;
+}
+
+.refusedforget2 {
+    top: 70px !important;
+}
+
 .titleForget {
     color: #010023;
     font-weight: bold;
@@ -28,7 +41,6 @@
     background: #28282810;
     opacity: 0.9;
     padding-left: 40px;
-    margin-top: 37px;
     color: #282828;
     font-weight: 600;
     font-size: 24px;
@@ -44,13 +56,14 @@
     height: 73px;
     background: #EEBA06;
     border-radius: 10px;
-    margin-top: 35px;
+    margin-top: 21px;
     font-weight: 600;
     font-size: 24px;
     color: #282828;
     outline: none;
     border: none;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .receiveLet {
@@ -119,6 +132,10 @@
     right: 80px !important;
 }
 
+.outLIneError {
+    outline: 3px solid red !important;
+}
+
 @media screen and (max-width:450px) { 
     .forget {
         padding: 0 15px;
@@ -150,6 +167,7 @@
         margin-top: 16px;
         font-weight: 600;
         font-size: 18px;
+        cursor: pointer;
     }
 
     .inputForgetnew {

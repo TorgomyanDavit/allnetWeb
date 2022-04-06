@@ -10,10 +10,6 @@ export const getAllContent = createAsyncThunk(
             fetch(`${path}/faq`),
             // fetch(`${path}/payment`)
             // fetch(`${path}/user`)
-
-
-
-            
         ])
         .then((streams) => {return Promise.all(streams.map((stream) => stream.json()))})
         return response

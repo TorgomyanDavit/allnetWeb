@@ -10,6 +10,7 @@ import { changeAnimation } from "../../mainPageSlice"
 import "./userHome.css"
 import "./responsiveHome.css"
 import "./animationResponsive.css"
+import { getUser } from "../../postRequest";
 
 
 
@@ -22,6 +23,12 @@ function UserHome({changePlay}) {
     let [time,setTime] = Hook()
     const canvasRef = useRef(null)
     const dispatch = useDispatch()
+    
+    console.log(state.mainLoading);
+    useEffect(() => {
+        console.log("userHome");
+        dispatch(getUser({path:state.server,token:sessionStorage.getItem("authenticated")}))
+    },[])
 
     useEffect(() => {
         changePlay(false)
@@ -41,6 +48,7 @@ function UserHome({changePlay}) {
         time.borderSize > 2 ? context.strokeStyle = "red" : context.strokeStyle = "#00A3FF";
         context.stroke();
     },[time.second])
+
 
     return (
         <div className="userHome">

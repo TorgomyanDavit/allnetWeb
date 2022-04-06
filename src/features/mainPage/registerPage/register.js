@@ -46,7 +46,7 @@ function Register({toggle}) {
                         let input = e.target
                         const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
                         if((input[2].value === input[4].value) && input[2].value.length > 5 && checkedAggre === true && !!input[1].value.match(mailformat) === true) {
-                            console.log("send from routher true");dispatch(postRegister({path:state.server,body:{ username:input[0].value,email:input[1].value,password:input[2].value}}));
+                            dispatch(postRegister({path:state.server,body:{ username:input[0].value,email:input[1].value,password:input[2].value}}));
                         }
                         else if(!input[0].value) {setNameField(true);setTimeout(() => {setNameField(false)},3000)}
                         else if(!(input[1].value.match(mailformat))) {setemailField(true);setTimeout(() => {setemailField(false)},3000)}

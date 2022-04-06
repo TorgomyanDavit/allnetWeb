@@ -15,7 +15,7 @@ import LgSmart from "../../images/LgSmart.png"
 import samsungImg from "../../images/samsungImg.png"
 import smartIcon from "../../images/SmartIcon.png"
 import { getAllContent } from "./getRequest";
-import { postLogAuth, postRegister, postSendEmail, postSignIn } from "./postRequest";
+import { forgetPass, getUser, newPass, postLogAuth, postRegister, postSignIn, sendEmail } from "./postRequest";
 
 
 
@@ -39,11 +39,13 @@ const initialState = {
         ],
     },
     mainFaqPagination:[],
+    userPage:null,
     regEmailErrorAuthenticated:false,
     loginemailValidation:false,
     forgetemailError:false,
     access_token:false,
     logAuthRefresh:false,
+    sendEmailRedirect:false,
 
 
     paginationTarif:[],
@@ -281,86 +283,121 @@ const mainPageSlices = createSlice({
 
     extraReducers:(builder) => {
         builder
-            .addCase(getAllContent.fulfilled,(state,action) => {
-                action.payload.forEach((data) => {
-                    let key = Object.keys(data)
-                    switch(key[0]) {
-                        case "home" : 
-                        state.mainPagePagination.description = data.home.description
-                        state.mainPagePagination.title = data.home.title
-                        break;
+        .addCase(getAllContent.fulfilled,(state,action) => {
+            action.payload.forEach((data) => {
+                let key = Object.keys(data)
+                switch(key[0]) {
+                    case "home" : 
+                    state.mainPagePagination.description = data.home.description
+                    state.mainPagePagination.title = data.home.title
+                    break;
 
-                        case "about" : 
-                        state.mainPAboutPagination.description = data.about.content;
-                        break;
+                    case "about" : 
+                    state.mainPAboutPagination.description = data.about.content;
+                    break;
 
-                        case "contact" : 
-                        let {phone,email,facebook_link,google_link,twitter_link,telegram_link} = data.contact
-                        state.mainContactPagination.messagePhone = phone
-                        state.mainContactPagination.messageEmail = email
-                        state.mainContactPagination.contactDivSocialLink = state.mainContactPagination.contactDivSocialLink.map((val) => {
-                            switch(val.id) {
-                                case 1 : val.Link = facebook_link;return val;
-                                case 2 : val.Link = google_link;return val;
-                                case 3 : val.Link = telegram_link;return val;
-                                case 4 : val.Link = twitter_link;return val;
-                            }
-                        });
-                        break;
+                    case "contact" : 
+                    let {phone,email,facebook_link,google_link,twitter_link,telegram_link} = data.contact
+                    state.mainContactPagination.messagePhone = phone
+                    state.mainContactPagination.messageEmail = email
+                    state.mainContactPagination.contactDivSocialLink = state.mainContactPagination.contactDivSocialLink.map((val) => {
+                        switch(val.id) {
+                            case 1 : val.Link = facebook_link;return val;
+                            case 2 : val.Link = google_link;return val;
+                            case 3 : val.Link = telegram_link;return val;
+                            case 4 : val.Link = twitter_link;return val;
+                        }
+                    });
+                    break;
 
-                        case "faq" : 
-                            state.mainFaqPagination = data.faq.map((val) => {
-                                return {id:val.id,title:val.title,description:val.description,simbol:"+",open:false}
-                            })
-                        break;
+                    case "faq" : 
+                        state.mainFaqPagination = data.faq.map((val) => {
+                            return {id:val.id,title:val.title,description:val.description,simbol:"+",open:false}
+                        })
+                    break;
 
-                        case "tariffs" : 
-                            state.paginationTarif = data.tariffs
-                        break;
-                        
-                    }
-                })
-                state.loading.mainLoading = true
-                console.log(action.payload);
+                    case "tariffs" : 
+                        state.paginationTarif = data.tariffs
+                    break;
+                    
+                }
             })
-            .addCase(getAllContent.rejected,(state,action) => {
-                console.log("rejected promissAll");
-            })
+            state.loading.mainLoading = true
+            console.log(action.payload);
+        })
+        .addCase(getAllContent.rejected,(state,action) => {
+            console.log("rejected promissAll");
+        })
 
-            // postRegister
-            .addCase(postRegister.pending,(state,action) => {
-                state.loading.mainLoading = false
-                console.log("pending");
-            })
-            .addCase(postRegister.fulfilled,(state,action) => {
-                if(!!action.payload.errors) {state.regEmailErrorAuthenticated = true} 
-                else if(!!action.payload.access_token) {
-                    sessionStorage.setItem("authenticated", action.payload.access_token);
-                    state.loading.mainLoading = true
-                } else {state.access_token = null}
-            })
+        // postRegister
+        .addCase(postRegister.pending,(state,action) => {
+            state.loading.mainLoading = false
+            console.log("pending");
+        })
+        .addCase(postRegister.fulfilled,(state,action) => {
+            if(!!action.payload.errors) {state.regEmailErrorAuthenticated = true} 
+            else if(!!action.payload.access_token) {
+                console.log(action);
+                sessionStorage.setItem("authenticated", action.payload.access_token);
+            } else {state.access_token = null}
+        })
 
-            // postLogin
-            .addCase(postSignIn.pending,(state,action) => {
-                state.loading.mainLoading = false
-            })
-            .addCase(postSignIn.fulfilled,(state,action) => {
-                if(!!action.payload.error) {state.loginemailValidation = true} 
-                else if(!!action.payload.access_token) {
-                    sessionStorage.setItem("authenticated", action.payload.access_token);
-                    state.loading.mainLoading = true
-                } 
-                state.loading.mainLoading = true
-                console.log("fulfiled",action);
-            })
-            // sendEmail
-            .addCase(postSendEmail.fulfilled,(state,action) => {
-                console.log(action.payload);
-            })
-            // LogAuth
-            .addCase(postLogAuth.fulfilled,(state,action) => {
-                console.log(action.payload.message);
-            })
+        // postLogin
+        .addCase(postSignIn.pending,(state,action) => {
+            state.loading.mainLoading = false
+        })
+        .addCase(postSignIn.fulfilled,(state,action) => {
+            if(!!action.payload.error) {state.loginemailValidation = true} 
+            else if(!!action.payload.access_token) {
+                sessionStorage.setItem("authenticated", action.payload.access_token);
+            } 
+            console.log("fulfiled",action);
+        })
+
+        //  get User
+        .addCase(getUser.pending,(state,action) => {
+            console.log("pending user");
+            state.loading.mainLoading = false
+        })
+        .addCase(getUser.fulfilled,(state,action) => {
+            console.log("fulfiled user",action);
+            if(!!action.payload.error) {state.loginemailValidation = true} 
+            else if(!!action.payload.access_token) {
+                sessionStorage.setItem("authenticated", action.payload.access_token);
+            } 
+            state.loading.mainLoading = true
+        })
+
+        // LogAuth
+        .addCase(postLogAuth.pending,(state,action) => {
+            state.loading.mainLoading = false
+            console.log(action.payload.message);
+        })
+        .addCase(postLogAuth.fulfilled,(state,action) => {
+            state.loading.mainLoading = true
+            console.log(action.payload.message);
+        })
+
+        // sendEmail
+        .addCase(forgetPass.pending,(state,action) => {
+            console.log("pending",action);
+            state.loading.mainLoading = false
+        })
+        .addCase(forgetPass.fulfilled,(state,action) => {
+            console.log("fulfiled",action);
+            if(!action.payload) {state.sendEmailRedirect = true}
+            state.loading.mainLoading = true
+        })
+
+        // newPass
+        .addCase(newPass.pending,(state,action) => {
+            console.log("pending",action);
+            state.loading.mainLoading = false
+        })
+        .addCase(newPass.fulfilled,(state,action) => {
+            console.log("fulfilled",action);
+            state.loading.mainLoading = true
+        })
     }
 })
 

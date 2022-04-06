@@ -18,10 +18,6 @@ function SignIn({toggle}) {
     let Authenticated = sessionStorage.getItem("authenticated");
     if(Authenticated) {return <Redirect to="/userPage/userHome"/>}
 
-
-
-
-
     return (
         <div className="mainSignIn" style={{zIndex:toggle ? "-1" : "inherit"}}>
             <div className="signInImgDiv">
@@ -42,7 +38,7 @@ function SignIn({toggle}) {
                         const input = e.target
                         const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
                         if(!!(input[0].value.match(mailformat)) && input[1].value.length > 5)  {
-                            dispatch(postSignIn({path:state.server, body:{email:input[0].value,password:input[1].value}}));
+                            dispatch(postSignIn({path:state.server,body:{email:input[0].value,password:input[1].value}}));
                         } else if( !input[0].value.match(mailformat) ) {
                             setMatch("emailnotDefined")
                             setTimeout(() => {setMatch(false)},3000)
