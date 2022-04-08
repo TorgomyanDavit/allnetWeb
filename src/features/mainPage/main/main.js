@@ -11,7 +11,6 @@ function Main({changeType,toggle}) {
     const [width,setWidth] = useState(false)
     const dispatch = useDispatch()
     const state = useSelector((state) => state.mainPage)
-
     useEffect(() => {
         dispatch(changeImgType({type:true}))
         if(window.screen.width=== 375) {

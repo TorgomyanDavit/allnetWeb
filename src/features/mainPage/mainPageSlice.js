@@ -15,7 +15,7 @@ import LgSmart from "../../images/LgSmart.png"
 import samsungImg from "../../images/samsungImg.png"
 import smartIcon from "../../images/SmartIcon.png"
 import { getAllContent } from "./getRequest";
-import { forgetPass, getUser, newPass, postLogAuth, postRegister, postSignIn, sendEmail } from "./postRequest";
+import { sendEmail, getUserPage, newPass, postLogAuth, postRegister, postSignIn } from "./postRequest";
 
 
 
@@ -39,13 +39,15 @@ const initialState = {
         ],
     },
     mainFaqPagination:[],
-    userPage:null,
+    userPage:[],
+
+
     regEmailErrorAuthenticated:false,
     loginemailValidation:false,
     forgetemailError:false,
     access_token:false,
-    logAuthRefresh:false,
     sendEmailRedirect:false,
+    // newPasswordSucces:false,
 
 
     paginationTarif:[],
@@ -164,12 +166,8 @@ const initialState = {
         },
     ],
     MainPageTvChanne:[smartIcon,androidIcon,iosIcon,LgSmart,samsungImg],
-
     TarifThanksShow:false,
     receiveLetterShow:false,
-
-
-
 }
 
 const mainPageSlices = createSlice({
@@ -276,14 +274,19 @@ const mainPageSlices = createSlice({
         forgetemailError:(state) => {
             state.forgetemailError = false
         },
-        logAuthRefresh:(state) => {
-            state.logAuthRefresh = !state.logAuthRefresh
+        sendLetterMail:(state,action) => {
+            state.sendEmailRedirect = false
         }
     },
 
     extraReducers:(builder) => {
         builder
+        .addCase(getAllContent.pending,(state,action) => {
+            console.log("pending Getallcontent",action);
+            state.loading.mainLoading = "loading"
+        })
         .addCase(getAllContent.fulfilled,(state,action) => {
+            console.log("fullfiled Getallcontent",action);
             action.payload.forEach((data) => {
                 let key = Object.keys(data)
                 switch(key[0]) {
@@ -322,90 +325,98 @@ const mainPageSlices = createSlice({
                     
                 }
             })
-            state.loading.mainLoading = true
-            console.log(action.payload);
+            state.loading.mainLoading = false
+            
         })
         .addCase(getAllContent.rejected,(state,action) => {
-            console.log("rejected promissAll");
+            console.log("rejected Getallcontent",action);
         })
 
         // postRegister
         .addCase(postRegister.pending,(state,action) => {
-            state.loading.mainLoading = false
-            console.log("pending");
+            state.loading.mainLoading = "loading"
+            console.log("pending register",action);
         })
         .addCase(postRegister.fulfilled,(state,action) => {
             if(!!action.payload.errors) {state.regEmailErrorAuthenticated = true} 
             else if(!!action.payload.access_token) {
-                console.log(action);
                 sessionStorage.setItem("authenticated", action.payload.access_token);
             } else {state.access_token = null}
+            state.loading.mainLoading = false
+            console.log("fulfiled register",action);
+
         })
 
         // postLogin
         .addCase(postSignIn.pending,(state,action) => {
-            state.loading.mainLoading = false
+            console.log("pending signin",action);
+            state.loading.mainLoading = "loading"
         })
         .addCase(postSignIn.fulfilled,(state,action) => {
-            if(!!action.payload.error) {state.loginemailValidation = true} 
+            if(!!action.payload.error) {state.loading.mainLoading = true;state.loginemailValidation = true} 
             else if(!!action.payload.access_token) {
                 sessionStorage.setItem("authenticated", action.payload.access_token);
             } 
-            console.log("fulfiled",action);
+            state.loading.mainLoading = false
+            console.log("fulfiled signin",action);
         })
 
-        //  get User
-        .addCase(getUser.pending,(state,action) => {
-            console.log("pending user");
-            state.loading.mainLoading = false
+        // get UserPageMain
+        .addCase(getUserPage.pending,(state,action) => {
+            console.log("pending userPage",action);
+            state.loading.mainLoading = "loading"
         })
-        .addCase(getUser.fulfilled,(state,action) => {
-            console.log("fulfiled user",action);
+        .addCase(getUserPage.fulfilled,(state,action) => {
+            console.log("fulfiled userPAge",action);
             if(!!action.payload.error) {state.loginemailValidation = true} 
             else if(!!action.payload.access_token) {
                 sessionStorage.setItem("authenticated", action.payload.access_token);
             } 
-            state.loading.mainLoading = true
+            state.userPage = action.payload
+            state.loading.mainLoading = false
         })
 
         // LogAuth
         .addCase(postLogAuth.pending,(state,action) => {
-            state.loading.mainLoading = false
-            console.log(action.payload.message);
+            console.log("pending logAuth",action);
+            state.loading.mainLoading = "loading"
         })
         .addCase(postLogAuth.fulfilled,(state,action) => {
-            state.loading.mainLoading = true
-            console.log(action.payload.message);
+            console.log("fulfiled logauth",action);
+            state.loading.mainLoading = false
         })
 
         // sendEmail
-        .addCase(forgetPass.pending,(state,action) => {
-            console.log("pending",action);
-            state.loading.mainLoading = false
+        .addCase(sendEmail.pending,(state,action) => {
+            console.log("pending sendMail",action);
+            state.loading.mainLoading = "loading"
         })
-        .addCase(forgetPass.fulfilled,(state,action) => {
-            console.log("fulfiled",action);
-            if(!action.payload) {state.sendEmailRedirect = true}
-            state.loading.mainLoading = true
+        .addCase(sendEmail.fulfilled,(state,action) => {
+            console.log("fulfiled sendMail",action);
+            if(!action.payload.error) {state.sendEmailRedirect = true} 
+            else if(!!action.payload.error) {state.forgetemailError = true} 
+            state.loading.mainLoading = false
         })
 
         // newPass
         .addCase(newPass.pending,(state,action) => {
-            console.log("pending",action);
-            state.loading.mainLoading = false
+            console.log("pending newPassword",action);
+            state.loading.mainLoading = "loading";
         })
         .addCase(newPass.fulfilled,(state,action) => {
-            console.log("fulfilled",action);
-            state.loading.mainLoading = true
+            console.log("fulfiled newPassword",action);
+            state.loading.mainLoading = false;
         })
     }
 })
-
+// torgomyandavid96@gmail.com
+// davit.torgomyan96@mail.ru
 export const {
     aginationCount,closeLetter,delsetMessige,showThanks,changeFaq,changeRegAndSignImgdisplay,
     changeImgType,changeAnimationPathDone,changeAnimation,changeDisplay,changeDate,setValue,
-    setId,changeUserImg,checkLink,checkPlaceholder,loading,registerAuth,logAuthRefresh,loginAuth,
-    forgetemailError
+    setId,changeUserImg,checkLink,checkPlaceholder,loading,registerAuth,loginAuth,
+    forgetemailError,sendLetterMail
 } = mainPageSlices.actions
 
 export default mainPageSlices.reducer
+

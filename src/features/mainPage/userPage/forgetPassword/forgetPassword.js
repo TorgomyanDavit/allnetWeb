@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Redirect } from "react-router-dom"
 import { Link } from "react-router-dom"
 import { forgetemailError } from "../../mainPageSlice"
-import { forgetPass } from "../../postRequest"
+import { sendEmail } from "../../postRequest"
 import "./forget.css"
 
 
@@ -13,8 +13,6 @@ export function ForgetPassword() {
     if(state.forgetemailError) { setTimeout(() => { dispatch( forgetemailError() ) },3000) }
     const [correctEmailMatch,setMatch] = useState(false)
     if(state.sendEmailRedirect) {return <Redirect to="/recLetter"/>}
-
-
 
 
     return (
@@ -27,12 +25,12 @@ export function ForgetPassword() {
                     setMatch(true)
                     setTimeout(() => {setMatch(false)},3000)
                 } else if(!!input[0].value.match(mailformat)) {
-                    console.log("gnac post");
-                    dispatch(forgetPass({path:state.server,body:{email:input[0].value}}))
+                    localStorage.setItem("email", input[0].value );
+                    dispatch(sendEmail({path:state.server,body:{email:input[0].value}}))
                 }
             }}>
                 <p className="titleForget">Send Email</p>
-                <div className="forLabel">
+                <div className="forLabel newPasswordPage">
                     <input  placeholder="Email" name="email" autoComplete="off"
                     onFocus={() => { setMatch(false);dispatch(forgetemailError())}} 
                     className={`inputForget  ${correctEmailMatch ? "outLIneError" : state.forgetemailError ? "outLIneError" : ""}`}

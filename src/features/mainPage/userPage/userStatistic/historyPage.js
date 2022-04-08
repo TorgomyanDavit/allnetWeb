@@ -18,7 +18,6 @@ export function HistoryPage({showValue,child}) {
 
 
     useEffect(() => {
-        console.log(activePage)
         child(activePage)
     },[changeActive])
 

@@ -13,7 +13,6 @@ import { StatisticConfirmed } from "../userStatistic/statisticConfirmed"
 import { useState } from "react"
 import "./responsive.css"
 import Tarif from "../Tarif/tarif"
-import { logAuthRefresh } from "../../mainPageSlice"
 import { Redirect } from "react-router-dom"
 import { postLogAuth } from "../../postRequest"
 
@@ -24,9 +23,6 @@ function UserHeader({toggle}) {
     const [play,setPlay] = useState(false)
     const [animationPath,setAnimationPAth] = useState("")
     const dispatch = useDispatch()
-    if(state.logAuthRefresh){setTimeout( () => { dispatch(logAuthRefresh({}))  },1000);return <Redirect to="/"/> };
-
-
 
     return (
         <div className="userMainPAge" style={{zIndex:toggle ? "-1" : "inherit"}}>
@@ -44,7 +40,6 @@ function UserHeader({toggle}) {
                     <button className="exitIcon" onClick={() => {
                         dispatch(postLogAuth({path:state.server,token:sessionStorage.getItem("authenticated")}))
                         sessionStorage.removeItem("authenticated");
-                        dispatch(logAuthRefresh())
                     }}>
                         <img src="/mainPageImages/signOut.png" alt="signOut"/>
                     </button>

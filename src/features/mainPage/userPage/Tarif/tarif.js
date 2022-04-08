@@ -9,10 +9,6 @@ export default function Tarif() {
     const state = useSelector((state) => state.mainPage)
     const dispatch = useDispatch()
     let USref = useRef(null)
-
-    console.log(state.paginationTarif);
-
-
     return (
         <section className="tarifMain">
             <div className="tarifHeader">

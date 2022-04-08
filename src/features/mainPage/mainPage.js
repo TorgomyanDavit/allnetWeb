@@ -20,7 +20,7 @@ import { Redirect } from "react-router-dom"
 import { useHistory } from "react-router-dom"
 import { useLocation } from "react-router-dom"
 import { getAllContent } from "./getRequest.js"
-import { logAuthRefresh } from "./mainPageSlice"
+import {useParams} from "react-router-dom"
 
 function MainPage() {
     const dispatch = useDispatch()
@@ -32,28 +32,23 @@ function MainPage() {
     let [type,setType] = useState("block")
     let [Width,setWidth] = useState("block")
     const [toggle,setToggle] = useState(false)
+    let err = /[/]newPassword[/][\d|\w|\W]+@\w+([\.-]?\w+)*(\.\w{2,3})+$/
     const pathName = history.pathname === "/" || history.pathname === "/register" || history.pathname === "/signIn"  
     || history.pathname === "/about" || history.pathname === "/FAQ" || history.pathname === "/contactUs" 
-    || history.pathname === "/recLetter" || history.pathname === "/forgetPassword" || history.pathname === "/newPassword"
-     
-    useEffect(() => { 
-        console.log(state.userPage,history.pathname);
-        if(pathName) {
-            dispatch(getAllContent(state.server))
-        }
-    },[])
-    if(pathName === true && !!Authenticated === true ) {return <Redirect to="/userPage/userHome" />};
-    if(pathName === false && !!Authenticated === false ) {return <Redirect to="/signIn"/>};
+    || history.pathname === "/recLetter" || history.pathname === "/forgetPassword" || !!err.exec(history.pathname)
+    useEffect(() => { if(pathName) { dispatch(getAllContent(state.server))} },[])
+    // let reg = /^\d+\s[|]\s[\d|\w|\W]+/for authentication token
+
+    if(pathName === true && !!Authenticated === true ) {return <Redirect to="/userPage/userHome"/>}  
+    else if(pathName === false && !!Authenticated === false ) {return <Redirect to="/signIn"/>}
 
     return (
         <div className="MainPage">
            <Headers type={type} Width={Width} toggle={toggle} setToggle={setToggle}/>
            { state.receiveLetterShow ? <Letter/> : null }
 
-
            <Switch>
                 {state.TarifThanksShow ? <Thanks/> : null}
-
                 <Route path="/about">
                     <About toggle={toggle}/>
                 </Route>
@@ -69,7 +64,7 @@ function MainPage() {
                 <Route path="/recLetter">
                     <ReceiveLetter/>
                 </Route>
-                <Route path="/newPassword">
+                <Route path="/newPassword/:token/:email">
                     <NewPassword/>
                 </Route>
                 <Route path="/register">

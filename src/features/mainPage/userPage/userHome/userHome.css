@@ -19,6 +19,24 @@
     justify-content: space-between;
 }
 
+
+.registerDescriptionDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 342px;
+    height: 268px;
+    margin: 91px 0 0 100px;
+    z-index: 1;
+}
+
+.registerDescriptionDiv {
+    width: 342px;
+    height: 268px;
+    margin: 91px 0 0 100px;
+    z-index: 1;
+}
+
 .homeImgDiv {
     width: 1011px;
     height: 414px;
@@ -46,12 +64,7 @@
     z-index: 1;
 }
 
-.registerDescriptionDiv {
-    width: 342px;
-    height: 268px;
-    margin: 91px 0 0 100px;
-    z-index: 1;
-}
+
 
 .description {
     font-size: 33px;
@@ -77,16 +90,18 @@
     justify-content: center;
     align-items: center;
     font-size: 14px;
-    color: #282828;
+    color: #282828 !important;
     font-weight: 600;
     border: 1px solid #EEBA06;
     outline: none;
     cursor: pointer;
+    text-decoration: none;
+    transition: 0.4s;
 }
 
 .mainImgButton:hover {
     background: #2A29B4;
-    color: white;
+    color: white !important;
     border: 1px solid #2A29B4;
 
 }
@@ -327,6 +342,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    transition: 0.4s;
 }
 
 .socialImageDiv a:hover {

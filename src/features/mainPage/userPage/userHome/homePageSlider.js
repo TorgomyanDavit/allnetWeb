@@ -1,24 +1,21 @@
+import { useSelector } from "react-redux"
+import { Link } from "react-router-dom"
 
 
-function HomeSliderPage () {
+function HomeSliderPage ({data}) {
+    const state = useSelector((state) => state.mainPage)
+
    return (
         <div className="homeImgDiv">
             <p className="homeImg">
-                <img src="/mainPageImages/homeImg.png" alt="homeImg" width="477" height="284"/>
+                <img src={`http://127.0.0.1:8000${data.image_path}`} alt="homeImg" width="477" height="284"/>
             </p>
             <div className="registerDescriptionDiv">
-                <p className="description">
-                    Register and get access to more than +4000 channels
-                </p>
-                <p className="description2">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                    when an unknown printer took a galley of type and scrambled it to make a type 
-                    specimen book.
-                </p>
-                <button className="mainImgButton"> 
-                    Active a subscription
-                </button>
+                <p className="description">{data.title}</p>
+                <p className="description2">{data.description}</p>
+                <Link to={{ pathname: data.button_link }} target="_blank" className="mainImgButton">{data.button_name}</Link>
+                {/* <Link to={{ pathname: data.button_link }} className="mainImgButton" target="_blank" /> */}
+                {/* <a href={data.button_link} className="mainImgButton">{data.button_name}</a> */}
             </div>
             <p className="homeUnderline"></p>
         </div>

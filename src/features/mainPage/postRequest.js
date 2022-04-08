@@ -15,7 +15,6 @@ export const postRegister = createAsyncThunk(
 export const postSignIn = createAsyncThunk(
     "mainPage/postSignIn",
         async ({path,body}) => {
-        console.log("post request",body);
         const response = await fetch(`${path}/login`,{
             mode: 'cors',
             method : "POST",
@@ -32,7 +31,7 @@ export const postLogAuth = createAsyncThunk(
         const response = await fetch(`${path}/logout`,{
             mode: 'cors',
             method : "POST",
-            headers :{'Content-Type' : 'application/json','Accept' : 'application/json','Authorization': `Bearer${token}`}
+            headers :{'Content-Type' : 'application/json','Accept' : 'application/json','Authorization': `Bearer ${token}`}
         })
 
         return response.json()
@@ -40,8 +39,8 @@ export const postLogAuth = createAsyncThunk(
 )
 
 
-export const forgetPass = createAsyncThunk(
-    "mainPage/forgetPass",
+export const sendEmail = createAsyncThunk(
+    "mainPage/sendEmail",
     async ({path,body}) => {
         const response = await fetch(`${path}/password/email`,{
             mode: 'cors',
@@ -56,7 +55,6 @@ export const forgetPass = createAsyncThunk(
 export const newPass = createAsyncThunk(
     "mainPage/newPass",
     async ({path,body}) => {
-        console.log("exav");
         const response = await fetch(`${path}/password/reset`,{
             mode: 'cors',
             method : "POST",
@@ -67,8 +65,8 @@ export const newPass = createAsyncThunk(
     }
 )
 
-export const getUser = createAsyncThunk(
-    "mainPage/getUser",
+export const getUserPage = createAsyncThunk(
+    "mainPage/getUserPage",
     async ({path,token}) => {
         const userPage = await fetch(`${path}/userPage`,{
             mode: 'cors',

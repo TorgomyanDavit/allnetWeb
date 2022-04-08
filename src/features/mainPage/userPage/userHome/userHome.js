@@ -10,7 +10,7 @@ import { changeAnimation } from "../../mainPageSlice"
 import "./userHome.css"
 import "./responsiveHome.css"
 import "./animationResponsive.css"
-import { getUser } from "../../postRequest";
+import { getUserPage } from "../../postRequest";
 
 
 
@@ -23,13 +23,11 @@ function UserHome({changePlay}) {
     let [time,setTime] = Hook()
     const canvasRef = useRef(null)
     const dispatch = useDispatch()
-    
-    console.log(state.mainLoading);
-    useEffect(() => {
-        console.log("userHome");
-        dispatch(getUser({path:state.server,token:sessionStorage.getItem("authenticated")}))
-    },[])
 
+    useEffect(() => { 
+        if(Array.isArray(state.userPage)) {dispatch(getUserPage({path:state.server,token:sessionStorage.getItem("authenticated")}))  }
+    },[])
+ 
     useEffect(() => {
         changePlay(false)
         return () => {
@@ -49,16 +47,20 @@ function UserHome({changePlay}) {
         context.stroke();
     },[time.second])
 
+    const {userPage,tariffType,orderTariff,contacts} = state.userPage 
+    console.log(contacts);
 
     return (
         <div className="userHome">
             <div className="reg-active-channelGroup-contacts-div">
                 {
                 <Slider {...state.homeSliderSettings}>
-                    <HomeSliderPage/>
-                    <HomeSliderPage/>
-                    <HomeSliderPage/>
-                    <HomeSliderPage/>
+                    {   
+                        Array.isArray(userPage) ? 
+                        userPage.map((val) => {
+                            return <HomeSliderPage key={val.id} data={val}/>
+                        }) : ""
+                    }
                 </Slider>
                 }
                 <div className="channel-Active-Groupe">
@@ -86,17 +88,17 @@ function UserHome({changePlay}) {
                                 Contscts :
                             </p>
                             <p className="titleUnderLine"></p>
-                            <a href="mailto:5551234567@mail.ru" className="contactsMessigeImg"><img src="/mainPageImages/contactsMessigeImg.png" alt="contactsMessigeImg"/>AllNet@mail.ru</a>
-                            <a href="tel:5551234567" className="contactsCallImg"><img src="/mainPageImages/contactsCallImg.png" alt="contactsCallImg"/>+374 (00) 00-00-00</a>
+                            <a href={`mailto:${contacts ? contacts[0].email : ""}`} className="contactsMessigeImg"><img src="/mainPageImages/contactsMessigeImg.png" alt="contactsMessigeImg"/>{contacts ? contacts[0].email : ""}</a>
+                            <a href={`tel:${contacts ? contacts[0].phone : ""}`} className="contactsCallImg"><img src="/mainPageImages/contactsCallImg.png" alt="contactsCallImg"/>{contacts ? contacts[0].phone : ""}</a>
                             <p className="titleUnderLine"></p>
                             <div className="socialImageDiv">
-                                <Link to={{pathname:"https://www.facebook.com/webschoolkz/"}} target="blank" 
+                                <Link to={{pathname: contacts ? contacts[0].facebook_link : ""}} target="blank" 
                                 style={{background:"#6561FF"}}><img src="/mainPageImages/contactsFb.png"alt="contactsFb"/></Link>
-                                <Link to={{pathname:"https://workspace.google.com/intl/en/products/gmail/?utm_source=google&utm_medium=cpc&utm_campaign=emea-mena-all-en-dr-bkws-all-lv-trial-p-t4-1010042&utm_content=text-ad-none-none-DEV_c-CRE_539821899813-ADGP_Desk%2BTab%20%7C%20BKWS%20-%20PHR%20%7C%20Txt%20~%20Gmail%20~%20General_gmail-KWID_43700065784973172-kwd-318461586-userloc_9070053&utm_term=KW_gmail-ST_gmail&ds_rl=1259922&gclid=Cj0KCQjwqKuKBhCxARIsACf4XuFaUjrkJ8i25-CYMqnfwcbEU4bnrxXaEJO94Goqap4XIphqVf70KpMaAit0EALw_wcB&gclsrc=aw.ds"}}  target="blank" 
+                                <Link to={{pathname: contacts ? contacts[0].google_link : ""}}  target="blank" 
                                 style={{background:"#FF1F00"}}><img src="/mainPageImages/contactsGoogle.png"alt="contactsGoogle"/></Link>
-                                <Link to={{pathname:"https://twitter.com/Twitter?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"}} target="blank"
+                                <Link to={{pathname: contacts ? contacts[0].telegram_link : ""}} target="blank"
                                 style={{background:"#0085FF"}}><img src="/mainPageImages/contactsTelegram.png"alt="contactsTelegram"/></Link>
-                                <Link to={{pathname:"https://web.telegram.org/k/"}} target="blank"
+                                <Link to={{pathname: contacts ? contacts[0].twitter_link : ""}} target="blank"
                                 style={{background:"#282828"}}><img src="/mainPageImages/contactsTwitter.png"alt="contactsTwitter"/></Link>
                             </div>
                         </div>

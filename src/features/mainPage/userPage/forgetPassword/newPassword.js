@@ -5,10 +5,15 @@ import eyeSlash from "../../../../images/eye-slash.svg"
 import eye from "../../../../images/eye.svg"
 import { useDispatch, useSelector } from "react-redux"
 import { newPass } from "../../postRequest"
+import { useLocation } from "react-router-dom"
+import { useParams } from "react-router-dom"
+import { Redirect } from "react-router-dom"
 
 
 
 export function NewPassword() {
+    const params = useParams()
+    const history = useLocation()
     const state = useSelector( (state) => state.mainPage )
     const [inputType,setInputType] = useState({
         oneinput:"password",
@@ -16,15 +21,21 @@ export function NewPassword() {
     })
     const [correctPassword,setMatch] = useState(false)
     const [RepeatePassword,setPassword] = useState(false)
+    const [succesnewPAssword,setsuccesnewPAssword] = useState(false)
     const dispatch = useDispatch()
+    if(succesnewPAssword) return <Redirect to="/signIn"/>
+
+
+    // torgomyandavid96@gmail.com
+    // davit.torgomyan96@mail.ru
+
 
     return (
-        <div className="forget " action="/forgetPassword" method="post" >
+        <div className="forget">
             <form className="formForget newPass" onSubmit={(e) => {
                 e.preventDefault()
                 const input = e.target
-                console.log(e);
-                if(input[0].value === "" ) {
+                if(input[0].value === "") {
                     setMatch("empty")
                     setTimeout(() => {setMatch(false)},3000)
                 }  else if(input[0].value.length < 6) {
@@ -37,10 +48,12 @@ export function NewPassword() {
                     dispatch(newPass({
                     path:state.server,
                     body:{
+                        email:params.email,
                         password:input[0].value,
                         password_confirmation:input[2].value,
-                        token:sessionStorage.getItem("newPasswordToken")}
-                    }))
+                        token:params.token,
+                    },}));
+                    setsuccesnewPAssword(true)
                 }
             }}>
                 <p className="titleForget">New pasowrd</p>
@@ -54,6 +67,7 @@ export function NewPassword() {
                 </div>
                 <button className="inputForgetnew" 
                     style={{backgroundImage: inputType.oneinput === "password" ? "url(" +  eyeSlash  + ")" : "url(" +  eye  + ")"}} onClick={(e) => {
+                        e.preventDefault()
                         setInputType({
                             ...inputType,
                             oneinput:inputType.oneinput === "password" ?  "text" : "password"

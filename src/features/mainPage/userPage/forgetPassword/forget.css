@@ -14,13 +14,13 @@
     margin-top: 254px;
 }
 
+.newPasswordPage > .refusedMessage {
+    top: 72px;
+}
+
 .forLabel {
     position: relative;
     margin-top: 37px;
-}
-
-.forLabel > .refusedMessage {
-    top: 80px;
 }
 
 .refusedforget2 {

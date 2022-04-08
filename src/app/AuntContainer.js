@@ -17,7 +17,7 @@ function AuntContainer() {
 
     return (
         <div className="AuntContainer">
-            {state.loading.mainLoading ? "" : <div className="loading"><img src="/mainPageImages/homeLoading.gif" alt="loading"/></div>}
+            {state.loading.mainLoading === "loading" ? <div className="loading"><img src="/mainPageImages/homeLoading.gif" alt="loading"/></div> : ""} 
             <Router path="/">
                 <MainPage/>
             </Router>
