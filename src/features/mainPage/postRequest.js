@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+
 export const postRegister = createAsyncThunk(
     "mainPage/postRegister",
         async ({path,body}) => {
@@ -38,7 +39,6 @@ export const postLogAuth = createAsyncThunk(
     }
 )
 
-
 export const sendEmail = createAsyncThunk(
     "mainPage/sendEmail",
     async ({path,body}) => {
@@ -65,17 +65,49 @@ export const newPass = createAsyncThunk(
     }
 )
 
-export const getUserPage = createAsyncThunk(
-    "mainPage/getUserPage",
-    async ({path,token}) => {
-        const userPage = await fetch(`${path}/userPage`,{
+export const changeUserData = createAsyncThunk(
+    "mainPage/changeUserData",
+    async ({path,token,body,id}) => {
+        // console.log(body,path);
+        const response = await fetch(`${path}/user/${id}`,{
             mode: 'cors',
-            method : "GET",
-            headers :{'Content-Type' : 'application/json','Accept' : 'application/json','Authorization': `Bearer ${token}`}
+            method : "PUT",
+            headers : {'Content-Type' : 'application/json','Accept' : 'application/json','Authorization' : `Bearer ${token}`},
+            body:JSON.stringify(body)
         })
-        return userPage.json()
+        return response.json()
     }
 )
+
+
+// 'Content-Type' : 'multipart/form-data'
+// 'Content-Type' : 'application/x-www-form-urlencoded'
+
+
+
+
+
+
+
+
+
+
+
+
+// export const changeUserData = createAsyncThunk(
+//     "mainPage/changeUserData",
+//     async ({path,token,body,id}) => {
+//         // console.log(body,path);
+//         const response = await fetch(`${path}/user/${id}`,{
+//             mode: 'cors',
+//             method : "PUT",
+//             headers : {'Content-Type' : 'application/json','Accept' : 'application/json','Authorization': `Bearer ${token}`},
+//             body:body
+//         })
+//         return response.json()
+//     }
+// )
+
 
 
 

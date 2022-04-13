@@ -10,7 +10,7 @@ import { changeAnimation } from "../../mainPageSlice"
 import "./userHome.css"
 import "./responsiveHome.css"
 import "./animationResponsive.css"
-import { getUserPage } from "../../postRequest";
+import { getUserData, getUserPage } from "../../getRequest";
 
 
 
@@ -23,11 +23,13 @@ function UserHome({changePlay}) {
     let [time,setTime] = Hook()
     const canvasRef = useRef(null)
     const dispatch = useDispatch()
+    // console.log("userHome");
+    
 
-    useEffect(() => { 
-        if(Array.isArray(state.userPage)) {dispatch(getUserPage({path:state.server,token:sessionStorage.getItem("authenticated")}))  }
-    },[])
- 
+    // useEffect(() => { 
+    //     if(Array.isArray(state.userPage)) {dispatch(getUserPage({path:state.server,token:sessionStorage.getItem("authenticated")}))}
+    // },[])
+    
     useEffect(() => {
         changePlay(false)
         return () => {
@@ -47,8 +49,9 @@ function UserHome({changePlay}) {
         context.stroke();
     },[time.second])
 
-    const {userPage,tariffType,orderTariff,contacts} = state.userPage 
-    console.log(contacts);
+    const {userPage,tariffType,orderTariff,contacts} = state.userHomePage 
+
+
 
     return (
         <div className="userHome">
@@ -59,7 +62,7 @@ function UserHome({changePlay}) {
                         Array.isArray(userPage) ? 
                         userPage.map((val) => {
                             return <HomeSliderPage key={val.id} data={val}/>
-                        }) : ""
+                        }) : <HomeSliderPage key={{}} data={{}}/>
                     }
                 </Slider>
                 }
@@ -74,7 +77,7 @@ function UserHome({changePlay}) {
                                 {/* <p className="ActiveUntil">Active until :</p> */}
                                 <p className="date">21.03.2021 - 20.04.2021</p>
                                 <button 
-                                style={{animationName:state.animationPath === "/userPerson" ? "timerButton2" : "null"}}
+                                style={{animationName:state.animationPath === "/userPage/userPerson" ? "timerButton2" : "null"}}
                                 className="timerButton"  id="timerButton2" onClick={() => {
                                     setTime({
                                         ...time,

@@ -453,8 +453,9 @@
 .userName {
     width: 348px;
     height: 100px;
+    gap: 37px;
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
 }
 
 .userName p {

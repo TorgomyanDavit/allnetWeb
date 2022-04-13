@@ -16,7 +16,7 @@ function Headers({type,Width,setToggle,toggle}) {
             <nav className="headerNavigator">
                     <NavLink  to="/" 
                         className={state.animationPath === "/userPage/userHome" && 
-                        state.animationPathDone === "/userPerson" ? "headerImgAnim" 
+                        state.animationPathDone === "/userPage/userPerson" ? "headerImgAnim" 
                         : state.animationPath === "/userPage/userHome" ? "menuLogo" : "menuLogo"} 
                         activeClassName="activeMAinPage"
                     >

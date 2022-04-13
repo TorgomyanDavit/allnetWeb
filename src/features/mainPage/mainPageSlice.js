@@ -3,7 +3,6 @@ import tvMatchFootball from "../../images/tvMatchFootball.png"
 import tvMatchPremera from "../../images/tvMatchPremera.png"
 import tvMir from "../../images/tvMir.png"
 import tvRossia2 from "../../images/tvRossia2.png"
-import personImg from "./userPage/images/PersonImg.png"
 import messigePersonImg from "./userPage/images/messigePersonImg.png"
 import contactsFb from "../../images/contactsFb.png"
 import contactsGoogle from "../../images/contactsGoogle.png"
@@ -14,18 +13,14 @@ import iosIcon from "../../images/iosIcon.png"
 import LgSmart from "../../images/LgSmart.png"
 import samsungImg from "../../images/samsungImg.png"
 import smartIcon from "../../images/SmartIcon.png"
-import { getAllContent } from "./getRequest";
-import { sendEmail, getUserPage, newPass, postLogAuth, postRegister, postSignIn } from "./postRequest";
-
-
-
-
-
+import { getAllContent, getUserData, getUserPage } from "./getRequest";
+import { sendEmail, newPass, postLogAuth, postRegister, postSignIn, changeUserData } from "./postRequest";
 
 
 const initialState = {
     // async
     server:"http://127.0.0.1:8000/api",
+    serverForImg:"http://127.0.0.1:8000",
     mainPagePagination:{title:"",description:""},
     mainPAboutPagination:{description:""},
     mainContactPagination:{
@@ -39,7 +34,10 @@ const initialState = {
         ],
     },
     mainFaqPagination:[],
+    userHomePage:[],
     userPage:[],
+    personImg:"",
+
 
 
     regEmailErrorAuthenticated:false,
@@ -48,6 +46,8 @@ const initialState = {
     access_token:false,
     sendEmailRedirect:false,
     // newPasswordSucces:false,
+
+
 
 
     paginationTarif:[],
@@ -80,7 +80,7 @@ const initialState = {
     ],
     svgImages:[
         {path:"/userPage/userHome",activeClass:"activeClass"},
-        {path:"/userPerson",activeClass:"activeClass"},
+        {path:"/userPage/userPerson",activeClass:"activeClass"},
         {path:"/userStatistic/table1",activeClass:"activeClass"},
         {path:"/userChannel",activeClass:"activeClass"},
         {path:"/statisticPortal",activeClass:"activeClass"},
@@ -88,15 +88,14 @@ const initialState = {
     ],
     animationPath:"null",
     animationPathDone:"null",
-    personImg:personImg,
     imgType:false,
     innerSelect:["AM","EN"],
     Id:"",
     regAndsignNone:true,
     personData:[
-        {id:1,dataName:"name",inner:"Raya Galstyan",type:"text",display:"none",placeholder:"changeName",value:""},
-        {id:2,dataName:"E-mail",inner:"AllNet@mail.ru",type:"text",display:"none",placeholder:"changeMail",value:""},
-        {id:3,dataName:"Password",inner:"******",type:"password",display:"none",placeholder:"changePassword",value:""}
+        {id:1,dataName:"username",inner:"",type:"text",display:"none",placeholder:"changeName",value:""},
+        {id:2,dataName:"email",inner:"",type:"text",display:"none",placeholder:"changeMail",value:""},
+        {id:3,dataName:"Password",inner:"",type:"password",display:"none",placeholder:"changePassword",value:""}
     ],
     table:{
         countPage:[...new Array(20)],
@@ -276,6 +275,15 @@ const mainPageSlices = createSlice({
         },
         sendLetterMail:(state,action) => {
             state.sendEmailRedirect = false
+        },
+        userDate:(state,action) => {
+            state.personData = state.personData.map((val,index) => {
+                switch(index) {
+                    case 0 : return { ...val,inner:state.userPage.user.username } ;
+                    case 1 : return { ...val,inner:state.userPage.user.email } ;
+                    case 2 : return { ...val,inner:state.userPage.user.password } ;
+                }
+            })
         }
     },
 
@@ -288,7 +296,7 @@ const mainPageSlices = createSlice({
         .addCase(getAllContent.fulfilled,(state,action) => {
             console.log("fullfiled Getallcontent",action);
             action.payload.forEach((data) => {
-                let key = Object.keys(data)
+                let key = Object.keys(data);
                 switch(key[0]) {
                     case "home" : 
                     state.mainPagePagination.description = data.home.description
@@ -368,12 +376,10 @@ const mainPageSlices = createSlice({
         })
         .addCase(getUserPage.fulfilled,(state,action) => {
             console.log("fulfiled userPAge",action);
-            if(!!action.payload.error) {state.loginemailValidation = true} 
-            else if(!!action.payload.access_token) {
-                sessionStorage.setItem("authenticated", action.payload.access_token);
-            } 
-            state.userPage = action.payload
-            state.loading.mainLoading = false
+            if(!!action.payload.error) {state.loginemailValidation = true};
+            state.userHomePage = action.payload[0];
+            state.userPage = action.payload[1];
+            state.loading.mainLoading = false;
         })
 
         // LogAuth
@@ -407,15 +413,29 @@ const mainPageSlices = createSlice({
             console.log("fulfiled newPassword",action);
             state.loading.mainLoading = false;
         })
+
+        // change data
+        .addCase(changeUserData.pending,(state,action) => {
+            console.log("pending changeUserData",action);
+            state.loading.mainLoading = "loading";
+        })
+        .addCase(changeUserData.fulfilled,(state,action) => {
+            console.log("fulfiled changeUserData",action);
+            state.loading.mainLoading = false;
+        })
+
+
+        
     }
 })
+// getUserData
 // torgomyandavid96@gmail.com
 // davit.torgomyan96@mail.ru
 export const {
     aginationCount,closeLetter,delsetMessige,showThanks,changeFaq,changeRegAndSignImgdisplay,
     changeImgType,changeAnimationPathDone,changeAnimation,changeDisplay,changeDate,setValue,
     setId,changeUserImg,checkLink,checkPlaceholder,loading,registerAuth,loginAuth,
-    forgetemailError,sendLetterMail
+    forgetemailError,sendLetterMail,userDate
 } = mainPageSlices.actions
 
 export default mainPageSlices.reducer

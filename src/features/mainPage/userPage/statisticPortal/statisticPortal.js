@@ -45,7 +45,7 @@ export function StatisticPortal() {
                         {/* <p className="ActiveUntil">Active until :</p> */}
                         <p className="date">21.03.2021 - 20.04.2021</p>
                         <button className="timerButton" id="timerButton" 
-                        style={{animationName:state.animationPath === "/userPerson" ? "timerButton" : "null"}}
+                        style={{animationName:state.animationPath === "/userPage/userPerson" ? "timerButton" : "null"}}
                         onClick={() => {
                             setStatisticTimeOne({
                                 ...statisticTimeOne,

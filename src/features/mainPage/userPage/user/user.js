@@ -1,12 +1,18 @@
 import { useDispatch, useSelector } from "react-redux"
 import person from "../images/edit.svg"
-import { changeDisplay,changeDate,setValue,setId,changeUserImg, changeAnimationPathDone} from "../../mainPageSlice"
+import { changeDisplay,changeDate,setValue,setId,changeUserImg, changeAnimationPathDone, userDate} from "../../mainPageSlice"
 import { useEffect, useRef, useState } from "react"
 import { changeAnimation } from "../../mainPageSlice"
 import { AnimationTimer } from "./animationTimer/animation"
 import "./user.css"
 import "./responsive.css"
 import "./responsiveAnimationUser.css"
+import personImg from "../../userPage/images/PersonImg.png"
+import { changeUserData } from "../../postRequest"
+import Cookies from 'js-cookie';
+import { getUserPage } from "../../getRequest"
+
+
 
 
 
@@ -17,6 +23,15 @@ export default function User() {
     const state = useSelector((state) => state.mainPage)
     const [buttonNAme,setButtonName] = useState(true)
     const [displayAfter,setdisplayAfter] = useState(true)
+    let formRef = useRef(null)
+    const [ file,setRef ]= useState("")
+    const [ fileUrl,setfileUrl ]= useState("")
+
+    // console.log(state.userPage.user,"user");
+
+    useEffect(() => {
+        if(state.userPage.user)dispatch(userDate())
+    },[state.userPage])
 
     const dispatch = useDispatch()
     const imageRef = useRef(null)
@@ -26,18 +41,18 @@ export default function User() {
         let id = setTimeout(() => setdisplayAfter(false),1100)
         let id2 = setTimeout(() => setButtonName(true),200)
         
-        dispatch(changeAnimationPathDone({value:"/userPerson"}))
+        dispatch(changeAnimationPathDone({value:"/userPage/userPerson"}))
         return () => {
             clearTimeout(id)
             clearTimeout(id2)
             dispatch(changeAnimationPathDone({value:"undefined"}))
-            dispatch(changeAnimation({value:"/userPerson"}))
+            dispatch(changeAnimation({value:"/userPage/userPerson"}))
         }
     },[])
     reader.addEventListener("load", (e) => {
         dispatch(changeUserImg({userImg:e.target.result}))
     })
-
+    const {user} = state.userPage 
 
     return (
         <section className="PersonUser">
@@ -61,33 +76,35 @@ export default function User() {
                     state.animationPath === "/userPage/userHome"  ? "personImg" : "null"
                 }}>
                     <p style={{animationName:state.animationPath === "/userPage/userHome" ? "person" : "null"}}>
-                        <img ref={imageRef} src={state.personImg} alt="PersonImg"/>
+                        <img src={state.personImg ? state.personImg : !!user ? user.photo ? `${state.serverForImg}/${user.photo.path}`: personImg : personImg} alt="PersonImg"/>
                     </p>
                     <label style={{animationName:state.animationPath === "/userPage/userHome" ? "label" : "null"}}
                             className="labelForFileReader" onChange={(e) => {
+                            // console.log(e.target.value,e.target.files[0]);
+                            setfileUrl(e.target.value)
+                            setRef(e.target.files[0])
                             reader.readAsDataURL(e.target.files[0])
                         }}>
-                        Uploud image<input type="file" style={{display:"none"}}/>
+                        Uploud image<input  accept="image/*" multiple type="file" style={{display:"none"}}/>
                     </label>
             </div>
-
-            <form className="personData" onSubmit={(e) => {
-                    e.preventDefault()
-                    dispatch(changeDate({id:state.Id}))
-                    dispatch(setValue({id:state.Id,value:""}))
-                    dispatch(changeDisplay({id:state.id}))
-                }}>
+            {/* state.personImg ? state.personImg */}
+            <form className="personData"  ref={formRef} onSubmit={(e) => {e.preventDefault()}}>
                 {state.personData.map((val,index) => {
                     return (
                         <div key={val.id} className="personName" style={{animationName:state.animationPath === "/userPage/userHome" ? "personName" : "null"}}>
                             {val.dataName} 
-                            {
-                                index === 1 ? <a href={"mailTo:"+val.inner+""}>{val.inner}</a> 
-                                : <input disabled type={val.type} className="inputInner" value={val.inner}/> 
-                            } 
-                            <img onClick={() => { dispatch(changeDisplay({id:val.id})) }} src={person} alt=""
+                            <input disabled type={val.type} className="inputInner" value={val.inner}/> 
+                            <img onClick={() => { dispatch(changeDisplay({id:val.id})) }} src={person} alt="logo"
                         />
-                            <input placeholder={val.placeholder}  value={val.value} className="input" style={{display:val.display}} 
+                            <input placeholder={val.placeholder} name="VARDAN"  value={val.value} className="input" style={{display:val.display}}  onKeyDown={(e) => {
+                                if(e.keyCode === 13) {
+                                    dispatch(changeDate({id:state.Id}))
+                                    dispatch(setValue({id:state.Id,value:""}))
+                                    dispatch(changeDisplay({id:state.id}))
+                                }
+                               
+                            }} 
                                 onChange={(e) => {
                                     dispatch(setId({id:val.id}))
                                     dispatch(setValue({id:val.id,value:e.target.value}))
@@ -96,16 +113,70 @@ export default function User() {
                         </div>
                     )
                 })}
-                <button className="ButtonUserData"
-                style=
-                {{
-                    animationName:
-                    state.animationPath === "/userPage/userHome" ? "buttonPosition" :
-                    state.animationPath === "/statisticPortal" ? "buttonPositionforPortal" : "null"
-                }}>{buttonNAme ? "Save" : "Active"}</button>
+
+
+
+
+                <div className="ButtonUserData" onClick={(e) => {
+                    let body = formRef.current
+                    let formData = new FormData();
+                    formData.append("image",file)
+                    // formData.append("image",state.personImg)
+                    // let data = {
+                    //     name :"images",
+                    //     filename :fileUrl,
+                    //     type:file.type,
+                    //     data:file,
+                    // }
+                    // let objKeys = Object.keys(data)
+                    // for(let keys of objKeys) {
+                    //     formData.append(keys,data[keys])
+                    // }
+
+
+                    for(let pair of formData.entries()) {
+                        console.log(pair[0]+ ', ' + pair[1]); 
+                    }
+
+
+
+                    dispatch(changeUserData({
+                        path:state.server,
+                        token:sessionStorage.getItem("authenticated"),
+                        body:{
+                            file:JSON.stringify( formData),
+                            username:body[0].value,
+                            email:body[2].value,
+                            password:body[4].value,
+                            id:user.id,
+                        },
+                        id:user.id
+                    }));
+                    dispatch(changeUserImg({userImg:""}))
+                }} 
+                    style={{
+                        animationName:
+                        state.animationPath === "/userPage/userHome" ? "buttonPosition" :
+                        state.animationPath === "/statisticPortal" ? "buttonPositionforPortal" : "null"
+                    }}>{buttonNAme ? "Save" : "Active"}
+                </div>
             </form>
         </section>
     )
 }
 
 
+
+
+// dispatch(changeUserData({
+//     path:state.server,
+//     token:sessionStorage.getItem("authenticated"),
+//     body:{
+//         images:state.personImg,
+//         username:body[0].value,
+//         email:body[2].value,
+//         password:body[4].value,
+//         id:user.id,
+//     },
+//     id:user.id
+// }));

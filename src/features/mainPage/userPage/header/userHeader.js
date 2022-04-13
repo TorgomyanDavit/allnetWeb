@@ -10,11 +10,12 @@ import { StatisticPortal } from "../statisticPortal/statisticPortal"
 import { MessigePerson } from "../messigePerson/messigePerson"
 import { StatisticFurther } from "../userStatistic/statisticFurther"
 import { StatisticConfirmed } from "../userStatistic/statisticConfirmed"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "./responsive.css"
 import Tarif from "../Tarif/tarif"
 import { Redirect } from "react-router-dom"
 import { postLogAuth } from "../../postRequest"
+import { getUserPage } from "../../getRequest"
 
 
 
@@ -23,6 +24,12 @@ function UserHeader({toggle}) {
     const [play,setPlay] = useState(false)
     const [animationPath,setAnimationPAth] = useState("")
     const dispatch = useDispatch()
+    // console.log("userHeader");
+
+    useEffect(() => { 
+        if(Array.isArray(state.userPage)) {dispatch(getUserPage({path:state.server,token:sessionStorage.getItem("authenticated")}))}
+    },[])
+    
 
     return (
         <div className="userMainPAge" style={{zIndex:toggle ? "-1" : "inherit"}}>
@@ -44,12 +51,15 @@ function UserHeader({toggle}) {
                         <img src="/mainPageImages/signOut.png" alt="signOut"/>
                     </button>
                 </div>
+
+
+
                 <Route path="/userPage/userHome">
                     <UserHome changePlay={(value) => setPlay(value)} changeAnimationPath={(value) => {
                         setAnimationPAth(value)
                     }}/>
                 </Route>
-                <Route path="/userPerson">
+                <Route path="/userPage/userPerson">
                     <User animationPath={animationPath} changeAnimationPath={(value) => {
                         setAnimationPAth(value)
                     }}/>

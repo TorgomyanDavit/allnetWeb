@@ -327,9 +327,9 @@
     border: none;
 }   
 
-.buttonSlack:hover {
+/* .buttonSlack:hover {
     background: #00115e !important;
-}
+} */
 
 .footerTable > button img{
     width: 4.5px;

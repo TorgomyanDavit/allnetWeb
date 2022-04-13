@@ -49,7 +49,7 @@
         height: 111px;
     }
 
-    .historyMovement :nth-child(1) {
+    .historyMovement > p {
         font-size: 12px;
     }
 
