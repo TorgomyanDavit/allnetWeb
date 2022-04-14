@@ -10,6 +10,7 @@
 
 .userPageMenu {
     width: 71px;
+    min-width: 60px;
     height: 958px;
     background: #F1F7FF;
     border-top-left-radius: 21px;

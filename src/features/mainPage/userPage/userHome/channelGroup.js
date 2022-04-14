@@ -7,7 +7,7 @@ export function ChannelGroup() {
     return (
         <div className="mainChannelGroup">
             <p className="channelTittel" 
-                style={{animationName:state.animationPath === "/userChannel" ? "channelTittel" : "null"}}
+                style={{animationName:state.animationPath === "/userPage/userChannel" ? "channelTittel" : "null"}}
             >
                 Channel groups
             </p>

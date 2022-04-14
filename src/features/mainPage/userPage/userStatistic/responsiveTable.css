@@ -52,12 +52,12 @@
     .historyMovement > p {
         font-size: 12px;
     }
-
+/* 
     .historyMovement :nth-child(2) {
         width: max-content;
         margin-right: unset;
         gap: 16px;
-    }
+    } */
 
     .historyMovement :nth-child(2) span {
         font-size: 12px;
@@ -89,6 +89,14 @@
         margin-top: 12px;
     }
 }
+
+
+@media (max-width:780px) {
+    .historyMovement > p {
+        font-size: 10px;
+    }
+}
+
 
 @media (max-width:750px) {
     #th5 {

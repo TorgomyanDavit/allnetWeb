@@ -13,15 +13,14 @@ export function HistoryPage({showValue,child}) {
     let [activePage,setactivePage] = useState(0)
     let [activePagePOsition,setactivePagePOsition] = useState(0)
     let [changeActive,setchangeActive] = useState(false)
-
+    let {PageIndex} = state
+    console.log(PageIndex);
     const linkPref = useRef(null)
 
 
     useEffect(() => {
         child(activePage)
     },[changeActive])
-
-
 
     useEffect(() => {
         setactivePage(--showValue)
@@ -34,10 +33,11 @@ export function HistoryPage({showValue,child}) {
         },0)
     },[showValue])
 
+
     return (
             <Routher>
                 <main className="historyMain">
-                    <Route path="/userStatistic/table1">
+                    <Route path="/userPage/userStatistic/table1">
                         <Table/>
                     </Route>
                     <div className="footerTable">
@@ -45,6 +45,11 @@ export function HistoryPage({showValue,child}) {
                             if(activePage >= 1) {
                                 setchangeActive(!changeActive)
                                 setactivePage(--activePage)
+                                // debugger
+                                dispatch(paginationCount(PageIndex-1))
+
+
+
                                 for(let item  of linkPref.current.children) {
                                     if(item.classList.contains("activeBalance")) {
                                         setactivePagePOsition(-item.offsetLeft + 26)
@@ -61,7 +66,7 @@ export function HistoryPage({showValue,child}) {
                                             setchangeActive(!changeActive)
                                             setactivePage(index)
                                             setactivePagePOsition(- e.target.offsetLeft)
-                                            // dispatch(paginationCount(10))
+                                            dispatch(paginationCount(index))
                                         }}>{index+1}</button>
                                     )
                                 })}
@@ -74,6 +79,8 @@ export function HistoryPage({showValue,child}) {
                             onClick={() => {
                                 setchangeActive(!changeActive)
                                 setactivePage(state.countPage.length - 1)
+                                dispatch(paginationCount(state.countPage.length - 1))
+
                                 setTimeout(() => {
                                     for(let item  of linkPref.current.children) {
                                         if(item.classList.contains("activeBalance")) {
@@ -83,12 +90,12 @@ export function HistoryPage({showValue,child}) {
                                 },0)
                             }}>{state.countPage.length}
                         </button>
-                       
                             
                         <button className="buttonSlack" onClick={(e) => {
                             if( activePage < state.countPage.length - 1 ) {
                                 setchangeActive(!changeActive)
                                 setactivePage(++activePage)
+                                dispatch(paginationCount(PageIndex+1))
                                 for(let item  of linkPref.current.children) {
                                     if(item.classList.contains("activeBalance")) {
                                         setactivePagePOsition(-item.offsetLeft - 26)

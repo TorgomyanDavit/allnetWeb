@@ -50,7 +50,7 @@ const initialState = {
 
 
 
-    paginationTarif:[],
+    paymentPage:[],
     loading:{mainLoading:false},
 
 
@@ -81,8 +81,8 @@ const initialState = {
     svgImages:[
         {path:"/userPage/userHome",activeClass:"activeClass"},
         {path:"/userPage/userPerson",activeClass:"activeClass"},
-        {path:"/userStatistic/table1",activeClass:"activeClass"},
-        {path:"/userChannel",activeClass:"activeClass"},
+        {path:"/userPage/userStatistic/table1",activeClass:"activeClass"},
+        {path:"/userPage/userChannel",activeClass:"activeClass"},
         {path:"/statisticPortal",activeClass:"activeClass"},
         {path:"/messigePerson",activeClass:"activeClass"},
     ],
@@ -98,20 +98,16 @@ const initialState = {
         {id:3,dataName:"Password",inner:"",type:"password",display:"none",placeholder:"changePassword",value:""}
     ],
     table:{
-        countPage:[...new Array(20)],
-        showPage:[...new Array(3)],
+        countPage:[],
+        PageIndex:0,
         data:[
-            {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-            {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-            {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-            {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-            {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-            {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-            {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-            {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-            {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-            {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-            {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"}
+            [
+                {id:Math.random(),date:"jhon",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
+                {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
+                {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
+                {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
+                {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
+            ],
         ],
     },
     channelInputDiv:[
@@ -259,7 +255,8 @@ const mainPageSlices = createSlice({
             state.receiveLetterShow = !state.receiveLetterShow
         },
         paginationCount:(state,action) => {
-        //    state.table.countPage = [...new Array(action.payload)]
+            // debugger
+           state.table.PageIndex = action.payload
         },
         loading:(state) => {
             state.loading.mainLoading = false
@@ -325,16 +322,10 @@ const mainPageSlices = createSlice({
                         state.mainFaqPagination = data.faq.map((val) => {
                             return {id:val.id,title:val.title,description:val.description,simbol:"+",open:false}
                         })
-                    break;
-
-                    case "tariffs" : 
-                        state.paginationTarif = data.tariffs
-                    break;
-                    
+                    break;                    
                 }
             })
             state.loading.mainLoading = false
-            
         })
         .addCase(getAllContent.rejected,(state,action) => {
             console.log("rejected Getallcontent",action);
@@ -377,8 +368,22 @@ const mainPageSlices = createSlice({
         .addCase(getUserPage.fulfilled,(state,action) => {
             console.log("fulfiled userPAge",action);
             if(!!action.payload.error) {state.loginemailValidation = true};
+            // state update homePage
             state.userHomePage = action.payload[0];
+            // state Update userPage
             state.userPage = action.payload[1];
+            // state update paymentPage
+            state.paymentPage = action.payload[2].tariffs
+            // state update PaymentHistoryPage 
+            let indexPage = Math.ceil(action.payload[4].history.length / 10)
+            state.table.countPage = [...new Array(indexPage)]
+            let page = [], i = 0, i2 = 0;
+            state.table.data = action.payload[4].history.reduce(function(aggr,val,index)  {
+                page[i2] = val;
+                if((this.length - 1) === index){ aggr[i] = page; return aggr};
+                if(page.length === 10){ aggr[i] = page; page = []; i++; i2 = 0; return aggr};
+                i2++;return aggr;
+            }.bind(action.payload[4].history),[]);
             state.loading.mainLoading = false;
         })
 
@@ -435,7 +440,7 @@ export const {
     aginationCount,closeLetter,delsetMessige,showThanks,changeFaq,changeRegAndSignImgdisplay,
     changeImgType,changeAnimationPathDone,changeAnimation,changeDisplay,changeDate,setValue,
     setId,changeUserImg,checkLink,checkPlaceholder,loading,registerAuth,loginAuth,
-    forgetemailError,sendLetterMail,userDate
+    forgetemailError,sendLetterMail,userDate,paginationCount
 } = mainPageSlices.actions
 
 export default mainPageSlices.reducer

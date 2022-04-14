@@ -8,7 +8,6 @@ export const getAllContent = createAsyncThunk(
             fetch(`${path}/about`),
             fetch(`${path}/contact`),
             fetch(`${path}/faq`),
-            // fetch(`${path}/payment`)
         ])
         .then((streams) => {return Promise.all(streams.map((stream) => stream.json()))})
         return response
@@ -22,14 +21,19 @@ export const getUserPage = createAsyncThunk(
             mode: 'cors', method : "GET", headers : {'Content-Type' : 'application/json','Accept' : 'application/json','Authorization': `Bearer ${token}`}
         };
         const response = await Promise.all([
-            await fetch(`${path}/userPage`,configHeader),
-            await fetch(`${path}/user`,configHeader)
+            fetch(`${path}/userPage`,configHeader),
+            fetch(`${path}/user`,configHeader),
+            fetch(`${path}/payment`,configHeader),
+            fetch(`${path}/notification`,configHeader)
+
+
+            
         ])
-
-
-
-        
         .then((streams) => {return Promise.all(streams.map((stream) => stream.json()))})
+        if(!!response[1].user) {const id = response[1].user.id;
+            const pagination = await fetch(`${path}/payment/${id}`,configHeader).then((result) => result.json())
+            response.push(pagination)
+        }
         return response
     }
 )

@@ -166,6 +166,20 @@
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     overflow-x: scroll;
+    /* overflow-x: hidden;
+
+    overflow-y: hidden; */
+    z-index: 5;
+
+}
+
+.optionSelect::-webkit-scrollbar {
+    display: none;
+
+}
+
+.optionSelect::-webkit-scrollbar-thumb {
+    display: none;
 }
 
 .clickToShow {
@@ -209,11 +223,16 @@
 }
 
 .historyMain {
+    display: flex;
+    justify-content: space-between;
     width: 1421px;
-    height: 686px;
+    min-height: 686px;
     background: #FFFFFF;
     border-radius: 20px;
     margin-top: 34px;
+    flex-direction: column;
+    padding-bottom: 40px;
+    overflow: hidden;
 }
 
 
@@ -222,9 +241,13 @@
     margin: 0 auto;
 }
 
+
+
 .titleTable {
     height: 61px;
 }
+
+
 
 .titleTable :nth-child(1) {
     border: none;
@@ -264,6 +287,17 @@
     height: 49px;
     position: relative;
     cursor: pointer;
+    animation-name: pagination;
+    animation-duration: 1s;
+}
+
+@keyframes pagination {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .stateTable:hover {

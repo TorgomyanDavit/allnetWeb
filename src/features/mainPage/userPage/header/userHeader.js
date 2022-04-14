@@ -29,8 +29,9 @@ function UserHeader({toggle}) {
     useEffect(() => { 
         if(Array.isArray(state.userPage)) {dispatch(getUserPage({path:state.server,token:sessionStorage.getItem("authenticated")}))}
     },[])
-    
 
+
+    
     return (
         <div className="userMainPAge" style={{zIndex:toggle ? "-1" : "inherit"}}>
             <Router>
@@ -64,7 +65,7 @@ function UserHeader({toggle}) {
                         setAnimationPAth(value)
                     }}/>
                 </Route>
-                <Route path="/userStatistic">
+                <Route path="/userPage/userStatistic">
                     <StatisticMain/>
                 </Route>
                 <Route path="/statisticFurther">
@@ -73,7 +74,7 @@ function UserHeader({toggle}) {
                 <Route path="/statisticConfirmed">
                     <StatisticConfirmed/>
                 </Route>
-                <Route path="/userChannel">
+                <Route path="/userPage/userChannel">
                     <Tarif/>
                 </Route>
                 <Route path="/statisticPortal">

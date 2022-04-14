@@ -24,7 +24,7 @@ export default function Tarif() {
                     event.preventDefault()
                 }
             }}>
-                {state.paginationTarif.map((data) => {
+                {state.paymentPage.map((data) => {
                     return (
                         <div className="miniDiv" key={data.id}>
                             <p className="countryname">{data.name}</p>
@@ -36,7 +36,7 @@ export default function Tarif() {
                                             <input type="radio" name="gen" style={{display:"none"}}/>   
                                             <div className="check"></div>
                                         </label>
-                                        <p className="month">{val.duration_name + " - " + val.currency_code + "" + val.currency_symbol}</p>
+                                        <p className="month">{val.duration_name + " - " + val.cost + ""+ val.currency_symbol}</p>
                                     </label>
                                 )
                             })}

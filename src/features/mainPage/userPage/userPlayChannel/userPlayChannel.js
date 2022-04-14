@@ -15,19 +15,19 @@ import "./animationResponsive.css"
 export function UserPlayChannel() {
     const state = useSelector((state) => state.mainPage)
     const dispatch = useDispatch()
-    useEffect(() => {return () => dispatch(changeAnimation({value:"/userChannel"}))},[])
+    useEffect(() => {return () => dispatch(changeAnimation({value:"/userPage/userChannel"}))},[])
 
     return (
         <section className="userPlayChannel">
             <div className="firstThreepageDiv">
                 <div className="firstThreepageDivheader"
-                    style={{animationName:state.animationPath === "/userStatistic/table1" ? "firstThreepageDivheader" : "null"}}
+                    style={{animationName:state.animationPath === "/userPage/userStatistic/table1" ? "firstThreepageDivheader" : "null"}}
                 >
                     <p 
-                        style={{animationName:state.animationPath === "/userStatistic/table1" ? "contentDiv" : "null"}}
+                        style={{animationName:state.animationPath === "/userPage/userStatistic/table1" ? "contentDiv" : "null"}}
                     >Access key</p>
                     <div className="firstChild"
-                        style={{animationName:state.animationPath === "/userStatistic/table1" ? "contentDiv" : "null"}}
+                        style={{animationName:state.animationPath === "/userPage/userStatistic/table1" ? "contentDiv" : "null"}}
                     >
                         <p>FZG2ZNLKYY4VXW</p>
                         <button>Change</button>

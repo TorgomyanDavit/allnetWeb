@@ -9,7 +9,7 @@ import { changeAnimation } from "../../mainPageSlice"
 
 export function SecondChannelsDiv() {
     const dispatch = useDispatch()
-    useEffect(() => {return () => dispatch(changeAnimation({value:"/userChannel"}))},[])
+    useEffect(() => {return () => dispatch(changeAnimation({value:"/userPage/userChannel"}))},[])
 
     const state = useSelector((state) => state.mainPage)
     const [placeholder,setPlaceHolder] = useState(`https://www.youtube.com/watch?v=Dxnaf6kZnMAhttps: &#//www.youtube.com/watch?v=Dxnaf6kZnMA`)

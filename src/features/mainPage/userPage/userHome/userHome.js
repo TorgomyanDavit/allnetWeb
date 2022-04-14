@@ -23,12 +23,6 @@ function UserHome({changePlay}) {
     let [time,setTime] = Hook()
     const canvasRef = useRef(null)
     const dispatch = useDispatch()
-    // console.log("userHome");
-    
-
-    // useEffect(() => { 
-    //     if(Array.isArray(state.userPage)) {dispatch(getUserPage({path:state.server,token:sessionStorage.getItem("authenticated")}))}
-    // },[])
     
     useEffect(() => {
         changePlay(false)
@@ -48,7 +42,6 @@ function UserHome({changePlay}) {
         time.borderSize > 2 ? context.strokeStyle = "red" : context.strokeStyle = "#00A3FF";
         context.stroke();
     },[time.second])
-
     const {userPage,tariffType,orderTariff,contacts} = state.userHomePage 
 
 

@@ -31,16 +31,16 @@ export function UserChannels() {
                 Uploud image<input type="file" style={{display:"none"}}/>
             </label>
             <div className="Channels" 
-                style={{animationName:state.animationPath === "/userChannel" ? "channels2" : "null"}}
+                style={{animationName:state.animationPath === "/userPage/userChannel" ? "channels2" : "null"}}
             >
                 <p className="titleChannel">Channels</p>
-                <div className="TvChannels" style={{animationName:state.animationPath === "/userChannel" ? "tvChennels" : "null"}}>
-                    <p className="channel1"  style={{animationName:state.animationPath === "/userChannel" ? "Channelp" : "null"}}>
-                        {state.tvChannel.oneGroup.map((val) => <Link to={{pathname:"#"}} style={{animationName:state.animationPath === "/userChannel" ? "tvChennelsSpan" : "null"}}
+                <div className="TvChannels" style={{animationName:state.animationPath === "/userPage/userChannel" ? "tvChennels" : "null"}}>
+                    <p className="channel1"  style={{animationName:state.animationPath === "/userPage/userChannel" ? "Channelp" : "null"}}>
+                        {state.tvChannel.oneGroup.map((val) => <Link to={{pathname:"#"}} style={{animationName:state.animationPath === "/userPage/userChannel" ? "tvChennelsSpan" : "null"}}
                         key={Math.random()} target="_blank"><img src={val} alt=""/></Link>)}
                     </p>
-                    <p className="channel2"style={{animationName:state.animationPath === "/userChannel" ? "Channelp" : "null"}}>
-                        {state.tvChannel.twoGroup.map((val) => <Link to={{pathname:"#"}} style={{animationName:state.animationPath === "/userChannel" ? "tvChennelsSpan" : "null"}}
+                    <p className="channel2"style={{animationName:state.animationPath === "/userPage/userChannel" ? "Channelp" : "null"}}>
+                        {state.tvChannel.twoGroup.map((val) => <Link to={{pathname:"#"}} style={{animationName:state.animationPath === "/userPage/userChannel" ? "tvChennelsSpan" : "null"}}
                         key={Math.random()} target="_blank"><img src={val} alt=""/></Link>)}
                     </p>
                 </div>
