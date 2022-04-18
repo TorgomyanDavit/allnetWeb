@@ -14,7 +14,7 @@ import LgSmart from "../../images/LgSmart.png"
 import samsungImg from "../../images/samsungImg.png"
 import smartIcon from "../../images/SmartIcon.png"
 import { getAllContent, getUserData, getUserPage } from "./getRequest";
-import { sendEmail, newPass, postLogAuth, postRegister, postSignIn, changeUserData } from "./postRequest";
+import { sendEmail, newPass, postLogAuth, postRegister, postSignIn, changeUserData, buyTarif } from "./postRequest";
 
 
 const initialState = {
@@ -36,10 +36,25 @@ const initialState = {
     mainFaqPagination:[],
     userHomePage:[],
     userPage:[],
+    table:{
+        Row:[12,24,50],
+        rowCount:12,
+        countPage:[],
+        PageIndex:0,
+        data:[
+            [
+                {id:Math.random(),date:"jhon",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
+                {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
+                {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
+                {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
+                {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
+            ],
+        ],
+    },
+
+    
     personImg:"",
-
-
-
+    checkTarifData:false,
     regEmailErrorAuthenticated:false,
     loginemailValidation:false,
     forgetemailError:false,
@@ -97,19 +112,6 @@ const initialState = {
         {id:2,dataName:"email",inner:"",type:"text",display:"none",placeholder:"changeMail",value:""},
         {id:3,dataName:"Password",inner:"",type:"password",display:"none",placeholder:"changePassword",value:""}
     ],
-    table:{
-        countPage:[],
-        PageIndex:0,
-        data:[
-            [
-                {id:Math.random(),date:"jhon",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-                {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-                {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-                {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-                {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-            ],
-        ],
-    },
     channelInputDiv:[
         ["Movie","Music","News","FHD"],
         ["HD","4K","Ukrainian","Belarus"],
@@ -174,9 +176,7 @@ const mainPageSlices = createSlice({
             state.personData = state.personData.map((val) => {
                 if(val.id === action.payload.id && val.display === "none") {
                     return {...val,display:"block"}
-                } else if((val.id === action.payload.id && val.display === "none")) {
-                    return {...val,display:"none"}
-                }
+                } 
                 return {...val,display:"none"}
             })
         },
@@ -244,7 +244,6 @@ const mainPageSlices = createSlice({
         },
         showThanks:(state,action) => {
             state.TarifThanksShow = !state.TarifThanksShow
-
         },
         delsetMessige:(state,action) => {
             state.messigePerson = state.messigePerson.filter((val) => {
@@ -254,8 +253,10 @@ const mainPageSlices = createSlice({
         closeLetter:(state,action) => {
             state.receiveLetterShow = !state.receiveLetterShow
         },
+        chengRowCountPagination:(state,action) => {
+            state.table.rowCount = action.payload
+        },
         paginationCount:(state,action) => {
-            // debugger
            state.table.PageIndex = action.payload
         },
         loading:(state) => {
@@ -281,7 +282,10 @@ const mainPageSlices = createSlice({
                     case 2 : return { ...val,inner:state.userPage.user.password } ;
                 }
             })
-        }
+        },
+        setTarifId:(state,action) => {
+            if(!state.checkTarifData) { state.checkTarifData = action.payload } else {state.checkTarifData = false}
+        },
     },
 
     extraReducers:(builder) => {
@@ -322,7 +326,11 @@ const mainPageSlices = createSlice({
                         state.mainFaqPagination = data.faq.map((val) => {
                             return {id:val.id,title:val.title,description:val.description,simbol:"+",open:false}
                         })
-                    break;                    
+                    break;      
+
+                    case "csrf_token" : 
+                        localStorage.setItem("csrf_token",data.csrf_token)
+                    break;  
                 }
             })
             state.loading.mainLoading = false
@@ -367,21 +375,21 @@ const mainPageSlices = createSlice({
         })
         .addCase(getUserPage.fulfilled,(state,action) => {
             console.log("fulfiled userPAge",action);
-            if(!!action.payload.error) {state.loginemailValidation = true};
+            if(!!action.payload.error) {state.loginemailValidation = true}
             // state update homePage
-            state.userHomePage = action.payload[0];
+            state.userHomePage = action.payload[0]
             // state Update userPage
-            state.userPage = action.payload[1];
+            state.userPage = action.payload[1]
             // state update paymentPage
             state.paymentPage = action.payload[2].tariffs
             // state update PaymentHistoryPage 
-            let indexPage = Math.ceil(action.payload[4].history.length / 10)
+            let indexPage = Math.ceil(action.payload[4].history.length / state.table.rowCount)
             state.table.countPage = [...new Array(indexPage)]
             let page = [], i = 0, i2 = 0;
             state.table.data = action.payload[4].history.reduce(function(aggr,val,index)  {
                 page[i2] = val;
                 if((this.length - 1) === index){ aggr[i] = page; return aggr};
-                if(page.length === 10){ aggr[i] = page; page = []; i++; i2 = 0; return aggr};
+                if(page.length === state.table.rowCount){ aggr[i] = page; page = []; i++; i2 = 0; return aggr};
                 i2++;return aggr;
             }.bind(action.payload[4].history),[]);
             state.loading.mainLoading = false;
@@ -429,10 +437,24 @@ const mainPageSlices = createSlice({
             state.loading.mainLoading = false;
         })
 
+        // buy Tarif
+        .addCase(buyTarif.pending,(state,action) => {
+            console.log("pending changeUserData",action);
+            state.loading.mainLoading = "loading";
+        })
+        .addCase(buyTarif.fulfilled,(state,action) => {
+            console.log("fulfiled changeUserData",action);
+            state.loading.mainLoading = false;
+        })
+
 
         
     }
 })
+
+
+
+
 // getUserData
 // torgomyandavid96@gmail.com
 // davit.torgomyan96@mail.ru
@@ -440,7 +462,7 @@ export const {
     aginationCount,closeLetter,delsetMessige,showThanks,changeFaq,changeRegAndSignImgdisplay,
     changeImgType,changeAnimationPathDone,changeAnimation,changeDisplay,changeDate,setValue,
     setId,changeUserImg,checkLink,checkPlaceholder,loading,registerAuth,loginAuth,
-    forgetemailError,sendLetterMail,userDate,paginationCount
+    forgetemailError,sendLetterMail,userDate,paginationCount,setTarifId,chengRowCountPagination
 } = mainPageSlices.actions
 
 export default mainPageSlices.reducer

@@ -16,18 +16,22 @@ import { getUserPage } from "../../getRequest"
 
 
 
-
-
-
 export default function User() {
     const state = useSelector((state) => state.mainPage)
     const [buttonNAme,setButtonName] = useState(true)
     const [displayAfter,setdisplayAfter] = useState(true)
     let formRef = useRef(null)
+    let inpREf = useRef(null)
+
+    
+
+
+    
     const [ file,setRef ]= useState("")
     const [ fileUrl,setfileUrl ]= useState("")
 
     // console.log(state.userPage.user,"user");
+    console.log(inpREf);
 
     useEffect(() => {
         if(state.userPage.user)dispatch(userDate())
@@ -69,41 +73,42 @@ export default function User() {
             }}><img src="/mainPageImages/buttonSlack.png" alt=""/></span> : null} 
             <AnimationTimer style={{opacity:1}}/>
             <div className="UserPersonImg"
-                style=
-                {{
+                style = {{
                     background:"white",
                     animationName:
                     state.animationPath === "/userPage/userHome"  ? "personImg" : "null"
                 }}>
-                    <p style={{animationName:state.animationPath === "/userPage/userHome" ? "person" : "null"}}>
-                        <img src={state.personImg ? state.personImg : !!user ? user.photo ? `${state.serverForImg}/${user.photo.path}`: personImg : personImg} alt="PersonImg"/>
-                    </p>
-                    <label style={{animationName:state.animationPath === "/userPage/userHome" ? "label" : "null"}}
-                            className="labelForFileReader" onChange={(e) => {
-                            // console.log(e.target.value,e.target.files[0]);
-                            setfileUrl(e.target.value)
-                            setRef(e.target.files[0])
-                            reader.readAsDataURL(e.target.files[0])
-                        }}>
-                        Uploud image<input  accept="image/*" multiple type="file" style={{display:"none"}}/>
-                    </label>
+                <p style={{animationName:state.animationPath === "/userPage/userHome" ? "person" : "null"}}>
+                    <img src={state.personImg ? state.personImg : !!user ? user.photo ? `${state.serverForImg}/${user.photo.path}`: personImg : personImg} alt="PersonImg"/>
+                </p>
+                <label style={{animationName:state.animationPath === "/userPage/userHome" ? "label" : "null"}}
+                        className="labelForFileReader" onChange={(e) => {
+                        // console.log(e.target.value,e.target.files[0]);
+                        setfileUrl(e.target.value)
+                        setRef(e.target.files[0])
+                        reader.readAsDataURL(e.target.files[0])
+                    }}>
+                    Uploud image<input accept="image/*" multiple type="file" style={{display:"none"}}/>
+                </label>
             </div>
             {/* state.personImg ? state.personImg */}
-            <form className="personData"  ref={formRef} onSubmit={(e) => {e.preventDefault()}}>
+            <form className="personData"  ref={formRef} onSubmit={(e) => { e.preventDefault() }}>
                 {state.personData.map((val,index) => {
                     return (
                         <div key={val.id} className="personName" style={{animationName:state.animationPath === "/userPage/userHome" ? "personName" : "null"}}>
                             {val.dataName} 
                             <input disabled type={val.type} className="inputInner" value={val.inner}/> 
-                            <img onClick={() => { dispatch(changeDisplay({id:val.id})) }} src={person} alt="logo"
+                            <img onClick={() => { 
+                                dispatch(changeDisplay({id:val.id})) 
+                            }} src={person} alt="logo"
+                                
                         />
-                            <input placeholder={val.placeholder} name="VARDAN"  value={val.value} className="input" style={{display:val.display}}  onKeyDown={(e) => {
+                            <input placeholder={val.placeholder} name="VARDAN" value={val.value} className="input" style={{display:val.display}} onKeyDown={(e) => {
                                 if(e.keyCode === 13) {
                                     dispatch(changeDate({id:state.Id}))
                                     dispatch(setValue({id:state.Id,value:""}))
                                     dispatch(changeDisplay({id:state.id}))
                                 }
-                               
                             }} 
                                 onChange={(e) => {
                                     dispatch(setId({id:val.id}))
@@ -119,32 +124,10 @@ export default function User() {
 
                 <div className="ButtonUserData" onClick={(e) => {
                     let body = formRef.current
-                    let formData = new FormData();
-                    formData.append("image",file)
-                    // formData.append("image",state.personImg)
-                    // let data = {
-                    //     name :"images",
-                    //     filename :fileUrl,
-                    //     type:file.type,
-                    //     data:file,
-                    // }
-                    // let objKeys = Object.keys(data)
-                    // for(let keys of objKeys) {
-                    //     formData.append(keys,data[keys])
-                    // }
-
-
-                    for(let pair of formData.entries()) {
-                        console.log(pair[0]+ ', ' + pair[1]); 
-                    }
-
-
-
                     dispatch(changeUserData({
                         path:state.server,
                         token:sessionStorage.getItem("authenticated"),
                         body:{
-                            file:JSON.stringify( formData),
                             username:body[0].value,
                             email:body[2].value,
                             password:body[4].value,

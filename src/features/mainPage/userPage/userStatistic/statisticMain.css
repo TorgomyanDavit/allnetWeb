@@ -226,13 +226,13 @@
     display: flex;
     justify-content: space-between;
     width: 1421px;
-    min-height: 686px;
+    height: 774px;
     background: #FFFFFF;
     border-radius: 20px;
     margin-top: 34px;
     flex-direction: column;
-    padding-bottom: 40px;
-    overflow: hidden;
+    padding-bottom: 20px;
+    overflow-x: scroll;
 }
 
 
@@ -287,7 +287,7 @@
     height: 49px;
     position: relative;
     cursor: pointer;
-    animation-name: pagination;
+    /* animation-name: pagination; */
     animation-duration: 1s;
 }
 

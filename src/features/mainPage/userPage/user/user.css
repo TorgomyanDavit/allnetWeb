@@ -10,6 +10,7 @@
     border-radius: 20px;
     padding: 19px;
     animation-duration: 0.5s;
+    display: none;
 }
 
 .after {
@@ -136,9 +137,9 @@
 }
 
 .personData {
-    margin-top: 29px;
+    /* margin-top: 29px; */
     position: absolute;
-    top: 273px;
+    top: 0;
 }
 
 .personName {
@@ -252,6 +253,12 @@
     top: 0;
     padding-left: 38px;
     font-size: 20px;
+    border: 2px solid green;
+}
+
+.input:focus {
+    outline: none !important;
+    border: 2px solid green;
 }
 
 .personName img {

@@ -15,11 +15,15 @@ export const postRegister = createAsyncThunk(
 
 export const postSignIn = createAsyncThunk(
     "mainPage/postSignIn",
-        async ({path,body}) => {
+    async ({path,body}) => {
+        let token = await fetch(`${path}/csrf`).then((result) => result.json(result)).then((result) => result.csrf_token)
+        console.log(localStorage.getItem("csrf_token"));
+
         const response = await fetch(`${path}/login`,{
             mode: 'cors',
             method : "POST",
-            headers :{'Content-Type' : 'application/json','Accept': 'application/json'},
+            credentials: "same-origin",
+            headers :{'Content-Type' : 'application/json','Accept': 'application/json', "XSRF-TOKEN" : token},
             body : JSON.stringify(body)
         })
         return response.json()
@@ -72,6 +76,20 @@ export const changeUserData = createAsyncThunk(
         const response = await fetch(`${path}/user/${id}`,{
             mode: 'cors',
             method : "PUT",
+            headers : {'Content-Type' : 'application/json','Accept' : 'application/json','Authorization' : `Bearer ${token}`},
+            body:JSON.stringify(body)
+        })
+        return response.json()
+    }
+)
+
+export const buyTarif = createAsyncThunk(
+    "mainPage/buyTarif",
+    async ({path,token,body}) => {
+        // console.log(body,path);
+        const response = await fetch(`${path}/payment`,{
+            mode: 'cors',
+            method : "POST",
             headers : {'Content-Type' : 'application/json','Accept' : 'application/json','Authorization' : `Bearer ${token}`},
             body:JSON.stringify(body)
         })

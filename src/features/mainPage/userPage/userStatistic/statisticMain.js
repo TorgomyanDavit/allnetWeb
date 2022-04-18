@@ -5,7 +5,8 @@ import { HistoryPage } from "./historyPage"
 import "./statisticMain.css"
 import "./animationResponsive.css"
 
-import { changeAnimation, paginationCount } from "../../mainPageSlice"
+import { changeAnimation, chengRowCountPagination, paginationCount } from "../../mainPageSlice"
+import { getUserPage } from "../../getRequest"
 
 
 export function StatisticMain() {
@@ -13,11 +14,10 @@ export function StatisticMain() {
     const dispatch = useDispatch()
     useEffect(() => {return () => dispatch(changeAnimation({value:"/userPage/userStatistic/table1"}))},[])
     const [showSelect,setShowSelect] = useState(true)
-    const [showValue,setShowValue] = useState(1)
-    function child(childIndex) {setShowValue(++childIndex) }
+    const [showValue,setShowValue] = useState(state.table.rowCount)
+    // function child(childIndex) {setShowValue(++childIndex) }
     let {PageIndex} = state.table
 
-        
     
 
     return (
@@ -61,18 +61,19 @@ export function StatisticMain() {
                                 }}
                             />
                             <div className="optionSelect" style={{display:showSelect ? "none" : "flex"}}>
-                                {state.table.countPage.map((val,index) => {
-                                    return <button key={index} onClick={() => {
-                                        dispatch(paginationCount(index-1))
-                                        setShowValue(index)
-                                    }}>{++index}</button>
+                                {state.table.Row.map((val,index) => {
+                                    return <button key={index} onClick={(event) => {
+                                        dispatch(chengRowCountPagination(val))
+                                        setShowValue(val)
+                                        dispatch(getUserPage({path:state.server,token:sessionStorage.getItem("authenticated")}))
+                                    }}>{val}</button>
                                 })}
                             </div>
                         </form>
                     <span>Page</span>
                 </div>
             </section>
-            <HistoryPage showValue={showValue} child={child}/>
+            <HistoryPage />
         </main>
     )
 }

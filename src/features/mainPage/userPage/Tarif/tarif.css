@@ -128,7 +128,7 @@ input[type="radio"]:checked + .check {
     width: 100%;
     height:100vh;
     position: absolute;
-    background: rgba(245, 222, 179, 0.274);
+    background: rgba(204, 225, 228, 0.64);
     z-index: 1;
     display: flex;
     justify-content: center;
@@ -186,6 +186,118 @@ input[type="radio"]:checked + .check {
     background: #2A29B4;
     color: white;
 }
+
+.cardSection {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100vh;
+    position: absolute;
+    background: rgba(204, 225, 228, 0.64);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* display: none; */
+}
+
+.formCredit {
+    width: 100%;
+    height: 100%;
+    max-width: 623.98px;
+    max-height: 542.31px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 37px 39px;
+    display: flex;
+    flex-direction: column;
+}
+
+.titleCard {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 800;
+    font-size: 30px;
+    color: #282828;
+}
+
+.titleCardtITLE {
+    font-family: "Montserrat-Bold" !important;
+    margin-bottom: 30px;
+}
+
+.closePopupButton {
+    background: none;
+    outline: none;
+    border: none;
+}
+
+.entherCardNumber {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
+    position: relative;
+}
+
+.popupInputMain {
+    display: flex;
+    gap: 16px;
+    align-items: flex-end;
+}
+
+.cardTitleFontSize {
+    font-weight: 700;
+    font-size: 18px;
+    color: #282828;
+    /* opacity: 0.7; */
+}
+
+.inputCArd {
+    width: 99%;
+    height: 55px;
+    background: #2828281a;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    padding-left: 30px;
+    box-shadow: inset 2px 4px 10px rgba(0, 0, 0, 0.25);
+    color: #282828;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.inputCArd::placeholder {
+    font-weight: 600;
+    font-size: 18px;
+    color: #28282841;
+}
+
+.makePaymentButton {
+    background: #EEBA06;
+    border-radius: 10px;
+    width: 100%;
+    height: 73px;
+    margin-top: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #282828;
+    font-weight: 600;
+    font-size: 24px;
+    border: none;
+    outline: none;
+}
+
+.error {
+    position: absolute;
+    color: red;
+    display: none;
+}
+
+
+
+
 
 @media screen and (max-width:1024px) {
     .secondTarifDiv {

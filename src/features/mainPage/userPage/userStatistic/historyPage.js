@@ -7,7 +7,7 @@ import { useState } from "react"
 import { useRef } from "react"
 import { useEffect } from "react"
 
-export function HistoryPage({showValue,child}) {
+export function HistoryPage() {
     const state = useSelector((state) => state.mainPage.table)
     const dispatch = useDispatch()
     let [activePage,setactivePage] = useState(0)
@@ -18,12 +18,9 @@ export function HistoryPage({showValue,child}) {
     const linkPref = useRef(null)
 
 
-    useEffect(() => {
-        child(activePage)
-    },[changeActive])
+
 
     useEffect(() => {
-        setactivePage(--showValue)
         setTimeout(() => {
             for(let item  of linkPref.current.children) {
                 if(item.classList.contains("activeBalance")) {
@@ -31,7 +28,7 @@ export function HistoryPage({showValue,child}) {
                 }
             }
         },0)
-    },[showValue])
+    },[])
 
 
     return (
@@ -75,7 +72,7 @@ export function HistoryPage({showValue,child}) {
 
                         <span className="dots"> ... </span>
 
-                        <button className={`butPagination ${activePage === state.countPage.length -1 ? "activeBalance" : ""}`} 
+                        <button className={`butPagination ${activePage === state.countPage.length - 1 ? "activeBalance" : ""}`} 
                             onClick={() => {
                                 setchangeActive(!changeActive)
                                 setactivePage(state.countPage.length - 1)

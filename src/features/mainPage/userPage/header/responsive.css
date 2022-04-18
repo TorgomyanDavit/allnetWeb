@@ -31,7 +31,7 @@
 
     .UserPersonImg {
         padding: 13px 14px;
-        display: flex;
+        display: none;
         gap: 16px;
     }
 

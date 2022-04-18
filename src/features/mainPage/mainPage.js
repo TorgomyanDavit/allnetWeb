@@ -21,6 +21,7 @@ import { useHistory } from "react-router-dom"
 import { useLocation } from "react-router-dom"
 import { getAllContent } from "./getRequest.js"
 import {useParams} from "react-router-dom"
+import CardDate from "./userPage/Tarif/cardData.js"
 
 function MainPage() {
     const dispatch = useDispatch()
@@ -48,7 +49,9 @@ function MainPage() {
            { state.receiveLetterShow ? <Letter/> : null }
 
            <Switch>
-                {state.TarifThanksShow ? <Thanks/> : null}
+                {/* {state.TarifThanksShow ? <Thanks/> : null} */}
+                {state.TarifThanksShow ? <CardDate/> : null}
+
                 <Route path="/about">
                     <About toggle={toggle}/>
                 </Route>
