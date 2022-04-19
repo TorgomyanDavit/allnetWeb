@@ -7,20 +7,18 @@ import { useState } from "react"
 import { useRef } from "react"
 import { useEffect } from "react"
 
-export function HistoryPage() {
+export function HistoryPage({childFunc}) {
     const state = useSelector((state) => state.mainPage.table)
     const dispatch = useDispatch()
     let [activePage,setactivePage] = useState(0)
     let [activePagePOsition,setactivePagePOsition] = useState(0)
     let [changeActive,setchangeActive] = useState(false)
     let {PageIndex} = state
-    console.log(PageIndex);
     const linkPref = useRef(null)
-
-
-
-
+    function RefreshHover() { setactivePage(0) }
+    
     useEffect(() => {
+        childFunc.current = RefreshHover
         setTimeout(() => {
             for(let item  of linkPref.current.children) {
                 if(item.classList.contains("activeBalance")) {

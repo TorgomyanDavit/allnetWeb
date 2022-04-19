@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react"
+
+import { React, useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
 import { HistoryPage } from "./historyPage"
@@ -16,9 +17,11 @@ export function StatisticMain() {
     const [showSelect,setShowSelect] = useState(true)
     const [showValue,setShowValue] = useState(state.table.rowCount)
     // function child(childIndex) {setShowValue(++childIndex) }
-    let {PageIndex} = state.table
+    // let {PageIndex} = state.table
+    const childFunc = useRef(null)
 
-    
+
+
 
     return (
         <main className="statisticMain">
@@ -63,6 +66,7 @@ export function StatisticMain() {
                             <div className="optionSelect" style={{display:showSelect ? "none" : "flex"}}>
                                 {state.table.Row.map((val,index) => {
                                     return <button key={index} onClick={(event) => {
+                                        childFunc.current()
                                         dispatch(paginationCount(0))
                                         dispatch(chengRowCountPagination(val))
                                         setShowValue(val)
@@ -74,7 +78,7 @@ export function StatisticMain() {
                     <span>Page</span>
                 </div>
             </section>
-            <HistoryPage />
+            <HistoryPage childFunc={childFunc}/>
         </main>
     )
 }
