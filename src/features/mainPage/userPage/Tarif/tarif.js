@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React, { useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { setTarifId, showThanks } from "../../mainPageSlice"
 import "./tarif.css"
@@ -8,12 +8,13 @@ import Thanks from "./thankyouPopUp"
 export default function Tarif() {
     const state = useSelector((state) => state.mainPage)
     const dispatch = useDispatch()
+    const [genIndex,setGenIndex] = useState(null)
     let USref = useRef(null)
 
 
     function setTarifData(event,index) {
         let gen = event.target.form.elements.gen
-        if(gen.value === "on") {
+        if(gen.value === "on" && genIndex === index) {
             let genID = Object.keys(gen).filter((val,index) => {
                 return gen[index].checked
             }).map((val) => {if( +val % 2 === 0 ) { return 0 } else { return 1 }} )
@@ -24,7 +25,7 @@ export default function Tarif() {
         } 
     }
 
-    console.log(state.checkTarifData);
+    // console.log(state.checkTarifData);
 
 
 
@@ -48,10 +49,10 @@ export default function Tarif() {
                                 return (
                                     <label key={val.id} className="chexbox">
                                         <label className="chexboxinput" required>
-                                            <input type="radio" name="gen" style={{display:"none"}}/>   
+                                            <input type="radio" name="gen" style={{display:"none"}} onChange={() => {setGenIndex(index)}} />   
                                             <div className="check"></div>
                                         </label>
-                                        <p className="month">{val.duration_name + " - " + val.cost + ""+ val.currency_symbol}</p>
+                                        <p className="month">{val.duration_name + " - " + val.cost + "" + val.currency_symbol}</p>
                                     </label>
                                 )
                             })}

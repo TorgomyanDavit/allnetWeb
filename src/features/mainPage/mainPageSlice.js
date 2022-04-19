@@ -383,15 +383,37 @@ const mainPageSlices = createSlice({
             // state update paymentPage
             state.paymentPage = action.payload[2].tariffs
             // state update PaymentHistoryPage 
-            let indexPage = Math.ceil(action.payload[4].history.length / state.table.rowCount)
+            let indexPage = Math.ceil(action.payload[3].history.length / state.table.rowCount)
             state.table.countPage = [...new Array(indexPage)]
             let page = [], i = 0, i2 = 0;
-            state.table.data = action.payload[4].history.reduce(function(aggr,val,index)  {
+
+
+
+            
+            // let dateObj = new Date(Date.now())
+            // let monthi = dateObj.getUTCMonth() + 1; //months from 1-12
+            // var day = dateObj.getUTCDate();
+            // var yeari = dateObj.getUTCFullYear();
+            // console.log(day + "/" + monthi + "/" + "" + yeari );
+
+
+            let correctData = action.payload[3].history.map((val) => {
+                let dateObj = new Date(Date.now())
+                let monthi = dateObj.getUTCMonth() + 1; //months from 1-12
+                var day = dateObj.getUTCDate();
+                var yeari = dateObj.getUTCFullYear();
+                console.log(day + "/" + monthi + "/" + "" + yeari );
+                return {...val,date_start:new Date(val.date_start).toISOString().split('T')[0]}
+            })
+
+
+
+            state.table.data = correctData.reduce(function(aggr,val,index) {
                 page[i2] = val;
                 if((this.length - 1) === index){ aggr[i] = page; return aggr};
                 if(page.length === state.table.rowCount){ aggr[i] = page; page = []; i++; i2 = 0; return aggr};
                 i2++;return aggr;
-            }.bind(action.payload[4].history),[]);
+            }.bind(action.payload[3].history),[]);
             state.loading.mainLoading = false;
         })
 

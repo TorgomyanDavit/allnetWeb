@@ -31,7 +31,7 @@ export default function User() {
     const [ fileUrl,setfileUrl ]= useState("")
 
     // console.log(state.userPage.user,"user");
-    console.log(inpREf);
+    // console.log(inpREf);
 
     useEffect(() => {
         if(state.userPage.user)dispatch(userDate())
@@ -97,19 +97,16 @@ export default function User() {
                     return (
                         <div key={val.id} className="personName" style={{animationName:state.animationPath === "/userPage/userHome" ? "personName" : "null"}}>
                             {val.dataName} 
-                            <input disabled type={val.type} className="inputInner" value={val.inner}/> 
+                            <input disabled type={val.type} className={`inputInner ${val.id === 2 ? "mailInput" : ""}`} value={val.inner}/> 
                             <img onClick={() => { 
-                                dispatch(changeDisplay({id:val.id})) 
-                            }} src={person} alt="logo"
-                                
-                        />
-                            <input placeholder={val.placeholder} name="VARDAN" value={val.value} className="input" style={{display:val.display}} onKeyDown={(e) => {
-                                if(e.keyCode === 13) {
+                                if(val.value !== "") {
                                     dispatch(changeDate({id:state.Id}))
                                     dispatch(setValue({id:state.Id,value:""}))
-                                    dispatch(changeDisplay({id:state.id}))
                                 }
-                            }} 
+                                dispatch(changeDisplay({id:val.id})) 
+                            }} src={person} alt="logo"
+                        />
+                            <input placeholder={val.placeholder} name="VARDAN" value={val.value} className="input" style={{display:val.display}} 
                                 onChange={(e) => {
                                     dispatch(setId({id:val.id}))
                                     dispatch(setValue({id:val.id,value:e.target.value}))

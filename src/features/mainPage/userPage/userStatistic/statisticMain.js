@@ -63,6 +63,7 @@ export function StatisticMain() {
                             <div className="optionSelect" style={{display:showSelect ? "none" : "flex"}}>
                                 {state.table.Row.map((val,index) => {
                                     return <button key={index} onClick={(event) => {
+                                        dispatch(paginationCount(0))
                                         dispatch(chengRowCountPagination(val))
                                         setShowValue(val)
                                         dispatch(getUserPage({path:state.server,token:sessionStorage.getItem("authenticated")}))

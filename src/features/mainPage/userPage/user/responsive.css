@@ -37,6 +37,9 @@
 
 
 @media (max-width:600px) {
+    .mailInput {
+        
+    }
     .labelForFileReader {
         width: 246px;
         height: 55px;

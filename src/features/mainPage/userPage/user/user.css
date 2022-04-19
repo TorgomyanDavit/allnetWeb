@@ -147,7 +147,8 @@
     height: 77px;
     background:#FFFFFF;
     display: flex;
-    justify-content: space-evenly;
+    padding: 20px;
+    justify-content: space-between;
     font-size: 18px;
     font-weight: 600;
     color: rgba(40, 40, 40, 0.7);
@@ -178,6 +179,11 @@
     font-weight: 600;
     outline: none;
     border: none;
+}
+
+
+.mailInput {
+    width: 290px;
 }
 
 .ButtonUserData {

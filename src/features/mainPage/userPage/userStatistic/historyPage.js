@@ -42,11 +42,7 @@ export function HistoryPage() {
                             if(activePage >= 1) {
                                 setchangeActive(!changeActive)
                                 setactivePage(--activePage)
-                                // debugger
                                 dispatch(paginationCount(PageIndex-1))
-
-
-
                                 for(let item  of linkPref.current.children) {
                                     if(item.classList.contains("activeBalance")) {
                                         setactivePagePOsition(-item.offsetLeft + 26)

@@ -17,10 +17,20 @@ export default function CardDate() {
     const dispatch = useDispatch()
 
 
-    console.log(state.paymentPage);
+    // let dateObj = new Date(Date.now())
+    // let monthi = dateObj.getUTCMonth() + 1; //months from 1-12
+    // var day = dateObj.getUTCDate();
+    // var yeari = dateObj.getUTCFullYear();
+    // console.log(day + "/" + monthi + "/" + "" + yeari );
 
-console.log(state.paymentPage[tarifTypeID].tariff_count[radioId].id);
+    // let dateObj = new Date(Date.now())
 
+    // dateObj.toISOString().split('T')[0];
+
+    // setTimeout(() => {
+    // console.log(new Date(y).toJSON());
+    // },5000)
+    
     return (
         <section className="cardSection">
             <div className="formCredit">
@@ -85,11 +95,11 @@ console.log(state.paymentPage[tarifTypeID].tariff_count[radioId].id);
                             expiry_month:month,
                             expiry_year:year,
                             cvv:CVCValue,
-                            tariff_count_id:radioId,
-                            tariff_type_id:state.paymentPage[tarifTypeID].tariff_count[radioId].id
+                            tariff_count_id:state.paymentPage[tarifTypeID].tariff_count[radioId].id,  
+                            tariff_type_id:state.paymentPage[tarifTypeID].id,
                         },
                     }))
-                  
+                    
                 }}>Make payment</button>
             </div>
         </section>
