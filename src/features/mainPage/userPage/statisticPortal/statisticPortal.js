@@ -18,7 +18,7 @@ export function StatisticPortal() {
     const [statisticTimeOne,setStatisticTimeOne] = StatisticTimerOneHook()
     const canvasRef = useRef(null)
     const dispatch = useDispatch()
-    useEffect(() => {return () => dispatch(changeAnimation({value:"/statisticPortal"}))},[])
+    useEffect(() => {return () => dispatch(changeAnimation({value:"/userPage/statisticPortal"}))},[])
     
     
     useEffect(() => {

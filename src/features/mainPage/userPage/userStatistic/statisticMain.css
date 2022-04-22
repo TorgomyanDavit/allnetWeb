@@ -287,7 +287,7 @@
     height: 49px;
     position: relative;
     cursor: pointer;
-    /* animation-name: pagination; */
+    animation-name: pagination;
     animation-duration: 1s;
 }
 

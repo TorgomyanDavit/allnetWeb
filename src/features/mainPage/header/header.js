@@ -1,16 +1,18 @@
 import { useState } from "react"
 import { useSelector } from "react-redux"
-import { NavLink} from "react-router-dom"
+import { NavLink, useLocation} from "react-router-dom"
 import "./AresponsiveHeadeer.css"
 import "./header.css"
 
 function Headers({type,Width,setToggle,toggle}) {
+    const location = useLocation()
     const state = useSelector((state) => state.mainPage)
     const [imgX,setimgX] = useState(false)
     const [select,setSelect] = useState(false)
     const [inner,setInner] = useState("EN")
-
-
+    let pathName = location.pathname === "/register" || location.pathname === "/signIn" 
+    || location.pathname === "/about" || location.pathname === "/contactUs" || location.pathname === "/FAQ" || location.pathname === "/forgetPassword"
+    
     return (
         <header className="headerContainer">
             <nav className="headerNavigator">
@@ -23,11 +25,12 @@ function Headers({type,Width,setToggle,toggle}) {
                         <img src="/mainPageImages/Logo.svg" alt="Logo" id="menuLogoimg"/>
                     </NavLink>
                 <div className="toggleMain" style={{display:toggle ? "block" : "none"}}>
-                    <div className="toggle">
+                    <div className="toggle" style={{gap:(!!sessionStorage.getItem("authenticated")) ? "40px" : "11px"}}>
                         <NavLink to="/about" onClick={() => {setToggle(!toggle);setimgX(!imgX)}} className="toggleMenu">About</NavLink>
                         <NavLink to="/contactUs" onClick={() => {setToggle(!toggle);setimgX(!imgX)}} className="toggleMenu">Contact us</NavLink>
                         <NavLink to="/FAQ" onClick={() => {setToggle(!toggle);setimgX(!imgX)}} className="toggleMenu">FAQ</NavLink>
-                        <NavLink to="/signIn" onClick={() => {setToggle(!toggle);setimgX(!imgX)}} style={{textDecoration:"none", display:type}} className="toggleButton"> 
+                        <NavLink to="/signIn" onClick={() => {setToggle(!toggle);setimgX(!imgX)}} style={{textDecoration:"none"}} 
+                            className={`toggleButton ${!!sessionStorage.getItem("authenticated") ?  "displayNone" : ""}`}> 
                             Sign in
                         </NavLink>
                     </div>
@@ -38,7 +41,7 @@ function Headers({type,Width,setToggle,toggle}) {
                     <NavLink to="/about" className="name">About</NavLink>
                     <NavLink to="/contactUs" className="name">Contact us</NavLink>
                     <NavLink to="/FAQ" className="name">FAQ</NavLink>
-                    <NavLink to="/signIn" style={{textDecoration:"none", display:type}}> 
+                    <NavLink to="/signIn" style={{textDecoration:"none",display:!!sessionStorage.getItem("authenticated") ? "none" : pathName ? "none" : "flex"}}> 
                         <button className="menuItemButton">Sign in</button>
                     </NavLink>
                     <div className="languig-Div" onClick={() => setSelect(!select)}>{inner} 
@@ -67,3 +70,5 @@ function Headers({type,Width,setToggle,toggle}) {
     )
 }
 export {Headers}
+
+// ,display:type

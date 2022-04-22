@@ -12,9 +12,9 @@ export function UserChannels() {
             <div className="user" 
             style={{animationName:state.animationPath === "/userPage/userPerson" ? "user" : "null"}}>
                 <div className="userName">
-                    <img src={!!user ? user.photo ? `${state.serverForImg}/${user.photo.path}`: personImg : ""}  alt="personImg" 
+                    {/* <img src={!!user ? user.photo ? `${state.serverForImg}/${user.photo.path}`: personImg : ""}  alt="personImg" 
                         style={{animationName:state.animationPath === "/userPage/userPerson" ? "userImg" : "null"}}
-                    />
+                    /> */}
                     <p style={{animationName:state.animationPath === "/userPage/userPerson" ? "userParagraph" : "null"}}>
                         <span>{user ? user.username : ""}</span>
                         <span>Balance:<b>100 $</b></span>

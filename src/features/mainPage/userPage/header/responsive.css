@@ -100,6 +100,10 @@
 }
 
 @media (max-width:350px) {
+    .statisticMain {
+        padding-bottom: 150px;
+    }
+
     .iconDiv p {
         width: 30px;
     }

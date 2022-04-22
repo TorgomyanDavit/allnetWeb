@@ -56,13 +56,13 @@ function Register({toggle}) {
                     }}>
                         <label>
                             <input type="text" placeholder="Name" className={`${nameField ? "outLIneError" : ""}`} onFocus={() => setNameField(false)}/>
-                            {nameField ? <p className="refusedMessage">This Name is not defined</p> : ""}
+                            {nameField ? <p className="refusedMessage regRefus">This Name is not defined</p> : ""}
                         </label>
                         <label>
                             <input placeholder="E-mail" className={`${emailField ? "outLIneError" : state.regEmailErrorAuthenticated ? "outLIneError"  : ""}`} onFocus={() => setemailField(false)}/>
                             {
-                                emailField ? <p className="refusedMessage">"The email must be a valid email address."</p> : 
-                                state.regEmailErrorAuthenticated ? <p className="refusedMessage">the email has already been taken.</p> : ""
+                                emailField ? <p className="refusedMessage regRefus">"The email must be a valid email address."</p> : 
+                                state.regEmailErrorAuthenticated ? <p className="refusedMessage regRefus">the email has already been taken.</p> : ""
                             }
                         </label>
                         <label className="labelForPassvord">
@@ -76,7 +76,7 @@ function Register({toggle}) {
                             }}>
                                 <img src="/mainPageImages/showValue.png" alt="showValueImg"/>
                             </button>
-                            {passwordField ? <p className="refusedMessage">Pasword length must be 6 charachter</p> : ""}
+                            {passwordField ? <p className="refusedMessage regRefus">Pasword length must be 6 charachter</p> : ""}
                         </label>
 
                         <label className="labelForPassvord">
@@ -90,7 +90,7 @@ function Register({toggle}) {
                             }}>
                                 <img src="/mainPageImages/showValue.png" alt="showValueImg"/>
                             </button>
-                            {repeatPasswordField ? <p className="refusedMessage">Repeate password is not match </p> : ""}
+                            {repeatPasswordField ? <p className="refusedMessage regRefus">Repeate password is not match </p> : ""}
                         </label>
                         <button className="RegisterSubmit">Registration</button>
                     </form>

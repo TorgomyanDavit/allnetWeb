@@ -11,13 +11,20 @@ export function ContactUs({toggle}) {
     const state = useSelector((state) => state.mainPage)
     const {messagePhone,messageEmail,contactDivSocialLink} = state.mainContactPagination
     const dispatch = useDispatch()
+    const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     const [Valid,setValid] = useState({
         firstInput:"oneMount",
         secondInput:"oneMount",
         textAria:"oneMount",
     })
 
+    const [naemValue,setNameValue] = useState("")
+    const [emailValue,setEmailValue] = useState("")
+    const [texteriaValue,setTextereaValue] = useState("")
 
+
+
+    console.log("VALID",Valid);
 
 
     return (
@@ -47,31 +54,35 @@ export function ContactUs({toggle}) {
             }}>
             <form className="contactFormTetx" onSubmit={(e) => {
                 e.preventDefault()
-                dispatch(closeLetter())
-                window.scrollTo(0, 0)
-                document.body.style.overflow = 'hidden';
+                let body = e.target
+                console.log(e);
+                if(body[0].value.length > 0 && body[1].value.match(mailformat) && body[2].value.length > 0) {
+                    dispatch(closeLetter());
+                    window.scrollTo(0, 0);
+                    document.body.style.overflow = 'hidden';
+                    setNameValue("");setEmailValue("");setTextereaValue("");
+                }
+
             }}>
                 <div>
-                    <input  type="text" placeholder="Name" 
+                    <input  type="text" placeholder="Name" value={naemValue} onChange={(e) => setNameValue(e.target.value)}
                         style={{outlineColor:Valid.firstInput === "oneMount" ? "transparent" : Valid.firstInput ? "green" : "red"}} 
-                        required
                     />
-                    <input type="email" placeholder="E-mail" 
+                    <input placeholder="E-mail" value={emailValue} onChange={(e) => setEmailValue(e.target.value)}
                         style={{outlineColor:Valid.secondInput === "oneMount" ? "transparent" : Valid.secondInput ? "green" : "red"}} 
-                        required
                     />
                 </div>
-                <textarea type="text" placeholder="Message" 
+                <textarea type="text" placeholder="Message" value={texteriaValue}  onChange={(e) => setTextereaValue(e.target.value)}
                     style={{outlineColor:Valid.textAria === "oneMount" ? "transparent" : Valid.textAria ? "green" : "red"}} 
-                    required
                 >
                 </textarea>
                 <button onClick={(e) => {
+                    // console.log(e.target.form[0].value);
                     setValid({
                         ...Valid,
-                        firstInput:e.target.parentNode[0].validity.valid,
-                        secondInput:e.target.parentNode[1].validity.valid,
-                        textAria:e.target.parentNode[2].validity.valid
+                        firstInput:e.target.form[0].value.length !== 0,
+                        secondInput:e.target.form[1].value.match(mailformat),
+                        textAria:e.target.form[2].value.length > 0
                     })
                 }}>Send</button>
             </form>

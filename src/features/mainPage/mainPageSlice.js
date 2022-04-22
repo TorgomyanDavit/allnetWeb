@@ -67,6 +67,7 @@ const initialState = {
 
     paymentPage:[],
     loading:{mainLoading:false},
+    loadinHeight:undefined,
 
 
 
@@ -98,8 +99,8 @@ const initialState = {
         {path:"/userPage/userPerson",activeClass:"activeClass"},
         {path:"/userPage/userStatistic/table1",activeClass:"activeClass"},
         {path:"/userPage/userChannel",activeClass:"activeClass"},
-        {path:"/statisticPortal",activeClass:"activeClass"},
-        {path:"/messigePerson",activeClass:"activeClass"},
+        {path:"/userPage/statisticPortal",activeClass:"activeClass"},
+        {path:"/userPage/messigePerson",activeClass:"activeClass"},
     ],
     animationPath:"null",
     animationPathDone:"null",
@@ -286,6 +287,9 @@ const mainPageSlices = createSlice({
         setTarifId:(state,action) => {
             if(!state.checkTarifData) { state.checkTarifData = action.payload } else {state.checkTarifData = false}
         },
+        changeloadHeight:(state,action) => {
+            state.loadinHeight = action.payload.height
+        }
     },
 
     extraReducers:(builder) => {
@@ -440,6 +444,9 @@ const mainPageSlices = createSlice({
         })
 
 
+
+
+
         
     }
 })
@@ -472,7 +479,7 @@ function splitTable(state,action) {
 export const {
     aginationCount,closeLetter,delsetMessige,showThanks,changeFaq,changeRegAndSignImgdisplay,
     changeImgType,changeAnimationPathDone,changeAnimation,changeDisplay,changeDate,setValue,
-    setId,changeUserImg,checkLink,checkPlaceholder,loading,registerAuth,loginAuth,
+    setId,changeUserImg,checkLink,checkPlaceholder,loading,registerAuth,loginAuth,changeloadHeight,
     forgetemailError,sendLetterMail,userDate,paginationCount,setTarifId,chengRowCountPagination
 } = mainPageSlices.actions
 

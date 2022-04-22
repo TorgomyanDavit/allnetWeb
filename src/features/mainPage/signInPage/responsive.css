@@ -189,6 +189,9 @@
 }
 
 @media screen and (max-width:374px) {
+    .rememberPasswordLink {
+        margin-right: 10px;
+    }
     .signInSocialMediaIcon {
         width: 95%;
     }

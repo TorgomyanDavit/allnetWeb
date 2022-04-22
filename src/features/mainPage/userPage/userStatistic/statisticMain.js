@@ -2,12 +2,13 @@
 import { React, useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink } from "react-router-dom"
-import { HistoryPage } from "./historyPage"
+// import { HistoryPage } from "./historyPage"
 import "./statisticMain.css"
 import "./animationResponsive.css"
 
 import { changeAnimation, chengRowCountPagination, paginationCount } from "../../mainPageSlice"
 import { getUserPage } from "../../getRequest"
+import HistoryPage from "./historyPage"
 
 
 export function StatisticMain() {
@@ -16,8 +17,6 @@ export function StatisticMain() {
     useEffect(() => {return () => dispatch(changeAnimation({value:"/userPage/userStatistic/table1"}))},[])
     const [showSelect,setShowSelect] = useState(true)
     const [showValue,setShowValue] = useState(state.table.rowCount)
-    // function child(childIndex) {setShowValue(++childIndex) }
-    // let {PageIndex} = state.table
     const childFunc = useRef(null)
 
 

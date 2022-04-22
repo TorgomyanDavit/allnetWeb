@@ -20,7 +20,7 @@ export function AnimationTimer() {
 
     return (
         animationDisplay ?  <div className="animationTimer"
-            style={{animationName:state.animationPath === "/statisticPortal" ? "animation-time" : "null",}}>
+            style={{animationName:state.animationPath === "/userPage/statisticPortal" ? "animation-time" : "null",}}>
             <div className="animation-timer">
                 <p className="timer"> 0.0.0 </p>
                 <div className="timerButtonDiv">

@@ -14,7 +14,8 @@ function SignIn({toggle}) {
     const dispatch = useDispatch()
     const [passwordMatch,setMatch] = useState(false)
     const state = useSelector( (state) => state.mainPage )
-    if(state.loginemailValidation) { setTimeout(() => { dispatch( loginAuth() ) },3000) }
+
+    if(state.loginemailValidation) {setTimeout(() => { dispatch( loginAuth() ) },3000)}
     let Authenticated = sessionStorage.getItem("authenticated");
     if(Authenticated) {return <Redirect to="/userPage/userHome"/>}
 
@@ -52,7 +53,7 @@ function SignIn({toggle}) {
                     }}>
                     <div className="formSignIn">
                         <label>
-                            <input type="text" placeholder="Login" onFocus={() => { setMatch(false);dispatch(loginAuth())}} className={
+                            <input type="text" placeholder="Email" onFocus={() => { setMatch(false);dispatch(loginAuth())}} className={
                                 passwordMatch === "emailnotDefined" ?  "outLIneError" :
                                 passwordMatch === "passwordError" ?  "outLIneError" :
                                 state.loginemailValidation ? "outLIneError" : ""

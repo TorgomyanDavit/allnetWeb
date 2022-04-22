@@ -62,7 +62,7 @@ function UserHome({changePlay}) {
                 <div className="channel-Active-Groupe">
                     <div className="active-contacts-div">
                         <div className="timer-Div" id="timerDiv1" 
-                            style={{animationName:state.animationPath === "/statisticPortal" ? "timerDiv1" : "null"}}
+                            style={{animationName:state.animationPath === "/userPage/statisticPortal" ? "timerDiv1" : "null"}}
                         >
                             <p className="timer">20.04.2021{/* {time.hours + ":" + time.minute + ":" + time.second} */}</p>
                             <canvas ref={canvasRef} className="timering"></canvas>

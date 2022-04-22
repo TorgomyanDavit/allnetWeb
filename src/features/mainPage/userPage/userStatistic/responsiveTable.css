@@ -71,20 +71,16 @@
         width: fit-content;
     }
 
-    .titleTable {
-        height: 31px;
-    }
 
-    .stateTable {
-        height: 33px;
-    }
 
-    .stateTable::after {
+    /* .stateTable {
         height: 33px;
-    }
+    } */
+
+
 
     .historyMain {
-        height: fit-content;
+        /* height: fit-content; */
         padding-bottom: 10px;
         margin-top: 12px;
     }
@@ -125,7 +121,7 @@
     }
 
     .stateTable {
-        font-size: 8px;
+        font-size: 14px;
     }
 
     .historyMain {
@@ -134,6 +130,9 @@
 }
 
 @media (max-width:550px) {
+    .stateTable::after {
+        height: 33px;
+    }
     .balance {
         border-radius: 5px;
         width: 345px;
@@ -159,6 +158,10 @@
         width: 14px;
     }
 
+    .titleTable {
+        height: 31px;
+    }
+
     .titleTable :nth-child(1) {
         font-size: 8px;
     }
@@ -168,6 +171,7 @@
     }
 
     .stateTable {
+        height: 33px;
         font-size: 8px;
     }
 
@@ -196,14 +200,15 @@
     .historyMain {
         border-radius: 5px;
         width: 345px;
-        padding-bottom: 13px;
+        padding-bottom: 0px;
+        height: 504px;
     }
 
     .statisticMain {
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 843px;
+        height: fit-content;
     }
 
     .stateTable td:nth-child(2) {
@@ -216,7 +221,27 @@
     }
 
     .footerTable {
-        margin-top: 12px;
+        margin-top: 12px !important;
+    }
+
+    .activeBalance {
+        width: 19px;
+        height: 20px;
+    }
+
+    .butPagination {
+        width: 19px;
+        height: 20px;
+        font-size: 12px;
+    }
+
+    .dots {
+        width: 10px;
+        height: 20px;
+    }
+
+    .innerLinkP {
+        width: 57px;
     }
 }
 

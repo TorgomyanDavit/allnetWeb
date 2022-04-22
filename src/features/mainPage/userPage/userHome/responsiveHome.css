@@ -118,10 +118,11 @@
         z-index: 1;
         display: flex;
         justify-content: space-evenly;
+        flex-direction: unset;
     }
 
     .description {
-        font-size: 23px;
+        font-size: 22px;
     }
 
     .description2 {
@@ -165,7 +166,7 @@
     }
 
     .userName p span:nth-child(1) {
-        font-size: 18px;
+        font-size: 45px;
         margin-bottom: 5px;
     }
 
@@ -254,16 +255,17 @@
     .active-contacts-div .timer-Div {
         justify-content: space-evenly;
     } 
-
+/* 
     .MainPage {
         height: fit-content;
-    }
+    } */
 
     .userHome {
         width: 90%;
         flex-direction: column;
         height: fit-content;
         align-items: center;
+        padding-bottom: 20px;
     }
 
     .reg-active-channelGroup-contacts-div {
@@ -274,7 +276,7 @@
         margin-top: 20px;
         width: 100%;
         height: fit-content;
-        gap: 12px;
+        gap: 20px;
     }
 
     .userName {
@@ -358,8 +360,8 @@
 
     .registerDescriptionDiv {
         flex-direction: column;
-        gap: 15px;
         align-items: center;
+        gap: 15px;
     }
 
     .slick-dots {
@@ -626,7 +628,7 @@
     }
 
     .userName p span:nth-child(1) {
-        font-size: 14px;
+        font-size: 35px;
     }
 }
 

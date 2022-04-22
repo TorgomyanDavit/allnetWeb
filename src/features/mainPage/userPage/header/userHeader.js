@@ -77,10 +77,10 @@ function UserHeader({toggle}) {
                 <Route path="/userPage/userChannel">
                     <Tarif/>
                 </Route>
-                <Route path="/statisticPortal">
+                <Route path="/userPage/statisticPortal">
                     <StatisticPortal/>
                 </Route>
-                <Route path="/messigePerson">
+                <Route path="/userPage/messigePerson">
                     <MessigePerson/>
                 </Route>
             </Router>

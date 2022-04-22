@@ -21,7 +21,6 @@ export function Table() {
         </thead>
         <tbody className="tbody">
         {data[PageIndex].map((val,index) => {
-            //  {id:Math.random(),date:"jhon",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
             return (
                 <tr key={Math.random()} className="stateTable">
                     <td>{val.date_start}</td> 

@@ -66,6 +66,10 @@
     padding-bottom: 2px;
 }
 
+.displayNone {
+    display: none !important;
+}
+
 .languig-Div {
     background-image: url("/src/images/dropdown-arrow.png");
     background-position: right;
@@ -160,7 +164,7 @@
     border-radius: 10px;
     font-size: 18px;
     font-weight: 600;
-    display: flex !important;
+    display: flex ;
     justify-content: center;
     align-items: center;
     color: #282828;

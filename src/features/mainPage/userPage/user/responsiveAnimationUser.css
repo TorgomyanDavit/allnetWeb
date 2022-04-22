@@ -60,13 +60,17 @@
     .animationTimer {
         display: none;
     }
+    
     .personName {
         animation: unset;
         border-radius: 5px;
     }
+
     .PersonUser {
+        height: fit-content;
         animation: unset;
     }
+
     .UserPersonImg {
         border-radius: 5px;
         animation: unset;

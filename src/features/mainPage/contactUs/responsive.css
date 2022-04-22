@@ -276,14 +276,14 @@
     }
     
     .registerNewTitle::after {
-        width: 100%;
+        width: 80%;
     }
 
     #afterLine::after {
-        width: 100%;
+        width: 80%;
     }
 
     .socialSiteIcon {
-        width: 100%;
+        width: 90%;
     }
 }

@@ -1,13 +1,13 @@
 import "./statisticMain.css"
-import {BrowserRouter as Routher, NavLink,Route } from "react-router-dom"
+import { BrowserRouter as Routher, NavLink, Route, } from "react-router-dom"
 import { Table } from "./table"
 import { useDispatch, useSelector } from "react-redux"
 import { paginationCount } from "../../mainPageSlice"
-import { useState } from "react"
+import { memo, useState } from "react"
 import { useRef } from "react"
 import { useEffect } from "react"
 
-export function HistoryPage({childFunc}) {
+export default memo(function HistoryPage({childFunc}) {
     const state = useSelector((state) => state.mainPage.table)
     const dispatch = useDispatch()
     let [activePage,setactivePage] = useState(0)
@@ -15,8 +15,17 @@ export function HistoryPage({childFunc}) {
     let [changeActive,setchangeActive] = useState(false)
     let {PageIndex} = state
     const linkPref = useRef(null)
-    function RefreshHover() { setactivePage(0) }
-    
+    function RefreshHover() { 
+        setactivePage(0);
+        for(let item  of linkPref.current.children) {
+            if(item.classList.contains("activeBalance")) {
+                setactivePagePOsition(-item.offsetLeft + 26)
+            }
+        }
+    }
+    const reference = useRef(0)
+    reference.current++
+    console.log("current",reference.current);
     useEffect(() => {
         childFunc.current = RefreshHover
         setTimeout(() => {
@@ -43,13 +52,13 @@ export function HistoryPage({childFunc}) {
                                 dispatch(paginationCount(PageIndex-1))
                                 for(let item  of linkPref.current.children) {
                                     if(item.classList.contains("activeBalance")) {
-                                        setactivePagePOsition(-item.offsetLeft + 26)
+                                        setactivePagePOsition(-item.offsetLeft + item.offsetWidth)
                                     }
                                 }
                             }
                         }}><img src="/mainPageImages/slackLeft.png" alt=""/></button>
 
-                        <div className="linkP" >
+                        <div className="linkP">
                             <div className="innerLinkP" ref={linkPref} style={{left:activePagePOsition}}>
                                 {state.countPage.map((val,index) => {
                                     return (
@@ -89,7 +98,7 @@ export function HistoryPage({childFunc}) {
                                 dispatch(paginationCount(PageIndex+1))
                                 for(let item  of linkPref.current.children) {
                                     if(item.classList.contains("activeBalance")) {
-                                        setactivePagePOsition(-item.offsetLeft - 26)
+                                        setactivePagePOsition(-item.offsetLeft - item.offsetWidth)
                                     }
                                 }
                             }
@@ -99,4 +108,4 @@ export function HistoryPage({childFunc}) {
                 </main>
             </Routher>
     )
-}
+});

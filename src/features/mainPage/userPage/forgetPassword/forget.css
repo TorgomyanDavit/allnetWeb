@@ -136,9 +136,19 @@
     outline: 3px solid red !important;
 }
 
+@media screen and (max-width:500px) {
+    .receiveLet {
+        height: 275px;
+    }
+} 
+
 @media screen and (max-width:450px) { 
     .forget {
         padding: 0 15px;
+    }
+
+    .forLabel {
+        margin-top: 0px;
     }
 
     .formForget {

@@ -1,3 +1,5 @@
+
+
 @media (max-width:1800px) {
     .userMainPAge {
         width: 99%;
@@ -15,7 +17,6 @@
 }
 
 @media (max-width:1550px) {
-    
     .after {
         font-size: 18px;
         right: 195px;
@@ -31,15 +32,14 @@
         width: 49px;
         height: 90px;
         right: 90px;
-
     }
 }
 
-
 @media (max-width:600px) {
     .mailInput {
-        
+        width: 230px;
     }
+
     .labelForFileReader {
         width: 246px;
         height: 55px;
@@ -50,6 +50,9 @@
         margin: 0;
         font-size: 14px;
         font-weight: 600;
+        width: 345px;
+        height: 45px;
+        padding: 9px 20px;
     }
 
     .UserPersonImg {
@@ -62,11 +65,6 @@
     .UserPersonImg p {
         width: 55px;
         height: 55px;
-    }
-
-    .personName {
-        width: 345px;
-        height: 45px;
     }
 
     .ButtonUserData {
@@ -84,7 +82,7 @@
     }
 
     .PersonUser {
-        height: 732px !important;
+        height: 750px !important;
     }
 
     .userMainPAge {
@@ -125,6 +123,7 @@
     }
 
     .personName {
+        padding: 0 10px;
         width: 100%;
     }
 

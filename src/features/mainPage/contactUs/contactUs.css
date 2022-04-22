@@ -183,13 +183,13 @@
     outline: 3px solid rgb(27, 3, 134) !important;
 }
 
-.contactFormTetx div input:valid {
+/* .contactFormTetx div input:valid {
     outline: 3px solid rgb(3, 134, 25) !important;
-}
+} */
 
-.contactFormTetx > textarea:valid {
+/* .contactFormTetx > textarea:valid {
     outline: 3px solid rgb(13, 104, 1) !important;
-}
+} */
 
 .contactFormTetx button {
     width: 211px;

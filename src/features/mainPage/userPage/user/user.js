@@ -137,7 +137,7 @@ export default function User() {
                     style={{
                         animationName:
                         state.animationPath === "/userPage/userHome" ? "buttonPosition" :
-                        state.animationPath === "/statisticPortal" ? "buttonPositionforPortal" : "null"
+                        state.animationPath === "/userPage/statisticPortal" ? "buttonPositionforPortal" : "null"
                     }}>{buttonNAme ? "Save" : "Active"}
                 </div>
             </form>

@@ -44,6 +44,10 @@
 }
 
 @media (max-width:600px) {
+    .statisticPortal {
+        height: fit-content !important;
+    }
+
     .globalTmerDiv {
         margin-top: 6px;
     }
@@ -97,13 +101,13 @@
 
 @media (max-width:375px) and (min-width:375px){
     .formPortal > p input {
-        width: 309px;
+        width: 100%;
         height: 42px;
         font-size: 12px;
     }
 
     .formPortal > p {
-        width: 345px;
+        width: 100%;
         height: 120px;
         padding: 15px 18px 23px;
         margin: 12px auto;

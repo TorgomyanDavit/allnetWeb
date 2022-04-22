@@ -172,6 +172,12 @@
     }
 }
 
+@media screen and (max-width:340px) {
+    .inputDiv {
+        width: 250px;
+    }
+}
+
 @media screen and (max-width:300px) {
     .registerButtonUnderLine {
         width: 40px;

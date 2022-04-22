@@ -9,7 +9,7 @@ import "./responsiveMessige.css"
 export function MessigePerson() {
     const state = useSelector((state) => state.mainPage)
     const dispatch = useDispatch()
-    useEffect(() => {return () => dispatch(changeAnimation({value:"/messigePerson"}))},[])
+    useEffect(() => {return () => dispatch(changeAnimation({value:"/userPage/messigePerson"}))},[])
     
     return (
         <section className="messigePerson">
