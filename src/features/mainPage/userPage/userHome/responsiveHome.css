@@ -147,9 +147,6 @@
         width: 90%;
     }
 
-    .groupinput:nth-child(1) {
-        width: 50%;
-    }
 
     .groupinput label {
         font-size: 12px;
@@ -585,18 +582,18 @@
         
     }
 
-    .channel1 {
+    /* .channel1 {
         height: fit-content !important;
         width: fit-content !important;
         max-width: unset !important;
-    }
+    } */
 
-    .channel2 {
+    /* .channel2 {
         text-align: end;
         width: fit-content !important;
         height: fit-content !important;
         max-width: unset !important;
-    }
+    } */
 
     .reg-active-channelGroup-contacts-div {
         position: relative;

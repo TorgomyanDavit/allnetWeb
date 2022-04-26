@@ -86,7 +86,6 @@ export const changeUserData = createAsyncThunk(
 export const buyTarif = createAsyncThunk(
     "mainPage/buyTarif",
     async ({path,token,body}) => {
-        // console.log(body,path);
         const response = await fetch(`${path}/payment`,{
             mode: 'cors',
             method : "POST",
@@ -97,21 +96,48 @@ export const buyTarif = createAsyncThunk(
     }
 )
 
+export const deleteMessagePost = createAsyncThunk(
+    "mainPage/deleteMessagePost",
+    async ({path,token,id}) => {
+        // console.log(body,path);
+        const response = await fetch(`${path}/notification/${id}`,{
+            mode: 'cors',
+            method : "DELETE",
+            headers : {'Content-Type' : 'application/json','Accept' : 'application/json','Authorization' : `Bearer ${token}`},
+            body:JSON.stringify(id)
+        })
+        return response.json()
+    }
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // 'Content-Type' : 'multipart/form-data'
 // 'Content-Type' : 'application/x-www-form-urlencoded'
-
-
-
-
-
-
-
-
-
-
-
-
 // export const changeUserData = createAsyncThunk(
 //     "mainPage/changeUserData",
 //     async ({path,token,body,id}) => {

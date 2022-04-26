@@ -9,12 +9,20 @@ export default function CardDate() {
     const state = useSelector((state) => state.mainPage)
     const {tarifTypeID,radioId} = state.checkTarifData
     const [cardNumber,setCardNumber] = useState("")
-    const [errorCard,seterrorCard] = useState("")
+    const [errorCard,seterrorCard] = useState(false)
     const [month,setMonth] = useState("")
     const [year,setYear] = useState("")
     const [CVCValue,setCVC] = useState("")
     const [nameHolder,setNameHolder] = useState("")
     const dispatch = useDispatch()
+
+
+    if(errorCard) {
+        setTimeout(() => {
+            seterrorCard(false)
+        },3000)
+    }
+
 
 
     // let dateObj = new Date(Date.now())
@@ -45,63 +53,87 @@ export default function CardDate() {
 
                 <div className="entherCardNumber">
                     <span className="cardTitleFontSize">Pay buy credit card</span>
-                    <input className="inputCArd"  placeholder="Enter card number" value={cardNumber} onChange={(e) => {
-                        console.log(!isNaN(e.target.value),e.target.value.length);
+                    <input className={`inputCArd ${errorCard === "CardNumberError" ? "borderRed" : ""}`}  placeholder="Enter card number" value={cardNumber} onChange={(e) => {
                         if(!isNaN(e.target.value) && e.target.value.length <= 16) { setCardNumber(e.target.value) }
                     }} />
-                    <span className="error" style={{display:errorCard ? "block" : "none"}}>length number is not true</span>
+                    {/* <span className="error" style={{display:errorCard === "CardNumberError" ? "block" : "none"}}>length number is not true</span> */}
                 </div>
 
                 <div className="popupInputMain">
 
                     <div className="entherCardNumber">
                         <span className="cardTitleFontSize">expiration date</span>
-                        <input className="inputCArd" placeholder="Month" value={month} onChange={(e) => {
+                        <input className={`inputCArd ${errorCard === "MonthError" ? "borderRed" : ""}`} placeholder="Month" value={month} onChange={(e) => {
                             if(!isNaN(e.target.value) && e.target.value.length <= 2) { setMonth(e.target.value) }
                         }}/>
-                        <span className="error" style={{display:errorCard ? "block" : "none"}}>length number is not true</span>
+                        {/* <span className="error" style={{display:errorCard === "MonthError" ? "block" : "none"}}>length number is not true</span> */}
                     </div>
 
                     <div className="entherCardNumber">
-                        <input className="inputCArd" placeholder="Year" value={year} onChange={(e) => {
+                        <input className={`inputCArd ${errorCard === "yearError" ? "borderRed" : ""}`} placeholder="Year" value={year} onChange={(e) => {
                             if(!isNaN(e.target.value) && e.target.value.length <= 2) { setYear(e.target.value) }
                         }}/>
-                        <span className="error" style={{display:errorCard ? "block" : "none"}}>length number is not true</span>
+                        {/* <span className="error" style={{display:errorCard === "yearError" ? "block" : "none"}}>length number is not true</span> */}
                     </div>
 
                     <div className="entherCardNumber">
                         <span className="cardTitleFontSize">CVV / CVC</span>
-                        <input className="inputCArd" value={CVCValue} onChange={(e) => {
+                        <input className={`inputCArd ${errorCard === "CVCValueError" ? "borderRed" : ""}`} value={CVCValue} onChange={(e) => {
                             if(!isNaN(e.target.value)) { setCVC(e.target.value) }
                         }}/>
-                        <span className="error" style={{display:errorCard ? "block" : "none"}}>length number is not true</span>
+                        {/* <span className="error" style={{display:errorCard === "CVCValueError" ? "block" : "none"}}>length number is not true</span> */}
                     </div>
 
                 </div>
 
                 <div className="entherCardNumber">
                     <span className="cardTitleFontSize">Card holder name</span>
-                    <input className="inputCArd" type="text" placeholder="Enter card holder name" value={nameHolder} onChange={(e) => {
+                    <input className={`inputCArd ${errorCard === "cardName" ? "borderRed" : ""}`} type="text" placeholder="Enter card holder name" value={nameHolder} onChange={(e) => {
                         setNameHolder(e.target.value)
                     }}/>
-                    <span className="error" style={{display:errorCard ? "block" : "none"}}>length number is not true</span>
+                    {/* <span className="error" style={{display:errorCard ? "block" : "none"}}>length number is not true</span> */}
                 </div>
                 <button className="makePaymentButton" onClick={() => {
-                    dispatch(buyTarif({
-                        path:state.server,
-                        token:sessionStorage.getItem("authenticated"),
-                        body:{
-                            card_no:cardNumber,
-                            expiry_month:month,
-                            expiry_year:year,
-                            cvv:CVCValue,
-                            tariff_count_id:state.paymentPage[tarifTypeID].tariff_count[radioId].id,  
-                            tariff_type_id:state.paymentPage[tarifTypeID].id,
-                        },
-                    }))
-                    
+                    if(  cardNumber.length < 16 ) {seterrorCard("CardNumberError")} else 
+                    if(  month.length < 2 ) {seterrorCard("MonthError")} else 
+                    if(  year.length < 2 ) {seterrorCard("yearError")} else 
+                    if(  CVCValue.length < 2 ) {seterrorCard("CVCValueError")} else
+                    if( nameHolder.length === "") {seterrorCard("cardName")} else {
+                        dispatch(buyTarif({
+                            path:state.server,
+                            token:sessionStorage.getItem("authenticated"),
+                            body:{
+                                card_no:cardNumber,
+                                expiry_month:month,
+                                expiry_year:year,
+                                cvv:CVCValue,
+                                tariff_count_id:state.paymentPage[tarifTypeID].tariff_count[radioId].id,  
+                                tariff_type_id:state.paymentPage[tarifTypeID].id,
+                            },
+                        }))
+                    }
                 }}>Make payment</button>
             </div>
         </section>
     )
 }
+
+
+
+// {/* to="/userPage/userHome" */}
+// <Link to={(location) => "/"}  className="makePaymentButton" onClick={() => {
+//     dispatch(buyTarif({
+//         path:state.server,
+//         token:sessionStorage.getItem("authenticated"),
+//         body:{
+//             card_no:cardNumber,
+//             expiry_month:month,
+//             expiry_year:year,
+//             cvv:CVCValue,
+//             tariff_count_id:state.paymentPage[tarifTypeID].tariff_count[radioId].id,  
+//             tariff_type_id:state.paymentPage[tarifTypeID].id,
+//         },
+//     }));
+//     dispatch(showThanks())
+//     document.body.style.overflow = 'unset';
+// }}>Make payment</Link>

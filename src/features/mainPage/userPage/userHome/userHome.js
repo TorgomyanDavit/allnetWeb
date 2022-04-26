@@ -45,6 +45,9 @@ function UserHome({changePlay}) {
     const {userPage,tariffType,orderTariff,contacts} = state.userHomePage 
 
 
+    
+    
+   
 
     return (
         <div className="userHome">
@@ -68,7 +71,10 @@ function UserHome({changePlay}) {
                             <canvas ref={canvasRef} className="timering"></canvas>
                             <div className="timerButtonDiv">
                                 {/* <p className="ActiveUntil">Active until :</p> */}
-                                <p className="date">21.03.2021 - 20.04.2021</p>
+                                <p className="date">{
+                                orderTariff ?  
+                                    `${new Date(+(orderTariff[0].date_start + `000`)).toISOString().split('T')[0]} - ${new Date(+(orderTariff[0].date_end + `000`)).toISOString().split('T')[0]}` : ""}
+                                </p>
                                 <button 
                                 style={{animationName:state.animationPath === "/userPage/userPerson" ? "timerButton2" : "null"}}
                                 className="timerButton"  id="timerButton2" onClick={() => {

@@ -1,13 +1,14 @@
 .messigePerson {
     width: 1010px;
-    height: 720px;
+    /* height: 720px; */
     display: flex;
     flex-direction: column;
     gap: 20px;
+    overflow-x: scroll;
 }
 
 .personDiv {
-    width: 1010px;
+    width: 1000px;
     height: 165px;
     border-radius: 20px;
     background: #ffffff;
@@ -18,9 +19,14 @@
 }
 
 .personDiv > p {
+    background: #4F4DFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 131px;
     height: 131px;
     margin-left: 18px;
+    border-radius: 20px;
 }
 
 .personDescription {
@@ -75,6 +81,7 @@
     outline: none;
     border: none;
     cursor: pointer;
+    background-color: white;
 }
 
 

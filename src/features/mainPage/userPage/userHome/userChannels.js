@@ -7,6 +7,13 @@ export function UserChannels() {
     const state = useSelector((state) => state.mainPage)
     const {user} = state.userPage 
 
+
+    const {bouquet_channels} = state.userHomePage.tariffType ? state.userHomePage.tariffType[0].bouquet_id[0] : []
+    console.log(bouquet_channels);
+
+
+
+
     return (
         <div className="user-channels-div">
             <div className="user" 
@@ -35,14 +42,9 @@ export function UserChannels() {
             >
                 <p className="titleChannel">Channels</p>
                 <div className="TvChannels" style={{animationName:state.animationPath === "/userPage/userChannel" ? "tvChennels" : "null"}}>
-                    <p className="channel1"  style={{animationName:state.animationPath === "/userPage/userChannel" ? "Channelp" : "null"}}>
-                        {state.tvChannel.oneGroup.map((val) => <Link to={{pathname:"#"}} style={{animationName:state.animationPath === "/userPage/userChannel" ? "tvChennelsSpan" : "null"}}
-                        key={Math.random()} target="_blank"><img src={val} alt=""/></Link>)}
-                    </p>
-                    <p className="channel2"style={{animationName:state.animationPath === "/userPage/userChannel" ? "Channelp" : "null"}}>
-                        {state.tvChannel.twoGroup.map((val) => <Link to={{pathname:"#"}} style={{animationName:state.animationPath === "/userPage/userChannel" ? "tvChennelsSpan" : "null"}}
-                        key={Math.random()} target="_blank"><img src={val} alt=""/></Link>)}
-                    </p>
+                    {
+                        bouquet_channels ? bouquet_channels.map((val) => <span className="spanXtream" key={val.id}><img className="imgXtream" src={val.stream_icon}/></span>) : ""
+                    }
                 </div>
             </div>
         </div>

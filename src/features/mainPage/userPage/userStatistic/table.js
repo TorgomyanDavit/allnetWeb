@@ -7,6 +7,7 @@ import "./responsiveTable.css"
 export function Table() {
     const state = useSelector((state) => state.mainPage)
     const {PageIndex,data} = state.table
+    console.log(data);
 
     return (
     <table className="table">
@@ -20,7 +21,8 @@ export function Table() {
             </tr>
         </thead>
         <tbody className="tbody">
-        {data[PageIndex].map((val,index) => {
+        { data.length === 0 ? <tr className="stateTable"></tr> :
+        data[PageIndex].map((val,index) => {
             return (
                 <tr key={Math.random()} className="stateTable">
                     <td>{val.date_start}</td> 
@@ -38,3 +40,6 @@ export function Table() {
     </table>
     )
 }
+
+
+

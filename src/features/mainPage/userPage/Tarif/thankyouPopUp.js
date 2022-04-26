@@ -1,10 +1,17 @@
 
 
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
-import { showThanks } from "../../mainPageSlice"
+import { getUserPage } from "../../getRequest"
+import { ShowOkeyByTarif, showThanks } from "../../mainPageSlice"
 import "./tarif"
+
+
+
+
 export default function Thanks() {
+    const state = useSelector((state) => state.mainPage)
+
     const dispatch = useDispatch()
     return (
         <section className="mainThanks">
@@ -12,7 +19,8 @@ export default function Thanks() {
                 <p className="thumb"></p>
                 <p className="textOk">Thank you</p>
                 <Link to="/userPage/userHome" className="LinkforThanks" onClick={() => {
-                    dispatch(showThanks())
+                    dispatch(getUserPage({path:state.server,token:sessionStorage.getItem("authenticated")}))
+                    dispatch(ShowOkeyByTarif())
                     document.body.style.overflow = 'unset';
                 }}>Back to the main page</Link>
             </div>

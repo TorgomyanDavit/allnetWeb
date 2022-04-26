@@ -4,6 +4,7 @@ import { useSelector } from "react-redux"
 export function ChannelGroup() {
 
     const state = useSelector((state) => state.mainPage)
+    const {channel_groups} = state.userHomePage
     return (
         <div className="mainChannelGroup">
             <p className="channelTittel" 
@@ -13,10 +14,10 @@ export function ChannelGroup() {
             </p>
             <div className="channelGroupChecked">
                 <div className="groupinput">
-                    {state.channelGroupInput.oneGroup.map((val) => <label key={Math.random()}><input type="checkbox"/> {val}</label>)}
-                </div>
-                <div className="groupinput">
-                    {state.channelGroupInput.twoGroup.map((val) =>  <label key={Math.random()}><input type="checkbox"/> {val}</label>)}
+                    {
+                        channel_groups ? 
+                        channel_groups.map((val) => <p key={Math.random()}>{val.genre}</p>) : "" 
+                    }
                 </div>
             </div>
         </div>

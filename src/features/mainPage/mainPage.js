@@ -62,7 +62,7 @@ function MainPage() {
            { state.receiveLetterShow ? <Letter/> : null }
 
            <Switch>
-                {/* {state.TarifThanksShow ? <Thanks/> : null} */}
+                {state.ThanksShow ? <Thanks/> : null}
                 {state.TarifThanksShow ? <CardDate/> : null}
                 <Route path="/about">
                     <About toggle={toggle}/>

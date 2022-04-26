@@ -287,6 +287,7 @@ input[type="radio"]:checked + .check {
     font-size: 24px;
     border: none;
     outline: none;
+    text-decoration: none;
 }
 
 .error {
@@ -295,7 +296,9 @@ input[type="radio"]:checked + .check {
     display: none;
 }
 
-
+.borderRed {
+    border: 1px solid red;
+}
 
 
 

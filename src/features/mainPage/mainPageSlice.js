@@ -3,7 +3,6 @@ import tvMatchFootball from "../../images/tvMatchFootball.png"
 import tvMatchPremera from "../../images/tvMatchPremera.png"
 import tvMir from "../../images/tvMir.png"
 import tvRossia2 from "../../images/tvRossia2.png"
-import messigePersonImg from "./userPage/images/messigePersonImg.png"
 import contactsFb from "../../images/contactsFb.png"
 import contactsGoogle from "../../images/contactsGoogle.png"
 import contactsTelegram from "../../images/contactsTelegram.png"
@@ -14,7 +13,7 @@ import LgSmart from "../../images/LgSmart.png"
 import samsungImg from "../../images/samsungImg.png"
 import smartIcon from "../../images/SmartIcon.png"
 import { getAllContent, getUserData, getUserPage } from "./getRequest";
-import { sendEmail, newPass, postLogAuth, postRegister, postSignIn, changeUserData, buyTarif } from "./postRequest";
+import { sendEmail, newPass, postLogAuth, postRegister, postSignIn, changeUserData, buyTarif, deleteMessagePost } from "./postRequest";
 
 
 const initialState = {
@@ -42,13 +41,13 @@ const initialState = {
         countPage:[],
         PageIndex:0,
         data:[
-            [
-                {id:Math.random(),date:"jhon",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-                {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-                {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-                {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-                {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-            ],
+            // [
+            //     {id:Math.random(),date:"jhon",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
+            //     {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
+            //     {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
+            //     {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
+            //     {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
+            // ],
         ],
     },
 
@@ -64,7 +63,7 @@ const initialState = {
 
 
 
-
+    ThanksShow:false,
     paymentPage:[],
     loading:{mainLoading:false},
     loadinHeight:undefined,
@@ -80,14 +79,10 @@ const initialState = {
         slidesToShow: 1,
         slidesToScroll: 1
     },
-    channelGroupInput:{ 
-        oneGroup:["Movie","Music","News","Sport","Entertainment","Other","Armenian"],
-        twoGroup:["HD","4K","Ukrainian","Belarus","Educational","Childish","USA"]
-    },
-    tvChannel:{
-        oneGroup:[tvMir,tvRossia2,tvMatchFootball,tvMatchPremera,tvMatchFootball,tvMir,tvRossia2,tvMatchFootball,tvMatchPremera],
-        twoGroup:[tvMatchFootball,tvMatchPremera,tvRossia2,tvMatchFootball,tvMir,tvMatchFootball,tvMatchPremera,tvRossia2,tvMatchFootball]
-    },
+    // tvChannel:{
+    //     oneGroup:[tvMir,tvRossia2,tvMatchFootball,tvMatchPremera,tvMatchFootball,tvMir,tvRossia2,tvMatchFootball,tvMatchPremera],
+    //     twoGroup:[tvMatchFootball,tvMatchPremera,tvRossia2,tvMatchFootball,tvMir,tvMatchFootball,tvMatchPremera,tvRossia2,tvMatchFootball]
+    // },
     tvChannelTwoSection:[
         [tvMir,tvRossia2,tvMatchFootball,tvMatchPremera,tvMatchFootball],
         [tvMatchFootball,tvMatchPremera,tvRossia2,tvMatchFootball,tvMir],
@@ -99,7 +94,7 @@ const initialState = {
         {path:"/userPage/userPerson",activeClass:"activeClass"},
         {path:"/userPage/userStatistic/table1",activeClass:"activeClass"},
         {path:"/userPage/userChannel",activeClass:"activeClass"},
-        {path:"/userPage/statisticPortal",activeClass:"activeClass"},
+        // {path:"/userPage/statisticPortal",activeClass:"activeClass"},
         {path:"/userPage/messigePerson",activeClass:"activeClass"},
     ],
     animationPath:"null",
@@ -145,24 +140,7 @@ const initialState = {
         //     placeholder:"http://cf686e62d9e1.akciatv.org/playlists/uplist/3777b55dc19a39ebaf5b6d55f53dcc9d/playlist.m3u8"
         // },
     ],
-    messigePerson:[
-        {
-            description:"The playlist in the preset format - M3U8 is available via the link provided above.",
-            date:"20.01.2021",name:"Raya Galstyan",img:messigePersonImg,id:1
-        },
-        {
-            description:"The playlist in the preset format - M3U8 is available via the link provided above.",
-            date:"20.01.2021",name:"Raya Galstyan",img:messigePersonImg,id:2
-        },        
-        {
-            description:"The playlist in the preset format - M3U8 is available via the link provided above.",
-            date:"20.01.2021",name:"Raya Galstyan",img:messigePersonImg,id:3
-        },        
-        {
-            description:"The playlist in the preset format - M3U8 is available via the link provided above.",
-            date:"20.01.2021",name:"Raya Galstyan",img:messigePersonImg,id:4
-        },
-    ],
+    messigePerson:[],
     MainPageTvChanne:[smartIcon,androidIcon,iosIcon,LgSmart,samsungImg],
     TarifThanksShow:false,
     receiveLetterShow:false,
@@ -289,6 +267,9 @@ const mainPageSlices = createSlice({
         },
         changeloadHeight:(state,action) => {
             state.loadinHeight = action.payload.height
+        },
+        ShowOkeyByTarif:(state,action) => {
+            state.ThanksShow = !state.ThanksShow
         }
     },
 
@@ -388,6 +369,10 @@ const mainPageSlices = createSlice({
             state.paymentPage = action.payload[2].tariffs
             // state update PaymentHistoryPage 
             state.table.data = splitTable(state,action)
+            // notification
+            state.messigePerson = action.payload[4].notifications
+
+
             state.loading.mainLoading = false;
         })
 
@@ -440,8 +425,26 @@ const mainPageSlices = createSlice({
         })
         .addCase(buyTarif.fulfilled,(state,action) => {
             console.log("fulfiled changeUserData",action);
+            debugger
+            if(action.payload.success) {
+                state.ThanksShow = true
+                state.TarifThanksShow = false
+            }
             state.loading.mainLoading = false;
         })
+
+        // delete Message
+        .addCase(deleteMessagePost.pending,(state,action) => {
+            console.log("pending deleteMessage",action);
+            state.loading.mainLoading = "loading";
+        })
+        .addCase(deleteMessagePost.fulfilled,(state,action) => {
+            console.log("fulfiled deleteMessage",action);
+            state.loading.mainLoading = false;
+        })
+
+
+        
 
 
 
@@ -459,10 +462,6 @@ function splitTable(state,action) {
         let date = +(val.date_start + `000`)
         return {...val,date_start:new Date(date).toISOString().split('T')[0]}
     })
-
-
-
-
     return correctData.reduce(function(aggr,val,index) {
         page[i2] = val;
         if((this.length - 1) === index){ aggr[i] = page; return aggr};
@@ -480,7 +479,7 @@ export const {
     aginationCount,closeLetter,delsetMessige,showThanks,changeFaq,changeRegAndSignImgdisplay,
     changeImgType,changeAnimationPathDone,changeAnimation,changeDisplay,changeDate,setValue,
     setId,changeUserImg,checkLink,checkPlaceholder,loading,registerAuth,loginAuth,changeloadHeight,
-    forgetemailError,sendLetterMail,userDate,paginationCount,setTarifId,chengRowCountPagination
+    forgetemailError,sendLetterMail,userDate,paginationCount,setTarifId,chengRowCountPagination,ShowOkeyByTarif
 } = mainPageSlices.actions
 
 export default mainPageSlices.reducer
