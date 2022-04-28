@@ -34,7 +34,31 @@ export const getUserPage = createAsyncThunk(
 
             response.push(pagination,notification)
         }
+        
         return response
     }
 )
+
+
+
+
+export const getUserHomePage = createAsyncThunk(
+    "mainPage/getUserHomePage",
+    async ({path,token}) => {
+        let configHeader = { 
+            mode: 'cors', method : "GET", headers : {'Content-Type' : 'application/json','Accept' : 'application/json','Authorization': `Bearer ${token}`}
+        };
+        const response = await fetch(`${path}/userPage`,configHeader).then((result) => result.json())
+       
+        return response
+    }
+)
+
+export function getUserHomePageSimple({path,token}) {
+    let configHeader = { 
+        mode: 'cors', method : "GET", headers : {'Content-Type' : 'application/json','Accept' : 'application/json','Authorization': `Bearer ${token}`}
+    };
+    return fetch(`${path}/userPage`,configHeader).then((result) => result.json())
+}
+    
 

@@ -12,8 +12,8 @@ import iosIcon from "../../images/iosIcon.png"
 import LgSmart from "../../images/LgSmart.png"
 import samsungImg from "../../images/samsungImg.png"
 import smartIcon from "../../images/SmartIcon.png"
-import { getAllContent, getUserData, getUserPage } from "./getRequest";
-import { sendEmail, newPass, postLogAuth, postRegister, postSignIn, changeUserData, buyTarif, deleteMessagePost } from "./postRequest";
+import { getAllContent, getUserData, getUserHomePage, getUserPage } from "./getRequest";
+import { sendEmail, newPass, postLogAuth, postRegister, postSignIn, changeUserData, buyTarif, deleteMessagePost, sendMessag } from "./postRequest";
 
 
 const initialState = {
@@ -21,7 +21,7 @@ const initialState = {
     server:"http://127.0.0.1:8000/api",
     serverForImg:"http://127.0.0.1:8000",
     mainPagePagination:{title:"",description:""},
-    mainPAboutPagination:{description:""},
+    mainPAboutPagination:{about:null,therms:null,privacy:null},
     mainContactPagination:{
         messagePhone:"",
         messageEmail:"",
@@ -32,7 +32,7 @@ const initialState = {
             {id:4,img:contactsTwitter,background:"#282828",Link:""}
         ],
     },
-    mainFaqPagination:[],
+    mainFaqPagination:[],                                                                  
     userHomePage:[],
     userPage:[],
     table:{
@@ -40,16 +40,9 @@ const initialState = {
         rowCount:12,
         countPage:[],
         PageIndex:0,
-        data:[
-            // [
-            //     {id:Math.random(),date:"jhon",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-            //     {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-            //     {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-            //     {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-            //     {id:Math.random(),date:"20.02.2021",purpose:"purchase/extension of a pocket",balance:"3.00",theAmount:"3.00",remains:"3.00"},
-            // ],
-        ],
+        data:[]
     },
+    userpageImg:[],
 
     
     personImg:"",
@@ -64,7 +57,6 @@ const initialState = {
 
 
     ThanksShow:false,
-    paymentPage:[],
     loading:{mainLoading:false},
     loadinHeight:undefined,
 
@@ -270,6 +262,12 @@ const mainPageSlices = createSlice({
         },
         ShowOkeyByTarif:(state,action) => {
             state.ThanksShow = !state.ThanksShow
+        },
+        changeUsername:(state,action) => {
+            state.userPage.user.username = action.payload
+        },
+        clearUserpage:(state) => {
+            state.userPage = []
         }
     },
 
@@ -290,7 +288,7 @@ const mainPageSlices = createSlice({
                     break;
 
                     case "about" : 
-                    state.mainPAboutPagination.description = data.about.content;
+                    state.mainPAboutPagination = data
                     break;
 
                     case "contact" : 
@@ -354,6 +352,19 @@ const mainPageSlices = createSlice({
         })
 
         // get UserPageMain
+        .addCase(getUserHomePage.pending,(state,action) => {
+            console.log("pending userPageHomeNew",action);
+
+            // state.loading.mainLoading = "loading"
+        })
+        .addCase(getUserHomePage.fulfilled,(state,action) => {
+            console.log("fulfiled userPageHomeNew",action);
+            state.userHomePage = action.payload
+
+            // state.loading.mainLoading = false
+        })
+
+        // all User get Error request
         .addCase(getUserPage.pending,(state,action) => {
             console.log("pending userPage",action);
             state.loading.mainLoading = "loading"
@@ -375,7 +386,7 @@ const mainPageSlices = createSlice({
 
             state.loading.mainLoading = false;
         })
-
+        
         // LogAuth
         .addCase(postLogAuth.pending,(state,action) => {
             console.log("pending logAuth",action);
@@ -442,15 +453,15 @@ const mainPageSlices = createSlice({
             console.log("fulfiled deleteMessage",action);
             state.loading.mainLoading = false;
         })
-
-
-        
-
-
-
-
-
-        
+        .addCase(sendMessag.pending,(state,action) => {
+            console.log("pending sendMessag",action);
+            state.loading.mainLoading = "loading";
+        })
+        .addCase(sendMessag.fulfilled,(state,action) => {
+            console.log("fulfiled sendMessag",action);
+            state.receiveLetterShow = !state.receiveLetterShow
+            state.loading.mainLoading = false;
+        })
     }
 })
 
@@ -476,8 +487,8 @@ function splitTable(state,action) {
 // torgomyandavid96@gmail.com
 // davit.torgomyan96@mail.ru
 export const {
-    aginationCount,closeLetter,delsetMessige,showThanks,changeFaq,changeRegAndSignImgdisplay,
-    changeImgType,changeAnimationPathDone,changeAnimation,changeDisplay,changeDate,setValue,
+    aginationCount,closeLetter,delsetMessige,showThanks,changeFaq,changeRegAndSignImgdisplay,changeUsername,
+    changeImgType,changeAnimationPathDone,changeAnimation,changeDisplay,changeDate,setValue,clearUserpage,
     setId,changeUserImg,checkLink,checkPlaceholder,loading,registerAuth,loginAuth,changeloadHeight,
     forgetemailError,sendLetterMail,userDate,paginationCount,setTarifId,chengRowCountPagination,ShowOkeyByTarif
 } = mainPageSlices.actions

@@ -23,6 +23,8 @@ import { getAllContent } from "./getRequest.js"
 import {useParams} from "react-router-dom"
 import CardDate from "./userPage/Tarif/cardData.js"
 import { changeloadHeight } from "./mainPageSlice.js"
+import { Therms } from "./about/therms.js"
+import { Policy } from "./about/policy.js"
 
 function MainPage() {
     const dispatch = useDispatch();
@@ -30,9 +32,12 @@ function MainPage() {
     const Authenticated = sessionStorage.getItem("authenticated");
     const history = useLocation();
     const MainRef = useRef();
+    // console.log(window.innerHeight,"useEFfect");
 
     useEffect(() => {
-        console.log(window.innerHeight,"useEFfect");
+        // console.log(window.innerHeight,"useEFfect");
+        // console.log(MainRef.current.clientHeight,"useEFfect");
+
         if(window.innerHeight > MainRef.current.clientHeight) {
             MainRef.current.style.minHeight = window.innerHeight + "px"
             dispatch(changeloadHeight({height:window.innerHeight + "px"}))
@@ -40,7 +45,7 @@ function MainPage() {
             MainRef.current.style.minHeight = "fit-content"
             dispatch(changeloadHeight({height:MainRef.current.clientHeight + "px"}))
         }
-    },[])
+    },[history.pathname])
 
 
     let [type,setType] = useState("block");
@@ -49,7 +54,7 @@ function MainPage() {
     let err = /[/]newPassword[/][\d|\w|\W]+@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     const pathName = history.pathname === "/" || history.pathname === "/register" || history.pathname === "/signIn"
     || history.pathname === "/recLetter" || history.pathname === "/forgetPassword" || !!err.exec(history.pathname);
-    const globalPath = history.pathname === "/about" || history.pathname === "/FAQ" || history.pathname === "/contactUs" 
+    const globalPath = history.pathname === "/about" || history.pathname === "/FAQ" || history.pathname === "/contactUs" || history.pathname === "/policy" || history.pathname === "/therms" 
     useEffect(() => { if( (pathName === true || globalPath === true) ) {  dispatch(getAllContent(state.server))} },[globalPath] )
     // let reg = /^\d+\s[|]\s[\d|\w|\W]+/for authentication token
     if(pathName === true && !!Authenticated === true ) {return <Redirect to="/userPage/userHome"/>}  
@@ -66,6 +71,12 @@ function MainPage() {
                 {state.TarifThanksShow ? <CardDate/> : null}
                 <Route path="/about">
                     <About toggle={toggle}/>
+                </Route>
+                <Route path="/therms">
+                    <Therms toggle={toggle}/>
+                </Route>
+                <Route path="/policy">
+                    <Policy toggle={toggle}/>
                 </Route>
                 <Route path="/FAQ">
                     <Faq toggle={toggle}/>

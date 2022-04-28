@@ -110,6 +110,20 @@ export const deleteMessagePost = createAsyncThunk(
     }
 )
 
+export const sendMessag = createAsyncThunk(
+    "mainPage/sendMessag",
+    async ({path,token,body,id}) => {
+        // console.log(body,path);
+        const response = await fetch(`${path}/contact`,{
+            mode: 'cors',
+            method : "POST",
+            headers : {'Content-Type' : 'application/json','Accept' : 'application/json','Authorization' : `Bearer ${token}`},
+            body:JSON.stringify(body)
+        })
+        return response.json()
+    }
+)
+
 
 
 

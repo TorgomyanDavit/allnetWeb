@@ -15,7 +15,8 @@ import "./responsive.css"
 import Tarif from "../Tarif/tarif"
 import { Redirect } from "react-router-dom"
 import { postLogAuth } from "../../postRequest"
-import { getUserPage } from "../../getRequest"
+import { getUserHomePage, getUserHomePageSimple, getUserPage } from "../../getRequest"
+import { clearUserpage } from "../../mainPageSlice"
 
 
 
@@ -27,8 +28,17 @@ function UserHeader({toggle}) {
     // console.log("userHeader");
 
     useEffect(() => { 
-        if(Array.isArray(state.userPage)) {dispatch(getUserPage({path:state.server,token:sessionStorage.getItem("authenticated")}))}
-    },[])
+        if(Array.isArray(state.userPage)) {
+            // console.log(getUserHomePageSimple({path:state.server,token:sessionStorage.getItem("authenticated")}));
+            // getUserHomePageSimple({path:state.server,token:sessionStorage.getItem("authenticated")}).then((result) => {
+            //     console.log(result);
+            // })
+            
+            
+            // dispatch(getUserPage({path:state.server,token:sessionStorage.getItem("authenticated")}))
+            dispatch(getUserHomePage({path:state.server,token:sessionStorage.getItem("authenticated")}))
+        }
+    },[state.userPage])
 
 
     
@@ -47,6 +57,7 @@ function UserHeader({toggle}) {
                     </div>
                     <button className="exitIcon" onClick={() => {
                         dispatch(postLogAuth({path:state.server,token:sessionStorage.getItem("authenticated")}))
+                        dispatch(clearUserpage())
                         sessionStorage.removeItem("authenticated");
                     }}>
                         <img src="/mainPageImages/signOut.png" alt="signOut"/>

@@ -98,8 +98,8 @@ function Register({toggle}) {
                     <div className={`checkboxForAggrement`}>
                         <input type={`checkbox`} onChange={(e) => {setborderChecked(false);setCheched(e.target.checked)}} className={`${borderChecked ? "borderError" : ""}`}/>
                         <span className={`${borderChecked ? "colorErrorError" : ""}`}> I agree to the {" "} 
-                            <Link to={{pathname:"/about",params:"Terms & Conditions"}} className={`${borderChecked ? "colorErrorError" : ""}`}>terms {"&"} conditions</Link> or 
-                            <Link to={{pathname:"/about",params:"Privacy Police"}} className={`${borderChecked ? "colorErrorError" : ""}`}> Privacy police </Link>
+                            <Link to="/therms" className={`${borderChecked ? "colorErrorError" : ""}`}>terms {"&"} conditions</Link> or 
+                            <Link  to="/policy" className={`${borderChecked ? "colorErrorError" : ""}`}> Privacy police </Link>
                         </span>
                     </div>
                     <hr className="registerHr"/>

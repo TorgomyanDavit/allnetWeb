@@ -200,6 +200,7 @@
     justify-content: space-between;
     width: 387px;
     height: 78px;
+    display: none !important;
 }
 
 .signInSocialMediaIcon p {

@@ -237,6 +237,13 @@
     border: 2px solid #EEBA06 ;
     outline: none;
     cursor: pointer;
+    text-decoration: none;
+}
+
+.timerByTarif {
+    background: rgba(255, 0, 0, 0.641) !important;
+    color: white !important;
+    border: none !important;
 }
 
 .timerButton:hover {

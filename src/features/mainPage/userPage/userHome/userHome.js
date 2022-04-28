@@ -75,14 +75,21 @@ function UserHome({changePlay}) {
                                 orderTariff ?  
                                     `${new Date(+(orderTariff[0].date_start + `000`)).toISOString().split('T')[0]} - ${new Date(+(orderTariff[0].date_end + `000`)).toISOString().split('T')[0]}` : ""}
                                 </p>
-                                <button 
-                                style={{animationName:state.animationPath === "/userPage/userPerson" ? "timerButton2" : "null"}}
-                                className="timerButton"  id="timerButton2" onClick={() => {
-                                    setTime({
-                                        ...time,
-                                        startTiem:!time.startTiem
-                                    },100)
-                                }}>Activate</button>
+                                {
+                                    orderTariff ? 
+                                    <Link to="/userPage/userChannel" style={{animationName:state.animationPath === "/userPage/userPerson" ? "timerButton2" : "null"}} 
+                                        className="timerButton"  
+                                        id="timerButton2" 
+                                        onClick={() => {
+                                        setTime({
+                                            ...time,
+                                            startTiem:!time.startTiem
+                                        },100);
+                                    }}>Activate</Link> :   
+                                    <Link to="/userPage/userChannel" className="timerButton timerByTarif">By Tarrif</Link>
+                                }
+                                
+
                             </div>
                         </div>
                         <div className="contacts">

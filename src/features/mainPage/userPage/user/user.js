@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import person from "../images/edit.svg"
-import { changeDisplay,changeDate,setValue,setId,changeUserImg, changeAnimationPathDone, userDate} from "../../mainPageSlice"
+import { changeDisplay,changeDate,setValue,setId,changeUserImg, changeAnimationPathDone, userDate, changeUsername} from "../../mainPageSlice"
 import { useEffect, useRef, useState } from "react"
 import { changeAnimation } from "../../mainPageSlice"
 import { AnimationTimer } from "./animationTimer/animation"
@@ -133,6 +133,7 @@ export default function User() {
                         id:user.id
                     }));
                     dispatch(changeUserImg({userImg:""}))
+                    dispatch(changeUsername(body[0].value))
                 }} 
                     style={{
                         animationName:

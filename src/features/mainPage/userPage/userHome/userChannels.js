@@ -6,10 +6,8 @@ import personImg from "../../userPage/images/PersonImg.png"
 export function UserChannels() {
     const state = useSelector((state) => state.mainPage)
     const {user} = state.userPage 
-
-
     const {bouquet_channels} = state.userHomePage.tariffType ? state.userHomePage.tariffType[0].bouquet_id[0] : []
-    console.log(bouquet_channels);
+
 
 
 

@@ -2,6 +2,7 @@ import { isValidElement, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import { closeLetter, loading } from "../mainPageSlice"
+import { sendMessag } from "../postRequest"
 import "./contactUs.css"
 import "./responsive.css"
 
@@ -43,21 +44,28 @@ export function ContactUs({toggle}) {
                 </div>
             </div>
             <div className="contactData" style={{zIndex:toggle ? "-1" : "inherit"}} onClick={(e) => {
-                        if(e.target.className === "contactData" ||
-                        e.target.className === "contactFormTetx") {
-                            setValid({
-                                firstInput:"oneMount",
-                                secondInput:"oneMount",
-                                textAria:"oneMount",
-                            })
-                        }
+                if(e.target.className === "contactData" ||
+                e.target.className === "contactFormTetx") {
+                    setValid({
+                        firstInput:"oneMount",
+                        secondInput:"oneMount",
+                        textAria:"oneMount",
+                    })
+                }
             }}>
             <form className="contactFormTetx" onSubmit={(e) => {
                 e.preventDefault()
                 let body = e.target
-                console.log(e);
                 if(body[0].value.length > 0 && body[1].value.match(mailformat) && body[2].value.length > 0) {
-                    dispatch(closeLetter());
+                    dispatch(sendMessag({
+                        path:state.server,
+                        token:sessionStorage.getItem("authenticated"),
+                        body:{ 
+                            name:body[0].value,
+                            email:body[1].value,
+                            message:body[2].value
+                        }
+                    }));
                     window.scrollTo(0, 0);
                     document.body.style.overflow = 'hidden';
                     setNameValue("");setEmailValue("");setTextereaValue("");
@@ -77,12 +85,13 @@ export function ContactUs({toggle}) {
                 >
                 </textarea>
                 <button onClick={(e) => {
+                    let body = e.target.form
                     // console.log(e.target.form[0].value);
                     setValid({
                         ...Valid,
-                        firstInput:e.target.form[0].value.length !== 0,
-                        secondInput:e.target.form[1].value.match(mailformat),
-                        textAria:e.target.form[2].value.length > 0
+                        firstInput:body[0].value.length !== 0,
+                        secondInput:body[1].value.match(mailformat),
+                        textAria:body[2].value.length > 0
                     })
                 }}>Send</button>
             </form>

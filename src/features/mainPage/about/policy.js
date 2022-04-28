@@ -6,13 +6,13 @@ import parser from 'html-react-parser';
 import { useEffect, useState } from "react";
 
 
-export function About({toggle}) {
+export function Policy({toggle}) {
     const state = useSelector((state) => state.mainPage)
 
     return (
         <div className="about" >
-            <div className="aboutDiv" style={{zIndex:toggle ? "-1" : "inherit"}}><h2 className="h2">about</h2></div>
-            <div className="aboutP" style={{zIndex:toggle ? "-1" : "inherit"}} >{state.mainPAboutPagination.about ? parser(state.mainPAboutPagination.about.content) : ""}</div>
+            <div className="aboutDiv" style={{zIndex:toggle ? "-1" : "inherit"}}><h2 className="h2">policy</h2></div>
+            <div className="aboutP" style={{zIndex:toggle ? "-1" : "inherit"}} >{state.mainPAboutPagination.policy ?  parser(state.mainPAboutPagination.policy.content) : ""}</div>
         </div>
     )
 }

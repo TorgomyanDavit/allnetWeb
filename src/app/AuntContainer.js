@@ -3,7 +3,6 @@ import React ,{ useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router} from "react-router-dom";
 import MainPage from '../features/mainPage/mainPage';
-import { getAllContent } from '../features/mainPage/getRequest';
 import './AuntContainer.css';
 
 
