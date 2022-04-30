@@ -49,16 +49,51 @@ export const getUserHomePage = createAsyncThunk(
             mode: 'cors', method : "GET", headers : {'Content-Type' : 'application/json','Accept' : 'application/json','Authorization': `Bearer ${token}`}
         };
         const response = await fetch(`${path}/userPage`,configHeader).then((result) => result.json())
-       
         return response
     }
 )
 
-export function getUserHomePageSimple({path,token}) {
-    let configHeader = { 
-        mode: 'cors', method : "GET", headers : {'Content-Type' : 'application/json','Accept' : 'application/json','Authorization': `Bearer ${token}`}
-    };
-    return fetch(`${path}/userPage`,configHeader).then((result) => result.json())
-}
+export const getUserHistory = createAsyncThunk(
+    "mainPage/getUserHistory",
+    async ({path,token,id}) => {
+        let configHeader = { 
+            mode: 'cors', method : "GET", headers : {'Content-Type' : 'application/json','Accept' : 'application/json','Authorization': `Bearer ${token}`}
+        };
+        const response = await fetch(`${path}/payment/${id}`,configHeader).then((result) => result.json())
+        return response
+    }
+)
+
+export const getNotification = createAsyncThunk(
+    "mainPage/getNotification",
+    async ({path,token,id}) => {
+        let configHeader = { 
+            mode: 'cors', method : "GET", headers : {'Content-Type' : 'application/json','Accept' : 'application/json','Authorization': `Bearer ${token}`}
+        };
+        const response = await fetch(`${path}/notification/${id}`,configHeader).then((result) => result.json())
+        return response
+    }
+)
+
+export const getTarif = createAsyncThunk(
+    "mainPage/getTarif",
+    async ({path,token,id}) => {
+        let configHeader = { 
+            mode: 'cors', method : "GET", headers : {'Content-Type' : 'application/json','Accept' : 'application/json','Authorization': `Bearer ${token}`}
+        };
+        const response = await fetch(`${path}/payment`,configHeader).then((result) => result.json())
+        return response
+    }
+)
+
+
+
+
+// export function getUserHomePageSimple({path,token}) {
+//     let configHeader = { 
+//         mode: 'cors', method : "GET", headers : {'Content-Type' : 'application/json','Accept' : 'application/json','Authorization': `Bearer ${token}`}
+//     };
+//     return fetch(`${path}/userPage`,configHeader).then((result) => result.json())
+// }
     
 

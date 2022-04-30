@@ -11,7 +11,7 @@ export function MessigePerson() {
     const state = useSelector((state) => state.mainPage)
     const dispatch = useDispatch()
     useEffect(() => {return () => dispatch(changeAnimation({value:"/userPage/messigePerson"}))},[])
-    console.log(new Date("2022-04-25 09:08:29").toISOString().split('T')[0]);
+    // console.log(new Date("2022-04-25 09:08:29").toISOString().split('T')[0]);
     
 
 

@@ -7,7 +7,7 @@ import "./statisticMain.css"
 import "./animationResponsive.css"
 
 import { changeAnimation, chengRowCountPagination, paginationCount } from "../../mainPageSlice"
-import { getUserPage } from "../../getRequest"
+import { getUserHomePage, getUserPage } from "../../getRequest"
 import HistoryPage from "./historyPage"
 
 
@@ -69,7 +69,7 @@ export function StatisticMain() {
                                         dispatch(paginationCount(0))
                                         dispatch(chengRowCountPagination(val))
                                         setShowValue(val)
-                                        dispatch(getUserPage({path:state.server,token:sessionStorage.getItem("authenticated")}))
+                                        dispatch(getUserHomePage({path:state.server,token:sessionStorage.getItem("authenticated")}));
                                     }}>{val}</button>
                                 })}
                             </div>

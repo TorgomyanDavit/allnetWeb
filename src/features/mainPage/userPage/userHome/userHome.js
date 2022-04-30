@@ -42,7 +42,7 @@ function UserHome({changePlay}) {
         time.borderSize > 2 ? context.strokeStyle = "red" : context.strokeStyle = "#00A3FF";
         context.stroke();
     },[time.second])
-    const {userPage,tariffType,orderTariff,contacts} = state.userHomePage 
+    const {userPage,tariffType,orderTariff,contacts,user} = state.userHomePage 
 
 
     

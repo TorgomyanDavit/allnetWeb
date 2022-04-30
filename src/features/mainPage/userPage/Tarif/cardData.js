@@ -23,21 +23,6 @@ export default function CardDate() {
         },3000)
     }
 
-
-
-    // let dateObj = new Date(Date.now())
-    // let monthi = dateObj.getUTCMonth() + 1; //months from 1-12
-    // var day = dateObj.getUTCDate();
-    // var yeari = dateObj.getUTCFullYear();
-    // console.log(day + "/" + monthi + "/" + "" + yeari );
-
-    // let dateObj = new Date(Date.now())
-
-    // dateObj.toISOString().split('T')[0];
-
-    // setTimeout(() => {
-    // console.log(new Date(y).toJSON());
-    // },5000)
     
     return (
         <section className="cardSection">

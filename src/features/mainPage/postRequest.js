@@ -17,6 +17,7 @@ export const postSignIn = createAsyncThunk(
     "mainPage/postSignIn",
     async ({path,body}) => {
         let token = await fetch(`${path}/csrf`).then((result) => result.json(result)).then((result) => result.csrf_token)
+        // let token = localStorage.getItem("csrf_token")
         // console.log(localStorage.getItem("csrf_token"));
 
         const response = await fetch(`${path}/login`,{

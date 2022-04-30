@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 function HomeSliderPage ({data}) {
     const state = useSelector((state) => state.mainPage)
 
-   return (
+    return (
         <div className="homeImgDiv">
             <p className="homeImg">
                 <img src={`${state.serverForImg}${data.image_path}`} alt="homeImg" width="477" height="284"/>
@@ -17,7 +17,7 @@ function HomeSliderPage ({data}) {
             </div>
             <p className="homeUnderline"></p>
         </div>
-   ) 
+    ) 
 }
 
 export default HomeSliderPage

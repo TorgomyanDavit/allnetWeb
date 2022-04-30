@@ -31,13 +31,15 @@ function MainPage() {
     const state = useSelector((state) => state.mainPage);
     const Authenticated = sessionStorage.getItem("authenticated");
     const history = useLocation();
-    const MainRef = useRef();
+    const MainRef = useRef(null);
     // console.log(window.innerHeight,"useEFfect");
 
-    useEffect(() => {
-        // console.log(window.innerHeight,"useEFfect");
-        // console.log(MainRef.current.clientHeight,"useEFfect");
+    console.log(MainRef.current,"useEFfect");
 
+    useEffect(() => {
+        console.log(history.pathname,"useEFfect");
+        console.log(window.innerHeight,"useEFfect window");
+        console.log(MainRef.current.clientHeight,"useEFfect mainRef");
         if(window.innerHeight > MainRef.current.clientHeight) {
             MainRef.current.style.minHeight = window.innerHeight + "px"
             dispatch(changeloadHeight({height:window.innerHeight + "px"}))
@@ -58,11 +60,12 @@ function MainPage() {
     useEffect(() => { if( (pathName === true || globalPath === true) ) {  dispatch(getAllContent(state.server))} },[globalPath] )
     // let reg = /^\d+\s[|]\s[\d|\w|\W]+/for authentication token
     if(pathName === true && !!Authenticated === true ) {return <Redirect to="/userPage/userHome"/>}  
-    else if(pathName === false && !!Authenticated === false && globalPath === false ) {return <Redirect to="/signIn"/>}
+    else if(pathName === false && !!Authenticated === false && globalPath === false ) {    
+    return <Redirect to="/signIn"/>}
     
 
     return (
-        <div className="MainPage" ref={MainRef} >
+        <div className="MainPage" ref={MainRef}>
            <Headers type={type} Width={Width} toggle={toggle} setToggle={setToggle}/>
            { state.receiveLetterShow ? <Letter/> : null }
 

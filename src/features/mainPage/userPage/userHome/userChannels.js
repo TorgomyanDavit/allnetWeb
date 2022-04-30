@@ -5,7 +5,8 @@ import personImg from "../../userPage/images/PersonImg.png"
 
 export function UserChannels() {
     const state = useSelector((state) => state.mainPage)
-    const {user} = state.userPage 
+
+    // debugger
     const {bouquet_channels} = state.userHomePage.tariffType ? state.userHomePage.tariffType[0].bouquet_id[0] : []
 
 
@@ -21,7 +22,7 @@ export function UserChannels() {
                         style={{animationName:state.animationPath === "/userPage/userPerson" ? "userImg" : "null"}}
                     /> */}
                     <p style={{animationName:state.animationPath === "/userPage/userPerson" ? "userParagraph" : "null"}}>
-                        <span>{user ? user.username : ""}</span>
+                        <span>{state.userPage ? state.userPage.username : ""}</span>
                         <span>Balance:<b>100 $</b></span>
                     </p>
                 </div>

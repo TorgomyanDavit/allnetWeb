@@ -9,7 +9,7 @@
 
 .personDiv {
     width: 1000px;
-    height: 165px;
+    min-height: 165px;
     border-radius: 20px;
     background: #ffffff;
     display: flex;

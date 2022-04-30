@@ -25,9 +25,7 @@ export default function Tarif() {
         } 
     }
 
-    // console.log(state.checkTarifData);
-
-
+    console.log("state",state);
 
 
 

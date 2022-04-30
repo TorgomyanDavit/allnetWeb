@@ -11,6 +11,21 @@ function Main({changeType,toggle}) {
     const [width,setWidth] = useState(false)
     const dispatch = useDispatch()
     const state = useSelector((state) => state.mainPage)
+
+
+    // useEffect(() => {
+    //     console.log(history.pathname,"useEFfect");
+    //     console.log(window.innerHeight,"useEFfect window");
+    //     console.log(MainRef.current.clientHeight,"useEFfect mainRef");
+    //     if(window.innerHeight > MainRef.current.clientHeight) {
+    //         MainRef.current.style.minHeight = window.innerHeight + "px"
+    //         dispatch(changeloadHeight({height:window.innerHeight + "px"}))
+    //     } else {
+    //         MainRef.current.style.minHeight = "fit-content"
+    //         dispatch(changeloadHeight({height:MainRef.current.clientHeight + "px"}))
+    //     }
+    // },[history.pathname])
+    
     useEffect(() => {
         dispatch(changeImgType({type:true}))
         if(window.screen.width=== 375) {

@@ -12,14 +12,16 @@ import iosIcon from "../../images/iosIcon.png"
 import LgSmart from "../../images/LgSmart.png"
 import samsungImg from "../../images/samsungImg.png"
 import smartIcon from "../../images/SmartIcon.png"
-import { getAllContent, getUserData, getUserHomePage, getUserPage } from "./getRequest";
+import { getAllContent, getNotification, getTarif, getUserData, getUserHistory, getUserHomePage, getUserPage } from "./getRequest";
 import { sendEmail, newPass, postLogAuth, postRegister, postSignIn, changeUserData, buyTarif, deleteMessagePost, sendMessag } from "./postRequest";
 
 
 const initialState = {
     // async
-    server:"http://127.0.0.1:8000/api",
-    serverForImg:"http://127.0.0.1:8000",
+    server:"https://all.mergel-stone.am/api",
+    serverForImg:"https://all.mergel-stone.am",
+    // server:"http://127.0.0.1:8000/api",
+    // serverForImg:"http://127.0.0.1:8000",
     mainPagePagination:{title:"",description:""},
     mainPAboutPagination:{about:null,therms:null,privacy:null},
     mainContactPagination:{
@@ -43,6 +45,7 @@ const initialState = {
         data:[]
     },
     userpageImg:[],
+    paymentPage:[],
 
     
     personImg:"",
@@ -248,9 +251,9 @@ const mainPageSlices = createSlice({
         userDate:(state,action) => {
             state.personData = state.personData.map((val,index) => {
                 switch(index) {
-                    case 0 : return { ...val,inner:state.userPage.user.username } ;
-                    case 1 : return { ...val,inner:state.userPage.user.email } ;
-                    case 2 : return { ...val,inner:state.userPage.user.password } ;
+                    case 0 : return { ...val,inner:state.userPage.username } ;
+                    case 1 : return { ...val,inner:state.userPage.email } ;
+                    case 2 : return { ...val,inner:state.userPage.password } ;
                 }
             })
         },
@@ -264,7 +267,7 @@ const mainPageSlices = createSlice({
             state.ThanksShow = !state.ThanksShow
         },
         changeUsername:(state,action) => {
-            state.userPage.user.username = action.payload
+            state.userPage.username = action.payload
         },
         clearUserpage:(state) => {
             state.userPage = []
@@ -354,15 +357,52 @@ const mainPageSlices = createSlice({
         // get UserPageMain
         .addCase(getUserHomePage.pending,(state,action) => {
             console.log("pending userPageHomeNew",action);
-
             // state.loading.mainLoading = "loading"
         })
         .addCase(getUserHomePage.fulfilled,(state,action) => {
             console.log("fulfiled userPageHomeNew",action);
             state.userHomePage = action.payload
+            state.userPage = action.payload.user
 
             // state.loading.mainLoading = false
         })
+        //  getHistoiry
+        .addCase(getUserHistory.pending,(state,action) => {
+            console.log("pending userHistory",action);
+            // state.loading.mainLoading = "loading"
+        })
+        .addCase(getUserHistory.fulfilled,(state,action) => {
+            console.log("fulfiled userHistory",action);
+            state.table.data = splitTable(state,action)
+
+            // state.loading.mainLoading = false
+        })
+
+        // getNotification
+        .addCase(getNotification.pending,(state,action) => {
+            console.log("pending getNotification",action);
+
+            // state.loading.mainLoading = "loading"
+        })
+        .addCase(getNotification.fulfilled,(state,action) => {
+            console.log("fulfiled getNotification",action);
+            state.messigePerson = action.payload.notifications
+            // state.loading.mainLoading = false
+        })
+
+        // get TArif
+        .addCase(getTarif.pending,(state,action) => {
+            console.log("pending getTarif",action);
+            // state.loading.mainLoading = "loading"
+        })
+        .addCase(getTarif.fulfilled,(state,action) => {
+            console.log("fulfiled getTarif",action);
+            state.paymentPage = action.payload.tariffs
+            // state.loading.mainLoading = false
+        })
+        
+
+        
 
         // all User get Error request
         .addCase(getUserPage.pending,(state,action) => {
@@ -431,12 +471,11 @@ const mainPageSlices = createSlice({
 
         // buy Tarif
         .addCase(buyTarif.pending,(state,action) => {
-            console.log("pending changeUserData",action);
+            console.log("pending bytarif",action);
             state.loading.mainLoading = "loading";
         })
         .addCase(buyTarif.fulfilled,(state,action) => {
-            console.log("fulfiled changeUserData",action);
-            debugger
+            console.log("fulfiled pending bytarif",action);
             if(action.payload.success) {
                 state.ThanksShow = true
                 state.TarifThanksShow = false
@@ -466,10 +505,11 @@ const mainPageSlices = createSlice({
 })
 
 function splitTable(state,action) {
-    let indexPage = Math.ceil(action.payload[3].history.length / state.table.rowCount)
+    // debugger
+    let indexPage = Math.ceil(action.payload.history.length / state.table.rowCount)
     state.table.countPage = [...new Array(indexPage)]
     let page = [], i = 0, i2 = 0;
-    let correctData = action.payload[3].history.map((val) => {
+    let correctData = action.payload.history.map((val) => {
         let date = +(val.date_start + `000`)
         return {...val,date_start:new Date(date).toISOString().split('T')[0]}
     })
@@ -478,7 +518,7 @@ function splitTable(state,action) {
         if((this.length - 1) === index){ aggr[i] = page; return aggr};
         if(page.length === state.table.rowCount){ aggr[i] = page; page = []; i++; i2 = 0; return aggr};
         i2++;return aggr;
-    }.bind(action.payload[3].history),[]);
+    }.bind(action.payload.history),[]);
 }
 
 

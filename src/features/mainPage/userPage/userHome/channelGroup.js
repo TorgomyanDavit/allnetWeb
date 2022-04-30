@@ -14,13 +14,12 @@ export function ChannelGroup() {
             </p>
             <div className="channelGroupChecked">
                 <div className="groupinput">
-                    {/* {
+                    {
                         channel_groups ? 
                         channel_groups.map((val) => <p key={Math.random()}>{val.genre}</p>) : "" 
-                    } */}
+                    }
                 </div>
             </div>
         </div>
     )
 }
-

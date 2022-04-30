@@ -10,7 +10,6 @@ import "./responsiveAnimationUser.css"
 import personImg from "../../userPage/images/PersonImg.png"
 import { changeUserData } from "../../postRequest"
 import Cookies from 'js-cookie';
-import { getUserPage } from "../../getRequest"
 
 
 
@@ -32,9 +31,8 @@ export default function User() {
 
     // console.log(state.userPage.user,"user");
     // console.log(inpREf);
-
     useEffect(() => {
-        if(state.userPage.user)dispatch(userDate())
+        if(state.userPage.length !== 0)dispatch(userDate())
     },[state.userPage])
 
     const dispatch = useDispatch()
@@ -128,9 +126,9 @@ export default function User() {
                             username:body[0].value,
                             email:body[2].value,
                             password:body[4].value,
-                            id:user.id,
+                            id:state.userPage.id,
                         },
-                        id:user.id
+                        id:state.userPage.id
                     }));
                     dispatch(changeUserImg({userImg:""}))
                     dispatch(changeUsername(body[0].value))

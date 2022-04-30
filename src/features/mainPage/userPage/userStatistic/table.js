@@ -7,7 +7,7 @@ import "./responsiveTable.css"
 export function Table() {
     const state = useSelector((state) => state.mainPage)
     const {PageIndex,data} = state.table
-    console.log(data);
+    // console.log(data);
 
     return (
     <table className="table">
