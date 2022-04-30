@@ -4,10 +4,17 @@ import "./responsive.css"
 import { useDispatch, useSelector } from "react-redux"
 import parser from 'html-react-parser';
 import { useEffect, useState } from "react";
+import { changeloadHeight } from "../mainPageSlice";
 
 
 export function About({toggle}) {
     const state = useSelector((state) => state.mainPage)
+    // const history = useLocation();
+
+    // const dispatch = useDispatch()
+    // useEffect(() => {
+    //     dispatch(changeloadHeight({height:"100vh"}))
+    // },[history.pathname])
 
     return (
         <div className="about" >

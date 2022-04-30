@@ -1,13 +1,24 @@
 import { useDispatch, useSelector } from "react-redux"
 import "./faq.css"
 import "./responsive.css"
-import { changeFaq } from "../mainPageSlice"
+import { changeFaq, changeloadHeight } from "../mainPageSlice"
+import { useLocation } from "react-router-dom"
+import { useEffect } from "react"
 
 
 
 export function Faq({toggle}) {
     const state = useSelector((state) => state.mainPage)
     const dispatch = useDispatch()
+
+    // const history = useLocation();
+    // useEffect(() => {
+    //     dispatch(changeloadHeight({height:"98vh"}))
+    // },[history.pathname])
+    // console.log("VALID",Valid);
+
+
+
     return (
         <div className="faq">
 

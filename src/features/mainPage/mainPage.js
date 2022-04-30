@@ -37,10 +37,7 @@ function MainPage() {
     console.log(MainRef.current,"useEFfect");
 
     useEffect(() => {
-        console.log(history.pathname,"useEFfect");
-        console.log(window.innerHeight,"useEFfect window");
-        console.log(MainRef.current.clientHeight,"useEFfect mainRef");
-        if(window.innerHeight > MainRef.current.clientHeight) {
+        if(window.innerHeight >= MainRef.current.clientHeight) {
             MainRef.current.style.minHeight = window.innerHeight + "px"
             dispatch(changeloadHeight({height:window.innerHeight + "px"}))
         } else {

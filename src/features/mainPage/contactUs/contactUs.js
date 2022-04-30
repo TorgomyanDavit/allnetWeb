@@ -1,7 +1,7 @@
 import { isValidElement, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Link } from "react-router-dom"
-import { closeLetter, loading } from "../mainPageSlice"
+import { Link, useLocation } from "react-router-dom"
+import { changeloadHeight, closeLetter, loading } from "../mainPageSlice"
 import { sendMessag } from "../postRequest"
 import "./contactUs.css"
 import "./responsive.css"
@@ -23,8 +23,11 @@ export function ContactUs({toggle}) {
     const [emailValue,setEmailValue] = useState("")
     const [texteriaValue,setTextereaValue] = useState("")
 
+    // const history = useLocation();
 
-
+    // useEffect(() => {
+    //     dispatch(changeloadHeight({height:"99vh"}))
+    // },[history.pathname])
     console.log("VALID",Valid);
 
 

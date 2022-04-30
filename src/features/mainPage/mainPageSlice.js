@@ -261,7 +261,7 @@ const mainPageSlices = createSlice({
             if(!state.checkTarifData) { state.checkTarifData = action.payload } else {state.checkTarifData = false}
         },
         changeloadHeight:(state,action) => {
-            state.loadinHeight = action.payload.height
+            // state.loadinHeight = action.payload.height
         },
         ShowOkeyByTarif:(state,action) => {
             state.ThanksShow = !state.ThanksShow

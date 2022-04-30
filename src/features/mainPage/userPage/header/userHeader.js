@@ -29,15 +29,7 @@ function UserHeader({toggle}) {
 
     useEffect( async () => { 
         if(Array.isArray(state.userPage)) {
-            // console.log(getUserHomePageSimple({path:state.server,token:sessionStorage.getItem("authenticated")}));
-            // getUserHomePageSimple({path:state.server,token:sessionStorage.getItem("authenticated")}).then((result) => {
-            //     console.log(result);
-            // })
-            // dispatch(getUserPage({path:state.server,token:sessionStorage.getItem("authenticated")}))
-            
-
             dispatch(getUserHomePage({path:state.server,token:sessionStorage.getItem("authenticated")}));
-            
         }
         if(state.userPage.id) { dispatch(getUserHistory({path:state.server,id:state.userPage.id,token:sessionStorage.getItem("authenticated")})) }
         if(state.userPage.id) { dispatch(getNotification({path:state.server,id:state.userPage.id,token:sessionStorage.getItem("authenticated")})) }

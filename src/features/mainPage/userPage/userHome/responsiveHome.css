@@ -28,6 +28,7 @@
 
     .TvChannels {
         width: 100%;
+        padding: 0 20px ;
         margin: 0;
     }
 
@@ -138,7 +139,7 @@
         top: -4px;
         left: 5px;
     }
-/* 
+    /* 
     #timerDiv1 {
         justify-content: end !important;
     } */
@@ -201,7 +202,7 @@
     }
 
     .active-contacts-div .timer-Div .date {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .active-contacts-div .timer-Div .timerButton {
@@ -225,6 +226,7 @@
     .TvChannels p :Link img {
         width:unset;
         height: 21px;
+        gap: 0 10px;
     }
     
 }
@@ -282,7 +284,8 @@
 
     .TvChannels {
         height: 322px;
-        overflow: hidden;
+        overflow: scroll;
+        gap: 20px;
     }
 }
 
@@ -363,7 +366,7 @@
 
     .slick-dots {
         width: 100%;
-        bottom: -49px;
+        bottom: -49px !important;
     }
 
     .homeImg {
@@ -391,9 +394,9 @@
 
 @media (max-width:375px) and (min-width:375px) {
 
-    .active-contacts-div .timer-Div .timerButtonDiv {
+    /* .active-contacts-div .timer-Div .timerButtonDiv {
         margin-right: 45px;
-    }
+    } */
 
     .active-contacts-div .timer-Div .timer {
         left: 19px;
@@ -578,7 +581,7 @@
         justify-content: center;
         align-items: unset;
         height: 210px;
-        overflow: hidden;
+        /* overflow: hidden; */
         
     }
 
