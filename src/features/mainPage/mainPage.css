@@ -28,7 +28,11 @@ html[lang="am"] * {
     font-family: "Montserrat-RegularArm" !important;
 }
 
-html[lang="am"].activeRegisterButton {
+html[lang="am"] .activeRegisterButton {
+    font-family  :"Montserrat-BoldArm" !important;
+}
+
+html[lang="am"] .activeSignInButton {
     font-family  :"Montserrat-BoldArm" !important;
 }
 
