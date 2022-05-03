@@ -171,8 +171,8 @@
 }
 
 .checkboxForAggrement input {
-    width: 30px;
-    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
     outline: none;
     border: 3px solid #282828;
     Opacity: 71%;

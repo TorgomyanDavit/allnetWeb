@@ -12,7 +12,7 @@ import iosIcon from "../../images/iosIcon.png"
 import LgSmart from "../../images/LgSmart.png"
 import samsungImg from "../../images/samsungImg.png"
 import smartIcon from "../../images/SmartIcon.png"
-import { getAllContent, getNotification, getTarif, getUserData, getUserHistory, getUserHomePage, getUserPage } from "./getRequest";
+import { getAllContent, getNotification, getTarif, getUserData, getUserHistory, getUserHomePage } from "./getRequest";
 import { sendEmail, newPass, postLogAuth, postRegister, postSignIn, changeUserData, buyTarif, deleteMessagePost, sendMessag } from "./postRequest";
 
 
@@ -95,7 +95,7 @@ const initialState = {
     animationPath:"null",
     animationPathDone:"null",
     imgType:false,
-    innerSelect:["AM","EN"],
+    innerSelect:["am","en"],
     Id:"",
     regAndsignNone:true,
     personData:[
@@ -152,6 +152,13 @@ const mainPageSlices = createSlice({
                     return {...val,display:"block"}
                 } 
                 return {...val,display:"none"}
+            })
+        },
+        changeLanguigArm:(state,action) => {
+            state.personData = state.personData.map((val,i) => {
+                if(action.payload.leng === "en")
+                {return {...val,dataName:action.payload.engLeng[i],placeholder:action.payload.engPlaceholder[i]}}
+                else {return {...val,dataName:action.payload.armLeng[i],placeholder:action.payload.armPlaceholder[i]}} 
             })
         },
         changeDate:(state,action) => {
@@ -401,31 +408,26 @@ const mainPageSlices = createSlice({
             // state.loading.mainLoading = false
         })
         
-
-        
-
         // all User get Error request
-        .addCase(getUserPage.pending,(state,action) => {
-            console.log("pending userPage",action);
-            state.loading.mainLoading = "loading"
-        })
-        .addCase(getUserPage.fulfilled,(state,action) => {
-            console.log("fulfiled userPAge",action);
-            if(!!action.payload.error) {state.loginemailValidation = true}
-            // state update homePage
-            state.userHomePage = action.payload[0]
-            // state Update userPage
-            state.userPage = action.payload[1]
-            // state update paymentPage
-            state.paymentPage = action.payload[2].tariffs
-            // state update PaymentHistoryPage 
-            state.table.data = splitTable(state,action)
-            // notification
-            state.messigePerson = action.payload[4].notifications
-
-
-            state.loading.mainLoading = false;
-        })
+        // .addCase(getUserPage.pending,(state,action) => {
+        //     console.log("pending userPage",action);
+        //     state.loading.mainLoading = "loading"
+        // })
+        // .addCase(getUserPage.fulfilled,(state,action) => {
+        //     console.log("fulfiled userPAge",action);
+        //     if(!!action.payload.error) {state.loginemailValidation = true}
+        //     // state update homePage
+        //     state.userHomePage = action.payload[0]
+        //     // state Update userPage
+        //     state.userPage = action.payload[1]
+        //     // state update paymentPage
+        //     state.paymentPage = action.payload[2].tariffs
+        //     // state update PaymentHistoryPage 
+        //     state.table.data = splitTable(state,action)
+        //     // notification
+        //     state.messigePerson = action.payload[4].notifications
+        //     state.loading.mainLoading = false;
+        // })
         
         // LogAuth
         .addCase(postLogAuth.pending,(state,action) => {
@@ -529,7 +531,7 @@ function splitTable(state,action) {
 export const {
     aginationCount,closeLetter,delsetMessige,showThanks,changeFaq,changeRegAndSignImgdisplay,changeUsername,
     changeImgType,changeAnimationPathDone,changeAnimation,changeDisplay,changeDate,setValue,clearUserpage,
-    setId,changeUserImg,checkLink,checkPlaceholder,loading,registerAuth,loginAuth,changeloadHeight,
+    setId,changeUserImg,checkLink,checkPlaceholder,loading,registerAuth,loginAuth,changeloadHeight,changeLanguigArm,
     forgetemailError,sendLetterMail,userDate,paginationCount,setTarifId,chengRowCountPagination,ShowOkeyByTarif
 } = mainPageSlices.actions
 

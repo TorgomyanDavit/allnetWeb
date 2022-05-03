@@ -19,7 +19,7 @@ export default function Thanks() {
                 <p className="thumb"></p>
                 <p className="textOk">Thank you</p>
                 <Link to="/userPage/userHome" className="LinkforThanks" onClick={() => {
-                    dispatch(getUserPage({path:state.server,token:sessionStorage.getItem("authenticated")}))
+                    // dispatch(getUserPage({path:state.server,token:sessionStorage.getItem("authenticated")}))
                     dispatch(ShowOkeyByTarif())
                     document.body.style.overflow = 'unset';
                 }}>Back to the main page</Link>

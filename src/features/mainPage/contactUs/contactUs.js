@@ -5,6 +5,7 @@ import { changeloadHeight, closeLetter, loading } from "../mainPageSlice"
 import { sendMessag } from "../postRequest"
 import "./contactUs.css"
 import "./responsive.css"
+import { useTranslation } from "react-i18next"
 
 
 
@@ -18,22 +19,19 @@ export function ContactUs({toggle}) {
         secondInput:"oneMount",
         textAria:"oneMount",
     })
+    const [t,i18n] = useTranslation()
+
 
     const [naemValue,setNameValue] = useState("")
     const [emailValue,setEmailValue] = useState("")
     const [texteriaValue,setTextereaValue] = useState("")
 
-    // const history = useLocation();
 
-    // useEffect(() => {
-    //     dispatch(changeloadHeight({height:"99vh"}))
-    // },[history.pathname])
-    console.log("VALID",Valid);
 
 
     return (
         <div className="contactUs">
-            <div className="contactUsDiv" style={{zIndex:toggle ? "-1" : "inherit"}} ><h2>Contact Us</h2></div>
+            <div className="contactUsDiv" style={{zIndex:toggle ? "-1" : "inherit"}} ><h2>{t("description.header.Contactus")}</h2></div>
             <div className="contactDiv" style={{zIndex:toggle ? "-1" : "inherit"}} >
                 <p className="registerNewTitle">Contscts :</p>
                 <a href="mailTo:AllNet@mail.ru"><img src="/mainPageImages/messigeimg.svg" alt=""/>{messageEmail}</a>
@@ -76,14 +74,14 @@ export function ContactUs({toggle}) {
 
             }}>
                 <div>
-                    <input  type="text" placeholder="Name" value={naemValue} onChange={(e) => setNameValue(e.target.value)}
+                    <input  type="text" placeholder={t("description.placeholder.name")} value={naemValue} onChange={(e) => setNameValue(e.target.value)}
                         style={{outlineColor:Valid.firstInput === "oneMount" ? "transparent" : Valid.firstInput ? "green" : "red"}} 
                     />
-                    <input placeholder="E-mail" value={emailValue} onChange={(e) => setEmailValue(e.target.value)}
+                    <input placeholder={t("description.placeholder.email")} value={emailValue} onChange={(e) => setEmailValue(e.target.value)}
                         style={{outlineColor:Valid.secondInput === "oneMount" ? "transparent" : Valid.secondInput ? "green" : "red"}} 
                     />
                 </div>
-                <textarea type="text" placeholder="Message" value={texteriaValue}  onChange={(e) => setTextereaValue(e.target.value)}
+                <textarea type="text" placeholder={t("description.placeholder.message")} value={texteriaValue}  onChange={(e) => setTextereaValue(e.target.value)}
                     style={{outlineColor:Valid.textAria === "oneMount" ? "transparent" : Valid.textAria ? "green" : "red"}} 
                 >
                 </textarea>
@@ -96,7 +94,7 @@ export function ContactUs({toggle}) {
                         secondInput:body[1].value.match(mailformat),
                         textAria:body[2].value.length > 0
                     })
-                }}>Send</button>
+                }}>{t("description.header.AboutSendButton")}</button>
             </form>
             </div>
         </div>

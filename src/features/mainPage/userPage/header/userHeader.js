@@ -15,7 +15,7 @@ import "./responsive.css"
 import Tarif from "../Tarif/tarif"
 import { Redirect } from "react-router-dom"
 import { postLogAuth } from "../../postRequest"
-import { getNotification, getTarif, getUserHistory, getUserHomePage, getUserHomePageSimple, getUserPage } from "../../getRequest"
+import { getNotification, getTarif, getUserHistory, getUserHomePage, getUserHomePageSimple } from "../../getRequest"
 import { clearUserpage } from "../../mainPageSlice"
 
 
@@ -34,13 +34,19 @@ function UserHeader({toggle}) {
         if(state.userPage.id) { dispatch(getUserHistory({path:state.server,id:state.userPage.id,token:sessionStorage.getItem("authenticated")})) }
         if(state.userPage.id) { dispatch(getNotification({path:state.server,id:state.userPage.id,token:sessionStorage.getItem("authenticated")})) }
         if(state.userPage.id) { dispatch(getTarif({path:state.server,id:state.userPage.id,token:sessionStorage.getItem("authenticated")}))  }
-
-
-
     },[state.userPage])
 
-    // if(state.userHomePage)
 
+    console.log("bldux");
+    // useEffect(() => {
+    //     if(window.innerHeight >= MainRef.current.clientHeight) {
+    //         MainRef.current.style.minHeight = window.innerHeight + "px"
+    //         dispatch(changeloadHeight({height:window.innerHeight + "px"}))
+    //     } else {
+    //         MainRef.current.style.minHeight = "fit-content"
+    //         dispatch(changeloadHeight({height:MainRef.current.clientHeight + "px"}))
+    //     }
+    // },[location.pathname])
 
     
     return (
@@ -64,6 +70,7 @@ function UserHeader({toggle}) {
                         <img src="/mainPageImages/signOut.png" alt="signOut"/>
                     </button>
                 </div>
+                <div className="userPageMenu faqeUserPAge"></div>
 
                 <Route path="/userPage/userHome">
                     <UserHome changePlay={(value) => setPlay(value)} changeAnimationPath={(value) => {

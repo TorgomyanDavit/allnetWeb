@@ -1,6 +1,7 @@
 .userMainPAge {
     width: 1660px;
-    height: 953px;
+    /* height: 953px; */
+    height: calc(100vh - 125px);
     margin: 0 auto;
     margin-top: 25px;
     display: flex;
@@ -9,9 +10,11 @@
 }
 
 .userPageMenu {
+    position: fixed;
+    /* left: 0; */
     width: 71px;
     min-width: 60px;
-    height: 955px;
+    height: calc(100vh - 125px);
     background: #F1F7FF;
     border-top-left-radius: 21px;
     border-top-right-radius: 21px;
@@ -20,6 +23,14 @@
     justify-content: space-between;
     border: 1px solid #FFFFFF;
     align-items: center;
+}
+
+.faqeUserPAge {
+    position: unset !important;
+    background: transparent !important;
+    border: none !important;
+    z-index: -1 !important;
+    box-shadow: none !important;
 }
 
 .iconDiv {

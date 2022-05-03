@@ -220,10 +220,11 @@
 .SignInSocialNetworkTitle {
     margin: 24px auto 20px;
     color: #282828;
-    Opacity: 20%;
+    Opacity: 50%;
     font-size: 18px;
     font-weight: 500;
-} 
+    display: none;
+}
 
 .backgroundSignInBottomDiv {
     position: absolute;

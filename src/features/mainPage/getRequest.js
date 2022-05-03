@@ -15,32 +15,29 @@ export const getAllContent = createAsyncThunk(
     }
 )
 
-export const getUserPage = createAsyncThunk(
-    "mainPage/getUserPage",
-    async ({path,token}) => {
-        let configHeader = { 
-            mode: 'cors', method : "GET", headers : {'Content-Type' : 'application/json','Accept' : 'application/json','Authorization': `Bearer ${token}`}
-        };
-        const response = await Promise.all([
-            fetch(`${path}/userPage`,configHeader),
-            fetch(`${path}/user`,configHeader),
-            fetch(`${path}/payment`,configHeader)
-            // fetch(`${path}/notification`,configHeader)
-        ])
-        .then((streams) => {return Promise.all(streams.map((stream) => stream.json()))})
-        if(!!response[1].user) {const id = response[1].user.id;
-            const pagination = await fetch(`${path}/payment/${id}`,configHeader).then((result) => result.json())
-            const notification = await fetch(`${path}/notification/${id}`,configHeader).then((result) => result.json())
+// export const getUserPage = createAsyncThunk(
+//     "mainPage/getUserPage",
+//     async ({path,token}) => {
+//         let configHeader = { 
+//             mode: 'cors', method : "GET", headers : {'Content-Type' : 'application/json','Accept' : 'application/json','Authorization': `Bearer ${token}`}
+//         };
+//         const response = await Promise.all([
+//             fetch(`${path}/userPage`,configHeader),
+//             fetch(`${path}/user`,configHeader),
+//             fetch(`${path}/payment`,configHeader)
+//             // fetch(`${path}/notification`,configHeader)
+//         ])
+//         .then((streams) => {return Promise.all(streams.map((stream) => stream.json()))})
+//         if(!!response[1].user) {const id = response[1].user.id;
+//             const pagination = await fetch(`${path}/payment/${id}`,configHeader).then((result) => result.json())
+//             const notification = await fetch(`${path}/notification/${id}`,configHeader).then((result) => result.json())
 
-            response.push(pagination,notification)
-        }
+//             response.push(pagination,notification)
+//         }
         
-        return response
-    }
-)
-
-
-
+//         return response
+//     }
+// )
 
 export const getUserHomePage = createAsyncThunk(
     "mainPage/getUserHomePage",

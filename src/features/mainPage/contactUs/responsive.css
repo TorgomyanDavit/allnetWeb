@@ -248,6 +248,7 @@
 @media (max-width:374px) {
     .contactUs {
         padding: 0 15px;
+        padding-bottom: 15PX;
         width: 100%;
     }
 

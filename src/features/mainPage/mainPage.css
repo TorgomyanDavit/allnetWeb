@@ -9,9 +9,27 @@
     src: url("/public/font/Montserrat-Regular.ttf");
 }
 
+@font-face {
+    font-family: "Montserrat-RegularArm";
+    src: url("/public/font/Montserratarm-Regular.otf");
+}
+
+
+@font-face {
+    font-family: "Montserrat-BoldArm";
+    src: url("/public/font/Montserratarm-Bold.otf");
+}
 
 * {
     font-family: 'Montserrat-Regular' !important;
+}
+
+html[lang="am"] * {
+    font-family: "Montserrat-RegularArm" !important;
+}
+
+html[lang="am"].activeRegisterButton {
+    font-family  :"Montserrat-BoldArm" !important;
 }
 
 

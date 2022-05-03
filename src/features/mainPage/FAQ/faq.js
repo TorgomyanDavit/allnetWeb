@@ -4,25 +4,22 @@ import "./responsive.css"
 import { changeFaq, changeloadHeight } from "../mainPageSlice"
 import { useLocation } from "react-router-dom"
 import { useEffect } from "react"
+import { useTranslation } from "react-i18next"
 
 
 
 export function Faq({toggle}) {
     const state = useSelector((state) => state.mainPage)
     const dispatch = useDispatch()
+    const [t,i18n] = useTranslation()
 
-    // const history = useLocation();
-    // useEffect(() => {
-    //     dispatch(changeloadHeight({height:"98vh"}))
-    // },[history.pathname])
-    // console.log("VALID",Valid);
 
 
 
     return (
         <div className="faq">
 
-            <div style={{zIndex:toggle ? "-1" : "inherit"}}><h2>FAQ</h2></div>
+            <div style={{zIndex:toggle ? "-1" : "inherit"}}><h2>{t("description.header.FAQ")}</h2></div>
             {state.mainFaqPagination.map((val) => {
                 return (
                     <div key={Math.random()} className="faqnotifyDiv">                   
@@ -33,7 +30,6 @@ export function Faq({toggle}) {
                             <button>{val.simbol}</button>
                         </p>
                         <div className="faqNot" style={{display:val.open ? "block" : "none"}}>
-                            <h3 className="faqNotH3">Lorem ipsum dolor sit amet?</h3>
                             <p className="faqNotP">{val.description}</p>
                         </div>
                     </div>

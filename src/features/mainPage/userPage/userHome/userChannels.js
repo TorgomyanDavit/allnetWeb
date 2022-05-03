@@ -1,9 +1,13 @@
 import { useSelector } from "react-redux"
 import { Link, NavLink } from "react-router-dom"
 import personImg from "../../userPage/images/PersonImg.png"
+import { useTranslation } from "react-i18next"
+
 
 
 export function UserChannels() {
+    const [t,i18n] = useTranslation()
+
     const state = useSelector((state) => state.mainPage)
 
     // debugger
@@ -39,7 +43,7 @@ export function UserChannels() {
             <div className="Channels" 
                 style={{animationName:state.animationPath === "/userPage/userChannel" ? "channels2" : "null"}}
             >
-                <p className="titleChannel">Channels</p>
+                <p className="titleChannel">{t("description.Group")}</p>
                 <div className="TvChannels" style={{animationName:state.animationPath === "/userPage/userChannel" ? "tvChennels" : "null"}}>
                     {
                         bouquet_channels ? bouquet_channels.map((val) => <span className="spanXtream" key={val.id}><img className="imgXtream" src={val.stream_icon}/></span>) : ""

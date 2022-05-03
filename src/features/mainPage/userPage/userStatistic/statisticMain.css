@@ -287,8 +287,7 @@
     height: 49px;
     position: relative;
     cursor: pointer;
-    animation-name: pagination;
-    animation-duration: 0.3s;
+
 }
 
 @keyframes pagination {
@@ -452,6 +451,8 @@
     color: rgba(40, 40, 40, 0.7);
     font-size: 16px;
     font-weight: 600;
+    animation-name: pagination;
+    animation-duration: 0.3s;
 }
 
 .statisticFurther {

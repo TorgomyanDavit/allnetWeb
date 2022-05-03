@@ -6,10 +6,13 @@ import { changeRegAndSignImgdisplay, loginAuth } from "../mainPageSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { postSignIn } from "../postRequest";
 import { Redirect } from "react-router-dom";
+import { Trans, useTranslation } from "react-i18next"
+
 
 
 
 function SignIn({toggle}) {
+    const [t,i18n] = useTranslation()
     let [type,setType] = useState("password")
     const dispatch = useDispatch()
     const [passwordMatch,setMatch] = useState(false)
@@ -28,10 +31,12 @@ function SignIn({toggle}) {
             <div className="loginSignInDiv">
                 <div className="signInButtonDiv">
                     <NavLink to="/register" className="registerButton" activeClassName="activeRegisterButton">
-                        Registration <p className="registerButtonUnderLine"></p>
+                    {t("description.home.register")}
+                    <p className="registerButtonUnderLine"></p>
                     </NavLink>
                     <NavLink to="/signIn" className="SignInButton" activeClassName="activeSignInButton">
-                        Sign in<p className="signInButtonUnderLine"></p>
+                    {t("description.home.signIn")}
+                    <p className="signInButtonUnderLine"></p>
                     </NavLink>
                 </div>
                 <form className="inputSignDiv" onSubmit={(e) => {
@@ -53,7 +58,7 @@ function SignIn({toggle}) {
                     }}>
                     <div className="formSignIn">
                         <label>
-                            <input type="text" placeholder="Email" onFocus={() => { setMatch(false);dispatch(loginAuth())}} className={
+                            <input type="text" placeholder={t("description.placeholder.email")} onFocus={() => { setMatch(false);dispatch(loginAuth())}} className={
                                 passwordMatch === "emailnotDefined" ?  "outLIneError" :
                                 passwordMatch === "passwordError" ?  "outLIneError" :
                                 state.loginemailValidation ? "outLIneError" : ""
@@ -61,7 +66,7 @@ function SignIn({toggle}) {
                             {passwordMatch === "emailnotDefined" ? <p className="refusedMessage">email is not defined</p> : ""}
                         </label>
                         <label className="labelForSignInPassvord">
-                            <input type={type} placeholder="Password" onFocus={() => { setMatch(false);dispatch(loginAuth())}} className={
+                            <input type={type} placeholder={t("description.placeholder.password")} onFocus={() => { setMatch(false);dispatch(loginAuth())}} className={
                                 passwordMatch === "emptyPassword" ?  "outLIneError" :
                                 passwordMatch === "passwordError" ?  "outLIneError" :
                                 state.loginemailValidation ? "outLIneError" : ""
@@ -79,10 +84,10 @@ function SignIn({toggle}) {
                     </div>
                     <p className="rememberPassword">
                         <NavLink to="/forgetPassword" className="rememberPasswordLink">
-                            Forgot your password ?
+                            {t("description.forgetPassword")}
                         </NavLink>
                     </p>
-                    <button className="signInSubmit">Sign In</button>
+                    <button className="signInSubmit">{t("description.home.signIn")}</button>
                     <hr className="signInunderLine"/>
                 </form>
                 <p className="SignInSocialNetworkTitle">Registration via social networks</p>

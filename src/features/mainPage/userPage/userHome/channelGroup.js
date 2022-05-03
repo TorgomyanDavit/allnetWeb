@@ -1,7 +1,9 @@
 import { useSelector } from "react-redux"
+import { useTranslation } from "react-i18next"
 
 
 export function ChannelGroup() {
+    const [t,i18n] = useTranslation()
 
     const state = useSelector((state) => state.mainPage)
     const {channel_groups} = state.userHomePage
@@ -10,7 +12,7 @@ export function ChannelGroup() {
             <p className="channelTittel" 
                 style={{animationName:state.animationPath === "/userPage/userChannel" ? "channelTittel" : "null"}}
             >
-                Channel groups
+                {t("description.channelGroup")}
             </p>
             <div className="channelGroupChecked">
                 <div className="groupinput">

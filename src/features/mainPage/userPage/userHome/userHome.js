@@ -11,15 +11,14 @@ import "./userHome.css"
 import "./responsiveHome.css"
 import "./animationResponsive.css"
 import { getUserData, getUserPage } from "../../getRequest";
-
-
-
-
+import { useTranslation } from "react-i18next"
 
 
 
 function UserHome({changePlay}) {
     const state = useSelector((state) => state.mainPage)
+    const [t,i18n] = useTranslation()
+
     let [time,setTime] = Hook()
     const canvasRef = useRef(null)
     const dispatch = useDispatch()
@@ -44,10 +43,6 @@ function UserHome({changePlay}) {
     },[time.second])
     const {userPage,tariffType,orderTariff,contacts,user} = state.userHomePage 
 
-
-    
-    
-   
 
     return (
         <div className="userHome">
@@ -85,16 +80,14 @@ function UserHome({changePlay}) {
                                             ...time,
                                             startTiem:!time.startTiem
                                         },100);
-                                    }}>Activate</Link> :   
-                                    <Link to="/userPage/userChannel" className="timerButton timerByTarif">By Tarrif</Link>
+                                    }}>{t("description.changeTarif")}</Link> :   
+                                    <Link to="/userPage/userChannel" className="timerButton timerByTarif">{t("description.byTarif")}</Link>
                                 }
-                                
-
                             </div>
                         </div>
                         <div className="contacts">
                             <p className="titel-Contacts">
-                                Contscts :
+                                {t("description.contacts")}
                             </p>
                             <p className="titleUnderLine"></p>
                             <a href={`mailto:${contacts ? contacts[0].email : ""}`} className="contactsMessigeImg"><img src="/mainPageImages/contactsMessigeImg.png" alt="contactsMessigeImg"/>{contacts ? contacts[0].email : ""}</a>

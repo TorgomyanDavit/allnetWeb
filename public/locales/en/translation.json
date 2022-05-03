@@ -1,0 +1,50 @@
+{
+  "title": "Welcome to react using react-i18next",
+  "description": {
+    "home" : {
+      "signIn": "Sign In",
+      "register": "Registration"
+    },
+    "header" : {
+      "signIn" :"Sign In",
+      "About" : "About",
+      "Contactus" : "Contactus",
+      "FAQ" : "FAQ",
+      "AboutSendButton" : "Send"
+    },
+    "placeholder" : {
+      "name" : "Name",
+      "email" : "E-mail",
+      "message" : "Message",
+      "password" : "password",
+      "repeatePassword" : "repeatePassword" 
+    },
+    "forgetPassword" : "Forgot your password ?",
+    "agreeCondition" : {
+      "agree" : "I agree to the",
+      "terms" : "terms",
+      "condition" : "conditions",
+      "police" : "Privacy police",
+      "and" : "&",
+      "or" : "or"
+    },
+    "Group" : "Channel",
+    "channelGroup" : "channel Group",
+    "changeTarif" : "Change Tarif",
+    "byTarif" : "By Tarrif",
+    "contacts" : "Contacts :",
+    "user" : {
+      "lineInputName" : "{{name}}",
+      "ButtonSave" : "Save",
+      "placeholder" : "{{placeholder}}"
+    },
+    "historyMovement" : "Account Purchases history",
+    "show" : "SHOW",
+    "rows" : "ROWS ",
+    "DATE" : "DATE",
+    "TARIF" : "TARIF",
+    "AMOUNT" : "THE AMOUNT",
+    "ACTIVATE" : "Activate",
+    "RATE" : "TARIF"
+  }
+}

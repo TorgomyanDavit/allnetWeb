@@ -7,11 +7,15 @@ import "./register.css"
 import "./responsive.css"
 import axios from "axios"
 import { Redirect } from "react-router-dom"
+import { useTranslation } from "react-i18next"
+
 
 
 function Register({toggle}) {
     const state = useSelector( (state) => state.mainPage )
     let Authenticated = sessionStorage.getItem("authenticated");
+    const [t,i18n] = useTranslation()
+
 
     const dispatch = useDispatch()
     let [type,setType] = useState( {password:"password",repeatPassword:"password"} )
@@ -32,11 +36,11 @@ function Register({toggle}) {
             <div className="loginDiv">
                 <div className="RegisterButtonDiv">
                     <NavLink to="/register" className="registerButton" activeClassName="activeRegisterButton">
-                        Registration
+                        {t("description.home.register")}
                         <p className="registerButtonUnderLine"></p>
                     </NavLink>
                     <NavLink to="/signIn" className="registerButton" activeClassName="activeSignInButton">
-                        Sign in
+                        {t("description.home.signIn")}
                         <p className="signInButtonUnderLine"></p>
                     </NavLink>
                 </div>
@@ -55,18 +59,18 @@ function Register({toggle}) {
                         else if(!checkedAggre) {setborderChecked(true);setTimeout(() => {setborderChecked(false)},3000)}
                     }}>
                         <label>
-                            <input type="text" placeholder="Name" className={`${nameField ? "outLIneError" : ""}`} onFocus={() => setNameField(false)}/>
+                            <input type="text" placeholder={t("description.placeholder.name")} className={`${nameField ? "outLIneError" : ""}`} onFocus={() => setNameField(false)}/>
                             {nameField ? <p className="refusedMessage regRefus">This Name is not defined</p> : ""}
                         </label>
                         <label>
-                            <input placeholder="E-mail" className={`${emailField ? "outLIneError" : state.regEmailErrorAuthenticated ? "outLIneError"  : ""}`} onFocus={() => setemailField(false)}/>
+                            <input placeholder={t("description.placeholder.email")} className={`${emailField ? "outLIneError" : state.regEmailErrorAuthenticated ? "outLIneError"  : ""}`} onFocus={() => setemailField(false)}/>
                             {
                                 emailField ? <p className="refusedMessage regRefus">"The email must be a valid email address."</p> : 
                                 state.regEmailErrorAuthenticated ? <p className="refusedMessage regRefus">the email has already been taken.</p> : ""
                             }
                         </label>
                         <label className="labelForPassvord">
-                            <input type={type.password} placeholder="Password" className={`${passwordField ? "outLIneError" : ""}`} onFocus={() => setpasswordField(false)}/>
+                            <input type={type.password} placeholder={t("description.placeholder.password")} className={`${passwordField ? "outLIneError" : ""}`} onFocus={() => setpasswordField(false)}/>
                             <button onClick={(e) => { 
                                 e.preventDefault();
                                 setType({ 
@@ -80,7 +84,7 @@ function Register({toggle}) {
                         </label>
 
                         <label className="labelForPassvord">
-                            <input type={type.repeatPassword} placeholder="Repeate password" className={`${repeatPasswordField ? "outLIneError" : ""}`} onFocus={() => setrepeatPasswordField(false)}/>
+                            <input type={type.repeatPassword} placeholder={t("description.placeholder.repeatePassword")} className={`${repeatPasswordField ? "outLIneError" : ""}`} onFocus={() => setrepeatPasswordField(false)}/>
                             <button onClick={(e) => { 
                                 e.preventDefault();
                                 setType({ 
@@ -97,9 +101,11 @@ function Register({toggle}) {
                     
                     <div className={`checkboxForAggrement`}>
                         <input type={`checkbox`} onChange={(e) => {setborderChecked(false);setCheched(e.target.checked)}} className={`${borderChecked ? "borderError" : ""}`}/>
-                        <span className={`${borderChecked ? "colorErrorError" : ""}`}> I agree to the {" "} 
-                            <Link to="/therms" className={`${borderChecked ? "colorErrorError" : ""}`}>terms {"&"} conditions</Link> or 
-                            <Link  to="/policy" className={`${borderChecked ? "colorErrorError" : ""}`}> Privacy police </Link>
+                        <span className={`${borderChecked ? "colorErrorError" : ""}`}>{t("description.agreeCondition.agree")}{" "} 
+                            <Link to="/therms" className={`${borderChecked ? "colorErrorError" : ""}`}>
+                                {t("description.agreeCondition.terms")} { t("description.agreeCondition.and")} {t("description.agreeCondition.condition")}
+                            </Link> { t("description.agreeCondition.and")}
+                            <Link  to="/policy" className={`${borderChecked ? "colorErrorError" : ""}`}> {t("description.agreeCondition.police")} </Link>
                         </span>
                     </div>
                     <hr className="registerHr"/>

@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom"
 import { changeImgType, loading } from "../mainPageSlice"
 import "./main.css"
 import "./responsiveMain.css"
+import { Trans , useTranslation} from "react-i18next"
 
 
 function Main({changeType,toggle}) {
@@ -11,20 +12,9 @@ function Main({changeType,toggle}) {
     const [width,setWidth] = useState(false)
     const dispatch = useDispatch()
     const state = useSelector((state) => state.mainPage)
+    const [t,i18n] = useTranslation()
 
 
-    // useEffect(() => {
-    //     console.log(history.pathname,"useEFfect");
-    //     console.log(window.innerHeight,"useEFfect window");
-    //     console.log(MainRef.current.clientHeight,"useEFfect mainRef");
-    //     if(window.innerHeight > MainRef.current.clientHeight) {
-    //         MainRef.current.style.minHeight = window.innerHeight + "px"
-    //         dispatch(changeloadHeight({height:window.innerHeight + "px"}))
-    //     } else {
-    //         MainRef.current.style.minHeight = "fit-content"
-    //         dispatch(changeloadHeight({height:MainRef.current.clientHeight + "px"}))
-    //     }
-    // },[history.pathname])
     
     useEffect(() => {
         dispatch(changeImgType({type:true}))
@@ -39,27 +29,23 @@ function Main({changeType,toggle}) {
     },[]);
 
     return <>
-        <main className="main" style={{zIndex:toggle ? "-1" : "inherit"}}>
+        <main className="main" style={{zIndex:toggle ? "-1" : "inherit"}}>  
             <div className="mainImgDiv" style={{transform: playImg === true ? "translateY(-10px)" : "translateY(0px)"}}>
                 { 
                     width ? <img src="/mainPageImages/imgResponsive.png" alt="mainImg"/>
                     :<img src="/mainPageImages/mainPageImg.png" alt="mainImg"/>
                 }
             </div>
-            <div className="registerDiv">
+            <div className="registerDiv">   
                 <h2>{state.mainPagePagination.title}</h2>
                 <p className="descriptionTitle">{state.mainPagePagination.description}</p>
                 <div className="registerButtonDiv">
                 <NavLink to="/signIn" className="Navlink" activeClassName="activeNavlink">
-                    Sign In
+                    {t("description.home.signIn")}
                 </NavLink>
                 <NavLink to="/register" className="Navlink" activeClassName="activeNavlink" 
-                onMouseOver={() => {
-                    setPlayImg(!playImg)
-                }} onMouseLeave={() =>  {
-                    setPlayImg(!playImg)
-                }}>
-                    Registration
+                    onMouseOver={() => {setPlayImg(!playImg)}} onMouseLeave={() => {setPlayImg(!playImg)}}>
+                    {t("description.home.register")}
                 </NavLink>
                 </div>
                 <div className="groupImg">

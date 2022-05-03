@@ -2,10 +2,13 @@ import { useSelector } from "react-redux"
 import arrowTop from "../images/arrowTop.png"
 import arrowBottom from "../images/arrowBottom.png"
 import "./responsiveTable.css"
+import { useTranslation } from "react-i18next"
 
 
 export function Table() {
     const state = useSelector((state) => state.mainPage)
+    const [t,i18n] = useTranslation()
+
     const {PageIndex,data} = state.table
     // console.log(data);
 
@@ -13,11 +16,12 @@ export function Table() {
     <table className="table">
         <thead>
             <tr className="titleTable">
-                <th><select><option hidden>Date</option></select></th>
-                <th>Tarif</th>
+                {/* <th><select><option hidden>Date</option></select></th> */}
+                <th>{t("description.DATE")}</th>
+                <th>{t("description.TARIF")}</th>
                 <th>balance</th>
-                <th>the amount</th>
-                <th id="th5">the amount</th>
+                <th>{t("description.AMOUNT")}</th>
+                <th id="th5">{t("description.AMOUNT")}</th>
             </tr>
         </thead>
         <tbody className="tbody">

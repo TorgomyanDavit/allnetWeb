@@ -1,0 +1,52 @@
+{
+  "title": "Welcome to react using react-i18next",
+  "description": {
+    "home" : {
+      "signIn" : "մուտք գործել",
+      "register" : "գրանցվել"
+    },
+    "header" : {
+      "signIn" :"մուտք գործել",
+      "About" : "Մեր մասին",
+      "Contactus" : "Կապ",
+      "FAQ" : "ՀՏՀ",
+      "AboutSendButton" : "ՈՒղարկել"
+    },
+    "placeholder" : {
+      "name" : "Անուն",
+      "email" : "Էլ․հասցե",
+      "message" : "Հաղորդագրություն",
+      "password" : "Գաղտնաբառ",
+      "repeatePassword" : "Կրկնել գաղտնաբառը"
+    },
+    "forgetPassword" : "Մոռացե՞լ եք ձեր գաղտնաբառը",
+    "agreeCondition" : {
+      "agree" : "Ես ծանոթացել եմ",
+      "terms" : "պայմաններին",
+      "condition" : "պահանջներին",
+      "police" : "Գաղտնիության քաղաքականության հետ",
+      "and" : "և",
+      "or" : "կամ"
+    },
+    "Group" : "Ալիքներ",
+    "channelGroup" : "Ալիքներ Տեսակներ",
+    "changeTarif" : "Փոխել սակագինը",
+    "byTarif" : "Գնել սակագինը",
+    "contacts" : "Կոնտակտներ",
+    "user" : {
+      "lineInputName" : "{{name}}",
+      "ButtonSave" : "Պահպանել",
+      "placeholder" : "{{placeholder}}"
+    },
+    "historyMovement" : "Դրամական միջոցների պատմությունը",
+    "show" : "ցուցադրել",
+    "rows" : "շարքերը ",
+    "DATE" : "Ամսաթիվ",
+    "TARIF" : "Փաթեթ",
+    "AMOUNT" : "Քանակ",
+    "ACTIVATE" : "Ակտիվացնել",
+    "RATE" : "ՓԱԹԵԹՆԵՐ"
+
+  }
+}
+

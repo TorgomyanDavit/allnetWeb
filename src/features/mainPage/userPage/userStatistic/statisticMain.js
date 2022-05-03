@@ -9,18 +9,17 @@ import "./animationResponsive.css"
 import { changeAnimation, chengRowCountPagination, paginationCount } from "../../mainPageSlice"
 import { getUserHomePage, getUserPage } from "../../getRequest"
 import HistoryPage from "./historyPage"
+import { useTranslation } from "react-i18next"
 
 
 export function StatisticMain() {
     const state = useSelector((state) => state.mainPage)
+    const [t,i18n] = useTranslation()
     const dispatch = useDispatch()
     useEffect(() => {return () => dispatch(changeAnimation({value:"/userPage/userStatistic/table1"}))},[])
     const [showSelect,setShowSelect] = useState(true)
     const [showValue,setShowValue] = useState(state.table.rowCount)
     const childFunc = useRef(null)
-
-
-
 
     return (
         <main className="statisticMain">
@@ -45,10 +44,10 @@ export function StatisticMain() {
             >
                 <p style={{animationName:state.animationPath === "/userPage/userChannel" ? "pHistory" : "null"}}>
                     <img src="/mainPageImages/clock.svg" alt="clock"/>
-                    The history of the movement of funds on your account
+                    {t("description.historyMovement")}
                 </p>
                 <div className="slectShow" style={{animationName:state.animationPath === "/userPage/userChannel" ? "pHistory" : "null"}}>
-                    <span>Show</span>
+                    <span>{t("description.show")}</span>
                         <form style={{position:"relative"}} onSubmit={(e) => {
                             e.preventDefault()
                             setShowSelect(!showSelect)
@@ -74,7 +73,7 @@ export function StatisticMain() {
                                 })}
                             </div>
                         </form>
-                    <span>Page</span>
+                    <span>{t("description.rows")}</span>
                 </div>
             </section>
             <HistoryPage childFunc={childFunc}/>

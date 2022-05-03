@@ -32,9 +32,7 @@ function MainPage() {
     const Authenticated = sessionStorage.getItem("authenticated");
     const history = useLocation();
     const MainRef = useRef(null);
-    // console.log(window.innerHeight,"useEFfect");
 
-    console.log(MainRef.current,"useEFfect");
 
     useEffect(() => {
         if(window.innerHeight >= MainRef.current.clientHeight) {
@@ -63,7 +61,7 @@ function MainPage() {
 
     return (
         <div className="MainPage" ref={MainRef}>
-           <Headers type={type} Width={Width} toggle={toggle} setToggle={setToggle}/>
+           <Headers type={type} MainRef={MainRef} Width={Width} toggle={toggle} setToggle={setToggle}/>
            { state.receiveLetterShow ? <Letter/> : null }
 
            <Switch>

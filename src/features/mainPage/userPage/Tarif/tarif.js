@@ -3,10 +3,14 @@ import { useDispatch, useSelector } from "react-redux"
 import { setTarifId, showThanks } from "../../mainPageSlice"
 import "./tarif.css"
 import Thanks from "./thankyouPopUp"
+import { useTranslation } from "react-i18next"
 
 
 export default function Tarif() {
     const state = useSelector((state) => state.mainPage)
+    const [t,i18n] = useTranslation()
+
+
     const dispatch = useDispatch()
     const [genIndex,setGenIndex] = useState(null)
     let USref = useRef(null)
@@ -25,7 +29,6 @@ export default function Tarif() {
         } 
     }
 
-    console.log("state",state);
 
 
 
@@ -33,7 +36,7 @@ export default function Tarif() {
     return (
         <section className="tarifMain">
             <div className="tarifHeader">
-                <p className="trifInnerHeader">Rate</p>
+                <p className="trifInnerHeader">{t("description.RATE")}</p>
             </div>
             <form className="secondTarifDiv" onSubmit={(event) => {
                 event.preventDefault()
@@ -56,7 +59,7 @@ export default function Tarif() {
                             })}
                             <button className="sendTArif" onClick={(event) => {
                                 setTarifData(event,index)
-                            }}>Activate</button>
+                            }}>{t("description.ACTIVATE")}</button>
                         </div>
                     )
                 })}

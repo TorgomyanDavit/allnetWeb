@@ -10,6 +10,8 @@ import "./responsiveAnimationUser.css"
 import personImg from "../../userPage/images/PersonImg.png"
 import { changeUserData } from "../../postRequest"
 import Cookies from 'js-cookie';
+import { useTranslation } from "react-i18next"
+
 
 
 
@@ -17,14 +19,12 @@ import Cookies from 'js-cookie';
 
 export default function User() {
     const state = useSelector((state) => state.mainPage)
+    const [t,i18n] = useTranslation()
+
     const [buttonNAme,setButtonName] = useState(true)
     const [displayAfter,setdisplayAfter] = useState(true)
     let formRef = useRef(null)
     let inpREf = useRef(null)
-
-    
-
-
     
     const [ file,setRef ]= useState("")
     const [ fileUrl,setfileUrl ]= useState("")
@@ -94,7 +94,8 @@ export default function User() {
                 {state.personData.map((val,index) => {
                     return (
                         <div key={val.id} className="personName" style={{animationName:state.animationPath === "/userPage/userHome" ? "personName" : "null"}}>
-                            {val.dataName} 
+                            {t('description.user.lineInputName',{name:val.dataName})}
+                            {/* {val.dataName}  */}
                             <input disabled type={val.type} className={`inputInner ${val.id === 2 ? "mailInput" : ""}`} value={val.inner}/> 
                             <img onClick={() => { 
                                 if(val.value !== "") {
@@ -104,7 +105,7 @@ export default function User() {
                                 dispatch(changeDisplay({id:val.id})) 
                             }} src={person} alt="logo"
                         />
-                            <input placeholder={val.placeholder} name="VARDAN" value={val.value} className="input" style={{display:val.display}} 
+                            <input placeholder={t('description.user.placeholder',{placeholder: val.placeholder})} name="VARDAN" value={val.value} className="input" style={{display:val.display}} 
                                 onChange={(e) => {
                                     dispatch(setId({id:val.id}))
                                     dispatch(setValue({id:val.id,value:e.target.value}))
@@ -113,9 +114,6 @@ export default function User() {
                         </div>
                     )
                 })}
-
-
-
 
                 <div className="ButtonUserData" onClick={(e) => {
                     let body = formRef.current
@@ -137,7 +135,7 @@ export default function User() {
                         animationName:
                         state.animationPath === "/userPage/userHome" ? "buttonPosition" :
                         state.animationPath === "/userPage/statisticPortal" ? "buttonPositionforPortal" : "null"
-                    }}>{buttonNAme ? "Save" : "Active"}
+                    }}>{buttonNAme ? t("description.user.ButtonSave") : "Active"}
                 </div>
             </form>
         </section>
