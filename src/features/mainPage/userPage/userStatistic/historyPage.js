@@ -23,9 +23,9 @@ export default memo(function HistoryPage({childFunc}) {
             }
         }
     }
-    const reference = useRef(0)
-    reference.current++
-    console.log("current",reference.current);
+
+
+    
     useEffect(() => {
         childFunc.current = RefreshHover
         setTimeout(() => {
