@@ -190,6 +190,7 @@
 }
 
 .signInunderLine {
+    display: none;
     width: 460px;
     text-align: center;
     margin: 28px auto 24px;

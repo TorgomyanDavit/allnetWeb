@@ -31,10 +31,8 @@ export const getAllContent = createAsyncThunk(
 //         if(!!response[1].user) {const id = response[1].user.id;
 //             const pagination = await fetch(`${path}/payment/${id}`,configHeader).then((result) => result.json())
 //             const notification = await fetch(`${path}/notification/${id}`,configHeader).then((result) => result.json())
-
 //             response.push(pagination,notification)
 //         }
-        
 //         return response
 //     }
 // )

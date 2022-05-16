@@ -18,8 +18,8 @@ import { sendEmail, newPass, postLogAuth, postRegister, postSignIn, changeUserDa
 
 const initialState = {
     // async
-    server:"https://all.mergel-stone.am/api",
-    serverForImg:"https://all.mergel-stone.am",
+    server:"https://allnet.webstart.am/api",
+    serverForImg:"https://allnet.webstart.am",
     // server:"http://127.0.0.1:8000/api",
     // serverForImg:"http://127.0.0.1:8000",
     mainPagePagination:{title:"",description:""},

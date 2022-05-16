@@ -1,7 +1,7 @@
 .userMainPAge {
     width: 1660px;
     /* height: 953px; */
-    height: calc(100vh - 65px);
+    height: calc(100vh - 125px);
     margin: 0 auto;
     margin-top: 25px;
     display: flex;

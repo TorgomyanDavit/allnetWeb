@@ -31,6 +31,7 @@ function UserHeader({toggle}) {
         if(Array.isArray(state.userPage)) {
             dispatch(getUserHomePage({path:state.server,token:sessionStorage.getItem("authenticated")}));
         }
+        console.log(state.userPage);
         if(state.userPage.id) { dispatch(getUserHistory({path:state.server,id:state.userPage.id,token:sessionStorage.getItem("authenticated")})) }
         if(state.userPage.id) { dispatch(getNotification({path:state.server,id:state.userPage.id,token:sessionStorage.getItem("authenticated")})) }
         if(state.userPage.id) { dispatch(getTarif({path:state.server,id:state.userPage.id,token:sessionStorage.getItem("authenticated")}))  }

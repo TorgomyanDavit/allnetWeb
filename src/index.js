@@ -5,7 +5,6 @@ import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import AuntContainer from './app/AuntContainer';
-
 import "./i8next"
 ReactDOM.render(
     <Provider store={store}>
